@@ -4991,19 +4991,8 @@ FN welcome_draw
     push rax
     call ui_text_v
     add rsp, 16
-    add r12d, [rip + g_mt + 4*MI_40]
-    lea rdi, [rip + g_face_small]
-    mov esi, [rsp]
-    mov edx, r12d
-    mov ecx, [rsp + 8]
-    M r8d, MI_20
-    lea r9, [rip + g_version_text]
-    COLOR eax, T_MUTED
-    push rax
-    push rax
-    call ui_text_center
-    add rsp, 16
     add r12d, [rip + g_mt + 4*MI_48]
+    add r12d, [rip + g_mt + 4*MI_12]
     # shortcut rows
     lea rbx, [rip + welcome_rows]
     xor r15d, r15d

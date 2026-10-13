@@ -29,7 +29,7 @@ up_item: .zero 64
 up_target: .zero 4096           # what the installer replaces and the restart runs
 up_exec: .zero 4096 + 32        # the program the restart runs
 g_update_desc: .zero 256        # the Check now row's text in Settings
-g_version_text: .zero 48        # "Version X" of this raftaar: the Check now row's label, the welcome screen
+g_version_text: .zero 48        # "Version X" of this raftaar: the Check now row's label
 .data
 up_fd: .long -1
 
