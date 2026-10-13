@@ -230,8 +230,8 @@ class TerminalTabs(unittest.TestCase):
         other = 'file://localhost' + (self.project / 'b.txt').as_posix()
         # a terminal gets the paths typed, quoted for the shell; a file's tab opens them
         output = self.run_editor(['cmd new_terminal', 'wait-term $', 'type cat', 'key Space',
-                                  f'drop {uri}|# a comment|{other}', 'key Return',
-                                  'wait-term quoted-content', 'wait-term b.txt', 'print-term',
+                                  f'drop {uri}|# a comment|{other}', 'type ; echo at$((1 + 1))',
+                                  'key Return', 'wait-term at2', 'print-term',
                                   'cmd prev_tab', f'drop {uri}', 'print-tabs'])
         self.assertIn('quoted-content\nb.txt\n', output)
         self.assertEqual(self.lines(output, 'tabs=')[0], "tabs=a.txt|*it's.txt|sh")
