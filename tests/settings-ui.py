@@ -20,9 +20,14 @@ ROOT = Path(__file__).resolve().parents[1]
 EXE = Path(os.environ.get('RAFTAAR_TEST_EXE', ROOT / 'build/raftaar')).resolve()
 MOD = 'cmd' if sys.platform == 'darwin' else 'ctrl'
 ROWS = []
+skipped = False                 # inside .ifndef WINDOWS: rows Windows does not have
 for line in (ROOT / 'src/app/config.s').read_text(encoding='utf-8').splitlines():
+    if line.strip() == '.ifndef WINDOWS':
+        skipped = os.name == 'nt'
+    elif line.strip() == '.endif':
+        skipped = False
     match = re.match(r'\s+SETTING(?:_ACTION)? \.Ls_(\w+), (\w+), (\w+)', line)
-    if match:
+    if match and not skipped:
         ROWS.append(match.groups())
 
 # These values are the public settings contract, independent of UI step logic.
@@ -31,7 +36,8 @@ BOOLS = {
     'editor': ('insert_spaces line_numbers highlight_line animate_disk_changes match_brackets '
                'indent_guides word_wrap whitespace cursor_blink smooth_caret auto_pairs '
                'scroll_past_end vim_mode home_on_launch'),
-    'files': 'trim_trailing_whitespace final_newline restore_session restore_project hide_dotfiles',
+    'files': ('trim_trailing_whitespace final_newline restore_session restore_project'
+              + ('' if os.name == 'nt' else ' hide_dotfiles')),
     'git': 'enabled', 'updates': 'check',
 }
 INTS = {

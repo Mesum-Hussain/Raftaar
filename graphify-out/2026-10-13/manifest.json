@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "tests/desktop-ux.py": {
-    "mtime": 1791885742.6117895,
-    "seen": 1791886031.8644104,
-    "ast_hash": "24d99128e9b4415345e1f2680e42c6b2",
+    "mtime": 1791886663.1792717,
+    "seen": 1791892576.6646032,
+    "ast_hash": "ea4a52d7567f3eb5794de3d668d9cee5",
     "semantic_hash": ""
   },
   "tests/detach.sh": {
@@ -450,21 +450,21 @@
     "semantic_hash": ""
   },
   "tests/terminal-keys.py": {
-    "mtime": 1791878368.6016357,
-    "seen": 1791879028.8751895,
-    "ast_hash": "b747d717fc54d76b7141575894f68b2b",
+    "mtime": 1791888161.2207425,
+    "seen": 1791892576.6655602,
+    "ast_hash": "8e0ec1b4b5b9be33d016e5aafe02fe69",
     "semantic_hash": ""
   },
   "tests/terminal-links.py": {
-    "mtime": 1791878368.5930421,
-    "seen": 1791879028.875192,
-    "ast_hash": "d798e6b8b3a29c9d82fc029e2afcec83",
+    "mtime": 1791886663.1789944,
+    "seen": 1791892576.665563,
+    "ast_hash": "00da7445b5833ffc5f3c0af42f79df51",
     "semantic_hash": ""
   },
   "tests/terminal-tabs.py": {
-    "mtime": 1791878368.597764,
-    "seen": 1791879028.875194,
-    "ast_hash": "5117b67d9840eb23fa2a1aa641957133",
+    "mtime": 1791891256.3474407,
+    "seen": 1791892576.6655657,
+    "ast_hash": "c2f5d57ba17a20f7088e4d847f154ee8",
     "semantic_hash": ""
   },
   "tests/tooltips.py": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791885742.6123025,
-    "seen": 1791886031.8666816,
-    "ast_hash": "6be3a51878a4611aedf8380ec599b48e",
+    "mtime": 1791894119.367811,
+    "seen": 1791894123.2238023,
+    "ast_hash": "b8988f0267e0217a6ae195060f18b258",
     "semantic_hash": ""
   },
   "site/404.html": {
@@ -2568,9 +2568,9 @@
     "semantic_hash": ""
   },
   "src/raftaar.inc": {
-    "mtime": 1791878396.7398434,
-    "seen": 1791879028.8749917,
-    "ast_hash": "1c64ada4ee3e776aa27904001468eb33",
+    "mtime": 1791890614.0399547,
+    "seen": 1791892576.6643732,
+    "ast_hash": "b306ec0130ed938188cfb3dfb0b13f30",
     "semantic_hash": ""
   },
   "tools/app-icons.py": {

@@ -808,8 +808,8 @@ FN win_reveal
 win_platform:
     .quad win_nop,win_timeout,win_nop,win_draw,win_set_cursor,win_clip_set,win_clip_get
     .quad win_nop,win_nop,win_minimize,win_maximize,win_title,win_nop
-.Lclass: .short 'r','h','u','n','W','i','n','d','o','w',0
-.Ltitle: .short 'r','h','u','n',0
+.Lclass: .short 'r','a','f','t','a','a','r','W','i','n','d','o','w',0
+.Ltitle: .short 'r','a','f','t','a','a','r',0
 .Lopen: .short 'o','p','e','n',0
 .Ldpi96: .float 96.0
 .Lcursors: .long 32512,32513,32649,32644,32645,32642,32643
