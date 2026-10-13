@@ -175,7 +175,9 @@ theme_derive:
     DERIVE T_PANEL_FG, T_FG, T_PANEL, 30
     DERIVE T_LINENO, T_FG, T_BG, 150
     COPY T_LINENO_ACTIVE, T_FG
-    COPY T_CURSOR, T_ACCENT
+    # so is the caret, and the terminal's cursor
+    mov eax, [rip + g_theme + 4*T_ACCENT]
+    mov [rip + g_theme + 4*T_CURSOR], eax
     DERIVE T_SCROLLBAR, T_BG, T_FG, 60
     CONST T_ERROR, 0xffe06c75
     CONST T_WARNING, 0xffe5c07b

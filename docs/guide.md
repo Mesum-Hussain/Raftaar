@@ -459,7 +459,7 @@ When the system says nothing, the dark theme shows. A configuration from before 
 
 Choose **Turbo Pascal** in the theme picker for a blue editor with yellow text, white keywords and the DOS terminal palette. To select it in the configuration file, set `dark_theme = turbo-pascal` under `[ui]` (or `theme`, with `follow_system = false`).
 
-A theme is a `name.theme` file in `~/.config/raftaar/themes/`. Colors not given are derived from `bg` and `fg`, so a theme can be two lines. The accent is Raftaar's own in every theme, the red of its logo (`#e5262e`): a theme's `accent` is not used. See `runtime/themes/` for all keys.
+A theme is a `name.theme` file in `~/.config/raftaar/themes/`. Colors not given are derived from `bg` and `fg`, so a theme can be two lines. The accent is Raftaar's own in every theme, the red of its logo (`#e5262e`): a theme's `accent` is not used, nor its `cursor`: the caret and the terminal's cursor are that red too. See `runtime/themes/` for all keys.
 
 ```ini
 name = My Theme
