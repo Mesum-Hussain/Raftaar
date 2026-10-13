@@ -3,6 +3,7 @@
 # Secrets: MACOS_CERT_P12, MACOS_CERT_PASSWORD (Developer ID Application certificate, base64 .p12)
 # and APPLE_API_KEY_P8, APPLE_API_KEY_ID, APPLE_API_ISSUER_ID (App Store Connect API key, base64 .p8).
 # Every Mac release is notarized and stapled, and its ZIP and disk image pass Gatekeeper before upload.
+# Without the signing certificate there is no Mac build, and the release has Linux and Windows only.
 name: release
 
 on:
@@ -46,7 +47,20 @@ jobs:
           path: raftaar-*-linux-x86_64
           if-no-files-found: error
 
+  # secrets cannot be read where a job decides whether to run
+  mac-signing:
+    runs-on: ubuntu-24.04
+    outputs:
+      certificate: ${{ steps.check.outputs.certificate }}
+    steps:
+      - id: check
+        env:
+          MACOS_CERT_P12: ${{ secrets.MACOS_CERT_P12 }}
+        run: echo "certificate=${MACOS_CERT_P12:+yes}" >> "$GITHUB_OUTPUT"
+
   macos:
+    needs: mac-signing
+    if: needs.mac-signing.outputs.certificate == 'yes'
     runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
@@ -155,6 +169,8 @@ jobs:
 
   publish:
     needs: [linux, macos, windows]
+    # a Mac build left out does not hold the release back; one that failed does
+    if: ${{ !cancelled() && !failure() }}
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -165,11 +181,15 @@ jobs:
           path: dist
           merge-multiple: true
       - name: Checksums, version and installer
+        env:
+          MACOS: ${{ needs.macos.result }}
         run: |
           v=$(cat VERSION)
           test -s "dist/raftaar-$v-linux-x86_64"
-          test -s "dist/raftaar-$v-macos-arm64.zip"
-          test -s "dist/raftaar-$v-macos-arm64.dmg"
+          if [ "$MACOS" != skipped ]; then
+            test -s "dist/raftaar-$v-macos-arm64.zip"
+            test -s "dist/raftaar-$v-macos-arm64.dmg"
+          fi
           test -s "dist/raftaar-$v-windows-x86_64.zip"
           cp install.sh install.ps1 dist/
           cat VERSION > dist/VERSION

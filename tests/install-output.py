@@ -83,7 +83,7 @@ def main():
             if colored:
                 assert b'\x1b[32m  curl -fsSL ' in output, output
             assert b'[y/N]' not in output, output
-            assert b"| '__| '_ " in output, output
+            assert b'>_ raftaar' in output, output
             assert b'VERSION' not in output and b'SHA256SUMS' not in output, output
             print(f'ok   install/output-{label}')
 

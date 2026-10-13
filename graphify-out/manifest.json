@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "tests/install-output.py": {
-    "mtime": 1791881830.3141053,
-    "seen": 1791882910.1316166,
-    "ast_hash": "d234bb774c3c6a2673616e654f1fdbe0",
+    "mtime": 1791899671.9950385,
+    "seen": 1791899914.4408453,
+    "ast_hash": "61fc944e31c9750f6caaf8c7af5ddfc4",
     "semantic_hash": ""
   },
   "tests/install.sh": {
@@ -696,9 +696,9 @@
     "semantic_hash": ""
   },
   ".github/workflows/release.yml": {
-    "mtime": 1791898492.4960082,
-    "seen": 1791898780.4472919,
-    "ast_hash": "4b92db116b9e0ba57f81c5ccb98b00c4",
+    "mtime": 1791899884.1570425,
+    "seen": 1791899914.4423542,
+    "ast_hash": "95beca262eb80dc5907a9016c5ba204c",
     "semantic_hash": ""
   },
   ".github/workflows/windows.yml": {
