@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "tests/desktop-ux.py": {
-    "mtime": 1791881809.861573,
-    "seen": 1791882910.1312795,
-    "ast_hash": "c626b856778c63344b82f6c5c48227e6",
+    "mtime": 1791885742.6117895,
+    "seen": 1791886031.8644104,
+    "ast_hash": "24d99128e9b4415345e1f2680e42c6b2",
     "semantic_hash": ""
   },
   "tests/detach.sh": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791881830.365874,
-    "seen": 1791882910.133166,
-    "ast_hash": "577fc4d58a4b013720492200b36dad03",
+    "mtime": 1791885742.6123025,
+    "seen": 1791886031.8666816,
+    "ast_hash": "6be3a51878a4611aedf8380ec599b48e",
     "semantic_hash": ""
   },
   "site/404.html": {
