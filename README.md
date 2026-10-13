@@ -44,8 +44,8 @@ Raftaar 0.1.2 against Visual Studio Code 1.141.0, both opening the same folder (
 
 | | Raftaar | VS Code | |
 | --- | ---: | ---: | ---: |
-| Download | 1.0 MB | 360 MB | 360× smaller |
-| Installed size | 1.0 MB | 1,060 MB | 1,058× smaller |
+| Download | 1.0 MB | 360 MB | 358× smaller |
+| Installed size | 1.0 MB | 1,060 MB | 1,054× smaller |
 | Installed files | 1 | 2,610 | |
 | Launch to window | 41 ms | 564 ms | 14× faster |
 | Memory, idle | 10.7 MB | 976 MB | 91× less |
@@ -55,7 +55,7 @@ Raftaar 0.1.2 against Visual Studio Code 1.141.0, both opening the same folder (
 <summary>How these were measured</summary>
 
 - **Machine:** AMD Ryzen 5 7520U (8 threads), 14 GB RAM, Fedora 44, GNOME on Wayland. Measured on 13 October 2026.
-- **Builds:** Raftaar 0.1.2 as `./build.sh release` makes it, the one file a release ships, and the official `code-stable-x64` tarball. Download is the size of each of those files; VS Code's installed size is the tarball unpacked.
+- **Builds:** the `raftaar-0.1.2-linux-x86_64` release binary (1,005,600 bytes) and the official `code-stable-x64` tarball. Download is the size of each of those files; VS Code's installed size is the tarball unpacked. Launch and memory were measured on the same code built locally with `./build.sh release`.
 - **Profiles:** both started with a fresh, empty profile. VS Code had no extensions installed, and its update check, telemetry and welcome page were turned off. Raftaar's update check was off too.
 - **Launch to window:** time from starting the process to its window being viewable on X11. Both ran through XWayland (`RAFTAAR_BACKEND=x11`, `--ozone-platform=x11`) so one probe could time both. Median of 10 warm launches after 2 discarded ones. Raftaar ranged from 31 to 85 ms, VS Code from 512 to 576 ms. The endpoint is the window appearing, not the UI being ready for input.
 - **Memory:** proportional set size (PSS) from `/proc/PID/smaps_rollup`, summed over the app's whole process tree 12 seconds after launch, with the folder open and no file or terminal open. Median of 3 launches.
