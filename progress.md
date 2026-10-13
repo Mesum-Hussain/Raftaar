@@ -53,11 +53,11 @@ Tabs and launch
 Settings and keys
 - `[files] hide_dotfiles` (not on Windows): `explorer_excluded` skips dot names (tree + file search).
 - `[editor] home_on_launch` (default true).
-- Removed bindings: Ctrl+` (toggle terminal), Ctrl+, (settings), Alt+Z for word wrap. Word wrap has no key (Settings / palette). Ctrl+W and Ctrl+F4 close the tab/pane.
+- Removed bindings: Ctrl+` (toggle terminal), Ctrl+, (settings), Alt+Z for word wrap. Ctrl+F4 (close tab). Word wrap has no key (Settings / palette). Ctrl+W closes the tab/pane.
 - Settings header: one link, "Feedback and issues: GitHub" -> this repo's issues. Website, email, Discord links and their palette commands are gone.
 
 Rebrand
-- Everything renamed rhun -> raftaar (binary, files, `RAFTAAR_*` env, config `~/.config/raftaar`, state `~/.local/state/raftaar`, themes, macOS `raftaar.app`). Welcome mark is `IC_RUNE` redrawn from the logo, in its red `#E5262E`.
+- Everything renamed rhun -> raftaar (binary, files, `RAFTAAR_*` env, config `~/.config/raftaar`, state `~/.local/state/raftaar`, themes, macOS `raftaar.app`). Welcome mark is `IC_RUNE` redrawn from the logo, in its red `#E5262E`; the name beside it is "Raftaar" (`.Lraftaar_name`), the title/sidebar fallback stays lower-case.
 - URLs point at `Mesum-Hussain/Raftaar` (update check base in `update.s`, installers, docs). Update check default on; there are no releases yet, so it reports nothing.
 - `site/` is still rhun's website with the name swapped; `rhun.app` strings remain there. Not published.
 - `.github/workflows/pages.yml` and `desktop-launches.yml` are manual-only; `release.yml` still fires on `v*` tags and expects upstream's signing secrets for macOS.
@@ -73,4 +73,5 @@ Rebrand
 - macOS build (`.irp`), Windows build, and `T_TIOCGPGRP` on macOS are unverified.
 - Web view (Jupyter, frontend preview) was discussed, not built. Constraint: static binary cannot load WebKitGTK. Options: helper process (X11 can embed, Wayland cannot), or launch a browser in app mode. Owner has not chosen.
 - `terax-ai-main.zip` (third-party reference archive) sits in the repo root, git-ignored on purpose; never commit it.
-- The working folder is still `~/Code/rhun`; the owner will rename it.
+- `site/` is rhun's website with the name swapped (see Rebrand); rewrite or delete before publishing anything from it.
+- Owner's machine: old rhun install left in place (`~/.local/bin/rhun`, `~/.config/rhun`, `~/.local/state/rhun`); Raftaar's config and sessions were copied from them on 2026-10-13. Remove only if the owner asks.

@@ -33,7 +33,7 @@
 .equ TT_fn, 16
 .equ TT_SIZE, 24
 .equ TIP_TEXT_MAX, 4400          # bytes of a tip_note_text tooltip (a git command with a file's path)
-.equ RAFTAAR_LEN, 7             # bytes of "raftaar", the name on the welcome screen
+.equ RAFTAAR_LEN, 7             # bytes of "Raftaar", the name on the welcome screen
 .equ ID_WELCOME, 0x2a00          # + item
 
 .bss
@@ -4932,7 +4932,7 @@ FN welcome_draw
     sub eax, [rip + g_mt + 4*MI_64]
     sub eax, [rip + g_mt + 4*MI_48]
     mov r12d, eax
-    # the mark and "raftaar", centered together; the mark is as tall as the h
+    # the mark and "Raftaar", centered together; the mark is as tall as the h
     mov eax, [rip + g_face_huge + FACE_px]
     imul eax, eax, 11
     xor edx, edx
@@ -4943,7 +4943,7 @@ FN welcome_draw
     shr eax, 7
     mov [rsp + 24], eax         # the mark's visible width
     lea rdi, [rip + g_face_huge]
-    lea rsi, [rip + .Lraftaar]
+    lea rsi, [rip + .Lraftaar_name]
     mov edx, RAFTAAR_LEN
     call text_width
     mov [rsp + 28], eax
@@ -4984,7 +4984,7 @@ FN welcome_draw
     mov edx, r12d
     sub edx, [rip + g_mt + 4*MI_20]
     M ecx, MI_48
-    lea r8, [rip + .Lraftaar]
+    lea r8, [rip + .Lraftaar_name]
     mov r9d, RAFTAAR_LEN
     COLOR eax, T_FG
     push rax
@@ -6133,6 +6133,7 @@ FN cmd_move_line_down
 
 .section .rodata
 .Lraftaar: .asciz "raftaar"      # the name as it is written in the interface
+.Lraftaar_name: .asciz "Raftaar" # the name as the welcome screen shows it
 .Lempty: .asciz ""
 .Lrestart_empty: .asciz "--empty"
 .Ldash: .asciz " \342\200\224 "

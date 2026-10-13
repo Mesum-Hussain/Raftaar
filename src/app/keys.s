@@ -480,7 +480,7 @@ g_commands:
     COMMAND new_file, "New File", cmd_new_file, "ctrl+n"
     COMMAND save, "Save", cmd_save, "ctrl+s"
     COMMAND save_as, "Save As", cmd_save_as, "ctrl+shift+s"
-    COMMAND close_tab, "Close Tab", cmd_close_tab, "ctrl+w ctrl+F4"
+    COMMAND close_tab, "Close Tab", cmd_close_tab, "ctrl+w"
     COMMAND close_all_tabs, "Close All Tabs", cmd_close_all, "ctrl+shift+w"
     COMMAND reopen_closed_tab, "Reopen Closed Tab", cmd_reopen_closed_tab, "ctrl+shift+t"
     COMMAND next_tab, "Next Tab", cmd_next_tab, "ctrl+Tab ctrl+PageDown"
