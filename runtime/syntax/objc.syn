@@ -1,0 +1,15 @@
+name = Objective-C
+files = *.m *.mm
+icon = c yellow
+comment = //
+block = /* */
+region = @" " string escape=\
+string = " \
+string = ' \
+prefix = #p
+ident = @
+captypes = yes
+keywords = if else for while do switch case default break continue return goto sizeof typedef struct union enum static extern const volatile inline register auto @interface @implementation @end @property @synthesize @protocol @selector @class @autoreleasepool @try @catch @finally @throw @optional @required @dynamic
+types = id BOOL SEL IMP instancetype NSInteger NSUInteger CGFloat void char short int long float double signed unsigned
+constants = YES NO nil Nil NULL self super true false
+builtins = NSLog NSString NSArray NSDictionary NSNumber NSObject NSMutableArray NSMutableDictionary

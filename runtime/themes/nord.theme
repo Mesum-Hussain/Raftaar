@@ -1,0 +1,50 @@
+name = Nord
+kind = dark
+
+bg             = #2e3440
+fg             = #d8dee9
+accent         = #88c0d0
+panel          = #272c36
+border         = #1f232b
+selection      = #434c5e
+line_highlight = #3b4252
+line_number    = #4c566a
+cursor         = #d8dee9
+error          = #bf616a
+warning        = #ebcb8b
+success        = #a3be8c
+
+[syntax]
+keyword        = #81a1c1
+type           = #8fbcbb
+function       = #88c0d0
+string         = #a3be8c
+number         = #b48ead
+comment        = #616e88
+constant       = #b48ead
+operator       = #81a1c1
+punctuation    = #eceff4
+preproc        = #5e81ac
+builtin        = #88c0d0
+attribute      = #d08770
+tag            = #81a1c1
+heading        = #88c0d0
+escape         = #ebcb8b
+
+[terminal]
+black          = #2e3440
+red            = #bf616a
+green          = #a3be8c
+yellow         = #ebcb8b
+blue           = #81a1c1
+magenta        = #b48ead
+cyan           = #88c0d0
+white          = #d8dee9
+bright_black   = #4c566a
+bright_red     = #bf616a
+bright_green   = #a3be8c
+bright_yellow  = #ebcb8b
+bright_blue    = #81a1c1
+bright_magenta = #b48ead
+bright_cyan    = #8fbcbb
+bright_white   = #d8dee9

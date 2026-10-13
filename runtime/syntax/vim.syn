@@ -1,0 +1,12 @@
+name = Vim script
+files = *.vim .vimrc _vimrc .gvimrc .exrc
+icon = code green
+region = " eol comment bol
+string = " \
+comment = "
+string = '
+prefix = &v $v @v
+ident = :#
+keywords = let unlet if else elseif endif while endwhile for in endfor break continue return function endfunction call try catch finally endtry throw echo echom echoerr execute normal set command autocmd augroup
+constants = v:true v:false v:null v:none
+builtins = has exists expand system executable filereadable fnamemodify substitute matchstr split join printf len get map filter sort index

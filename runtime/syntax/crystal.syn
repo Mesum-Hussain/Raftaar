@@ -1,0 +1,12 @@
+name = Crystal
+files = *.cr
+icon = crystal white
+first_line = crystal
+comment = #
+string = " \
+string = ' \
+prefix = @v $v :v
+captypes = yes
+keywords = abstract alias annotation as begin break case class def do else elsif end ensure enum extend for fun if in include lib macro module next of out private protected require rescue return select self struct super then union unless until when while with yield
+constants = true false nil
+builtins = puts print pp raise loop typeof sizeof

@@ -1,0 +1,32 @@
+field=~/work/alpha/
+> Docs/
+  src/
+  a.txt
+  b.txt
+field=~/work/alpha/s
+> src/
+  Docs/
+field=~/work/alpha/src/
+> main.c
+tabs=1 active=main.c line=1 col=1 sel=0 dirty=0 lang=C focus=0 theme=raftaar-dark
+field=~/work/alpha/.
+> .env
+  a.txt
+  b.txt
+field=~/work/alpha
+> alpha/
+field=~/no
+> notes/
+field=~/notes/
+> todo.txt
+tabs=2 active=todo.txt line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+project=~/work/alpha
+Open Folder…
+Open File…
+field=~/work/alpha/
+> Docs/
+  src/
+  a.txt
+  b.txt
+none
+tabs=2 active=todo.txt line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark

@@ -1,0 +1,8 @@
+// Gleam sample
+pub fn greet(x: Int) -> String {
+  let n = 42
+  case x {
+    0 -> "zero"
+    _ -> "many"
+  }
+}

@@ -1,0 +1,14 @@
+#!/usr/bin/octave
+% compute factorial of n
+%{
+  block comment
+  spans lines
+%}
+function r = fact(n)
+    if n <= 1
+        r = 1;
+    else
+        r = n * fact(n - 1);
+    end
+    disp('done');
+end

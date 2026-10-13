@@ -1,0 +1,11 @@
+name = Clojure
+files = *.clj *.cljs *.cljc *.edn *.el *.lisp *.cl *.scm *.ss *.rkt *.fnl
+icon = clojure green
+comment = ;
+string = " \
+ident = -!?*+/<>=.
+prefix = :v
+keywords = def defn defn- defmacro defmulti defmethod defonce defprotocol defrecord deftype defun defvar defparameter define lambda let let* letfn loop recur if when unless cond case do fn quote and or not ns require import use set! begin progn
+constants = true false nil t
+functions = no
+operators = no

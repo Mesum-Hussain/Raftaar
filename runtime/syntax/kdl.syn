@@ -1,0 +1,8 @@
+name = KDL
+files = *.kdl
+icon = config orange
+comment = //
+block = /* */
+string = " \
+ident = -
+constants = true false null

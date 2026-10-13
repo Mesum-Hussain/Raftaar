@@ -1,0 +1,4 @@
+# a user grammar for tests/grammar_test: *.rb ties with Ruby (the user's wins), *.txt loses
+# CMakeLists.txt to CMake (an exact name), *5 loses a.json5 to JSON (a longer pattern)
+name = Custom
+files = *.rb *.txt *5

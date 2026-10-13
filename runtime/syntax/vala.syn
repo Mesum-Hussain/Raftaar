@@ -1,0 +1,12 @@
+name = Vala
+files = *.vala *.vapi
+icon = vala purple
+comment = //
+block = /* */
+mstring = """
+string = " \
+string = ' \
+captypes = yes
+keywords = abstract as base break case catch class const construct continue default delegate delete do dynamic else ensures enum errordomain extern finally for foreach get global if in inline internal interface is lock namespace new out override owned params private protected public ref requires return set signal sizeof static struct switch this throw throws try typeof unowned using value var virtual void volatile weak while yield async yield
+types = bool char uchar int uint short ushort long ulong int8 int16 int32 int64 uint8 uint16 uint32 uint64 float double string unichar size_t ssize_t
+constants = true false null

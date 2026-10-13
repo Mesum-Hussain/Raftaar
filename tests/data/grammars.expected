@@ -1,0 +1,1425 @@
+loaded: 0 parsed
+== ada.syn
+-- Ada sample
+6666666666666 0
+with Ada.Text_IO; use Ada.Text_IO;
+1111000090000000901110000900000009 0
+procedure Main is
+11111111100000011 0
+   Count : Integer := 42;
+0000000008022222220880559 0
+   Flag  : Boolean := True;
+000000000802222222088077779 0
+begin
+11111 0
+   Put_Line ("Hello, Ada!");
+000cccccccc09444444444444499 0
+end Main;
+111000009 0
+== apache.syn
+# enable rewriting
+666666666666666666 0
+Listen 8080
+11111105555 0
+RewriteEngine On
+1111111111111000 0
+<Directory /var/www/html>
+eeeeeeeeeeeeeeeeeeeeeeeee 0
+  Options -Indexes
+001111111080000000 0
+  Require all granted
+001111111000000000000 0
+</Directory>
+eeeeeeeeeeee 0
+DocumentRoot "/var/www/html"
+1111111111110444444444444444 0
+== applescript.syn
+#!/usr/bin/osascript
+66666666666666666666 0
+-- greets the user
+666666666666666666 0
+(* asks for a name
+666666666666666666 3
+   then says hello *)
+666666666666666666666 0
+set userName to "World"
+11100000000001104444444 0
+set count to 3
+11100000001105 0
+display dialog "Hello, " & userName & count
+ccccccc0cccccc04444444440800000000008000000 0
+say "done"
+ccc0444444 0
+== asciidoc.syn
+= Document Title
+ffffffffffffffff 0
+// a regular comment
+66666666666666666666 0
+Some *bold* text and `monospace` code.
+00000111111000000000044444444444000000 0
+* a bullet item
+000000000000000 0
+////
+6666 2
+block comment continues
+66666666666666666666666 2
+////
+6666 0
+----
+4444 1
+listing block continues
+44444444444444444444444 1
+== astro.syn
+---
+aaa 4
+const items = ["a", "b"];
+aaaaaaaaaaaaaaaaaaaaaaaaa 4
+---
+aaa 0
+<!-- a comment -->
+666666666666666666 0
+<ul class="list">{items.map(i => <li>{i}</li>)}</ul>
+9ee0ddddd9444444900000000000000009ee900099ee90099ee9 0
+== awk.syn
+# AWK sample
+666666666666 0
+BEGIN { count = 0 }
+1111109000000080509 0
+{
+9 0
+    count++
+00000000088 0
+    print $1, NR
+0000111110bb90bb 0
+}
+9 0
+END { printf "total=%d\n", count }
+1110901111110444444444444900000009 0
+== batch.syn
+@echo off
+011110000 0
+REM this script greets the user
+6666666666666666666666666666666 0
+:: column-0 comment style
+6666666666666666666666666 0
+setlocal
+11111111 0
+    :: indented comment style
+00006666666666666666666666666 0
+SET NAME=World
+11100000800000 0
+SET /a COUNT=1
+11108000000085 0
+if "%NAME%"=="" goto skip
+1104444444488440111100000 0
+echo Hello, %NAME%! Count: %COUNT%
+111100000090bbbbb8800000080bbbbbb8 0
+:skip
+33333 0
+echo done
+111100000 0
+== bibtex.syn
+% Reference list
+6666666666666666 0
+@article{knuth1984,
+1111111190000000009 0
+  author = "Donald E. Knuth",
+00000000080444444444444444449 0
+  title = "Literate Programming",
+000000008044444444444444444444449 0
+  year = 1984
+0000000805555 0
+}
+9 0
+== blade.syn
+<div class="a">
+9eee0ddddd94449 0
+{{-- a comment
+66666666666666 4
+   spanning lines --}}
+6666666666666666666666 0
+@if($user)
+aaaaaaaaaa 0
+  <p>{{ $user->name }}</p>
+009e9aaaaaaaaaaaaaaaaa99e9 0
+@endif
+aaaaaa 0
+== capnp.syn
+# Cap'n Proto schema
+66666666666666666666 0
+struct Person {
+111111000000009 0
+  name @0 :Text;
+0000000050822229 0
+  age @1 :UInt32 = 0;
+000000050822222208059 0
+  active @2 :Bool = true;
+0000000000508222208077779 0
+}
+9 0
+== cobol.syn
+      *> COBOL sample
+000000666666666666666 0
+       IDENTIFICATION DIVISION.
+0000000111111111111110111111119 0
+       PROGRAM-ID. HELLO.
+0000000111111111190000009 0
+       DATA DIVISION.
+000000011110111111119 0
+       WORKING-STORAGE SECTION.
+0000000111111111111111011111119 0
+       01 WS-COUNT PIC 9(3) VALUE 42.
+0000000550000000000111059590111110559 0
+       PROCEDURE DIVISION.
+00000001111111110111111119 0
+           DISPLAY "Hello, COBOL!".
+00000000000111111104444444444444449 0
+== crontab.syn
+# crontab example
+66666666666666666 0
+MAILTO=admin
+000000800000 0
+0 3 * * * /usr/bin/backup.sh
+5050808080800080008000000900 0
+@daily /usr/bin/cleanup.sh
+11111108000800080000000900 0
+@reboot /usr/bin/startup.sh
+111111108000800080000000900 0
+15 */2 * * 1-5 echo "check"
+550885080805850000000000000 0
+== crystal.syn
+# Crystal sample
+6666666666666666 0
+class Greeter
+1111102222222 0
+  @name : String = "Bob"
+00bbbbb08022222208044444 0
+  def greet(count : Int32)
+00111033333900000080222229 0
+    puts "Hi #{@name}" if count > 0
+0000cccc044444444444440110000000805 0
+  end
+00111 0
+end
+111 0
+== csharp.syn
+// C# sample
+666666666666 0
+var dir = """C:\temp\""" + $"\"";
+111000008044444444444444080444449 0
+var raw = $"""
+11100000804444 6
+    {dir}\
+4444444444 6
+    """;
+44444449 0
+var q = """"say """hi"""\"""";
+111000804444444444444444444449 0
+var vi = @$"C:\{dir}\" + @"{""k"":""""}\";
+111000080444444444444408044444444444444449 0
+int count = 1;
+22200000008059 0
+== cuda.syn
+// vector add kernel
+66666666666666666666 0
+#include <cuda_runtime.h>
+aaaaaaaa08000000000000908 0
+/* one thread
+6666666666666 2
+   per element */
+66666666666666666 0
+__global__ void add(const float *a, const float *b, float *c, int n) {
+1111111111022220333911111022222080901111102222208090222220809022200909 0
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+000022200080cccccccc90080cccccccc90080ccccccccc909 0
+    if (i < n) {
+0000110900800909 0
+        c[i] = a[i] + b[i];
+000000000909080090908009099 0
+    }
+00009 0
+}
+9 0
+
+ 0
+int main() {
+222033339909 0
+    float *d_a;
+000022222080009 0
+    cudaMalloc(&d_a, 64 * sizeof(float));
+0000cccccccccc980009055080111111922222999 0
+    cudaFree(d_a);
+0000cccccccc900099 0
+    return 0;
+0000111111059 0
+}
+9 0
+== cue.syn
+// CUE schema example
+666666666666666666666 0
+package main
+111111100000 0
+#Config: {
+0000000809 0
+    name: "demo", version: string, count: 3, ok: true
+00000000804444449000000008022222290000008059000807777 0
+    doc: """
+000000080444 2
+        hello
+4444444444444 2
+        """
+44444444444 0
+}
+9 0
+== d.syn
+// D sample
+66666666666 0
+module app;
+11111100009 0
+/* block
+66666666 2
+   comment */
+6666666666666 0
+void main() {
+2222033339909 0
+    string s = `raw` ~ r"also";
+0000222222000804444408044444449 0
+    writeln("Hi ", 42);
+0000ccccccc944444905599 0
+}
+9 0
+== dart.syn
+// Dart sample
+66666666666666 0
+var dir = r"""C:\temp\""";
+11100000804444444444444449 0
+var doc = r'''
+11100000804444 3
+  C:\temp\''';
+44444444444449 0
+var one = r'C:\dir\' + x;
+1110000080444444444408009 0
+var esc = """say \""" ok""";
+1110000080444444444444444449 0
+int count = 1;
+22200000008059 0
+== dhall.syn
+-- Dhall config
+666666666666666 0
+{- block comment -} let ok : Bool = True
+6666666666666666666011100008022220807777 0
+
+ 0
+in  { name = "demo", count = 3, empty = None Text
+1100900000080444444900000008059000000080777702222 0
+    , doc = ''
+00009000008044 4
+        hello
+4444444444444 4
+        ''
+4444444444 0
+    }
+00009 0
+== dotenv.syn
+# database configuration
+666666666666666666666666 0
+export DATABASE_URL="postgres://user:pass@localhost/db"
+1111110000000000000844444444444444444444444444444444444 0
+API_KEY='abc123'
+0000000844444444 0
+PORT=3000
+000085555 0
+DEBUG_MODE=$ENABLE_DEBUG
+00000000008bbbbbbbbbbbbb 0
+== ejs.syn
+<html>
+9eeee9 0
+<%# a comment %>
+6666666666666666 0
+<% const x = 1 %>
+aaaaaaaaaaaaaaaaa 0
+<p class="a"><%= "hi " + x %></p>
+9e0ddddd94449aaaaaaaaaaaaaaaa99e9 0
+<%_ x %>
+aaaaaaaa 0
+<p>plain text</p>
+9e9000000000099e9 0
+== elm.syn
+-- Elm sample
+6666666666666 0
+module Main exposing (main)
+111111022220111111110900009 0
+{- block
+66666666 1
+   comment -}
+6666666666666 0
+greet name =
+000000000008 0
+    if name == "" then "Hi" else "Hi, " ++ name
+00001100000088044011110444401111044444408800000 0
+answer = 42
+00000008055 0
+== erb.syn
+<html>
+9eeee9 0
+<%# a comment %>
+6666666666666666 0
+<%- x = 1 -%>
+aaaaaaaaaaaaa 0
+<p class="a"><%= "hi #{x}" %></p>
+9e0ddddd94449aaaaaaaaaaaaaaaa99e9 0
+<%- x %>
+aaaaaaaa 0
+<p>plain text</p>
+9e9000000000099e9 0
+== fortran.syn
+! Fortran sample
+6666666666666666 0
+program main
+111111100000 0
+  implicit none
+001111111101111 0
+  integer :: count = 42
+00222222208800000008055 0
+  logical :: ok = .true.
+002222222088000080777777 0
+  print *, "Hello", count
+0011111089044444449000000 0
+end program main
+1110111111100000 0
+== fsharp.syn
+// F# sample
+666666666666 0
+[<EntryPoint>]
+dddddddddddddd 0
+let main argv =
+111000000000008 0
+    (* block
+000066666666 2
+       comment *)
+66666666666666666 0
+    let msg = "Hello, world!"
+00001110000080444444444444444 0
+    printfn "%s %d" msg 42
+0000ccccccc044444440000055 0
+    let raw = """
+00001110000080444 3
+    text \
+4444444444 3
+    """
+4444444 0
+    0
+00005 0
+== gitattributes.syn
+# normalize line endings
+666666666666666666666666 0
+* text=auto
+80dddd80000 0
+*.png binary
+890000dddddd 0
+*.sh text eol=lf
+89000dddd0ddd800 0
+docs/** linguist-documentation
+00008880dddddddddddddddddddddd 0
+build/* export-ignore linguist-generated
+00000880ddddddddddddd0dddddddddddddddddd 0
+*.txt conflict-marker-size=32
+89000000000000000000000000855 0
+== gleam.syn
+// Gleam sample
+666666666666666 0
+pub fn greet(x: Int) -> String {
+11101103333390802229088022222209 0
+  let n = 42
+001110008055 0
+  case x {
+0011110009 0
+    0 -> "zero"
+000050880444444 0
+    _ -> "many"
+000000880444444 0
+  }
+009 0
+}
+9 0
+== graphviz.syn
+// Graph example
+6666666666666666 0
+digraph G {
+11111110009 0
+    rankdir=LR;
+000000000008009 0
+    node [shape=box];
+000011110900000800099 0
+    a -> b [label="edge", weight=2];
+000000880009000008444444900000008599 0
+    subgraph cluster_0 {
+000011111111000000000009 0
+        c -> d;
+000000000088009 0
+    }
+00009 0
+}
+9 0
+== groovy.syn
+// Groovy sample
+6666666666666666 0
+package demo
+111111100000 0
+/* block
+66666666 2
+   comment */
+6666666666666 0
+def greet(String name) {
+111033333922222200000909 0
+    println "Hello, ${name}!"
+0000ccccccc044444444444444444 0
+}
+9 0
+def total = 42
+11100000008055 0
+== haml.syn
+-# a comment
+666666666666 0
+%div.box#main
+eeeeddddddddd 0
+  - x = 1
+00aaaaaaa 0
+  %p.greeting= "hi #{x}" if x
+00eeddddddddd8044444444400000 0
+  / not rendered
+0066666666666666 0
+  :javascript
+00aaaaaaaaaaa 0
+== handlebars.syn
+<div class="a">
+9eee0ddddd94449 0
+{{!-- a comment
+666666666666666 4
+   spanning lines --}}
+6666666666666666666666 0
+{{#if user}} hi {{{rawHtml}}} {{/if}}
+aaaaaaaaaaaa0000aaaaaaaaaaaaa0aaaaaaa 0
+== haxe.syn
+// entry point
+66666666666666 0
+package app;
+111111100009 0
+
+ 0
+class Main {
+111110222209 0
+    /* say hello
+0000666666666666 2
+       to the world */
+6666666666666666666666 0
+    static function main() {
+0000111111011111111033339909 0
+        var name:String = 'World';
+0000000011100000822222208044444449 0
+        #if debug
+00000000aaa000000 0
+        trace("Hello, " + name + "!");
+00000000333339444444444080000008044499 0
+        #end
+00000000aaaa 0
+        var count:Int = 42;
+000000001110000008222080559 0
+    }
+00009 0
+}
+9 0
+== http.syn
+### Get user
+ffffffffffff 0
+# Fetch user by id
+666666666666666666 0
+GET https://api.example.com/users/{{userId}}
+1110000008880009000000090008000008bbbbbbbbbb 0
+Accept: application/json
+000000800000000000080000 0
+### Create user
+fffffffffffffff 0
+POST https://api.example.com/users
+1111000000888000900000009000800000 0
+{"name": "Ada", "age": 30}
+94444448044444904444480559 0
+== idris.syn
+-- adds one to a Nat
+66666666666666666666 0
+{- total function,
+666666666666666666 2
+   never fails -}
+66666666666666666 0
+addOne : Nat -> Nat
+0000000802220880222 0
+addOne n = n + 1
+0000000008000805 0
+
+ 0
+greet : String -> String
+000000802222220880222222 0
+greet name = "hello, " ++ name
+000000000008044444444408800000 0
+
+ 0
+main : IO ()
+000008022099 0
+main = putStrLn (greet "world")
+0000080333333330900000044444449 0
+== ignore.syn
+# build artifacts
+66666666666666666 0
+node_modules/
+0000000000008 0
+*.log
+89000 0
+!important.log
+88888888888888 0
+dist/
+00008 0
+.DS_Store
+900000000 0
+== janet.syn
+#!/usr/bin/env janet
+66666666666666666666 0
+# greet a person by name
+666666666666666666666666 0
+(defn greet [name count]
+011110000000000000000000 0
+  (print "Hello, " name " x" count))
+000000000444444444000000444400000000 0
+
+ 0
+(def msg `a raw
+011100000444444 3
+multi-line string`)
+4444444444444444440 0
+(greet "World" 3)
+00000004444444050 0
+== jinja.syn
+<div class="a">
+9eee0ddddd94449 0
+{# a comment
+666666666666 4
+   spanning lines #}
+66666666666666666666 0
+{%- if user -%} hi {{ user.name }} {%- endif -%}
+aaaaaaaaaaaaaaa0000aaaaaaaaaaaaaaa0aaaaaaaaaaaaa 0
+{%- for x in items %}
+aaaaaaaaaaaaaaaaaaaaa 0
+<p>plain text</p>
+9e9000000000099e9 0
+== jsonnet.syn
+// jsonnet config
+66666666666666666 0
+local port = 8080; # legacy comment
+11111000000805555906666666666666666 0
+{
+9 0
+  name: "service",
+000000804444444449 0
+  desc: |||
+00000080444 4
+    multi-line text
+4444444444444444444 4
+  |||,
+444449 0
+}
+9 0
+== just.syn
+# build recipe
+66666666666666 0
+set shell := ["bash", "-cu"]
+1110000000880944444490444449 0
+alias b := build
+1111100088000000 0
+build:
+333338 0
+    cargo build --release -j 4
+000000000000000088000000008005 0
+doc := """
+0000880444 2
+multi-line text
+444444444444444 2
+"""
+444 0
+== kdl.syn
+// Package manifest
+6666666666666666666 0
+package {
+000000009 0
+    name "kdl-demo"
+0000000004444444444 0
+    version "1.0.0"
+0000000000004444444 0
+    enabled true
+0000000000007777 0
+    replicas 3
+00000000000005 0
+    parent null
+000000000007777 0
+}
+9 0
+/* multi-line
+6666666666666 2
+   comment */
+6666666666666 0
+== latex.syn
+% Example document
+666666666666666666 0
+\documentclass{article}
+11111111111111900000009 0
+\begin{document}
+1111119000000009 0
+\section{Introduction}
+1111111190000000000009 0
+Let $x^2+y^2=1$ be true.
+000044444444444000000009 0
+\[
+44 3
+  E = mc^2
+4444444444 3
+\]
+44 0
+== lean.syn
+-- double a natural number
+66666666666666666666666666 0
+/- returns
+6666666666 2
+   twice n -/
+6666666666666 0
+def double (n : Nat) : Nat :=
+11103333330900802229080222088 0
+  n + n
+0000800 0
+def answer : Nat := 42
+1110000000080222088055 0
+def greet (name : String) : String :=
+1110333330900000802222229080222222088 0
+  "hello, " ++ name
+0044444444408800000 0
+== liquid.syn
+<div class="a">
+9eee0ddddd94449 0
+{%comment%}
+66666666666 4
+  a comment
+66666666666 4
+{%endcomment%}
+66666666666666 0
+{%- if user -%} hi {{ user.name }} {%- endif -%}
+aaaaaaaaaaaaaaa0000aaaaaaaaaaaaaaa0aaaaaaaaaaaaa 0
+== matlab.syn
+#!/usr/bin/octave
+08800080008000000 0
+% compute factorial of n
+666666666666666666666666 0
+%{
+66 1
+  block comment
+666666666666666 1
+  spans lines
+6666666666666 1
+%}
+66 0
+function r = fact(n)
+11111111000803333909 0
+    if n <= 1
+0000110008805 0
+        r = 1;
+00000000008059 0
+    else
+00001111 0
+        r = n * fact(n - 1);
+0000000000800080333390080599 0
+    end
+0000111 0
+    disp('done');
+0000cccc944444499 0
+end
+111 0
+== mermaid.syn
+%% Mermaid sequence diagram
+666666666666666666666666666 0
+sequenceDiagram
+111111111111111 0
+    participant Alice
+000011111111111000000 0
+    participant Bob
+0000111111111110000 0
+    Alice->>Bob: Hello "Bob"
+0000000008880008000000044444 0
+    loop Every 5 minutes
+000011110000000500000000 0
+        Bob-->>Alice: Pong
+00000000000888800000800000 0
+    end
+0000111 0
+    note right of Bob: done
+000011110000000000000800000 0
+== meson.syn
+# project setup
+666666666666666 0
+project('myapp', 'c')
+333333394444444904449 0
+if get_option('tests')
+1103333333333944444449 0
+  subdir('tests')
+00333333944444449 0
+endif
+11111 0
+count = 3
+000000805 0
+doc = '''
+000080444 2
+multi-line text
+444444444444444 2
+raw text \
+4444444444 2
+'''
+444 0
+== mojo.syn
+#!/usr/bin/env mojo
+6666666666666666666 0
+# adds two integers
+6666666666666666666 0
+"""computes the
+444444444444444 2
+   sum of a and b"""
+44444444444444444444 0
+fn add(a: Int, b: Int) -> Int:
+110333908022290080222908802228 0
+    var total: Int = a + b + 1
+000011100000080222080008000805 0
+    return total
+0000111111000000 0
+struct Point:
+1111110222228 0
+== nginx.syn
+# main server block
+6666666666666666666 0
+http {
+111109 0
+  server {
+0011111109 0
+    listen 80;
+00001111110559 0
+    set $backend "127.0.0.1:8080";
+00001110bbbbbbbb044444444444444449 0
+    proxy_pass $backend;
+000011111111110bbbbbbbb9 0
+  }
+009 0
+}
+9 0
+== ninja.syn
+# build rules
+6666666666666 0
+rule cc
+1111000 0
+  command = gcc -c $in -o $out
+0000000000800000800bbb0800bbbb 0
+build out.o: cc src.c
+111110000008000000000 0
+default out.o
+1111111000000 0
+include common.ninja
+11111110000000000000 0
+pool link_pool depth = 4
+111100000000000000000805 0
+== objc.syn
+// Simple Objective-C greeter
+66666666666666666666666666666 0
+@interface Greeter : NSObject
+111111111102222222080cccccccc 0
+@property (nonatomic) NSInteger count;
+11111111109000000000902222222220000009 0
+@end
+1111 0
+/* multi-line
+6666666666666 2
+   comment */
+6666666666666 0
+@implementation Greeter
+11111111111111102222222 0
+- (void)greet { NSLog(@"Hi %d", 42); }
+8092222900000090ccccc94444444490559909 0
+@end
+1111 0
+== org.syn
+* Heading one
+fffffffffffff 0
+# a real comment
+6666666666666666 0
+Some =verbatim= text and ~code~ too.
+000004444444444000000000044444400009 0
+#+BEGIN_SRC python
+444444444444444444 1
+some code here
+44444444444444 1
+#+END_SRC
+444444444 0
+== pascal.syn
+// Pascal sample
+6666666666666666 0
+{$R+}
+aaaaa 0
+{ block
+6666666 3
+  comment }
+66666666666 0
+var Count: Integer = 42;
+111000000802222222080559 0
+begin
+11111 0
+  WriteLn('Hello, ', Count);
+00ccccccc9444444444900000099 0
+end.
+1119 0
+== pkl.syn
+// Pkl config sample
+66666666666666666666 0
+class Person {
+11111000000009 0
+  name: String = "Ada"
+0000008022222208044444 0
+  age: Int = 42
+000008022208055 0
+  bio = """
+00000080444 3
+    hello
+444444444 3
+    """
+4444444 0
+}
+9 0
+== plantuml.syn
+@startuml
+aaaaaaaaa 0
+' PlantUML sequence example
+666666666666666666666666666 0
+actor User
+1111100000 0
+participant "Web Server" as Server
+1111111111104444444444440110000000 0
+User -> Server: request 1
+0000088000000080000000005 0
+/' block
+66666666 2
+   comment '/
+6666666666666 0
+note right of Server: handles it
+11110000000000000000800000000000 0
+@enduml
+aaaaaaa 0
+== prisma.syn
+// Prisma schema example
+666666666666666666666666 0
+model User {
+111110000009 0
+  id    Int     @id @default(autoincrement())
+0000000022200000ddd0dddddddd93333333333333999 0
+  name  String  @default("Ada")
+0000000022222200dddddddd9444449 0
+  age   Int     @default(0)
+0000000022200000dddddddd959 0
+  email String  @unique
+0000000022222200ddddddd 0
+  admin Boolean @default(false)
+0000000022222220dddddddd9777779 0
+}
+9 0
+== prolog.syn
+% classic family relations
+66666666666666666666666666 0
+/* likes(alice, bob) means
+66666666666666666666666666 2
+   alice likes bob */
+666666666666666666666 0
+likes(alice, bob).
+333339000009000099 0
+likes(bob, 'Carl').
+3333390009044444499 0
+age(alice, 30).
+333900000905599 0
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+3333333909009088033333390900990333333909009900008009 0
+?- likes(alice, W), write(W), nl.
+88033333900000900990ccccc90990cc9 0
+== properties.syn
+# application settings
+6666666666666666666666 0
+! legacy comment style
+6666666666666666666666 0
+app.name=MyApp
+00090000800000 0
+app.version=1.0.3
+00090000000855555 0
+app.port=8080
+0009000085555 0
+db.url=jdbc:postgresql://localhost/db
+0090008000080000000000888000000000800 0
+== pug.syn
+//- a comment
+6666666666666 0
+extends layout
+11111110000000 0
+- var x = 1
+aaaaaaaaaaa 0
+p.greeting#hi Welcome #{x}
+edddddddddddd000000000aaaa 0
+  if x
+001100 0
+    span done
+0000eeee00000 0
+== puppet.syn
+# Puppet manifest example
+6666666666666666666666666 0
+class webserver {
+11111000000000009 0
+  $port = 8080
+00bbbbb0805555 0
+
+ 0
+  service { 'nginx':
+00222222209044444448 0
+    ensure => running,
+0000000000088000000009 0
+    enable => true,
+0000000000088077779 0
+  }
+009 0
+}
+9 0
+== purescript.syn
+-- PureScript sample
+66666666666666666666 0
+module Main where
+11111102222011111 0
+{- block
+66666666 1
+   comment -}
+6666666666666 0
+greet :: String -> String
+0000008802222220880222222 0
+greet name = if name == "" then "Hi" else "Hi, " <> name
+00000000000801100000088044011110444401111044444408800000 0
+answer = 42
+00000008055 0
+== raku.syn
+#!/usr/bin/env raku
+6666666666666666666 0
+# greet everyone in the list
+6666666666666666666666666666 0
+sub greet(Str $name) {
+11103333392220bbbbb909 0
+    say "Hello, $name!";
+0000ccc04444444444444449 0
+}
+9 0
+
+ 0
+my @names = <Alice Bob Carl>;
+110bbbbbb08080000000000000089 0
+for @names -> $n {
+1110bbbbbb0880bb09 0
+    greet($n);
+0000333339bb99 0
+}
+9 0
+my Int $count = 3;
+1102220bbbbbb08059 0
+== razor.syn
+<div class="a">
+9eee0ddddd94449 0
+@* a comment
+666666666666 4
+   spanning lines *@
+66666666666666666666 0
+@model MyApp.Models.Item
+aaaaaaaaaaaaaaaaaaaaaaaa 0
+@{ var total = 1; }
+aaaaaaaaaaaaaaaaaaa 0
+@if (total > 0) { <p>@(total)</p> }
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 0
+== rego.syn
+# Rego policy example
+666666666666666666666 0
+package example.authz
+111111100000000900000 0
+default allow := false
+1111111000000088077777 0
+allow if {
+0000001109 0
+    some role in input.user.roles
+00001111000000110ccccc90000900000 0
+    role == "admin"; input.user.age >= 18
+000000000880444444490ccccc900009000088055 0
+}
+9 0
+pattern := `raw text`
+000000008804444444444 0
+== ron.syn
+// RON example config
+666666666666666666666 0
+GameConfig(
+33333333339 0
+    title: "My Game",
+000000000804444444449 0
+    fullscreen: true,
+000000000000008077779 0
+    resolution: (1920, 1080),
+00000000000000809555590555599 0
+    player: Some('a'),
+0000000000807777944499 0
+    save: None,
+000000008077779 0
+)
+9 0
+/* trailing
+66666666666 2
+   comment */
+6666666666666 0
+== rst.syn
+Title
+00000 0
+=====
+fffff 0
+Section
+0000000 0
+-------
+fffffff 0
+Subsection
+0000000000 0
+~~~~~~~~~~
+ffffffffff 0
+.. note:: important information
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 0
+Some **bold** text, `a link`_, and ``code``.
+00000111111110000000jjjjjjjj0000000444444440 0
+== slim.syn
+/! rendered comment
+6666666666666666666 0
+doctype html
+00000000eeee 0
+p.greeting#hi Welcome
+edddddddddddd00000000 0
+  - items = [1, 2]
+00aaaaaaaaaaaaaaaa 0
+  = render "partial"
+00aaaaaaaaaaaaaaaaaa 0
+  | plain text line
+0000000000000000000 0
+== solidity.syn
+// SPDX-License-Identifier: MIT
+6666666666666666666666666666666 0
+pragma solidity ^0.8.19;
+aaaaaaaaaaaaaaaaaaaaaaaa 0
+contract Token {
+1111111102222209 0
+    uint256 public total = 100;
+0000222222201111110000000805559 0
+    function greet() public pure returns (string memory) {
+0000111111110333339901111110111101111111092222220111111909 0
+        require(total > 0, "no supply");
+0000000011111119000000805904444444444499 0
+        return "ok"; }
+0000000011111104444909 0
+}
+9 0
+== sshconfig.syn
+# SSH client config example
+666666666666666666666666666 0
+Host example
+111100000000 0
+    HostName example.com
+000011111111000000009000 0
+    User deploy
+000011110000000 0
+    Port 2222
+0000111105555 0
+    IdentityFile ~/.ssh/id_ed25519
+0000111111111111088900080000000000 0
+    ForwardAgent yes
+00001111111111110777 0
+    StrictHostKeyChecking no
+0000111111111111111111111077 0
+== starlark.syn
+# build file
+666666666666 0
+load("//tools:defs.bzl", "cc_library")
+cccc9444444444444444444904444444444449 0
+cc_library(name = "mylib", srcs = glob(["*.cc"]))
+cccccccccc900000804444444900000080cccc99444444999 0
+x = 1 if True else 2
+00805011077770111105 0
+notes = """
+00000080444 2
+multi-line text
+444444444444444 2
+"""
+444 0
+== tcl.syn
+# Tcl sample
+666666666666 0
+proc greet {name} {
+1111000000090000909 0
+    set count 42
+0000111000000055 0
+    if {$count > 0} {
+00001109bbbbbb0805909 0
+        puts "Hello, $name!"
+00000000cccc0444444444444444 0
+    }
+00009 0
+}
+9 0
+== thrift.syn
+// Thrift IDL example
+666666666666666666666 0
+namespace py example
+11111111100000000000 0
+
+ 0
+struct Person {
+111111000000009 0
+  1: required string name,
+00580111111110222222000009 0
+  2: optional i32 age = 0,
+00580111111110222000008059 0
+  3: bool active = true,
+005802222000000008077779 0
+}
+9 0
+== twig.syn
+<div class="a">
+9eee0ddddd94449 0
+{# a comment
+666666666666 4
+   spanning lines #}
+66666666666666666666 0
+{%- if user -%} hi {{ user.name }} {%- endif -%}
+aaaaaaaaaaaaaaa0000aaaaaaaaaaaaaaa0aaaaaaaaaaaaa 0
+== typst.syn
+// document setup
+66666666666666666 0
+/* block comment
+6666666666666666 2
+   continues here */
+66666666666666666666 0
+= Introduction
+ffffffffffffff 0
+#let count = 42
+111100000008055 0
+#if count > 0 {
+111000000080509 0
+  "positive"
+004444444444 0
+}
+9 0
+== vala.syn
+// a greeter class
+666666666666666666 0
+using GLib;
+11111022229 0
+
+ 0
+public class Greeter : Object {
+1111110111110222222208022222209 0
+    /* holds the
+0000666666666666 2
+       name */
+66666666666666 0
+    public string name { get; set; }
+000011111102222220000009011190111909 0
+    public string path = """C:\path\""";
+0000111111022222200000080444444444444449 0
+    public int total = 5;
+0000111111022200000008059 0
+
+ 0
+    public void greet(int times) {
+0000111111011110333339222000000909 0
+        string msg = """multi
+00000000222222000008044444444 3
+line""";
+44444449 0
+        for (int i = 0; i < times; i++) {
+00000000111092220008059000800000090088909 0
+            print("Hello, %s!\n", name);
+0000000000003333394444444444444490000099 0
+        }
+000000009 0
+    }
+00009 0
+}
+9 0
+== vb.syn
+' Visual Basic sample
+666666666666666666666 0
+REM legacy comment
+666666666666666666 0
+#if DEBUG then
+aaaaaaaaaaaaaa 0
+    Dim count As Integer = 42
+00001110000000110222222208055 0
+#end if
+aaaaaaa 0
+Sub Main()
+1110333399 0
+    Console.WriteLine("Hi " & "there")
+0000ccccccc933333333394444408044444449 0
+End Sub
+1110111 0
+== verilog.syn
+// simple counter
+66666666666666666 0
+`include "defs.vh"
+aaaaaaaa0444444444 0
+`define WIDTH 8
+aaaaaaa00000005 0
+/* increments
+6666666666666 2
+   each cycle */
+6666666666666666 0
+module counter(input clk, output reg [`WIDTH-1:0] count);
+111111033333339111110000901111110222090000008585900000099 0
+    always_ff @(posedge clk) begin
+0000111111111009111111100009011111 0
+        count <= count + 1;
+000000000000008800000008059 0
+    end
+0000111 0
+    initial $display("start");
+000011111110cccccccc9444444499 0
+endmodule
+111111111 0
+== vhdl.syn
+-- half adder
+6666666666666 0
+/* sum and carry
+6666666666666666 2
+   outputs */
+6666666666666 0
+entity half_adder is
+11111100000000000011 0
+    generic (WIDTH : integer := 8);
+00001111111090000008022222220880599 0
+    port (a, b : in std_logic; sum, carry : out std_logic);
+00001111090900080110222222222900009000000080111022222222299 0
+end entity half_adder;
+1110111111000000000009 0
+architecture rtl of half_adder is begin sum <= a xor b; end architecture;
+1111111111110000011000000000000110111110000088000111009011101111111111119 0
+== vim.syn
+" Vim script sample
+6666666666666666666 0
+let g:count = 42
+1110000000008055 0
+    " indented comment
+0000666666666666666666 0
+if exists('g:count')
+110cccccc94444444449 0
+    echo "hello"
+0000111104444444 0
+endif
+11111 0
+call Greet('World')
+1111033333944444449 0
+checked 127 grammars
+Makefile -> Makefile (parsed 1)
+a.py -> Python (parsed 2)
+b.py -> Python (parsed 2)
+script -> Python (parsed 2)
+Gemfile -> Ruby (parsed 3)
+Rakefile -> Ruby (parsed 3)
+x.conf -> INI (parsed 4)
+notes.xyz -> plain (parsed 4)
+a.rb -> Custom (parsed 4)
+notes.txt -> Custom (parsed 4)
+CMakeLists.txt -> CMake (parsed 5)
+a.json5 -> JSON (parsed 6)
+page.html.erb -> ERB (parsed 7)
+index.haml -> HAML (parsed 8)
+index.slim -> Slim (parsed 9)
+index.pug -> Pug (parsed 10)
+theme.liquid -> Liquid (parsed 11)
+layout.jinja2 -> Jinja (parsed 12)
+page.twig -> Twig (parsed 13)
+notes.mustache -> Handlebars (parsed 14)
+index.ejs -> EJS (parsed 15)
+a.blade.php -> Blade (parsed 16)
+a.php -> PHP (parsed 17)
+Index.cshtml -> Razor (parsed 18)
+page.astro -> Astro (parsed 19)
+Foo.m -> Objective-C (parsed 20)
+Program.fs -> F# (parsed 21)
+Module1.vb -> Visual Basic (parsed 22)
+build.gradle -> Groovy (parsed 23)
+Jenkinsfile -> Groovy (parsed 23)
+shard.cr -> Crystal (parsed 24)
+Main.elm -> Elm (parsed 25)
+Main.purs -> PureScript (parsed 26)
+app.gleam -> Gleam (parsed 27)
+app.d -> D (parsed 28)
+solver.f90 -> Fortran (parsed 29)
+main.adb -> Ada (parsed 30)
+program.pas -> Pascal (parsed 31)
+payroll.cbl -> COBOL (parsed 32)
+script.tcl -> Tcl (parsed 33)
+report.awk -> AWK (parsed 34)
+.vimrc -> Vim script (parsed 35)
+contract.sol -> Solidity (parsed 36)
+app.vala -> Vala (parsed 37)
+Main.hx -> Haxe (parsed 38)
+hello.raku -> Raku (parsed 39)
+family.prolog -> Prolog (parsed 40)
+octave-script -> MATLAB (parsed 41)
+chip.sv -> Verilog (parsed 42)
+adder.vhdl -> VHDL (parsed 43)
+kernel.cu -> CUDA (parsed 44)
+proof.lean -> Lean (parsed 45)
+Main.idr -> Idris (parsed 46)
+run.bat -> Batch (parsed 47)
+greet.applescript -> AppleScript (parsed 48)
+x.🔥 -> Mojo (parsed 49)
+hello.janet -> Janet (parsed 50)
+paper.tex -> LaTeX (parsed 51)
+refs.bib -> BibTeX (parsed 52)
+readme.rst -> reStructuredText (parsed 53)
+guide.adoc -> AsciiDoc (parsed 54)
+notes.org -> Org (parsed 55)
+paper.typ -> Typst (parsed 56)
+nginx.conf -> Nginx (parsed 57)
+.htaccess -> Apache (parsed 58)
+.env.local -> dotenv (parsed 59)
+app.properties -> Properties (parsed 60)
+.gitignore -> Ignore (parsed 61)
+.gitattributes -> Git attributes (parsed 62)
+main.jsonnet -> Jsonnet (parsed 63)
+BUILD.bazel -> Starlark (parsed 64)
+meson.build -> Meson (parsed 65)
+build.ninja -> Ninja (parsed 66)
+justfile -> Just (parsed 67)
+demo.kdl -> KDL (parsed 68)
+config.ron -> RON (parsed 69)
+schema.cue -> CUE (parsed 70)
+config.dhall -> Dhall (parsed 71)
+PklProject -> Pkl (parsed 72)
+policy.rego -> Rego (parsed 73)
+service.thrift -> Thrift (parsed 74)
+schema.capnp -> Cap'n Proto (parsed 75)
+schema.prisma -> Prisma (parsed 76)
+site.pp -> Puppet (parsed 77)
+ssh_config -> SSH config (parsed 78)
+crontab -> Crontab (parsed 79)
+requests.http -> HTTP (parsed 80)
+graph.dot -> Graphviz (parsed 81)
+diagram.mmd -> Mermaid (parsed 82)
+diagram.puml -> PlantUML (parsed 83)
+tclscript -> Tcl (parsed 83)
+wishapp -> Tcl (parsed 83)
+p6script -> Raku (parsed 83)
+bashscript -> Shell (parsed 84)
+x.sh -> Shell (parsed 84)

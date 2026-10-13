@@ -1,0 +1,8 @@
+% Example document
+\documentclass{article}
+\begin{document}
+\section{Introduction}
+Let $x^2+y^2=1$ be true.
+\[
+  E = mc^2
+\]

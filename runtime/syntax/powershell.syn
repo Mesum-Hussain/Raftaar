@@ -1,0 +1,10 @@
+name = PowerShell
+files = *.ps1 *.psm1 *.psd1
+icon = powershell blue
+comment = #
+region = <# #> comment multiline
+string = " `
+string = '
+prefix = $v
+case = insensitive
+keywords = begin break catch class continue data define do dynamicparam else elseif end enum exit filter finally for foreach from function if in param process return switch throw trap try until using var while workflow

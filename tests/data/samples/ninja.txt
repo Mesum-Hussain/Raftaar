@@ -1,0 +1,7 @@
+# build rules
+rule cc
+  command = gcc -c $in -o $out
+build out.o: cc src.c
+default out.o
+include common.ninja
+pool link_pool depth = 4

@@ -1,0 +1,7 @@
+// Dart sample
+var dir = r"""C:\temp\""";
+var doc = r'''
+  C:\temp\''';
+var one = r'C:\dir\' + x;
+var esc = """say \""" ok""";
+int count = 1;

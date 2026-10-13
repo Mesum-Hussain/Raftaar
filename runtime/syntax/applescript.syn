@@ -1,0 +1,11 @@
+name = AppleScript
+files = *.applescript
+icon = apple white
+first_line = osascript
+comment = --
+comment = #
+block = (* *)
+string = "
+keywords = tell end if then else repeat with while until return to set get put into global local on my as of in not and or is equal contains exists try error exit considering ignoring script property continue
+constants = true false missing value pi
+builtins = log display dialog beep say choose

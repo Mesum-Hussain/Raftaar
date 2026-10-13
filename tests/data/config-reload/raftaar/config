@@ -1,0 +1,4 @@
+[editor]
+tab_width = 3
+[keys]
+ctrl+q = quit

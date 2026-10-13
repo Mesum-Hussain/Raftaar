@@ -1,0 +1,56 @@
+name = Hackerman
+kind = dark
+
+bg                 = #0b0c16
+fg                 = #ddf7ff
+accent             = #82fb9c
+panel              = #080910
+border             = #06060c
+selection          = #1f253a
+line_highlight     = #161822
+line_number        = #2d3450
+line_number_active = #ddf7ff
+cursor             = #ddf7ff
+error              = #50f872
+warning            = #50f7d4
+success            = #4fe88f
+
+[syntax]
+text        = #ddf7ff
+keyword     = #85e0bc
+type        = #7cf8d4
+function    = #5ec8d4
+string      = #4fe88f
+number      = #85ff9d
+comment     = #6a6e95
+constant    = #a4ffe6
+operator    = #ddf7ff
+punctuation = #74828b
+preproc     = #7cf8f7
+variable    = #ddf7ff
+builtin     = #7cf8f7
+attribute   = #7cf8f7
+tag         = #7cf8d4
+heading     = #5ec8d4
+inserted    = #4fe88f
+deleted     = #50f872
+escape      = #85e0bc
+link        = #5ec8d4
+
+[terminal]
+black          = #0b0c16
+red            = #50f872
+green          = #4fe88f
+yellow         = #50f7d4
+blue           = #829dd4
+magenta        = #86a7df
+cyan           = #7cf8f7
+white          = #ddf7ff
+bright_black   = #2d3450
+bright_red     = #85ff9d
+bright_green   = #9cf7c2
+bright_yellow  = #a4ffec
+bright_blue    = #c4d2ed
+bright_magenta = #cddbf4
+bright_cyan    = #d1fffe
+bright_white   = #ddf7ff

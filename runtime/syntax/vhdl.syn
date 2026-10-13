@@ -1,0 +1,10 @@
+name = VHDL
+files = *.vhd *.vhdl
+icon = code orange
+case = insensitive
+comment = --
+block = /* */
+string = "
+keywords = entity architecture is begin end process signal variable constant type subtype array of record generic port map component configuration package body function procedure return if then else elsif case when others for loop while generate library use all in out inout buffer downto to null wait until report severity assert not and or xor nand nor xnor mod rem abs
+types = std_logic std_logic_vector bit bit_vector integer natural positive boolean real time character string unsigned signed
+constants = true false open

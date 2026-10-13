@@ -1,0 +1,50 @@
+name = Catppuccin Mocha
+kind = dark
+
+bg             = #1e1e2e
+fg             = #cdd6f4
+accent         = #89b4fa
+panel          = #181825
+border         = #11111b
+selection      = #45475a
+line_highlight = #2a2b3c
+line_number    = #585b70
+cursor         = #f5e0dc
+error          = #f38ba8
+warning        = #f9e2af
+success        = #a6e3a1
+
+[syntax]
+keyword        = #cba6f7
+type           = #f9e2af
+function       = #89b4fa
+string         = #a6e3a1
+number         = #fab387
+comment        = #6c7086
+constant       = #fab387
+operator       = #89dceb
+punctuation    = #9399b2
+preproc        = #f5c2e7
+builtin        = #f38ba8
+attribute      = #f9e2af
+tag            = #cba6f7
+heading        = #f38ba8
+escape         = #f5c2e7
+
+[terminal]
+black          = #1e1e2e
+red            = #f38ba8
+green          = #a6e3a1
+yellow         = #f9e2af
+blue           = #89b4fa
+magenta        = #f5c2e7
+cyan           = #94e2d5
+white          = #cdd6f4
+bright_black   = #585b70
+bright_red     = #f38ba8
+bright_green   = #a6e3a1
+bright_yellow  = #f9e2af
+bright_blue    = #89b4fa
+bright_magenta = #f5c2e7
+bright_cyan    = #94e2d5
+bright_white   = #cdd6f4

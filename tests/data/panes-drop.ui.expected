@@ -1,0 +1,5 @@
+tabs=case.txt | *a.txt
+tabs=2 active=a.txt line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+tabs=case.txt | *a.txt
+tabs=*case.txt
+tabs=case.txt | *a.txt

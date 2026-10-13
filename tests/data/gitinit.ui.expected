@@ -1,0 +1,16 @@
+* Uncommitted changes 1 <
+    CHANGES
+    U hello.txt
+action=commit-all
+    CHANGES
+    U hello.txt
+tabs=1 focus=9 theme=raftaar-dark
+tabs=1 focus=0 theme=raftaar-dark
+action=commit-all
+message=First
+    CHANGES
+    U hello.txt
+git on branch=main
+* No uncommitted changes <
+* First (HEAD -> main)
+action=none

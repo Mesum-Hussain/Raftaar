@@ -1,0 +1,31 @@
+<section id="install">
+<h2>Install raftaar</h2>
+<p>Choose your platform. raftaar runs on Linux x86-64, Apple silicon Macs, and Windows x64 (Windows 10 version 1809 or later).</p>
+<h3>Linux &amp; macOS</h3>
+<p>Paste this into your terminal. The installer checks the download and adds the <code>raftaar</code> command. No root access needed.</p>
+<pre><code>curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh</code></pre>
+<h3>Windows</h3>
+<p>Paste this into PowerShell, then open a new terminal to use the <code>raftaar</code> command.</p>
+<pre><code>powershell -NoProfile -ExecutionPolicy Bypass -Command "&amp; ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/vshvedov/rhun/releases/latest/download/install.ps1).Content))"</code></pre>
+<p>Prefer a download? Get an archive from <a href="https://github.com/vshvedov/rhun/releases/latest">Releases</a>. On Windows, extract the ZIP and open <code>raftaar.exe</code>. Keep <code>raftaar.com</code> beside it for terminal use.</p>
+</section>
+<section id="open">
+<h2>Open a project</h2>
+<p>Open raftaar from your app launcher, or start in the folder you are working on:</p>
+<pre><code>raftaar .</code></pre>
+<p>Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>O</kbd> to choose a folder, or <kbd>Ctrl</kbd> + <kbd>O</kbd> for a single file. A project remembers its tabs and layout when you return.</p>
+<div class="doc-note"><strong>On a Mac</strong><p>Most shortcuts use <kbd>Cmd</kbd> in place of <kbd>Ctrl</kbd>, and <kbd>Option</kbd> for <kbd>Alt</kbd>. Keep <kbd>Control</kbd> for <kbd>Tab</kbd>, <kbd>H</kbd>, and the terminal shortcut <kbd>`</kbd>.</p></div>
+<p>For a quick edit, run <code>raftaar notes.txt</code>: the window shows just the file, without the explorer or the agents panel, until you bring them back.</p>
+<p>Want a blank window? Run <code>raftaar --empty</code>. For tools that need to wait until you finish editing, use <code>raftaar --wait file.txt</code>.</p>
+</section>
+<section id="find-your-way">
+<h2>Find your way</h2>
+<p>The command palette is the place to start when you do not remember a shortcut. Open it with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or <kbd>F1</kbd>, then type what you want to do.</p>
+<dl class="doc-actions"><div><dt><kbd>Ctrl</kbd> + <kbd>P</kbd></dt><dd>Find a file by name.</dd></div><div><dt><kbd>Ctrl</kbd> + <kbd>B</kbd></dt><dd>Show or hide the file explorer.</dd></div><div><dt><kbd>Ctrl</kbd> + <kbd>,</kbd></dt><dd>Open Settings.</dd></div></dl>
+<p>The project menu lets you return to recent folders or open a new window. Right-click in the explorer to create files and folders.</p>
+</section>
+<section id="updates">
+<h2>Stay up to date</h2>
+<p>Release builds check for updates in the background. When the status bar offers <strong>Update to X</strong>, click to download, then choose <strong>Restart to update</strong>. raftaar asks about unsaved files and reopens your project.</p>
+<p>You can also run <strong>Check for Updates</strong> from the command palette. Turn off automatic checks in Settings if you prefer to check yourself.</p>
+</section>

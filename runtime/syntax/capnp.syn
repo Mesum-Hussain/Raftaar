@@ -1,0 +1,8 @@
+name = Cap'n Proto
+files = *.capnp
+icon = code grey
+comment = #
+string = " \
+keywords = struct enum interface union group using import const annotation extends
+types = Void Bool Int8 Int16 Int32 Int64 UInt8 UInt16 UInt32 UInt64 Float32 Float64 Text Data List
+constants = true false

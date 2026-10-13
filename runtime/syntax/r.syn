@@ -1,0 +1,9 @@
+name = R
+files = *.r *.R *.Rmd
+icon = R blue
+comment = #
+string = " \
+string = ' \
+ident = .
+keywords = if else repeat while function for in next break return library require source
+constants = TRUE FALSE NULL NA Inf NaN T F

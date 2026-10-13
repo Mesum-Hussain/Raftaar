@@ -1,0 +1,6 @@
+<div class="a">
+@* a comment
+   spanning lines *@
+@model MyApp.Models.Item
+@{ var total = 1; }
+@if (total > 0) { <p>@(total)</p> }

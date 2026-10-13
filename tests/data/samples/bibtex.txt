@@ -1,0 +1,6 @@
+% Reference list
+@article{knuth1984,
+  author = "Donald E. Knuth",
+  title = "Literate Programming",
+  year = 1984
+}

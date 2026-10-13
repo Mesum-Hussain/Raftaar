@@ -1,0 +1,8 @@
+// Pkl config sample
+class Person {
+  name: String = "Ada"
+  age: Int = 42
+  bio = """
+    hello
+    """
+}

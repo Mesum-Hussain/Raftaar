@@ -1,0 +1,11 @@
+name = Protocol Buffers
+files = *.proto
+icon = code purple
+comment = //
+block = /* */
+string = " \
+string = ' \
+captypes = yes
+keywords = syntax package import option message enum service rpc returns repeated optional required oneof map reserved extend extensions to max stream public weak
+types = double float int32 int64 uint32 uint64 sint32 sint64 fixed32 fixed64 sfixed32 sfixed64 bool string bytes
+constants = true false

@@ -1,0 +1,9 @@
+name = Just
+files = justfile Justfile .justfile *.just
+icon = makefile purple
+comment = #
+mstring = """ \
+string = " \
+string = '
+labels = yes
+keywords = set alias export import mod if else

@@ -1,0 +1,7 @@
+name = Ignore
+files = .gitignore .dockerignore .npmignore .prettierignore .eslintignore .hgignore .ignore .rgignore .fdignore .helmignore .gcloudignore .vscodeignore
+icon = ignored grey
+comment = #
+line = ! operator
+functions = no
+numbers = no

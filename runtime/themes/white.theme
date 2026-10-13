@@ -1,0 +1,56 @@
+name = White
+kind = light
+
+bg                 = #ffffff
+fg                 = #000000
+accent             = #6e6e6e
+panel              = #f5f5f5
+border             = #e8e8e8
+selection          = #c0c0c0
+line_highlight     = #f2f2f2
+line_number        = #808080
+line_number_active = #000000
+cursor             = #000000
+error              = #2a2a2a
+warning            = #4a4a4a
+success            = #3a3a3a
+
+[syntax]
+text        = #000000
+keyword     = #2e2e2e
+type        = #4a4a4a
+function    = #1a1a1a
+string      = #3a3a3a
+number      = #4a4a4a
+comment     = #808080
+constant    = #4a4a4a
+operator    = #000000
+punctuation = #808080
+preproc     = #3e3e3e
+variable    = #000000
+builtin     = #3e3e3e
+attribute   = #3e3e3e
+tag         = #4a4a4a
+heading     = #1a1a1a
+inserted    = #3a3a3a
+deleted     = #2a2a2a
+escape      = #2e2e2e
+link        = #1a1a1a
+
+[terminal]
+black          = #ffffff
+red            = #2a2a2a
+green          = #3a3a3a
+yellow         = #4a4a4a
+blue           = #1a1a1a
+magenta        = #2e2e2e
+cyan           = #3e3e3e
+white          = #000000
+bright_black   = #808080
+bright_red     = #2a2a2a
+bright_green   = #3a3a3a
+bright_yellow  = #4a4a4a
+bright_blue    = #1a1a1a
+bright_magenta = #2e2e2e
+bright_cyan    = #3e3e3e
+bright_white   = #000000

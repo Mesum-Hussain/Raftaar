@@ -1,0 +1,6 @@
+/! rendered comment
+doctype html
+p.greeting#hi Welcome
+  - items = [1, 2]
+  = render "partial"
+  | plain text line

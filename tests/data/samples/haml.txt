@@ -1,0 +1,6 @@
+-# a comment
+%div.box#main
+  - x = 1
+  %p.greeting= "hi #{x}" if x
+  / not rendered
+  :javascript

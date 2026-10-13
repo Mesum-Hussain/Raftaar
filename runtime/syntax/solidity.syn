@@ -1,0 +1,13 @@
+name = Solidity
+files = *.sol
+icon = ethereum blue
+comment = //
+block = /* */
+string = " \
+string = ' \
+line = pragma preproc
+keywords = pragma solidity import as from contract interface library abstract is using for function modifier event error struct enum public private internal external view pure payable virtual override returns return if else for while do break continue throw revert require assert emit new delete this super memory storage calldata immutable constant indexed anonymous constructor fallback receive assembly let try catch
+types = uint256 uint128 uint64 uint32 uint16 uint8 int256 int128 int64 int32 int16 int8 address bool bytes32 bytes16 bytes8 bytes4 bytes1 bytes string mapping uint int byte fixed ufixed
+constants = true false wei gwei ether
+builtins = msg block tx keccak256 sha256 ripemd160 ecrecover addmod mulmod selfdestruct
+captypes = yes

@@ -1,0 +1,8 @@
+' Visual Basic sample
+REM legacy comment
+#if DEBUG then
+    Dim count As Integer = 42
+#end if
+Sub Main()
+    Console.WriteLine("Hi " & "there")
+End Sub

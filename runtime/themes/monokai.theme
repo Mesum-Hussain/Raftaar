@@ -1,0 +1,32 @@
+name = Monokai
+kind = dark
+
+bg             = #272822
+fg             = #f8f8f2
+accent         = #a6e22e
+panel          = #1e1f1c
+border         = #171814
+selection      = #49483e
+line_highlight = #3e3d32
+line_number    = #90908a
+cursor         = #f8f8f0
+error          = #f92672
+warning        = #fd971f
+success        = #a6e22e
+
+[syntax]
+keyword        = #f92672
+type           = #66d9ef
+function       = #a6e22e
+string         = #e6db74
+number         = #ae81ff
+comment        = #75715e
+constant       = #ae81ff
+operator       = #f92672
+punctuation    = #f8f8f2
+preproc        = #f92672
+builtin        = #66d9ef
+attribute      = #a6e22e
+tag            = #f92672
+heading        = #a6e22e
+escape         = #ae81ff

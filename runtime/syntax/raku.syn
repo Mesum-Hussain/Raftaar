@@ -1,0 +1,12 @@
+name = Raku
+files = *.raku *.rakumod *.rakutest *.p6 *.pm6 *.pl6
+icon = code yellow
+first_line = raku perl6
+comment = #
+string = " \
+string = ' \
+prefix = $v @v %v &v
+keywords = my our state has sub method submethod class role module package grammar token rule regex if elsif else unless while until for loop given when default do try catch finally return last next redo die warn use no require proceed succeed take gather with without so not and or xor andthen orelse BEGIN END CATCH
+types = Int Str Num Bool Array Hash List Rat Complex Mu Any
+constants = True False Nil self
+builtins = say print put printf

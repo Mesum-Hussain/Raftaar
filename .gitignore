@@ -1,0 +1,7 @@
+build/
+*.o
+docs/superpowers/
+.DS_Store
+__pycache__/
+/raftaar
+/terax-ai-main.zip

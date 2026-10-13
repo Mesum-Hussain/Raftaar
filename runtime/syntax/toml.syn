@@ -1,0 +1,12 @@
+name = TOML
+files = *.toml Cargo.lock Pipfile poetry.lock uv.lock
+icon = config grey
+comment = #
+mstring = """ \
+mstring = '''
+string = " \
+string = '
+ident = -.
+line = [ heading
+constants = true false
+functions = no

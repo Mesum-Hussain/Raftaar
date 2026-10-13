@@ -1,0 +1,10 @@
+name = AWK
+files = *.awk
+icon = shell yellow
+first_line = awk gawk mawk
+comment = #
+string = " \
+prefix = $v
+keywords = BEGIN END function if else while for do break continue next nextfile exit return delete in getline print printf
+variables = NR NF FS OFS RS ORS FILENAME
+builtins = length substr index split sprintf sub gsub match tolower toupper system close fflush sin cos atan2 exp log sqrt int rand srand

@@ -1,0 +1,16 @@
+name = Assembly
+files = *.s *.S *.asm *.inc *.nasm
+icon = asm red
+comment = #
+comment = ;
+block = /* */
+string = " \
+string = ' \
+ident = .$%
+labels = yes
+functions = no
+case = insensitive
+keywords = mov movzx movsx movsxd movabs lea add sub imul mul idiv div inc dec neg not and or xor shl shr sar rol ror bt bts btr btc bsr bsf lzcnt tzcnt popcnt cmp test jmp je jne jz jnz ja jae jb jbe jg jge jl jle js jns jo jno jc jnc jp jnp jecxz jrcxz call ret push pop pushf popf leave enter nop syscall int hlt cpuid rdtsc xchg cmpxchg xadd lock rep repe repne repz repnz movsb movsw movsd movsq stosb stosw stosd stosq lodsb lodsw lodsd lodsq scasb scasw scasd scasq cmpsb cmpsw cmpsd cmpsq cld std clc stc cmc cmove cmovne cmovz cmovnz cmova cmovae cmovb cmovbe cmovg cmovge cmovl cmovle cmovs cmovns sete setne setz setnz seta setae setb setbe setg setge setl setle sets setns seto cqo cdq cwd cwde cdqe cbw bswap movbe movd movq movss movsd movaps movups movapd movupd movdqa movdqu addss addsd subss subsd mulss mulsd divss divsd sqrtss sqrtsd minss maxss minsd maxsd comiss comisd ucomiss ucomisd cvtsi2ss cvtsi2sd cvtss2si cvttss2si cvtsd2si cvttsd2si cvtss2sd cvtsd2ss roundss roundsd andps andnps orps xorps andpd orpd xorpd pxor por pand pandn paddb paddw paddd paddq psubb psubw psubd psubq pcmpeqb pcmpeqw pcmpeqd pmovmskb pshufb pshufd punpcklbw punpckhbw packuswb pmullw pmulhw pmaddwd psrlw psrld psrlq psllw pslld psllq psrldq pslldq prefetch prefetcht0 lfence sfence mfence pause ud2
+keywords = .text .data .bss .rodata .section .globl .global .extern .type .size .align .p2align .balign .byte .short .word .long .int .quad .octa .float .double .ascii .asciz .string .zero .fill .space .skip .equ .set .equiv .macro .endm .rept .irp .irpc .endr .if .ifdef .ifndef .ifb .ifnb .else .elseif .endif .include .incbin .intel_syntax .att_syntax .noprefix .file .loc .cfi_startproc .cfi_endproc .pushsection .popsection .previous .local .weak .hidden .comm .lcomm .org section global extern bits default rel db dw dd dq dt resb resw resd resq times equ incbin %define %macro %endmacro %include %ifdef %ifndef %endif %if %else %assign
+types = byte word dword qword tword oword xmmword ymmword zmmword ptr offset short near far
+builtins = rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15 eax ebx ecx edx esi edi ebp esp r8d r9d r10d r11d r12d r13d r14d r15d ax bx cx dx si di bp sp r8w r9w r10w r11w r12w r13w r14w r15w al bl cl dl sil dil bpl spl ah bh ch dh r8b r9b r10b r11b r12b r13b r14b r15b rip eip cs ds es fs gs ss xmm0 xmm1 xmm2 xmm3 xmm4 xmm5 xmm6 xmm7 xmm8 xmm9 xmm10 xmm11 xmm12 xmm13 xmm14 xmm15 ymm0 ymm1 ymm2 ymm3 ymm4 ymm5 ymm6 ymm7 ymm8 ymm9 ymm10 ymm11 ymm12 ymm13 ymm14 ymm15 cr0 cr2 cr3 cr4 dr0 dr1 dr2 dr3 dr6 dr7

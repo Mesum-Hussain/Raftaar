@@ -1,0 +1,30 @@
+tabs=1 active=case.txt line=1 col=4 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=1 col=8 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=1 col=12 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=1 col=4 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=1 col=8 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=1 col=8 sel=5 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=2 col=5 sel=8 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=2 col=10 sel=8 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=3 col=21 sel=12 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=3 col=28 sel=12 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=4 col=5 sel=8 dirty=0 lang=none focus=2 theme=raftaar-dark
+tabs=1 active=case.txt line=4 col=10 sel=8 dirty=0 lang=none focus=2 theme=raftaar-dark
+summer summer ÉTÉ
+Αλφα ΑΛΦΑ άλφα
+Привет ПРИВЕТ яблоко ЯБЛОКО
+ΟΔΟΣ οδος
+
+<eod>
+summer summer ÉTÉ
+Αλφα ΑΛΦΑ άλφα
+hi hi яблоко ЯБЛОКО
+ΟΔΟΣ οδος
+
+<eod>
+Été été ÉTÉ
+Αλφα ΑΛΦΑ άλφα
+Привет ПРИВЕТ яблоко ЯБЛОКО
+ΟΔΟΣ οδος
+
+<eod>

@@ -1,0 +1,13 @@
+name = Rust
+files = *.rs
+icon = rust orange
+comment = //
+block = /* */
+region = r#" "# string multiline
+string = " \
+prefix = #a
+captypes = yes
+keywords = as async await break const continue crate dyn else enum extern fn for if impl in let loop match mod move mut pub ref return self Self static struct super trait type union unsafe use where while macro_rules
+types = bool char str u8 u16 u32 u64 u128 usize i8 i16 i32 i64 i128 isize f32 f64 String Vec Option Result Box Rc Arc RefCell Cell HashMap HashSet BTreeMap
+constants = true false None Some Ok Err
+builtins = println print eprintln eprint format panic assert assert_eq assert_ne vec todo unimplemented unreachable write writeln matches dbg

@@ -1,0 +1,15 @@
+name = PHP
+files = *.php *.phtml
+icon = php purple
+first_line = php
+comment = //
+comment = #
+block = /* */
+string = " \
+string = ' \
+prefix = $v
+captypes = yes
+case = insensitive
+keywords = abstract and array as break callable case catch class clone const continue declare default do echo else elseif empty enddeclare endfor endforeach endif endswitch endwhile enum extends final finally fn for foreach function global goto if implements include include_once instanceof insteadof interface isset list match namespace new or print private protected public readonly require require_once return static switch throw trait try unset use var while xor yield
+types = int float bool string array object mixed void null callable iterable never
+constants = true false null __CLASS__ __DIR__ __FILE__ __FUNCTION__ __LINE__ __METHOD__ __NAMESPACE__

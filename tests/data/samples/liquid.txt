@@ -1,0 +1,5 @@
+<div class="a">
+{%comment%}
+  a comment
+{%endcomment%}
+{%- if user -%} hi {{ user.name }} {%- endif -%}

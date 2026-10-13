@@ -1,0 +1,9 @@
+%% Mermaid sequence diagram
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>Bob: Hello "Bob"
+    loop Every 5 minutes
+        Bob-->>Alice: Pong
+    end
+    note right of Bob: done

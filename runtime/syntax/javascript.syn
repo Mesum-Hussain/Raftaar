@@ -1,0 +1,15 @@
+name = JavaScript
+files = *.js *.mjs *.cjs *.jsx
+icon = javascript yellow
+first_line = node deno
+comment = //
+block = /* */
+region = ` ` string multiline escape=\
+string = " \
+string = ' \
+ident = $
+prefix = @a
+captypes = yes
+keywords = async await break case catch class const continue debugger default delete do else export extends finally for from function if import in instanceof let new of return static super switch this throw try typeof var void while with yield get set as
+constants = true false null undefined NaN Infinity
+builtins = console window document globalThis require module exports process JSON Math Object Array String Number Boolean Promise Map Set Symbol Date RegExp Error setTimeout setInterval clearTimeout fetch

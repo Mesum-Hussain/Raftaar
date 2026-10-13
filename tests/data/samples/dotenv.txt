@@ -1,0 +1,5 @@
+# database configuration
+export DATABASE_URL="postgres://user:pass@localhost/db"
+API_KEY='abc123'
+PORT=3000
+DEBUG_MODE=$ENABLE_DEBUG

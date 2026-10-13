@@ -1,0 +1,7 @@
+tabs=case.txt | *sh
+tabs=case.txt | sh | *sh
+tabs=case.txt | sh | sh | *sh
+tabs=case.txt | sh | *sh | sh
+tabs=case.txt | *sh | sh
+tabs=*case.txt | sh
+tabs=2 active=case.txt line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark term=1 hidden

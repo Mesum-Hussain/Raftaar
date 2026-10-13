@@ -1,0 +1,14 @@
+// entry point
+package app;
+
+class Main {
+    /* say hello
+       to the world */
+    static function main() {
+        var name:String = 'World';
+        #if debug
+        trace("Hello, " + name + "!");
+        #end
+        var count:Int = 42;
+    }
+}

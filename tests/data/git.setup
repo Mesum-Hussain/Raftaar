@@ -1,0 +1,41 @@
+# a small repository for tests/scripts/git.rsc, made in the directory given
+set -e
+cd "$1"
+export GIT_CONFIG_NOSYSTEM=1 HOME="$1"
+export GIT_AUTHOR_NAME=Ann GIT_AUTHOR_EMAIL=ann@example.com GIT_COMMITTER_NAME=Ann GIT_COMMITTER_EMAIL=ann@example.com
+at() { export GIT_AUTHOR_DATE="2026-01-0$1T10:00:00Z" GIT_COMMITTER_DATE="2026-01-0$1T10:00:00Z"; }
+git init -q -b main repo
+cd repo
+git config user.name Ann
+git config user.email ann@example.com
+at 1
+printf 'one\ntwo\nthree\nfour\nfive\n' > a.txt
+mkdir src
+printf 'int main(void)\n{\n    return 0;\n}\n' > src/main.c
+printf 'x\r\ny\r\n' > crlf.txt
+git add .
+git commit -q -m 'First'
+at 2
+printf 'int main(void)\n{\n    return 1;\n}\n' > src/main.c
+git commit -q -am 'Return one' -m 'Exit status 1 instead of 0.'
+git tag v1
+git checkout -q -b feature
+at 3
+printf 'feature\n' > feature.txt
+git add feature.txt
+git commit -q -m 'Feature work'
+git checkout -q main
+at 4
+printf 'one\ntwo\nthree\nfour\nfive\nsix\n' > a.txt
+git commit -q -am 'Six'
+at 5
+git merge -q --no-ff -m 'Merge feature' feature
+# uncommitted: a.txt changed, a new file, a new folder, a file staged
+printf 'one\nTWO\nthree\nfive\nsix\nseven\n' > a.txt
+printf 'x\r\nY\r\n' > crlf.txt
+echo new > new.txt
+mkdir notes
+echo todo > notes/todo.txt
+echo staged > staged.txt
+git add staged.txt
+git rm -q src/main.c

@@ -1,0 +1,9 @@
+name = Typst
+files = *.typ
+icon = tex cyan
+comment = //
+block = /* */
+string = "
+ident = #
+line = = heading
+keywords = #let #set #show #import #include #if #else #for #while #return #break #continue

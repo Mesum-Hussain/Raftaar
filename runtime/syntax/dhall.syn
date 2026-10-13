@@ -1,0 +1,11 @@
+name = Dhall
+files = *.dhall
+icon = config green
+comment = --
+block = {- -}
+string = " \
+mstring = ''
+captypes = yes
+keywords = let in if then else merge toMap assert as using with forall
+types = Bool Natural Integer Double Text List Optional
+constants = True False None Some

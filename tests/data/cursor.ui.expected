@@ -1,0 +1,7 @@
+tests/data/icons/child/cursors/text 4x6 hot 1,2
+tests/data/icons/child/cursors/text 8x12 hot 3,5
+tests/data/icons/child/cursors/text 4x6 hot 1,2
+tests/data/icons/parent/cursors/left_ptr 5x5 hot 0,0
+tests/data/icons/default/cursors/hand2 6x6 hot 2,1
+built-in 13x19 hot 1,1
+tests/data/icons/child/cursors/text 8x12 hot 3,5

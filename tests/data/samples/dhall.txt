@@ -1,0 +1,8 @@
+-- Dhall config
+{- block comment -} let ok : Bool = True
+
+in  { name = "demo", count = 3, empty = None Text
+    , doc = ''
+        hello
+        ''
+    }

@@ -1,0 +1,9 @@
+# Puppet manifest example
+class webserver {
+  $port = 8080
+
+  service { 'nginx':
+    ensure => running,
+    enable => true,
+  }
+}

@@ -1,0 +1,11 @@
+// simple counter
+`include "defs.vh"
+`define WIDTH 8
+/* increments
+   each cycle */
+module counter(input clk, output reg [`WIDTH-1:0] count);
+    always_ff @(posedge clk) begin
+        count <= count + 1;
+    end
+    initial $display("start");
+endmodule

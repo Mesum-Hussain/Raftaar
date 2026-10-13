@@ -1,0 +1,12 @@
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=100 fit=1 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=125 fit=0 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=156 fit=0 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=100 fit=0 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=148 fit=0 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=100 fit=1 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=100 fit=0 focus=0 theme=raftaar-dark
+tabs=1 active=rgba.png image=24x16 format=PNG zoom=100 fit=1 focus=0 theme=raftaar-dark
+tabs=0 focus=0 theme=raftaar-dark
+tabs=1 active=truncated.png image=24x16 format=PNG zoom=100 fit=1 focus=0 theme=raftaar-dark
+tabs=2 active=exif-rotated.jpg image=16x24 format=JPEG zoom=100 fit=1 focus=0 theme=raftaar-dark
+tabs=3 active=not-an-image.png line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark

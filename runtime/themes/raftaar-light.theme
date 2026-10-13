@@ -1,0 +1,33 @@
+name = Raftaar Light
+kind = light
+
+bg             = #fbfbfc
+fg             = #2a2e37
+accent         = #4f6bed
+panel          = #f1f2f5
+border         = #dfe1e6
+selection      = #d6ddfb
+line_highlight = #f2f3f6
+line_number    = #a4a9b4
+cursor         = #4f6bed
+error          = #d1383d
+warning        = #b87100
+success        = #2f8a3e
+
+[syntax]
+keyword        = #7b3fe4
+type           = #0f7b8a
+function       = #2856c7
+string         = #3b7d2a
+number         = #b35c00
+comment        = #8a909c
+constant       = #b35c00
+operator       = #5a6070
+punctuation    = #6b7180
+preproc        = #c2185b
+builtin        = #0f7b8a
+attribute      = #9a6700
+tag            = #c2185b
+heading        = #2856c7
+escape         = #b35c00
+link           = #2856c7

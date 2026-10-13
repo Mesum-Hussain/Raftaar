@@ -1,0 +1,11 @@
+name = Astro
+files = *.astro
+icon = code purple
+block = <!-- -->
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no
+region = --- --- preproc multiline bol

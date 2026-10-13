@@ -1,0 +1,7 @@
+name = Git Commit
+files = COMMIT_EDITMSG MERGE_MSG TAG_EDITMSG git-rebase-todo
+icon = git grey
+line = # comment
+functions = no
+numbers = no
+operators = no

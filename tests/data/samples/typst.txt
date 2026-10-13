@@ -1,0 +1,8 @@
+// document setup
+/* block comment
+   continues here */
+= Introduction
+#let count = 42
+#if count > 0 {
+  "positive"
+}

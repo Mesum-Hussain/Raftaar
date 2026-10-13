@@ -1,0 +1,11 @@
+name = Thrift
+files = *.thrift
+icon = code orange
+comment = //
+comment = #
+block = /* */
+string = " \
+string = ' \
+keywords = namespace include typedef struct union exception service extends throws required optional oneway void const enum
+types = bool byte i8 i16 i32 i64 double string binary list set map
+constants = true false

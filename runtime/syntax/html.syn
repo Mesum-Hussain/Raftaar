@@ -1,0 +1,10 @@
+name = HTML
+files = *.html *.htm *.xhtml *.vue *.svelte
+icon = html orange
+block = <!-- -->
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no

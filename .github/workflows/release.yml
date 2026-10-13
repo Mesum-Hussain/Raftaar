@@ -1,0 +1,199 @@
+# A version tag (tools/release.sh) builds, tests, signs and publishes raftaar. The release is created as
+# a draft and published last, so releases/latest never points at one without its files.
+# Secrets: MACOS_CERT_P12, MACOS_CERT_PASSWORD (Developer ID Application certificate, base64 .p12)
+# and APPLE_API_KEY_P8, APPLE_API_KEY_ID, APPLE_API_ISSUER_ID (App Store Connect API key, base64 .p8).
+# Every Mac release is notarized and stapled, and its ZIP and disk image pass Gatekeeper before upload.
+name: release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag is VERSION
+        run: test "${GITHUB_REF_NAME#v}" = "$(cat VERSION)"
+      - name: Tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq binutils curl git python3 xvfb openbox xdotool x11-utils sway gcc pkg-config libwayland-dev wayland-protocols
+      - name: Tests
+        run: tests/run.sh
+      - name: Installer tests
+        run: sh tests/install.sh
+      - name: Native file launches (X11 and Wayland)
+        run: |
+          python3 tests/linux-launch.py
+          python3 tests/linux-launch.py --wayland
+      - name: Build
+        run: RAFTAAR_DIST=1 ./build.sh release
+      - name: Pack
+        run: |
+          v=$(cat VERSION)
+          r=stage/raftaar-$v
+          mkdir -p "$r/bin" "$r/share/applications" "$r/share/icons/hicolor/scalable/apps" \
+            "$r/share/icons/hicolor/256x256/apps" "$r/share/icons/hicolor/512x512/apps"
+          cp build/raftaar "$r/bin/"
+          cp assets/raftaar.desktop "$r/share/applications/"
+          cp assets/icons/raftaar.svg "$r/share/icons/hicolor/scalable/apps/"
+          cp assets/icons/raftaar-256.png "$r/share/icons/hicolor/256x256/apps/raftaar.png"
+          cp assets/icons/raftaar-512.png "$r/share/icons/hicolor/512x512/apps/raftaar.png"
+          cp LICENSE "$r/"
+          test "$("$r/bin/raftaar" --version)" = "raftaar $v"
+          tar -czf "raftaar-$v-linux-x86_64.tar.gz" -C stage "raftaar-$v"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux
+          path: raftaar-*-linux-x86_64.tar.gz
+          if-no-files-found: error
+
+  macos:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: The tag is VERSION
+        run: test "${GITHUB_REF_NAME#v}" = "$(cat VERSION)"
+      - name: Signing certificate
+        env:
+          MACOS_CERT_P12: ${{ secrets.MACOS_CERT_P12 }}
+          MACOS_CERT_PASSWORD: ${{ secrets.MACOS_CERT_PASSWORD }}
+        run: |
+          kc=$RUNNER_TEMP/raftaar.keychain-db
+          kp=$(openssl rand -hex 24)
+          printf '%s' "$MACOS_CERT_P12" | base64 --decode > "$RUNNER_TEMP/cert.p12"
+          security create-keychain -p "$kp" "$kc"
+          security set-keychain-settings -lut 21600 "$kc"
+          security unlock-keychain -p "$kp" "$kc"
+          security import "$RUNNER_TEMP/cert.p12" -k "$kc" -P "$MACOS_CERT_PASSWORD" -T /usr/bin/codesign
+          rm "$RUNNER_TEMP/cert.p12"
+          security set-key-partition-list -S apple-tool:,apple:,codesign: -s -k "$kp" "$kc" >/dev/null
+          # shellcheck disable=SC2046 # the search list, one keychain per word
+          security list-keychains -d user -s "$kc" $(security list-keychains -d user | tr -d '"')
+          security find-identity -v -p codesigning "$kc"
+      - name: Tests
+        run: tests/run.sh
+      - name: Installer tests
+        run: sh tests/install.sh
+      - name: Build, sign and notarize
+        timeout-minutes: 45
+        env:
+          RAFTAAR_NOTARIZE: '1'
+          APPLE_API_KEY_P8: ${{ secrets.APPLE_API_KEY_P8 }}
+          RAFTAAR_NOTARY_KEY_ID: ${{ secrets.APPLE_API_KEY_ID }}
+          RAFTAAR_NOTARY_ISSUER: ${{ secrets.APPLE_API_ISSUER_ID }}
+        run: |
+          : "${APPLE_API_KEY_P8:?missing APPLE_API_KEY_P8 secret}"
+          : "${RAFTAAR_NOTARY_KEY_ID:?missing APPLE_API_KEY_ID secret}"
+          : "${RAFTAAR_NOTARY_ISSUER:?missing APPLE_API_ISSUER_ID secret}"
+          export RAFTAAR_NOTARY_KEY="$RUNNER_TEMP/notary.p8"
+          trap 'rm -f "$RAFTAAR_NOTARY_KEY"' EXIT
+          printf '%s' "$APPLE_API_KEY_P8" | base64 --decode > "$RAFTAAR_NOTARY_KEY"
+          RAFTAAR_DIST=1 tools/package-mac.sh
+      - name: Verify packaged Mac downloads
+        run: |
+          v=$(cat VERSION)
+          tools/verify-mac-release.sh "build/raftaar-$v-macos-arm64.zip" "build/raftaar-$v-macos-arm64.dmg"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos
+          path: |
+            build/raftaar-*-macos-arm64.zip
+            build/raftaar-*-macos-arm64.dmg
+          if-no-files-found: error
+      - name: Remove the keychain
+        if: always()
+        run: security delete-keychain "$RUNNER_TEMP/raftaar.keychain-db" 2>/dev/null || true
+
+  windows:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: The tag is VERSION
+        shell: pwsh
+        run: |
+          if ($env:GITHUB_REF_NAME.Substring(1) -ne (Get-Content VERSION -Raw).Trim()) { exit 1 }
+      - uses: actions/cache/restore@v4
+        id: llvm-cache
+        with:
+          path: build/llvm
+          key: llvm-windows-x64-23.1.2
+      - name: LLVM
+        shell: pwsh
+        timeout-minutes: 20
+        run: tools/setup-windows-llvm.ps1
+      - uses: actions/cache/save@v4
+        if: steps.llvm-cache.outputs.cache-hit != 'true'
+        with:
+          path: build/llvm
+          key: llvm-windows-x64-23.1.2
+      - name: Build
+        env:
+          RAFTAAR_DIST: '1'
+        id: build
+        run: python tools/build-windows.py test
+      - name: Native tests
+        run: python tests/windows.py
+      - name: Package
+        id: package
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python tools/package-windows.py
+      - name: Installer tests
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
+        run: python tests/windows-install.py
+      - name: Updater tests
+        env:
+          RAFTAAR_DIST: '1'
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
+        run: python tests/windows-update.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows
+          path: build/windows/raftaar-*-windows-x86_64.zip
+          if-no-files-found: error
+
+  publish:
+    needs: [linux, macos, windows]
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Checksums, version and installer
+        run: |
+          v=$(cat VERSION)
+          test -s "dist/raftaar-$v-linux-x86_64.tar.gz"
+          test -s "dist/raftaar-$v-macos-arm64.zip"
+          test -s "dist/raftaar-$v-macos-arm64.dmg"
+          test -s "dist/raftaar-$v-windows-x86_64.zip"
+          cp install.sh install.ps1 dist/
+          cat VERSION > dist/VERSION
+          (cd dist && sha256sum raftaar-* > SHA256SUMS && cat SHA256SUMS)
+      - name: Release notes
+        run: |
+          prev=$(git describe --tags --abbrev=0 --match 'v*' "$GITHUB_REF_NAME^" 2>/dev/null || true)
+          git log --no-merges --format='- %s' ${prev:+"$prev.."}"$GITHUB_REF_NAME" > notes.md
+          cat notes.md
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          v=${GITHUB_REF_NAME#v}
+          pre=
+          case $v in *-*) pre=--prerelease ;; esac
+          # shellcheck disable=SC2086 # pre is empty or one flag
+          gh release create "$GITHUB_REF_NAME" --draft --verify-tag --title "raftaar $v" --notes-file notes.md $pre dist/*
+          gh release edit "$GITHUB_REF_NAME" --draft=false

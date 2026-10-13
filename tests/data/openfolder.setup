@@ -1,0 +1,21 @@
+# folders for tests/scripts/openfolder.rsc in the home directory given, and in the state directory
+# sessions of some of them, the latest last: Gamma, notes, beta; the "gone" folder does not exist
+set -e
+home=$1
+state=$2/raftaar
+mkdir -p "$home/work/alpha/src" "$home/work/beta" "$home/work/Gamma" "$home/notes" "$state"
+echo one > "$home/work/alpha/a.txt"
+echo two > "$home/work/alpha/src/b.c"
+echo readme > "$home/work/beta/readme.md"
+echo g > "$home/work/Gamma/g.txt"
+session() { # folder time [content]
+    f="$state/$(printf '%s' "$home/$1" | tr / %).session"
+    printf '%s' "$3" > "$f"
+    touch -t "$2" "$f"
+}
+session work/beta 202601010100 "*$home/work/beta/readme.md	3
+"
+session notes 202601010200
+session work/Gamma 202601010300
+session gone 202601010400
+echo other > "$state/other.txt"

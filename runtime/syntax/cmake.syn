@@ -1,0 +1,9 @@
+name = CMake
+files = CMakeLists.txt *.cmake
+icon = makefile blue
+comment = #
+string = " \
+prefix = $v
+case = insensitive
+keywords = if elseif else endif foreach endforeach while endwhile function endfunction macro endmacro return break continue set unset option project cmake_minimum_required add_executable add_library add_subdirectory target_link_libraries target_include_directories target_compile_options target_compile_definitions find_package include install message list string file configure_file
+constants = on off true false yes no

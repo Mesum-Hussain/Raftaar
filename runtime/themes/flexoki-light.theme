@@ -1,0 +1,56 @@
+name = Flexoki Light
+kind = light
+
+bg                 = #fffcf0
+fg                 = #100f0f
+accent             = #205ea6
+panel              = #f2efe4
+border             = #e5e2d8
+selection          = #cecdc3
+line_highlight     = #f2f0e5
+line_number        = #b7b5ac
+line_number_active = #100f0f
+cursor             = #100f0f
+error              = #d14d41
+warning            = #d0a215
+success            = #879a39
+
+[syntax]
+text        = #100f0f
+keyword     = #66800b
+type        = #66800b
+function    = #bc5215
+string      = #24837b
+number      = #5e409d
+comment     = #b7b5ac
+constant    = #ad8301
+operator    = #6f6e69
+punctuation = #6f6e69
+preproc     = #a02f6f
+variable    = #205ea6
+builtin     = #6f6e69
+attribute   = #205ea6
+tag         = #24837b
+heading     = #205ea6
+inserted    = #66800b
+deleted     = #af3029
+escape      = #ad8301
+link        = #205ea6
+
+[terminal]
+black          = #fffcf0
+red            = #d14d41
+green          = #879a39
+yellow         = #d0a215
+blue           = #205ea6
+magenta        = #ce5d97
+cyan           = #3aa99f
+white          = #100f0f
+bright_black   = #b7b5ac
+bright_red     = #d14d41
+bright_green   = #879a39
+bright_yellow  = #d0a215
+bright_blue    = #4385be
+bright_magenta = #ce5d97
+bright_cyan    = #3aa99f
+bright_white   = #100f0f

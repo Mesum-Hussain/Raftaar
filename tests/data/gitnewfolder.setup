@@ -1,0 +1,19 @@
+# a repository for tests/scripts/gitnewfolder.rsc, made in the directory given: a commit, then a new
+# folder with a file, a file in a folder under it, and an ignored file
+set -e
+cd "$1"
+export GIT_CONFIG_NOSYSTEM=1 HOME="$1"
+export GIT_AUTHOR_NAME=Ann GIT_AUTHOR_EMAIL=ann@example.com GIT_COMMITTER_NAME=Ann GIT_COMMITTER_EMAIL=ann@example.com
+export GIT_AUTHOR_DATE=2026-01-01T10:00:00Z GIT_COMMITTER_DATE=2026-01-01T10:00:00Z
+git init -q -b main repo
+cd repo
+git config user.name Ann
+git config user.email ann@example.com
+printf '*.log\n' > .gitignore
+echo kept > kept.txt
+git add -A
+git commit -q -m First
+mkdir -p notes/drafts
+printf 'first note\n' > notes/one.txt
+printf 'deep\n' > notes/drafts/two.txt
+echo ignored > notes/skip.log

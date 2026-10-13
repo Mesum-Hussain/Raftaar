@@ -1,0 +1,10 @@
+-# %div
+-# %p hello
+<eod>
+%div
+%p hello
+<eod>
+REM echo hi
+<eod>
+echo hi
+<eod>

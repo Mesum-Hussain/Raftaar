@@ -1,0 +1,8 @@
+# main server block
+http {
+  server {
+    listen 80;
+    set $backend "127.0.0.1:8080";
+    proxy_pass $backend;
+  }
+}

@@ -1,0 +1,32 @@
+name = Ayu Light
+kind = light
+
+bg             = #fcfcfc
+fg             = #5c6166
+accent         = #399ee6
+panel          = #f3f4f5
+border         = #e3e5e7
+selection      = #d1e4f4
+line_highlight = #f3f4f5
+line_number    = #adaeb1
+cursor         = #ffaa33
+error          = #e65050
+warning        = #f2ae49
+success        = #86b300
+
+[syntax]
+keyword        = #fa8d3e
+type           = #399ee6
+function       = #f2ae49
+string         = #86b300
+number         = #a37acc
+comment        = #adaeb1
+constant       = #a37acc
+operator       = #ed9366
+punctuation    = #5c6166
+preproc        = #fa8d3e
+builtin        = #55b4d4
+attribute      = #f2ae49
+tag            = #55b4d4
+heading        = #fa8d3e
+escape         = #4cbf99

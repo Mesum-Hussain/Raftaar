@@ -1,0 +1,5 @@
+tabs=0 focus=0 theme=omarchy:kanagawa
+tabs=1 active=theme.name line=1 col=11 sel=0 dirty=0 lang=none focus=0 theme=omarchy:catppuccin-mocha
+tabs=1 active=theme.name line=1 col=10 sel=0 dirty=0 lang=none focus=0 theme=omarchy:raftaar-light
+tabs=1 active=theme.name line=1 col=11 sel=0 dirty=0 lang=none focus=0 theme=nord
+tabs=1 active=theme.name line=1 col=11 sel=0 dirty=0 lang=none focus=0 theme=omarchy:everforest

@@ -1,0 +1,10 @@
+name = CUE
+files = *.cue
+icon = config purple
+comment = //
+mstring = """ \
+string = " \
+string = ' \
+keywords = package import let if for in
+types = bool int float number string bytes
+constants = true false null

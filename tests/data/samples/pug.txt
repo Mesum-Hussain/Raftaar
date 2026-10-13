@@ -1,0 +1,6 @@
+//- a comment
+extends layout
+- var x = 1
+p.greeting#hi Welcome #{x}
+  if x
+    span done

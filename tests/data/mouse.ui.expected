@@ -1,0 +1,10 @@
+tabs=1 active=words.txt line=1 col=4 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+tabs=1 active=words.txt line=2 col=1 sel=17 dirty=0 lang=none focus=0 theme=raftaar-dark
+tabs=1 active=words.txt line=1 col=4 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+tabs=1 active=words.txt line=3 col=15 sel=26 dirty=0 lang=none focus=0 theme=raftaar-dark
+alpha beta gamma
+deX
+
+<eod>
+tabs=2 active=lines.c line=13 col=14 sel=0 dirty=0 lang=C focus=0 theme=raftaar-dark
+tabs=2 active=lines.c line=16 col=14 sel=0 dirty=0 lang=C focus=0 theme=raftaar-dark

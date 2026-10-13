@@ -1,0 +1,10 @@
+name = COBOL
+files = *.cob *.cbl *.cpy *.cobol
+icon = code blue
+case = insensitive
+comment = *>
+string = "
+string = '
+ident = -
+keywords = identification division program-id environment configuration section data working-storage procedure file input-output pic picture value move to from display accept perform until varying if else end-if then compute add subtract multiply divide by giving stop run goback call using returning open close read write rewrite delete start string unstring inspect initialize set up down occurs times indexed redefines copy exit evaluate when other continue next sentence go
+constants = zero zeros space spaces high-value low-value true false

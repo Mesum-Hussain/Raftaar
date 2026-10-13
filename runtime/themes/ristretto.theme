@@ -1,0 +1,56 @@
+name = Ristretto
+kind = dark
+
+bg                 = #2c2525
+fg                 = #e6d9db
+accent             = #f38d70
+panel              = #211b1b
+border             = #181414
+selection          = #403e41
+line_highlight     = #352e2e
+line_number        = #72696a
+line_number_active = #e6d9db
+cursor             = #e6d9db
+error              = #fd6883
+warning            = #f9cc6c
+success            = #adda78
+
+[syntax]
+text        = #e6d9db
+keyword     = #bebffd
+type        = #f9cc6c
+function    = #f38d70
+string      = #adda78
+number      = #fb9a77
+comment     = #72696a
+constant    = #fcd675
+operator    = #e6d9db
+punctuation = #897f80
+preproc     = #85dacc
+variable    = #e6d9db
+builtin     = #85dacc
+attribute   = #85dacc
+tag         = #f9cc6c
+heading     = #f38d70
+inserted    = #adda78
+deleted     = #fd6883
+escape      = #bebffd
+link        = #f38d70
+
+[terminal]
+black          = #2c2525
+red            = #fd6883
+green          = #adda78
+yellow         = #f9cc6c
+blue           = #f38d70
+magenta        = #a8a9eb
+cyan           = #85dacc
+white          = #e6d9db
+bright_black   = #72696a
+bright_red     = #ff8297
+bright_green   = #c8e292
+bright_yellow  = #fcd675
+bright_blue    = #f8a788
+bright_magenta = #bebffd
+bright_cyan    = #9bf1e1
+bright_white   = #e6d9db

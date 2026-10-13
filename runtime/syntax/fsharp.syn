@@ -1,0 +1,13 @@
+name = F#
+files = *.fs *.fsi *.fsx *.fsscript
+icon = f-sharp blue
+comment = //
+block = (* *)
+mstring = """
+string = " \
+region = [< >] attribute
+captypes = yes
+keywords = abstract and as assert base begin class default delegate do done downcast downto elif else end exception extern finally for fun function global if in inherit interface internal lazy let match member module mutable namespace new not of open or override private public rec return sig static struct then to try type upcast use val void when while with yield
+types = int string bool float double decimal byte sbyte char list array option seq unit obj
+constants = true false null Some None
+builtins = printfn sprintf failwith List Array Seq Option Map

@@ -1,0 +1,6 @@
+name = Properties
+files = *.properties
+icon = config grey
+comment = #
+comment = !
+functions = no

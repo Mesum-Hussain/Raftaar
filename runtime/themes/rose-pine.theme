@@ -1,0 +1,32 @@
+name = Rosé Pine
+kind = dark
+
+bg             = #191724
+fg             = #e0def4
+accent         = #c4a7e7
+panel          = #1f1d2e
+border         = #13111e
+selection      = #403d52
+line_highlight = #21202e
+line_number    = #6e6a86
+cursor         = #e0def4
+error          = #eb6f92
+warning        = #f6c177
+success        = #9ccfd8
+
+[syntax]
+keyword        = #31748f
+type           = #9ccfd8
+function       = #ebbcba
+string         = #f6c177
+number         = #eb6f92
+comment        = #6e6a86
+constant       = #eb6f92
+operator       = #908caa
+punctuation    = #908caa
+preproc        = #c4a7e7
+builtin        = #eb6f92
+attribute      = #c4a7e7
+tag            = #31748f
+heading        = #c4a7e7
+escape         = #eb6f92

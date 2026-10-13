@@ -1,0 +1,13 @@
+name = Diff
+files = *.diff *.patch
+icon = git orange
+line = +++ heading
+line = --- heading
+line = @@ keyword
+line = + inserted
+line = - deleted
+line = diff heading
+line = index comment
+functions = no
+numbers = no
+operators = no

@@ -1,0 +1,9 @@
+name = Prisma
+files = *.prisma
+icon = prisma blue
+comment = //
+string = " \
+prefix = @a
+keywords = model enum datasource generator type view
+types = String Int Float Boolean DateTime Json Bytes BigInt Decimal
+constants = true false

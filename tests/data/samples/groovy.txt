@@ -1,0 +1,8 @@
+// Groovy sample
+package demo
+/* block
+   comment */
+def greet(String name) {
+    println "Hello, ${name}!"
+}
+def total = 42

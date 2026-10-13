@@ -1,0 +1,10 @@
+name = MATLAB
+icon = code orange
+first_line = octave
+region = %{ %} comment multiline bol
+comment = %
+string = "
+string = '
+keywords = function end if elseif else switch case otherwise for parfor while break continue return global persistent try catch classdef properties methods events enumeration import
+constants = true false pi Inf NaN eps
+builtins = disp printf sprintf fprintf error warning size length zeros ones eye linspace plot figure hold legend

@@ -1,0 +1,56 @@
+name = Solitude
+kind = dark
+
+bg                 = #101315
+fg                 = #cacccc
+accent             = #798186
+panel              = #0c0e10
+border             = #080a0b
+selection          = #343d41
+line_highlight     = #1a1d1f
+line_number        = #4b4e55
+line_number_active = #cacccc
+cursor             = #a5aeb4
+error              = #565d60
+warning            = #d9dbdc
+success            = #9fa5a9
+
+[syntax]
+text        = #b4b4b4
+keyword     = #b14242
+type        = #d5d5d5
+function    = #e5e5e5
+string      = #df6464
+number      = #4a8b8b
+comment     = #737373
+constant    = #c4693d
+operator    = #d87c4a
+punctuation = #737373
+preproc     = #b14242
+variable    = #b4b4b4
+builtin     = #4a8b8b
+attribute   = #949494
+tag         = #949494
+heading     = #b14242
+inserted    = #629c7d
+deleted     = #c53030
+escape      = #d5d5d5
+link        = #6e91c4
+
+[terminal]
+black          = #101315
+red            = #565d60
+green          = #9fa5a9
+yellow         = #d9dbdc
+blue           = #798186
+magenta        = #aeaeae
+cyan           = #707070
+white          = #cacccc
+bright_black   = #4b4e55
+bright_red     = #de6145
+bright_green   = #343d41
+bright_yellow  = #c9c2b4
+bright_blue    = #5d6367
+bright_magenta = #9a9a9a
+bright_cyan    = #707070
+bright_white   = #a5aeb4

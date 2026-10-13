@@ -1,0 +1,6 @@
+# crontab example
+MAILTO=admin
+0 3 * * * /usr/bin/backup.sh
+@daily /usr/bin/cleanup.sh
+@reboot /usr/bin/startup.sh
+15 */2 * * 1-5 echo "check"

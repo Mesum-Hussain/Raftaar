@@ -1,0 +1,8 @@
+# enable rewriting
+Listen 8080
+RewriteEngine On
+<Directory /var/www/html>
+  Options -Indexes
+  Require all granted
+</Directory>
+DocumentRoot "/var/www/html"

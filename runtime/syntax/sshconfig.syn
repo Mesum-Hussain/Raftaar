@@ -1,0 +1,7 @@
+name = SSH config
+files = ssh_config sshd_config
+icon = config cyan
+comment = #
+case = insensitive
+keywords = Host Match HostName User Port IdentityFile ProxyJump ProxyCommand ForwardAgent ForwardX11 PermitRootLogin PasswordAuthentication PubkeyAuthentication AllowUsers DenyUsers StrictHostKeyChecking UserKnownHostsFile LogLevel ServerAliveInterval Protocol Subsystem X11Forwarding Compression AddressFamily ListenAddress
+constants = yes no

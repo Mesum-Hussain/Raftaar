@@ -1,0 +1,13 @@
+name = Jinja
+files = *.j2 *.jinja *.jinja2 *.njk *.nunjucks *.djhtml
+icon = jinja red
+block = <!-- -->
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no
+region = {# #} comment multiline
+region = {% %} preproc multiline
+region = {{ }} preproc multiline

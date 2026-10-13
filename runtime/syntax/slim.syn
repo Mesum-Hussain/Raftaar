@@ -1,0 +1,13 @@
+name = Slim
+files = *.slim
+icon = slim orange
+prefix = .a #a
+region = /! eol comment bol
+region = / eol comment bol
+toggle_comment = /
+region = = eol preproc bol
+region = - eol preproc bol
+region = | eol text bol
+tags = html head body div span ul ol li img br hr h1 h2 h3 h4 h5 h6 nav tr td th thead tbody meta script iframe svg textarea p
+string = "
+string = '

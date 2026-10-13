@@ -1,0 +1,12 @@
+name = XML
+files = *.xml *.svg *.xsd *.xsl *.xslt *.plist *.csproj *.fsproj *.vcxproj *.props *.targets *.xaml *.rss *.atom *.wsdl
+icon = xml orange
+block = <!-- -->
+region = <![CDATA[ ]]> string multiline
+region = <? ?> preproc
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no

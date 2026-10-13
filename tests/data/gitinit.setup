@@ -1,0 +1,9 @@
+# a repository without commits for tests/scripts/gitinit.rsc, made in the directory given
+set -e
+cd "$1"
+export GIT_CONFIG_NOSYSTEM=1 HOME="$1"
+git init -q -b main repo
+cd repo
+git config user.name Ann
+git config user.email ann@example.com
+printf 'hello\n' > hello.txt

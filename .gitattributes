@@ -1,0 +1,11 @@
+# Assembly emits LF on every platform. Preserve source scripts and byte-exact test goldens.
+*.s text eol=lf
+*.inc text eol=lf
+*.sh text eol=lf
+*.py text eol=lf
+*.rsc text eol=lf
+*.expected text eol=lf
+*.syn text eol=lf
+*.theme text eol=lf
+# Fixtures include raw inputs as well as expected outputs. Keep their exact committed bytes.
+tests/data/** -text

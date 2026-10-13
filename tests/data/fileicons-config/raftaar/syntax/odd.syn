@@ -1,0 +1,4 @@
+# icon keys tests/fileicon_test reads: an unknown icon gets the default, gray is grey, no color is grey
+name = Odd
+files = *.odd
+icon = nosuch red

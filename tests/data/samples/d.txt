@@ -1,0 +1,8 @@
+// D sample
+module app;
+/* block
+   comment */
+void main() {
+    string s = `raw` ~ r"also";
+    writeln("Hi ", 42);
+}

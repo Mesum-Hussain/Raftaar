@@ -1,0 +1,14 @@
+name = Handlebars
+files = *.hbs *.handlebars *.mustache
+icon = mustache orange
+block = <!-- -->
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no
+region = {{!-- --}} comment multiline
+region = {{! }} comment multiline
+region = {{{ }}} preproc multiline
+region = {{ }} preproc multiline

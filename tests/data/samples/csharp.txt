@@ -1,0 +1,8 @@
+// C# sample
+var dir = """C:\temp\""" + $"\"";
+var raw = $"""
+    {dir}\
+    """;
+var q = """"say """hi"""\"""";
+var vi = @$"C:\{dir}\" + @"{""k"":""""}\";
+int count = 1;

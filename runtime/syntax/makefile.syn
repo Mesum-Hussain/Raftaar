@@ -1,0 +1,12 @@
+name = Makefile
+files = Makefile makefile GNUmakefile *.mk *.mak
+icon = makefile orange
+comment = #
+string = " \
+string = ' \
+prefix = $v
+labels = yes
+ident = -.
+keywords = ifeq ifneq ifdef ifndef else endif define endef include -include sinclude override export unexport private vpath .PHONY .SUFFIXES .DEFAULT .PRECIOUS .INTERMEDIATE .SECONDARY .DELETE_ON_ERROR
+builtins = subst patsubst strip findstring filter filter-out sort word wordlist words firstword lastword dir notdir suffix basename addsuffix addprefix join wildcard realpath abspath if or and foreach file call value eval origin flavor shell error warning info
+functions = no

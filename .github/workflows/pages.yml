@@ -1,0 +1,36 @@
+# The website on GitHub Pages: site/build.sh builds it, on every push to main that touches it.
+# Settings → Pages → Source must be GitHub Actions; Custom domain is rhun.app (DNS on Cloudflare).
+name: pages
+
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'docs/guide.md', 'VERSION', 'assets/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Build
+        run: site/build.sh _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deploy
+        uses: actions/deploy-pages@v4

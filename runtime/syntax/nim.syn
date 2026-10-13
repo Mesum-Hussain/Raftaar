@@ -1,0 +1,13 @@
+name = Nim
+files = *.nim *.nims *.nimble
+icon = nim yellow
+region = #[ ]# comment multiline
+comment = #
+mstring = """ \
+string = " \
+string = ' \
+captypes = yes
+keywords = addr and as asm bind block break case cast concept const continue converter defer discard distinct div do elif else end enum except export finally for from func if import in include interface is isnot iterator let macro method mixin mod nil not notin object of or out proc ptr raise ref return shl shr static template try tuple type using var when while xor yield
+types = int int8 int16 int32 int64 uint uint8 uint16 uint32 uint64 float float32 float64 bool char string seq array set cstring pointer void
+constants = true false nil
+colon_indent = yes

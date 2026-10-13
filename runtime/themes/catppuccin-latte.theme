@@ -1,0 +1,50 @@
+name = Catppuccin Latte
+kind = light
+
+bg             = #eff1f5
+fg             = #4c4f69
+accent         = #1e66f5
+panel          = #e6e9ef
+border         = #d5d9e2
+selection      = #ccd0da
+line_highlight = #e6e9ef
+line_number    = #9ca0b0
+cursor         = #dc8a78
+error          = #d20f39
+warning        = #df8e1d
+success        = #40a02b
+
+[syntax]
+keyword        = #8839ef
+type           = #df8e1d
+function       = #1e66f5
+string         = #40a02b
+number         = #fe640b
+comment        = #9ca0b0
+constant       = #fe640b
+operator       = #04a5e5
+punctuation    = #7c7f93
+preproc        = #ea76cb
+builtin        = #d20f39
+attribute      = #df8e1d
+tag            = #8839ef
+heading        = #d20f39
+escape         = #ea76cb
+
+[terminal]
+black          = #eff1f5
+red            = #d20f39
+green          = #40a02b
+yellow         = #df8e1d
+blue           = #1e66f5
+magenta        = #ea76cb
+cyan           = #179299
+white          = #4c4f69
+bright_black   = #acb0be
+bright_red     = #d20f39
+bright_green   = #40a02b
+bright_yellow  = #df8e1d
+bright_blue    = #1e66f5
+bright_magenta = #ea76cb
+bright_cyan    = #179299
+bright_white   = #4c4f69

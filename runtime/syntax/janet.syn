@@ -1,0 +1,13 @@
+name = Janet
+files = *.janet
+icon = code purple
+first_line = janet
+comment = #
+string = " \
+mstring = `
+ident = -!?*+/<>=.
+prefix = :v
+keywords = def var fn do if while for each loop let quote quasiquote unquote import use require case cond and or not defn defmacro defglobal set break
+constants = true false nil
+functions = no
+operators = no

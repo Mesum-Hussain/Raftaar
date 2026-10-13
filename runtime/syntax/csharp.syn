@@ -1,0 +1,19 @@
+name = C#
+files = *.cs *.csx
+icon = c-sharp blue
+comment = //
+block = /* */
+region = """" """" string multiline
+region = """ """ string multiline
+region = $"""" """" string multiline
+region = $""" """ string multiline
+region = @" " string multiline escape="
+region = @$" " string multiline escape="
+region = $" " string escape=\
+string = " \
+string = ' \
+prefix = #p @v
+captypes = yes
+keywords = abstract as base break case catch checked class const continue default delegate do else enum event explicit extern finally fixed for foreach goto if implicit in interface internal is lock namespace new operator out override params private protected public readonly ref return sealed sizeof stackalloc static struct switch this throw try typeof unchecked unsafe using virtual volatile while async await var dynamic record init get set add remove value yield when where select from group into orderby join let partial global
+types = bool byte sbyte char decimal double float int uint long ulong short ushort object string void nint nuint
+constants = null true false

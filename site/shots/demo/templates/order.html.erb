@@ -1,0 +1,26 @@
+<%# The order page: items, totals, and the shipping status %>
+<section class="order" id="order-<%= @order.id %>">
+  <h1>Order #<%= @order.id %></h1>
+  <p class="placed">Placed <%= time_ago_in_words(@order.created_at) %> ago</p>
+
+  <table class="items">
+    <thead>
+      <tr><th>Item</th><th>Qty</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      <% @order.items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.quantity %></td>
+          <td><%= number_to_currency(item.total) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <% if @order.shipped? %>
+    <p class="status shipped">Shipped <%= l(@order.shipped_at, format: :short) %></p>
+  <% else %>
+    <p class="status">Preparing your order</p>
+  <% end %>
+</section>

@@ -1,0 +1,11 @@
+name = Fortran
+files = *.f *.for *.f77 *.f90 *.f95 *.f03 *.f08
+icon = code purple
+case = insensitive
+comment = !
+string = "
+string = '
+ident = .
+keywords = program end subroutine function module use implicit none contains interface abstract type class procedure generic operator assignment do while if then else elseif endif select case default cycle exit stop return call format write read print open close inquire allocate deallocate nullify where forall associate block continue public private common equivalence data bind
+types = integer real double precision complex character logical dimension allocatable pointer target parameter intent optional save
+constants = .true. .false.

@@ -1,0 +1,10 @@
+name = HCL
+files = *.tf *.tfvars *.hcl *.nomad
+icon = terraform purple
+comment = #
+comment = //
+block = /* */
+string = " \
+ident = -
+keywords = resource data variable output locals module provider terraform backend required_providers for_each count depends_on lifecycle dynamic content if for in
+constants = true false null

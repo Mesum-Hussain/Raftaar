@@ -1,0 +1,22 @@
+# folders and sessions for tests/scripts/recent.rsc, in the home and state directories given. Four
+# sessions come from one second, apart only in nanoseconds; the newest is the folder "50%off", and
+# "50/off", which its name meant before % had a name of its own, has a session too, the oldest
+set -e
+home=$1
+state=$2/raftaar
+mkdir -p "$home/w" "$home/x" "$home/y" "$home/z" "$home/50%off" "$home/50/off" "$state"
+echo p > "$home/50%off/p.txt"
+echo s > "$home/50/off/s.txt"
+session() { # folder time [content]: the session file as raftaar names it, a % as %%25 and a / as %
+    f="$state/$(printf '%s' "$home/$1" | sed 's/%/%%25/g' | tr / %).session"
+    printf '%s' "${3-}" > "$f"
+    touch -d "$2" "$f"
+}
+session 50/off 2026-01-01T01:00:00 "*$home/50/off/s.txt	0
+"
+session x 2026-01-01T02:00:00.1
+session z 2026-01-01T02:00:00.4
+session w 2026-01-01T02:00:00.6
+session y 2026-01-01T02:00:00.9
+session 50%off 2026-01-01T03:00:00 "*$home/50%off/p.txt	0
+"

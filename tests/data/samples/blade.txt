@@ -1,0 +1,6 @@
+<div class="a">
+{{-- a comment
+   spanning lines --}}
+@if($user)
+  <p>{{ $user->name }}</p>
+@endif

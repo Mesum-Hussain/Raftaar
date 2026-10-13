@@ -1,0 +1,15 @@
+name = TypeScript
+files = *.ts *.tsx *.mts *.cts
+icon = typescript blue
+comment = //
+block = /* */
+region = ` ` string multiline escape=\
+string = " \
+string = ' \
+ident = $
+prefix = @a
+captypes = yes
+keywords = abstract as asserts async await break case catch class const continue debugger declare default delete do else enum export extends finally for from function get if implements import in infer instanceof interface is keyof let namespace new of override private protected public readonly return satisfies set static super switch this throw try type typeof unique var void while with yield
+types = any boolean never number object string symbol unknown bigint void Array Record Partial Required Readonly Pick Omit Promise
+constants = true false null undefined NaN Infinity
+builtins = console window document globalThis require module process JSON Math Object Array String Number Promise Map Set

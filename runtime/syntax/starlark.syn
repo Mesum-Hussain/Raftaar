@@ -1,0 +1,10 @@
+name = Starlark
+files = BUILD BUILD.bazel WORKSPACE WORKSPACE.bazel MODULE.bazel *.bzl *.star *.bazel Tiltfile
+icon = bazel green
+comment = #
+mstring = """ \
+string = " \
+string = ' \
+keywords = def if elif else for in return break continue pass lambda and or not
+constants = True False None
+builtins = load glob select package_name workspace_name cc_library cc_binary py_library py_binary java_library filegroup genrule

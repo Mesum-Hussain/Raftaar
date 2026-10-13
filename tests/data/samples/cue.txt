@@ -1,0 +1,8 @@
+// CUE schema example
+package main
+#Config: {
+    name: "demo", version: string, count: 3, ok: true
+    doc: """
+        hello
+        """
+}

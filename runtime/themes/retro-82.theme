@@ -1,0 +1,56 @@
+name = Retro 82
+kind = dark
+
+bg                 = #05182e
+fg                 = #f6dcac
+accent             = #faa968
+panel              = #031222
+border             = #020c17
+selection          = #134e5a
+line_highlight     = #112234
+line_number        = #2a6b78
+line_number_active = #f6dcac
+cursor             = #f6dcac
+error              = #f85525
+warning            = #e97b3c
+success            = #028391
+
+[syntax]
+text        = #a7c9c6
+keyword     = #faa968
+type        = #6fa6c8
+function    = #faa968
+string      = #f6dcac
+number      = #ff8a6b
+comment     = #2a6a73
+constant    = #ff8a6b
+operator    = #028391
+punctuation = #5f8f96
+preproc     = #faa968
+variable    = #a7c9c6
+builtin     = #8cbfb8
+attribute   = #39b5d4
+tag         = #2c7c88
+heading     = #faa968
+inserted    = #19a7a8
+deleted     = #f85525
+escape      = #63c6be
+link        = #39b5d4
+
+[terminal]
+black          = #05182e
+red            = #f85525
+green          = #028391
+yellow         = #e97b3c
+blue           = #3f8f8a
+magenta        = #3f8f8a
+cyan           = #8cbfb8
+white          = #f6dcac
+bright_black   = #2a6b78
+bright_red     = #f85525
+bright_green   = #028391
+bright_yellow  = #e97b3c
+bright_blue    = #faa968
+bright_magenta = #3f8f8a
+bright_cyan    = #8cbfb8
+bright_white   = #f6dcac

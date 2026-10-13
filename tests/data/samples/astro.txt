@@ -1,0 +1,5 @@
+---
+const items = ["a", "b"];
+---
+<!-- a comment -->
+<ul class="list">{items.map(i => <li>{i}</li>)}</ul>

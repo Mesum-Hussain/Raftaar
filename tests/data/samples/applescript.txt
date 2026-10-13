@@ -1,0 +1,8 @@
+#!/usr/bin/osascript
+-- greets the user
+(* asks for a name
+   then says hello *)
+set userName to "World"
+set count to 3
+display dialog "Hello, " & userName & count
+say "done"

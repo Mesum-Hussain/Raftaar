@@ -1,0 +1,8 @@
+-- double a natural number
+/- returns
+   twice n -/
+def double (n : Nat) : Nat :=
+  n + n
+def answer : Nat := 42
+def greet (name : String) : String :=
+  "hello, " ++ name

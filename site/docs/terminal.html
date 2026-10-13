@@ -1,0 +1,26 @@
+<section id="open">
+<h2>Open a terminal</h2>
+<p>Press <kbd>Ctrl</kbd> + <kbd>`</kbd> to toggle the terminal. Use <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>`</kbd> to create another one. On macOS, these shortcuts use <kbd>Control</kbd>, not <kbd>Cmd</kbd>.</p>
+<p>raftaar starts your shell. On Windows, the default is <code>powershell.exe</code>. On macOS, it starts a login shell so your usual shell setup is available.</p>
+<p>With the terminal focused, <kbd>Ctrl</kbd> + <kbd>Tab</kbd> and <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Tab</kbd> switch between terminals. On macOS, use <kbd>Control</kbd> for these tab shortcuts too.</p>
+</section>
+<section id="keys">
+<h2>Keys and clipboard</h2>
+<p>On Linux and Windows, copy with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> and paste with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd>. On macOS, use <kbd>Cmd</kbd> + <kbd>C</kbd> and <kbd>Cmd</kbd> + <kbd>V</kbd>. This keeps <kbd>Control</kbd> + <kbd>C</kbd> available to interrupt a command.</p>
+<p>Use <kbd>Shift</kbd> + <kbd>Page Up</kbd> or <kbd>Page Down</kbd> to read scrollback. If a terminal app captures the mouse, hold <kbd>Shift</kbd> while dragging to select text.</p>
+<div class="doc-note"><strong>Multiline input</strong><p>Tools that use the Kitty keyboard protocol can distinguish modified Enter keys. In supporting tools, <kbd>Shift</kbd> + <kbd>Enter</kbd> can insert a newline instead of submitting.</p></div>
+</section>
+<section id="links">
+<h2>From output to source</h2>
+<p>Hold <kbd>Ctrl</kbd> (or <kbd>Cmd</kbd> on macOS) and click a URL to open it, or an existing file path to open the source. Paths like <code>src/main.s:42:8</code> take you to the line and column.</p>
+<p>Relative paths use the shell’s current directory on Linux and macOS. On Windows, they fall back to the project folder.</p>
+</section>
+<section id="configure">
+<h2>Make it yours</h2>
+<p>Editor and terminal font sizes are independent. Focus the terminal before using <strong>Zoom In</strong> or <strong>Zoom Out</strong> from the command palette.</p>
+<p>To choose a shell, edit the <code>[terminal]</code> section of your <a href="/docs/customization/#config">config file</a>. For example, on a system with fish installed here:</p>
+<pre><code>[terminal]
+shell = /usr/bin/fish
+font_size = 14</code></pre>
+<p>On Windows, use a native executable such as <code>pwsh.exe</code> or the path to Git Bash.</p>
+</section>

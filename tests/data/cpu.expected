@@ -1,0 +1,112 @@
+add8 overflow 80 c
+add8 carry 0 3
+sub8 overflow 7f 8
+sub8 borrow ff 5
+add16 overflow 8000 c
+sub16 borrow ffff 5
+add32 carry 0 3
+sub32 overflow 7fffffff 8
+add64 overflow 8000000000000000 c
+cmp64 below 1 5
+cmp8 signed 80 8
+cmp16 overflow 8000 8
+neg zero 0 2
+neg five fffffffb 5
+dec16 overflow 7fff 8
+inc8 overflow 80 c
+inc keeps carry 1 0
+or sign 80000000 4
+and zero 0 2
+test8 sign 80 4
+test16 8000 4
+add mem8 0 3
+sub mem32 ffffffff 5
+inc mem16 8000 c
+mov al ffffffffffffff12 0
+mov ah ffffffffffff34ff 0
+mov ax ffffffffffff5678 0
+mov eax 1 0
+sete ah ffffffffffff01ff 0
+xchg al ah 3412 0
+movsx eax byte ffffff80 0
+movsx rax word ffffffffffff8000 0
+movsxd ffffffff80000000 0
+movzx ffff 0
+cdqe ffffffff80000000 0
+cdq ffffffff 0
+cqo ffffffffffffffff 0
+shl32 80000000 0
+sar32 f8000000 0
+shr32 8000000 0
+sar8 f0 0
+shl32 by 33 2 0
+shl64 by 65 2 0
+rol32 18 0
+ror64 ef0123456789abcd 0
+mul64 fffffffffffffffe 1
+mul32 0 2
+imul64 wide fffffffffffffffa ffffffffffffffff
+imul32 fffffff1 0
+imul32 imm ffffffcf 0
+div32 10000000 0
+div128 8000000000000000 0
+idiv32 fffffffd ffffffff
+idiv64 0 fffffffffffffff9
+cmov32 false ffffffff 0
+cmov64 true 5 0
+bt 1 0
+bt keeps zf 1 2
+bts64 8000000000000000 2
+btr64 reg ffffffffffffffbf 1
+bts bit string 40 0
+bsf32 4 0
+bsf zero 63 1
+bsf64 3f 0
+bsr32 6 0
+bswap32 44332211 0
+bswap64 807060504030201 0
+stc clc across ret 1 0
+movsb overlap 67666161616161 0
+movsd 64636261 0
+stos 44616161 11223344
+cmpsb differ 0 5
+cmpsb equal 0 2
+cmpsb none 0 5
+scasb fffffffffffffffa 2
+comiss nan 0 3
+comiss less 0 1
+comiss greater 0 0
+minss nan first 3f800000 0
+minss nan second 7fc00000 0
+minss zeros 80000000 0
+maxss zeros 0 0
+maxss 40000000 0
+minss upper lanes 111111113f800000 3333333322222222
+cvtss2si even 2 4
+cvttss2si fffffffe 0
+cvtsi2ss round 4b800000 0
+sqrtss 3fb504f3 0
+roundss floor ceil 40000000 40400000
+divss 3eaaaaab 0
+por 8c078605ff8392ff 55ffeeddccbbaaf9
+pxor mem 8c0484048b8392fe 450fee5dcc3baa69
+paddb 8c0a880673839200 65efee5dcc3baa89
+paddw 8c0a880673839300 66efef5dcd3bab89
+pmullw b41590057e808eff 9a103290df90cc10
+psrlw 110010c01e801040 21f01d10191015f
+psrlw 16 0 0
+psrldq 3 8b0af988078605f4 10ff0e8d0c
+psrldq 15 10 0
+pshufd 4e 10ff0e8d0c8b0af9 88078605f4038201
+pshufd 1b mem c8b0af910ff0e8d f403820188078605
+pshufd self f403820110ff0e8d c8b0af988078605
+pshuflw 0 8201820182018201 10ff0e8d0c8b0af9
+pshuflw 1b 8201f40386058807 10ff0e8d0c8b0af9
+punpcklbw 7ff480031082ff01 488030702860105
+punpckldq 7f8010fff4038201 403020188078605
+punpcklqdq 88078605f4038201 40302017f8010ff
+punpcklqdq self 88078605f4038201 88078605f4038201
+packuswb ff0000ffff80ff00 ff000000ffffffff
+pcmpeqb pmovmskb 7bed ffffff00ffff00ff
+pmovmskb xmm8 7f05 0
+movd clears f4038201 0

@@ -1,0 +1,492 @@
+tabs=1 active=vim.c line=1 col=1 sel=0 dirty=0 lang=C focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=5 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=7 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=15 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=24 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=5 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=14 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foobar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+}
+    return 0;
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+}
+    return 0;
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=4 col=1 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foobarbar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=2 col=10 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foobarbar, "baz qux");
+    returbar 0;
+}
+
+second paragraph
+line two
+
+<eod>
+hihihiint main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+hihihiint main(void) {
+    fhihihioo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {end
+    foo(bar, "baz qux");end
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    NEW
+    NEW
+    NEW
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=4 col=7 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foo(bar, "x");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar,);
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo();
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo;
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=2 col=5 sel=0 dirty=1 lang=C vim=insert focus=0 theme=raftaar-dark
+int main(void) {
+
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foobar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foobar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+t main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+Z main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+z Main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+Z mAIN(VOID) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+Z mAIN(VOID) { foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=1 col=15 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foo(bar, "baz qux";
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+Xnt main(void) {
+    
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+Xnt main(void) {
+    new
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+        foo(bar, "baz qux");
+        return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+        foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=1 col=8 sel=8 dirty=0 lang=C vim=visual focus=0 theme=raftaar-dark
+(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=1 col=1 sel=18 dirty=0 lang=C vim=visual focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=22 sel=14 dirty=0 lang=C vim=visual focus=0 theme=raftaar-dark
+int main(void) {
+    foo(BAR, "BAZ QUX");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) { foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+            foo(bar, "baz qux");
+            return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+int main(void) {
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar((, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo
+    return 0;
+bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    return 0;
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+nit main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=2 col=11 sel=2 dirty=0 lang=C vim=search focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=9 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=15 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=9 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=7 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=2 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=2 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=2 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=1 col=1 sel=0 dirty=0 lang=C vim=command focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=3 col=5 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=7 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+            foo(bar, "baz qux");
+            return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+second 
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+
+<eod>
+int main(void) {
+    (bar, "baz qux");
+    return 0;
+}
+
+second paragraph
+line two
+
+<eod>
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+}
+
+Ésecond paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=8 col=12 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=8 col=8 sel=3 dirty=1 lang=C vim=normal focus=2 theme=raftaar-dark
+tabs=1 active=vim.c line=8 col=12 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=2 col=20 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=3 col=13 sel=33 dirty=0 lang=C vim=visual focus=0 theme=raftaar-dark
+tabs=1 active=vim.c line=4 col=1 sel=0 dirty=0 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+
+}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=5 col=1 sel=0 dirty=1 lang=C vim=normal focus=0 theme=raftaar-dark
+int main(void) {
+    foo(bar, "baz qux");
+    return 0;
+
+x}
+
+second paragraph
+line two
+
+<eod>
+tabs=1 active=vim.c line=5 col=2 sel=0 dirty=1 lang=C focus=0 theme=raftaar-dark

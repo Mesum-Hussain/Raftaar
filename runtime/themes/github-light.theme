@@ -1,0 +1,32 @@
+name = GitHub Light
+kind = light
+
+bg             = #ffffff
+fg             = #1f2328
+accent         = #0969da
+panel          = #f6f8fa
+border         = #d0d7de
+selection      = #ddf4ff
+line_highlight = #f6f8fa
+line_number    = #8c959f
+cursor         = #0969da
+error          = #cf222e
+warning        = #9a6700
+success        = #1a7f37
+
+[syntax]
+keyword        = #cf222e
+type           = #953800
+function       = #8250df
+string         = #0a3069
+number         = #0550ae
+comment        = #6e7781
+constant       = #0550ae
+operator       = #cf222e
+punctuation    = #1f2328
+preproc        = #cf222e
+builtin        = #0550ae
+attribute      = #116329
+tag            = #116329
+heading        = #0550ae
+escape         = #0550ae

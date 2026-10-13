@@ -1,0 +1,45 @@
+name = Elflord Dark
+kind = dark
+
+bg                 = #000000
+fg                 = #00ffff
+accent             = #ffff00
+accent_fg          = #000000
+panel              = #0e0e0e
+border             = #262626
+selection          = #104a6a
+active             = #0b3a3a
+line_highlight     = #2a2a2a
+line_number        = #a8a800
+line_number_active = #ffff00
+cursor             = #00ffff
+muted              = #7f7f7f
+popup              = #161616
+input              = #000000
+match              = #5f5f00
+guide              = #1f1f1f
+error              = #ff0000
+warning            = #ffff00
+success            = #00ff00
+
+[syntax]
+text        = #00ffff
+keyword     = #c45050
+type        = #60ff60
+function    = #ffffff
+string      = #ff00ff
+number      = #ff00ff
+comment     = #80a0ff
+constant    = #ff00ff
+operator    = #ff0000
+punctuation = #00cdcd
+preproc     = #ff80ff
+variable    = #40ffff
+builtin     = #ffffff
+attribute   = #ff80ff
+tag         = #c45050
+heading     = #ff00ff
+inserted    = #60ff60
+deleted     = #ff0000
+escape      = #ff0000
+link        = #80a0ff

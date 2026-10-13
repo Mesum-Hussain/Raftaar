@@ -1,0 +1,12 @@
+name = Julia
+files = *.jl
+icon = julia purple
+region = #= =# comment multiline
+comment = #
+mstring = """ \
+string = " \
+string = ' \
+prefix = @a :v
+captypes = yes
+keywords = abstract baremodule begin break catch const continue do else elseif end export finally for function global if import let local macro module mutable primitive quote return struct try type using where while
+constants = true false nothing missing Inf NaN

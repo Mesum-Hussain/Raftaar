@@ -1,0 +1,73 @@
+git on branch=main upstream=origin/main ahead=0 behind=0
+M a.txt
+U notes.txt
+action=commit-all
+    CHANGES
+    M a.txt
+    U notes.txt
+git on branch=main upstream=origin/main ahead=0 behind=1
+M a.txt
+U notes.txt
+action=commit-all
+error=Your local changes to the following files would be overwritten by merge:
+    CHANGES
+    M a.txt
+    U notes.txt
+action=commit
+    STAGED CHANGES
+    A notes.txt
+    CHANGES
+    M a.txt
+action=commit-all
+    CHANGES
+    M a.txt
+    U notes.txt
+tabs=1 focus=5 theme=raftaar-dark
+action=commit-all
+    CHANGES
+    M a.txt
+action=commit-all
+message=Say uno||In Spanish.
+    CHANGES
+    M a.txt
+action=sync
+git on branch=main upstream=origin/main ahead=1 behind=1
+action=commit
+message=Merge branch 'main' of ../remote
+error=Merge conflicts: resolve them, stage the files, then commit
+    MERGE CHANGES
+    C a.txt
+action=commit
+message=Merge branch 'main' of ../remote
+    STAGED CHANGES
+    M a.txt
+action=commit-all
+message=Merge branch 'main' of ../remote
+    CHANGES
+    M a.txt
+*  No uncommitted changes <
+*\ Merge branch 'main' of ../remote (HEAD -> main)
+*| Say uno
+|* Shout one (origin/main, origin/HEAD)
+*/ First
+*  No uncommitted changes <
+*\ Merge the remote (HEAD -> main)
+*| Say uno
+|* Shout one (origin/main, origin/HEAD)
+*/ First
+git on branch=main upstream=origin/main ahead=2 behind=0
+git on branch=main upstream=origin/main ahead=0 behind=0
+action=none
+tabs=2 focus=9 theme=raftaar-dark
+tabs=2 focus=0 theme=raftaar-dark
+tabs=2 focus=5 theme=raftaar-dark
+action=none
+uno y ONE
+two
+three
+
+<eod>
+git on branch=topic
+action=publish
+git on branch=topic upstream=origin/topic ahead=0 behind=0
+action=none

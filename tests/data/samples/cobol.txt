@@ -1,0 +1,8 @@
+      *> COBOL sample
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. HELLO.
+       DATA DIVISION.
+       WORKING-STORAGE SECTION.
+       01 WS-COUNT PIC 9(3) VALUE 42.
+       PROCEDURE DIVISION.
+           DISPLAY "Hello, COBOL!".

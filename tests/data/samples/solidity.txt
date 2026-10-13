@@ -1,0 +1,8 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+contract Token {
+    uint256 public total = 100;
+    function greet() public pure returns (string memory) {
+        require(total > 0, "no supply");
+        return "ok"; }
+}

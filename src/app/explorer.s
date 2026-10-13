@@ -1,0 +1,1891 @@
+# file explorer: lazily loaded tree of the project directory
+.include "raftaar.inc"
+
+STRUCT
+F N_name, 8
+F N_path, 8
+F N_parent, 8
+F N_kids, VEC_SIZE
+F N_dir, 4
+F N_open, 4
+F N_loaded, 4
+F N_depth, 4
+F N_icon, 4                      # file_icon's icon | color slot << 8 | 0x80000000, 0 until drawn
+ENDSTRUCT N_SIZE
+
+.equ ID_EXP_ROW, 0x300000         # + row: a range of its own, as the tree has no end
+.equ ID_EXP_EMPTY, 0x3f04
+.equ ID_MENU, 0x3f10
+
+.bss
+.p2align 3
+root: .quad 0
+rows: .zero VEC_SIZE            # visible NODE*
+exp_scroll: .long 0             # px
+exp_cursor: .long 0             # keyboard row
+exp_rect: .zero 16
+openset: .zero VEC_SIZE         # paths kept open across refresh (cstr*)
+menu_open: .long 0
+menu_x: .long 0
+menu_y: .long 0
+menu_press: .long 0             # the presses of the frame that opened the menu
+.p2align 3
+menu_list: .quad 0
+.globl g_explorer_dir, g_explorer_target, g_exp_reveal, g_exp_changed
+g_exp_changed: .long 0            # the rows are others than when the sidebar's width was last fitted
+g_exp_reveal: .long 0             # reveal the active file on the next draw
+g_explorer_dir: .zero 4096
+g_explorer_target: .zero 4096
+g_menu_cmd: .long 0               # a context menu item is running
+.globl g_menu_keys, g_menu_index
+g_menu_keys: .long 0              # the open menu shows its commands' shortcuts
+g_menu_index: .long 0             # the item that was clicked, while its handler runs
+delete_label: .zero 256
+delete_path: .zero 4096          # the path named by the open confirmation
+
+.text
+
+# explorer_excluded(name cstr) -> 1 if listed in cfg_exclude, or a dot file while those are hidden
+FN explorer_excluded
+    PROLOGUE
+    mov rbx, rdi
+.ifndef WINDOWS
+    cmp dword ptr [rip + cfg_hide_dotfiles], 0
+    je 0f
+    cmp byte ptr [rbx], '.'
+    jne 0f
+    mov eax, 1
+    EPILOGUE
+0:
+.endif
+    call strlen
+    mov r12, rax
+    mov r13, [rip + cfg_exclude]
+    mov rdi, r13
+    call strlen
+    mov r14, rax
+1:  test r14, r14
+    jz 3f
+    mov rdi, r13
+    mov rsi, r14
+    call next_word
+    add r13, rcx
+    sub r14, rcx
+    test rdx, rdx
+    jz 3f
+    mov rdi, rbx
+    mov rsi, r12
+    mov rcx, rdx
+    mov rdx, rax
+    call str_eq
+    test eax, eax
+    jz 1b
+    mov eax, 1
+    EPILOGUE
+3:  xor eax, eax
+    EPILOGUE
+
+# node_new(parent, name, path(owned), dir) -> NODE*
+node_new:
+    PROLOGUE
+    mov rbx, rdi
+    mov r12, rsi
+    mov r13, rdx
+    mov r14d, ecx
+    mov edi, N_SIZE
+    call mem_alloc
+    mov r15, rax
+    mov [r15 + N_parent], rbx
+    mov [r15 + N_path], r13
+    mov [r15 + N_dir], r14d
+    mov rdi, r12
+    call strlen
+    mov rdi, r12
+    mov rsi, rax
+    call mem_dup
+    mov [r15 + N_name], rax
+    test rbx, rbx
+    jz 1f
+    mov eax, [rbx + N_depth]
+    inc eax
+    mov [r15 + N_depth], eax
+1:  mov rax, r15
+    EPILOGUE
+
+node_free:
+    PROLOGUE
+    mov rbx, rdi
+    test rbx, rbx
+    jz 9f
+    xor r12d, r12d
+1:  cmp r12, [rbx + N_kids + VEC_len]
+    jae 2f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov rdi, [rax + r12*8]
+    call node_free
+    inc r12
+    jmp 1b
+2:  lea rdi, [rbx + N_kids]
+    call vec_free
+    mov rdi, [rbx + N_name]
+    call mem_free
+    mov rdi, [rbx + N_path]
+    call mem_free
+    mov rdi, rbx
+    call mem_free
+9:  EPILOGUE
+
+# dir entries callback: ctx = parent node
+load_cb:
+    PROLOGUE
+    mov rbx, rdi
+    mov r12, rsi
+    mov r13d, edx
+    mov rdi, r12
+    call explorer_excluded
+    test eax, eax
+    jnz 9f
+    mov rdi, [rbx + N_path]
+    mov rsi, r12
+    call path_join
+    mov rdx, rax
+    mov rdi, rbx
+    mov rsi, r12
+    mov ecx, r13d
+    call node_new
+    mov r14, rax
+    lea rdi, [rbx + N_kids]
+    mov esi, 8
+    call vec_push
+    mov [rax], r14
+9:  EPILOGUE
+
+# node_less(a, b) -> 1 if a sorts before b (dirs first, case-insensitive)
+node_less:
+    mov eax, [rdi + N_dir]
+    cmp eax, [rsi + N_dir]
+    je 1f
+    seta al
+    movzx eax, al
+    ret
+1:  mov rdi, [rdi + N_name]
+    mov rsi, [rsi + N_name]
+2:  movzx eax, byte ptr [rdi]
+    movzx ecx, byte ptr [rsi]
+    lea edx, [rax - 'A']
+    cmp edx, 25
+    ja 3f
+    or eax, 0x20
+3:  lea edx, [rcx - 'A']
+    cmp edx, 25
+    ja 4f
+    or ecx, 0x20
+4:  cmp eax, ecx
+    jne 5f
+    test eax, eax
+    jz 6f
+    inc rdi
+    inc rsi
+    jmp 2b
+5:  setb al
+    movzx eax, al
+    ret
+6:  xor eax, eax
+    ret
+
+# node_load(node): read children once, sorted
+node_load:
+    PROLOGUE
+    mov rbx, rdi
+    cmp dword ptr [rbx + N_loaded], 0
+    jne 9f
+    mov dword ptr [rbx + N_loaded], 1
+    mov rdi, [rbx + N_path]
+    lea rsi, [rip + load_cb]
+    mov rdx, rbx
+    call dir_each
+    mov rdi, [rbx + N_kids + VEC_ptr]
+    mov rsi, [rbx + N_kids + VEC_len]
+    call sort_nodes
+9:  EPILOGUE
+
+# sort_nodes(array, n): node pointers in node_less order, stable (equal names keep the folder's
+#   order), by bottom-up merge sort: a folder of 20,000 entries took most of a second sorted by
+#   insertion, at startup and again on every refresh
+sort_nodes:
+    PROLOGUE 64
+    mov r12, rdi
+    mov r13, rsi
+    cmp r13, 2
+    jb 9f
+    lea rdi, [r13*8]
+    call mem_alloc
+    mov r14, rax
+    mov r15, r12                # runs of [rsp] merged from r15 into rbx, which the next pass reads
+    mov rbx, r14
+    mov qword ptr [rsp], 1
+.Lsn_pass:
+    mov rax, [rsp]
+    cmp rax, r13
+    jae .Lsn_done
+    mov qword ptr [rsp + 8], 0
+.Lsn_run:
+    mov rax, [rsp + 8]          # lo
+    cmp rax, r13
+    jae .Lsn_swap
+    mov rcx, rax                # mid = min(lo + width, n)
+    add rcx, [rsp]
+    cmp rcx, r13
+    cmova rcx, r13
+    mov [rsp + 16], rcx
+    mov rdx, rcx                # hi = min(mid + width, n)
+    add rdx, [rsp]
+    cmp rdx, r13
+    cmova rdx, r13
+    mov [rsp + 24], rdx
+    mov [rsp + 32], rax         # l
+    mov [rsp + 40], rcx         # r
+    mov [rsp + 48], rax         # k
+.Lsn_merge:
+    mov rax, [rsp + 48]
+    cmp rax, [rsp + 24]
+    jae .Lsn_next
+    mov rcx, [rsp + 32]
+    cmp rcx, [rsp + 16]
+    jae .Lsn_right
+    mov rdx, [rsp + 40]
+    cmp rdx, [rsp + 24]
+    jae .Lsn_left
+    mov rdi, [r15 + rdx*8]      # the right run's only when it sorts before: ties keep their order
+    mov rsi, [r15 + rcx*8]
+    call node_less
+    test eax, eax
+    jz .Lsn_left
+.Lsn_right:
+    mov rdx, [rsp + 40]
+    mov rax, [r15 + rdx*8]
+    inc qword ptr [rsp + 40]
+    jmp .Lsn_put
+.Lsn_left:
+    mov rcx, [rsp + 32]
+    mov rax, [r15 + rcx*8]
+    inc qword ptr [rsp + 32]
+.Lsn_put:
+    mov rcx, [rsp + 48]
+    mov [rbx + rcx*8], rax
+    inc qword ptr [rsp + 48]
+    jmp .Lsn_merge
+.Lsn_next:
+    mov rax, [rsp + 24]
+    mov [rsp + 8], rax
+    jmp .Lsn_run
+.Lsn_swap:
+    xchg r15, rbx
+    mov rax, [rsp]
+    add rax, rax
+    mov [rsp], rax
+    jmp .Lsn_pass
+.Lsn_done:
+    cmp r15, r12
+    je 1f
+    mov rdi, r12
+    mov rsi, r15
+    lea rdx, [r13*8]
+    call memcpy
+1:  mov rdi, r14
+    call mem_free
+9:  EPILOGUE
+
+# in_openset(path) -> 1 if it was open before a refresh
+in_openset:
+    PROLOGUE
+    mov rbx, rdi
+    xor r12d, r12d
+1:  cmp r12, [rip + openset + VEC_len]
+    jae 2f
+    mov rax, [rip + openset + VEC_ptr]
+    mov rdi, [rax + r12*8]
+    mov rsi, rbx
+    call strcmp_eq
+    test eax, eax
+    jnz 3f
+    inc r12
+    jmp 1b
+2:  xor eax, eax
+3:  EPILOGUE
+
+# rebuild_rows(): flatten open nodes
+rebuild_rows:
+    mov dword ptr [rip + g_exp_changed], 1
+    mov qword ptr [rip + rows + VEC_len], 0
+    mov rdi, [rip + root]
+    test rdi, rdi
+    jz 1f
+    jmp add_kids
+1:  ret
+
+add_kids:
+    PROLOGUE
+    mov rbx, rdi
+    xor r12d, r12d
+1:  cmp r12, [rbx + N_kids + VEC_len]
+    jae 9f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov r13, [rax + r12*8]
+    lea rdi, [rip + rows]
+    mov esi, 8
+    call vec_push
+    mov [rax], r13
+    cmp dword ptr [r13 + N_open], 0
+    je 2f
+    mov rdi, r13
+    call add_kids
+2:  inc r12
+    jmp 1b
+9:  EPILOGUE
+
+# open nodes recorded in openset are re-expanded after a reload
+reopen:
+    PROLOGUE
+    mov rbx, rdi
+    xor r12d, r12d
+1:  cmp r12, [rbx + N_kids + VEC_len]
+    jae 9f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov r13, [rax + r12*8]
+    cmp dword ptr [r13 + N_dir], 0
+    je 2f
+    mov rdi, [r13 + N_path]
+    call in_openset
+    test eax, eax
+    jz 2f
+    mov dword ptr [r13 + N_open], 1
+    mov rdi, r13
+    call node_load
+    mov rdi, [r13 + N_path]
+    call watch_dir
+    mov rdi, r13
+    call reopen
+2:  inc r12
+    jmp 1b
+9:  EPILOGUE
+
+# collect open dirs into openset
+collect_open:
+    PROLOGUE
+    mov rbx, rdi
+    xor r12d, r12d
+1:  cmp r12, [rbx + N_kids + VEC_len]
+    jae 9f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov r13, [rax + r12*8]
+    cmp dword ptr [r13 + N_open], 0
+    je 2f
+    mov rdi, [r13 + N_path]
+    call strlen
+    mov rdi, [r13 + N_path]
+    mov rsi, rax
+    call mem_dup
+    mov r14, rax
+    lea rdi, [rip + openset]
+    mov esi, 8
+    call vec_push
+    mov [rax], r14
+    mov rdi, r13
+    call collect_open
+2:  inc r12
+    jmp 1b
+9:  EPILOGUE
+
+FN explorer_set_root
+    PROLOGUE
+    mov rdi, [rip + root]
+    call node_free
+    mov qword ptr [rip + root], 0
+    mov dword ptr [rip + exp_scroll], 0
+    mov dword ptr [rip + exp_cursor], 0
+    mov rsi, [rip + g_project]
+    test rsi, rsi
+    jz 9f
+    mov rdi, rsi
+    call strlen
+    mov rdi, [rip + g_project]
+    mov rsi, rax
+    call mem_dup
+    mov rdx, rax
+    xor edi, edi
+    mov rsi, [rip + g_project_name]
+    mov ecx, 1
+    call node_new
+    mov [rip + root], rax
+    mov dword ptr [rax + N_depth], -1
+    mov dword ptr [rax + N_open], 1
+    mov rdi, rax
+    call node_load
+    mov rdi, [rip + g_project]
+    call watch_dir
+    call rebuild_rows
+9:  mov dword ptr [rip + g_dirty], 1
+    EPILOGUE
+
+# explorer_root_name() -> rax the name of the folder the tree shows, or 0 without one
+FN explorer_root_name
+    mov rax, [rip + root]
+    test rax, rax
+    jz 1f
+    mov rax, [rax + N_name]
+1:  ret
+
+# explorer_follow(path cstr): the tree becomes that folder's, when it shows another: the folder of
+#   the terminal with the keys. Without a project there is no tree to turn.
+FN explorer_follow
+    PROLOGUE
+    mov rbx, rdi
+    mov r12, [rip + root]
+    test r12, r12
+    jz 9f
+    cmp byte ptr [rbx], 0
+    je 9f
+    mov rdi, [r12 + N_path]
+    mov rsi, rbx
+    call strcmp_eq
+    test eax, eax
+    jnz 9f
+    # the same folder by another spelling (the project opened through a symlink) stays as it is
+    mov rdi, rbx
+    call file_id
+    test rax, rax
+    jz 9f                       # and one that is gone is not shown
+    mov r13, rax
+    mov r14, rdx
+    mov rdi, [r12 + N_path]
+    call file_id
+    cmp rax, r13
+    jne 2f
+    cmp rdx, r14
+    je 9f
+2:  mov rdi, rbx
+    call strlen
+    mov r13, rax
+    mov rdi, r12
+    call node_free
+    mov qword ptr [rip + root], 0
+    mov dword ptr [rip + exp_scroll], 0
+    mov dword ptr [rip + exp_cursor], 0
+    mov rdi, rbx
+    mov rsi, r13
+    call mem_dup
+    mov r14, rax
+    mov rdi, r14
+    mov rsi, r13
+    call path_basename
+    cmp byte ptr [rax], 0       # "/" has no name
+    jne 1f
+    mov rax, r14
+1:  mov rdx, r14
+    xor edi, edi
+    mov rsi, rax
+    mov ecx, 1
+    call node_new
+    mov [rip + root], rax
+    mov dword ptr [rax + N_depth], -1
+    mov dword ptr [rax + N_open], 1
+    mov rdi, rax
+    call node_load
+    mov rdi, r14
+    call watch_dir
+    call rebuild_rows
+    # new files and folders go in it, and nothing of the tree before is a rename's or a delete's
+    lea rdi, [rip + g_explorer_dir]
+    mov rsi, r14
+    call cstr_copy
+    mov byte ptr [rip + g_explorer_target], 0
+    mov dword ptr [rip + g_dirty], 1
+9:  EPILOGUE
+
+# explorer_refresh(): reload the tree, keep expanded folders
+FN explorer_refresh
+    PROLOGUE
+    mov rbx, [rip + root]
+    test rbx, rbx
+    jz 9f
+    # remember open dirs
+    xor r12d, r12d
+1:  cmp r12, [rip + openset + VEC_len]
+    jae 2f
+    mov rax, [rip + openset + VEC_ptr]
+    mov rdi, [rax + r12*8]
+    call mem_free
+    inc r12
+    jmp 1b
+2:  mov qword ptr [rip + openset + VEC_len], 0
+    mov rdi, rbx
+    call collect_open
+    # reload root children
+    xor r12d, r12d
+3:  cmp r12, [rbx + N_kids + VEC_len]
+    jae 4f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov rdi, [rax + r12*8]
+    call node_free
+    inc r12
+    jmp 3b
+4:  mov qword ptr [rbx + N_kids + VEC_len], 0
+    mov dword ptr [rbx + N_loaded], 0
+    mov rdi, rbx
+    call node_load
+    mov rdi, rbx
+    call reopen
+    call rebuild_rows
+9:  mov dword ptr [rip + g_dirty], 1
+    EPILOGUE
+
+# toggle(node)
+toggle:
+    push rbx
+    mov rbx, rdi
+    xor dword ptr [rbx + N_open], 1
+    cmp dword ptr [rbx + N_open], 0
+    je 1f
+    call node_load
+    mov rdi, [rbx + N_path]
+    call watch_dir
+1:  call rebuild_rows
+    mov dword ptr [rip + g_dirty], 1
+    pop rbx
+    ret
+
+# select_target(node): remember path and containing dir for file commands
+select_target:
+    push rbx
+    mov rbx, rdi
+    lea rdi, [rip + g_explorer_target]
+    mov rsi, [rbx + N_path]
+    call cstr_copy
+    lea rdi, [rip + g_explorer_dir]
+    mov rsi, [rbx + N_path]
+    cmp dword ptr [rbx + N_dir], 0
+    jne 1f
+    mov rax, [rbx + N_parent]
+    test rax, rax
+    jz 1f
+    mov rsi, [rax + N_path]
+1:  call cstr_copy
+    pop rbx
+    ret
+
+# activate(node): open file / toggle dir
+activate:
+    push rbx
+    mov rbx, rdi
+    call select_target
+    cmp dword ptr [rbx + N_dir], 0
+    je 1f
+    mov rdi, rbx
+    call toggle
+    pop rbx
+    ret
+1:  mov rdi, [rbx + N_path]
+    call app_open_file
+    pop rbx
+    ret
+
+# explorer_fit_width() -> eax the width in pixels that cuts no name of the rows shown, 0 without rows
+FN explorer_fit_width
+    PROLOGUE
+    xor r12d, r12d              # the widest
+    xor ebx, ebx
+1:  mov rdi, rbx
+    call row_node
+    test rax, rax
+    jz 3f
+    mov r14, rax
+    mov rdi, [r14 + N_name]
+    call strlen
+    lea rdi, [rip + g_face_ui]
+    mov rsi, [r14 + N_name]
+    mov rdx, rax
+    call text_width
+    mov ecx, [r14 + N_depth]
+    imul ecx, [rip + g_mt + 4*MI_12]
+    add eax, ecx
+    cmp eax, r12d
+    cmovg r12d, eax
+    inc rbx
+    jmp 1b
+3:  mov eax, r12d
+    test eax, eax
+    jz 9f
+    # what a row has around the name: the margin, the mark, the icon, the status letter, the scrollbar
+    add eax, [rip + g_mt + 4*MI_14]
+    add eax, [rip + g_mt + 4*MI_16]
+    add eax, [rip + g_mt + 4*MI_4]
+    add eax, [rip + g_mt + 4*MI_24]
+    add eax, [rip + g_mt + 4*MI_40]
+9:  EPILOGUE
+
+# explorer_head_width() -> eax the width in pixels the header needs: the folder's name beside its three
+#   buttons (project_btn); 0 without a folder
+FN explorer_head_width
+    PROLOGUE
+    xor eax, eax
+    mov r14, [rip + root]
+    test r14, r14
+    jz 9f
+    mov r14, [r14 + N_name]
+    mov rdi, r14
+    call strlen
+    lea rdi, [rip + g_face_ui]
+    mov rsi, r14
+    mov rdx, rax
+    call text_width
+    M ecx, MI_28
+    lea ecx, [rcx + rcx*2]
+    add eax, ecx
+    add eax, [rip + g_mt + 4*MI_64]
+    add eax, [rip + g_mt + 4*MI_12]
+9:  EPILOGUE
+
+# row_node(i) -> NODE* or 0
+row_node:
+    cmp rdi, [rip + rows + VEC_len]
+    jae 1f
+    mov rax, [rip + rows + VEC_ptr]
+    mov rax, [rax + rdi*8]
+    ret
+1:  xor eax, eax
+    ret
+
+FN cmd_focus_explorer
+    mov dword ptr [rip + cfg_sidebar], 1
+    mov dword ptr [rip + g_focus], FOCUS_EXPLORER
+    mov edi, 1
+    jmp app_reveal_panel
+
+FN cmd_new_folder
+    lea rdi, [rip + .Lnew_folder]
+    mov esi, PROMPT_NEW_FOLDER
+    jmp prompt_open
+
+FN cmd_rename_file
+    call file_target
+    test eax, eax
+    jz 1f
+    lea rdi, [rip + .Lrename]
+    mov esi, PROMPT_RENAME
+    jmp prompt_open
+1:  ret
+
+FN cmd_delete_file
+    push rbx
+    call file_target
+    test eax, eax
+    jz 1f
+    lea rdi, [rip + delete_path]
+    lea rsi, [rip + g_explorer_target]
+    call cstr_copy
+    # "Delete NAME?"
+    lea rdi, [rip + g_explorer_target]
+    call strlen
+    lea rdi, [rip + g_explorer_target]
+    mov rsi, rax
+    call path_basename
+    mov rbx, rax
+    cmp rdx, 200
+    jbe 2f
+    mov edx, 200
+2:  lea rdi, [rip + delete_label]
+    lea rsi, [rip + .Ldelete_a]
+    call cstr_copy
+    mov rdi, rax
+    mov rsi, rbx
+    mov rcx, rdx
+    rep movsb
+    lea rsi, [rip + .Ldelete_b]
+    call cstr_copy
+    lea rdi, [rip + delete_label]
+    lea rsi, [rip + .Ldelete_text]
+    lea rdx, [rip + .Lm4]
+    lea rcx, [rip + explorer_delete_target]
+    pop rbx
+    jmp app_confirm
+1:  pop rbx
+    ret
+
+# file_target() -> 1 with g_explorer_target set to the file a rename or delete is for: the explorer's
+# item when its menu or the explorer itself has the command, otherwise the open file
+file_target:
+    cmp dword ptr [rip + g_menu_cmd], 0
+    jne 1f
+    cmp dword ptr [rip + g_focus], FOCUS_EXPLORER
+    je 1f
+    mov rax, [rip + g_file]
+    test rax, rax
+    jz 1f
+    mov rsi, [rax + DOC_path]
+    test rsi, rsi
+    jz 1f
+    lea rdi, [rip + g_explorer_target]
+    call cstr_copy
+1:  xor eax, eax
+    cmp byte ptr [rip + g_explorer_target], 0
+    setne al
+    ret
+
+# explorer_delete_target(): remove the confirmed file or directory and its contents
+FN explorer_delete_target
+    push rbx
+    lea rdi, [rip + delete_path]
+    call file_remove_tree
+    mov rbx, rax
+    # A failed deletion can still have removed some children.
+    call explorer_refresh
+    call close_deleted_tabs
+    test rbx, rbx
+    jns 1f
+    lea rdi, [rip + .Lnot_deleted]
+    call app_toast
+    pop rbx
+    ret
+1:  mov byte ptr [rip + g_explorer_target], 0
+    mov byte ptr [rip + delete_path], 0
+    pop rbx
+    ret
+
+# close_deleted_tabs(): the tabs of what a deletion removed close, as in VS Code; one with unsaved
+#   changes stays open, and so does one whose file is still there or may be (a deletion that failed
+#   part way, a folder that cannot be searched)
+close_deleted_tabs:
+    PROLOGUE
+    mov rbx, [rip + g_tabs + VEC_len]
+1:  test rbx, rbx
+    jz 9f
+    dec rbx
+    mov rdi, rbx
+    call tab_at
+    mov r12, [rax + TAB_doc]
+    test r12, r12
+    jz 1b
+    mov rdi, [r12 + DOC_path]
+    test rdi, rdi
+    jz 1b
+    lea rsi, [rip + delete_path]
+    call app_path_inside
+    test eax, eax
+    jz 1b
+    mov rdi, r12
+    call doc_dirty
+    test eax, eax
+    jnz 1b
+    mov rdi, [r12 + DOC_path]
+    call file_missing
+    test eax, eax
+    jz 1b
+    mov rdi, rbx
+    call app_close_tab_now
+    mov dword ptr [rip + g_dirty], 1
+    jmp 1b
+9:  EPILOGUE
+
+# explorer_key(keysym, cp, mods) -> 1 if handled
+FN explorer_key
+    PROLOGUE
+    mov r12d, edi
+    test edx, MOD_CTRL | MOD_ALT
+    jnz .Lek_no
+    mov ebx, [rip + exp_cursor]
+    cmp r12d, KEY_ESCAPE
+    jne 1f
+    mov dword ptr [rip + g_focus], FOCUS_EDITOR
+    jmp .Lek_yes
+1:  cmp r12d, KEY_UP
+    jne 2f
+    test ebx, ebx
+    jz .Lek_yes
+    dec dword ptr [rip + exp_cursor]
+    jmp .Lek_sel
+2:  cmp r12d, KEY_DOWN
+    jne 3f
+    lea eax, [rbx + 1]
+    cmp rax, [rip + rows + VEC_len]
+    jae .Lek_yes
+    mov [rip + exp_cursor], eax
+    jmp .Lek_sel
+3:  mov edi, ebx
+    call row_node
+    test rax, rax
+    jz .Lek_no
+    mov r13, rax
+    cmp r12d, KEY_RETURN
+    jne 4f
+    mov rdi, r13
+    call activate
+    cmp dword ptr [r13 + N_dir], 0
+    jne .Lek_yes
+    mov dword ptr [rip + g_focus], FOCUS_EXPLORER
+    jmp .Lek_yes
+4:  cmp r12d, KEY_RIGHT
+    jne 5f
+    cmp dword ptr [r13 + N_dir], 0
+    je .Lek_yes
+    cmp dword ptr [r13 + N_open], 0
+    jne .Lek_down
+    mov rdi, r13
+    call toggle
+    jmp .Lek_yes
+.Lek_down:
+    inc dword ptr [rip + exp_cursor]
+    jmp .Lek_sel
+5:  cmp r12d, KEY_LEFT
+    jne 6f
+    cmp dword ptr [r13 + N_dir], 0
+    je 51f
+    cmp dword ptr [r13 + N_open], 0
+    je 51f
+    mov rdi, r13
+    call toggle
+    jmp .Lek_yes
+51: # go to parent row
+    mov rax, [r13 + N_parent]
+    cmp rax, [rip + root]
+    je .Lek_yes
+    xor ecx, ecx
+52: cmp rcx, [rip + rows + VEC_len]
+    jae .Lek_yes
+    mov rdx, [rip + rows + VEC_ptr]
+    cmp [rdx + rcx*8], rax
+    je 53f
+    inc rcx
+    jmp 52b
+53: mov [rip + exp_cursor], ecx
+    jmp .Lek_sel
+6:  cmp r12d, KEY_DELETE
+    jne 7f
+    mov rdi, r13
+    call select_target
+    call cmd_delete_file
+    jmp .Lek_yes
+7:  jmp .Lek_no
+.Lek_sel:
+    mov edi, [rip + exp_cursor]
+    call row_node
+    mov rdi, rax
+    call select_target
+    call reveal_cursor
+.Lek_yes:
+    mov dword ptr [rip + g_dirty], 1
+    mov eax, 1
+    EPILOGUE
+.Lek_no:
+    xor eax, eax
+    EPILOGUE
+
+# explorer_reveal(): open the folders down to the active file and put the cursor on it
+explorer_reveal:
+    PROLOGUE
+    mov rbx, [rip + root]
+    test rbx, rbx
+    jz 9f
+    mov rax, [rip + g_file]
+    test rax, rax
+    jz 9f
+    mov r12, [rax + DOC_path]
+    test r12, r12
+    jz 9f
+    # only files under the project
+    mov rdi, [rbx + N_path]
+    xor ecx, ecx
+1:  movzx eax, byte ptr [rdi + rcx]
+    test eax, eax
+    jz 2f
+    cmp al, [r12 + rcx]
+    jne 9f
+    inc rcx
+    jmp 1b
+2:  cmp byte ptr [r12 + rcx], '/'
+    jne 9f
+    lea r12, [r12 + rcx + 1]
+.Lrv_comp:
+    xor r13d, r13d
+3:  movzx eax, byte ptr [r12 + r13]
+    test eax, eax
+    jz 4f
+    cmp eax, '/'
+    je 4f
+    inc r13
+    jmp 3b
+4:  test r13, r13
+    jz 9f
+    mov rdi, rbx
+    call node_load
+    xor r14d, r14d
+5:  cmp r14, [rbx + N_kids + VEC_len]
+    jae 9f
+    mov rax, [rbx + N_kids + VEC_ptr]
+    mov r15, [rax + r14*8]
+    mov rdi, r12
+    mov rsi, r13
+    mov rdx, [r15 + N_name]
+    call str_eq_cstr
+    test eax, eax
+    jnz 6f
+    inc r14
+    jmp 5b
+6:  cmp byte ptr [r12 + r13], 0
+    je 7f
+    cmp dword ptr [r15 + N_open], 0
+    jne 61f
+    mov dword ptr [r15 + N_open], 1
+    mov rdi, r15
+    call node_load
+    mov rdi, [r15 + N_path]
+    call watch_dir
+61: mov rbx, r15
+    lea r12, [r12 + r13 + 1]
+    jmp .Lrv_comp
+7:  call rebuild_rows
+    xor ecx, ecx
+8:  cmp rcx, [rip + rows + VEC_len]
+    jae 9f
+    mov rax, [rip + rows + VEC_ptr]
+    cmp [rax + rcx*8], r15
+    je 81f
+    inc rcx
+    jmp 8b
+81: mov [rip + exp_cursor], ecx
+    call reveal_cursor
+9:  EPILOGUE
+
+reveal_cursor:
+    M ecx, MI_ROW
+    mov eax, [rip + exp_cursor]
+    imul eax, ecx
+    cmp eax, [rip + exp_scroll]
+    jge 1f
+    mov [rip + exp_scroll], eax
+    ret
+1:  add eax, ecx
+    mov edx, [rip + exp_rect + 12]
+    sub edx, [rip + g_mt + 4*MI_40]
+    sub eax, edx
+    cmp eax, [rip + exp_scroll]
+    jle 2f
+    mov [rip + exp_scroll], eax
+2:  ret
+
+# explorer_draw(x, y, w, h)
+FN explorer_draw
+    PROLOGUE 64
+    mov [rsp], edi
+    mov [rsp + 4], esi
+    mov [rsp + 8], edx
+    mov [rsp + 12], ecx
+    mov [rip + exp_rect], edi
+    mov [rip + exp_rect + 4], esi
+    mov [rip + exp_rect + 8], edx
+    mov [rip + exp_rect + 12], ecx
+    cmp dword ptr [rip + g_exp_reveal], 0
+    je 1f
+    mov dword ptr [rip + g_exp_reveal], 0
+    call explorer_reveal
+1:  mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 12]
+    COLOR r8d, T_PANEL
+    call gfx_fill
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 12]
+    call gfx_clip_push
+    # header
+    M r15d, MI_40
+    # the project's name, the button of its menu, in the room the three buttons leave
+    mov edi, [rsp]
+    add edi, [rip + g_mt + 4*MI_6]
+    mov esi, [rsp + 4]
+    mov edx, r15d
+    mov ecx, [rsp + 8]
+    M eax, MI_28
+    lea eax, [rax + rax*2]
+    sub ecx, eax
+    sub ecx, [rip + g_mt + 4*MI_20]
+    call project_btn
+    M r12d, MI_28
+    mov esi, [rsp]
+    add esi, [rsp + 8]
+    sub esi, r12d
+    sub esi, [rip + g_mt + 4*MI_12]
+    mov [rsp + 16], esi
+    mov edi, ID_EXP_REFRESH
+    mov edx, r15d
+    sub edx, r12d
+    sar edx, 1
+    add edx, [rsp + 4]
+    mov ecx, r12d
+    mov r8d, r12d
+    mov r9d, IC_REFRESH
+    call ui_icon_btn
+    mov r8d, eax
+    mov edi, ID_EXP_REFRESH
+    mov esi, [rsp + 16]
+    mov edx, [rsp + 4]
+    add edx, r15d
+    mov ecx, r12d
+    call tip_note               # keeps the button flags in eax
+    test eax, UB_CLICK
+    jz 1f
+    call explorer_refresh
+1:  mov esi, [rsp + 16]
+    sub esi, r12d
+    mov edi, ID_EXP_NEW_FOLDER
+    mov edx, r15d
+    sub edx, r12d
+    sar edx, 1
+    add edx, [rsp + 4]
+    mov ecx, r12d
+    mov r8d, r12d
+    mov r9d, IC_FOLDER_PLUS
+    call ui_icon_btn
+    mov r8d, eax
+    mov edi, ID_EXP_NEW_FOLDER
+    mov esi, [rsp + 16]
+    sub esi, r12d
+    mov edx, [rsp + 4]
+    add edx, r15d
+    mov ecx, r12d
+    call tip_note               # keeps the button flags in eax
+    test eax, UB_CLICK
+    jz 11f
+    call cmd_new_folder
+11: mov esi, [rsp + 16]
+    sub esi, r12d
+    sub esi, r12d
+    mov edi, ID_EXP_NEW
+    mov edx, r15d
+    sub edx, r12d
+    sar edx, 1
+    add edx, [rsp + 4]
+    mov ecx, r12d
+    mov r8d, r12d
+    mov r9d, IC_FILE_PLUS
+    call ui_icon_btn
+    mov r8d, eax
+    mov edi, ID_EXP_NEW
+    mov esi, [rsp + 16]
+    sub esi, r12d
+    sub esi, r12d
+    mov edx, [rsp + 4]
+    add edx, r15d
+    mov ecx, r12d
+    call tip_note               # keeps the button flags in eax
+    test eax, UB_CLICK
+    jz 2f
+    call cmd_new_file_prompt
+2:  cmp qword ptr [rip + root], 0
+    jne 3f
+    lea rdi, [rip + g_face_small]
+    mov esi, [rsp]
+    add esi, [rip + g_mt + 4*MI_16]
+    mov edx, [rsp + 4]
+    add edx, r15d
+    M ecx, MI_24
+    lea r8, [rip + .Lno_folder]
+    COLOR r9d, T_MUTED
+    call ui_text_c
+    jmp .Lxd_done
+3:  # a line under the header, a little room, then the list
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    add esi, r15d
+    mov edx, [rsp + 8]
+    M ecx, MI_1
+    COLOR r8d, T_BORDER
+    call gfx_fill
+    M ecx, MI_6
+    add ecx, [rip + g_mt + 4*MI_1]
+    mov eax, [rsp + 4]
+    add eax, r15d
+    add eax, ecx
+    mov [rsp + 20], eax         # list y
+    mov eax, [rsp + 12]
+    sub eax, r15d
+    sub eax, ecx
+    mov [rsp + 24], eax         # list h
+    mov edi, [rsp]
+    mov esi, [rsp + 20]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 24]
+    call gfx_clip_push
+    mov edi, [rsp]
+    mov esi, [rsp + 20]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 24]
+    call ui_in
+    test eax, eax
+    jz 4f
+    mov eax, [rip + g_scroll_y]
+    add [rip + exp_scroll], eax
+4:  # clamp scroll
+    M ebx, MI_ROW
+    mov rax, [rip + rows + VEC_len]
+    imul eax, ebx
+    add eax, [rip + g_mt + 4*MI_16]
+    sub eax, [rsp + 24]
+    jns 41f
+    xor eax, eax
+41: cmp [rip + exp_scroll], eax
+    jle 42f
+    mov [rip + exp_scroll], eax
+42: cmp dword ptr [rip + exp_scroll], 0
+    jge 43f
+    mov dword ptr [rip + exp_scroll], 0
+43: # first row
+    mov eax, [rip + exp_scroll]
+    xor edx, edx
+    div ebx
+    mov r12d, eax               # row index
+    imul eax, ebx
+    mov ecx, [rsp + 20]
+    sub ecx, [rip + exp_scroll]
+    add ecx, eax
+    mov r13d, ecx               # row y
+.Lxd_row:
+    mov edi, r12d
+    call row_node
+    test rax, rax
+    jz .Lxd_rows_done
+    mov r14, rax
+    mov eax, [rsp + 20]
+    add eax, [rsp + 24]
+    cmp r13d, eax
+    jge .Lxd_rows_done
+    # interaction
+    lea edi, [r12 + ID_EXP_ROW]
+    mov esi, [rsp]
+    mov edx, r13d
+    mov ecx, [rsp + 8]
+    mov r8d, ebx
+    call ui_btn
+    mov [rsp + 28], eax
+    test eax, UB_PRESS
+    jz 44f
+    mov [rip + exp_cursor], r12d
+    mov dword ptr [rip + g_focus], FOCUS_EXPLORER
+    cmp dword ptr [r14 + N_dir], 0
+    je 5f                       # a file opens when it is let go: it may be dragged onto a pane
+    mov rdi, r14
+    call activate
+    jmp 5f
+44: cmp dword ptr [r14 + N_dir], 0
+    jne 5f
+    test dword ptr [rsp + 28], UB_CLICK
+    jz 45f
+    cmp dword ptr [rip + g_drag_on], 0
+    jne 5f
+    mov rdi, r14
+    call activate
+    mov dword ptr [rip + g_focus], FOCUS_EDITOR
+    jmp 5f
+45: test dword ptr [rsp + 28], UB_HELD
+    jz 5f
+    cmp dword ptr [rip + g_drag_on], 0
+    jne 5f
+    # held and moved away from the press: the file is dragged
+    mov eax, [rip + g_mx]
+    sub eax, [rip + g_press_x]
+    cdq
+    xor eax, edx
+    sub eax, edx
+    mov ecx, eax
+    mov eax, [rip + g_my]
+    sub eax, [rip + last_press_y]
+    cdq
+    xor eax, edx
+    sub eax, edx
+    add eax, ecx
+    cmp eax, [rip + g_mt + 4*MI_8]
+    jle 5f
+    mov rdi, [r14 + N_path]
+    call pane_drag_begin
+5:  test dword ptr [rsp + 28], UB_RPRESS
+    jz 51f
+    mov [rip + exp_cursor], r12d
+    mov rdi, r14
+    call select_target
+    # files with changes: "Open Changes" too
+    lea rax, [rip + menu_dir]
+    push rax
+    push rax
+    cmp dword ptr [r14 + N_dir], 0
+    jne 50f
+    lea rax, [rip + menu_items]
+    mov [rsp], rax
+    mov rdi, [r14 + N_path]
+    call git_status_of
+    test eax, eax
+    jz 50f
+    lea rax, [rip + menu_items_git]
+    mov [rsp], rax
+50: pop rdi
+    pop rax
+    mov esi, [rip + g_mx]
+    mov edx, [rip + g_my]
+    call ctx_menu_open
+51: # background: active document, keyboard cursor, hover; a wider margin at the right
+    M eax, MI_6
+    mov edi, [rsp]
+    add edi, eax
+    mov esi, r13d
+    mov edx, [rsp + 8]
+    sub edx, eax
+    sub edx, [rip + g_mt + 4*MI_12]
+    mov ecx, ebx
+    M r8d, MI_RADIUS
+    mov rax, [rip + g_file]
+    test rax, rax
+    jz 52f
+    mov rax, [rax + DOC_path]
+    test rax, rax
+    jz 52f
+    push rdi
+    push rsi
+    push rdx
+    push rcx
+    push r8
+    push r8
+    mov rdi, rax
+    mov rsi, [r14 + N_path]
+    call strcmp_eq
+    pop r8
+    pop r8
+    pop rcx
+    pop rdx
+    pop rsi
+    pop rdi
+    test eax, eax
+    jz 52f
+    COLOR r9d, T_ACTIVE
+    call gfx_round_rect
+    jmp 54f
+52: test dword ptr [rsp + 28], UB_HOVER
+    jz 53f
+    COLOR r9d, T_HOVER
+    call gfx_round_rect
+    jmp 54f
+53: cmp dword ptr [rip + g_focus], FOCUS_EXPLORER
+    jne 54f
+    cmp r12d, [rip + exp_cursor]
+    jne 54f
+    COLOR r9d, T_HOVER          # the keyboard's row: filled as a hovered one, without a frame
+    call gfx_round_rect
+54: # indent + chevron + icon + name
+    mov eax, [r14 + N_depth]
+    imul eax, [rip + g_mt + 4*MI_12]
+    add eax, [rsp]
+    add eax, [rip + g_mt + 4*MI_14]
+    mov r15d, eax
+    M ecx, MI_16
+    cmp dword ptr [r14 + N_dir], 0
+    je 55f
+    mov edi, IC_CHEV_R
+    cmp dword ptr [r14 + N_open], 0
+    je 551f
+    mov edi, IC_CHEV_D
+551:mov esi, r15d
+    mov edx, ebx
+    sub edx, ecx
+    sar edx, 1
+    add edx, r13d
+    mov r8d, ecx
+    shr ecx, 0
+    mov ecx, r8d
+    COLOR r8d, T_MUTED
+    call icon_draw
+55: add r15d, [rip + g_mt + 4*MI_16]
+    add r15d, [rip + g_mt + 4*MI_2]
+    M ecx, MI_ICON
+    mov edi, IC_FOLDER
+    COLOR r8d, T_ACCENT
+    cmp dword ptr [r14 + N_dir], 0
+    jne 57f
+    # a file: the icon of its name and type, looked up once
+    mov eax, [r14 + N_icon]
+    test eax, eax
+    jnz 56f
+    mov rdi, [r14 + N_name]
+    push rcx
+    call file_icon
+    pop rcx
+    shl edx, 8
+    or eax, edx
+    or eax, 0x80000000
+    mov [r14 + N_icon], eax
+56: mov edi, eax
+    and edi, 0xff
+    shr eax, 8
+    and eax, 0xff
+    lea rdx, [rip + g_theme]
+    mov r8d, [rdx + rax*4]
+57: mov esi, r15d
+    mov edx, ebx
+    sub edx, ecx
+    sar edx, 1
+    add edx, r13d
+    call icon_draw
+    add r15d, [rip + g_mt + 4*MI_24]
+    add r15d, [rip + g_mt + 4*MI_2]
+    # git: name in the status color, the letter at the right for files
+    mov rdi, [r14 + N_path]
+    call git_status_of
+    mov [rsp + 32], eax
+    mov [rsp + 36], edx
+    COLOR eax, T_PANEL_FG
+    mov edi, [rsp + 32]
+    test edi, edi
+    jz 58f
+    call git_code_color
+58: mov [rsp + 40], eax
+    mov rdi, [r14 + N_name]
+    call strlen
+    mov r9, rax
+    lea rdi, [rip + g_face_ui]
+    mov esi, r15d
+    mov edx, r13d
+    mov ecx, ebx
+    mov r8, [r14 + N_name]
+    # names cut with an ellipsis before the status letter
+    mov r10d, [rsp]
+    add r10d, [rsp + 8]
+    sub r10d, [rip + g_mt + 4*MI_32]
+    sub r10d, [rip + g_mt + 4*MI_4]
+    sub r10d, r15d
+    mov eax, [rsp + 40]
+    push r10
+    push rax
+    call ui_text_v_fit
+    add rsp, 16
+    cmp dword ptr [rsp + 32], 0
+    je 59f
+    cmp dword ptr [r14 + N_dir], 0
+    jne 59f
+    mov eax, [rsp + 32]
+    mov [rsp + 44], eax         # letter, zero-terminated
+    lea rdi, [rip + g_face_small]
+    mov esi, [rsp]
+    add esi, [rsp + 8]
+    sub esi, [rip + g_mt + 4*MI_32]
+    mov edx, r13d
+    mov ecx, ebx
+    lea r8, [rsp + 44]
+    mov r9d, [rsp + 40]
+    call ui_text_c
+59:
+    add r13d, ebx
+    inc r12d
+    jmp .Lxd_row
+.Lxd_rows_done:
+    # the empty space below the rows: the project folder's menu, without Rename and Delete
+    mov edi, ID_EXP_EMPTY
+    mov esi, [rsp]
+    mov edx, r13d
+    mov ecx, [rsp + 8]
+    mov r8d, [rsp + 20]
+    add r8d, [rsp + 24]
+    sub r8d, r13d
+    call ui_btn
+    test eax, UB_RPRESS
+    jz 1f
+    call root_menu_open
+1:  call gfx_clip_pop
+.Lxd_done:
+    call gfx_clip_pop
+    EPILOGUE
+
+FN cmd_new_file_prompt
+    lea rdi, [rip + .Lnew_file]
+    mov esi, PROMPT_NEW_FILE
+    jmp prompt_open
+
+# root_menu_open(): the menu of the project folder itself. New files and folders go in it; the rename
+# and delete target is left alone, so a later Rename or Delete never takes the whole project.
+root_menu_open:
+    PROLOGUE
+    mov rsi, [rip + root]
+    test rsi, rsi
+    jz 9f
+    mov rsi, [rsi + N_path]
+    lea rdi, [rip + g_explorer_dir]
+    call cstr_copy
+    lea rdi, [rip + menu_items_root]
+    mov esi, [rip + g_mx]
+    mov edx, [rip + g_my]
+    call ctx_menu_open
+9:  EPILOGUE
+
+# explorer_menu_draw(): context menu overlay. An item without a handler is a separating line; with
+# g_menu_keys set the items show their commands' shortcuts on the right.
+FN explorer_menu_draw
+    PROLOGUE 48
+    cmp dword ptr [rip + menu_open], 0
+    je .Lmd_ret
+    M ebx, MI_28                # item h
+    mov r15, [rip + menu_list]
+    # size: the widest item, the items' heights
+    mov edi, 180
+    call sc
+    mov r12d, eax               # w
+    M r14d, MI_12               # h
+    xor r13d, r13d
+.Lmd_size:
+    mov eax, r13d
+    shl eax, 4
+    cmp qword ptr [r15 + rax], 0
+    je .Lmd_sized
+    cmp qword ptr [r15 + rax + 8], 0
+    jne 1f
+    add r14d, [rip + g_mt + 4*MI_8]
+    inc r13d
+    jmp .Lmd_size
+1:  add r14d, ebx
+    mov edi, r13d
+    call item_width
+    add eax, [rip + g_mt + 4*MI_32]
+    cmp eax, r12d
+    cmovg r12d, eax
+    inc r13d
+    jmp .Lmd_size
+.Lmd_sized:
+    mov eax, [rip + g_cv + CV_w]
+    sub eax, [rip + g_mt + 4*MI_16]
+    cmp r12d, eax
+    cmovg r12d, eax
+    mov eax, [rip + menu_x]
+    mov ecx, [rip + g_cv + CV_w]
+    sub ecx, r12d
+    cmp eax, ecx
+    cmovg eax, ecx
+    mov [rsp], eax
+    mov eax, [rip + menu_y]
+    mov ecx, [rip + g_cv + CV_h]
+    sub ecx, r14d
+    cmp eax, ecx
+    cmovg eax, ecx
+    mov [rsp + 4], eax
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, r12d
+    mov ecx, r14d
+    call ui_card
+    # click outside closes (after this frame's clicks were handled), but not the press that opened
+    # the menu: a right press, or a tap whose release opened it in the same frame
+    test dword ptr [rip + g_pressed], (1 << BTN_LEFT) | (1 << BTN_RIGHT)
+    jz 3f
+    cmp dword ptr [rip + menu_press], 0
+    jne 3f
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, r12d
+    mov ecx, r14d
+    call ui_in
+    test eax, eax
+    jnz 3f
+    mov dword ptr [rip + menu_open], 0
+    mov dword ptr [rip + g_dirty], 1    # a frame without it
+    jmp .Lmd_ret
+3:  mov eax, [rsp + 4]
+    add eax, [rip + g_mt + 4*MI_6]
+    mov [rsp + 8], eax          # item y
+    xor ecx, ecx
+    mov [rsp + 12], ecx         # item index
+    mov dword ptr [rsp + 32], -1    # the item clicked in this frame
+.Lmd_item:
+    mov ecx, [rsp + 12]
+    shl ecx, 4
+    cmp qword ptr [r15 + rcx], 0
+    je .Lmd_done
+    cmp qword ptr [r15 + rcx + 8], 0
+    jne 31f
+    # a line across the middle
+    M esi, MI_8
+    shr esi, 1
+    add esi, [rsp + 8]
+    mov edi, [rsp]
+    add edi, [rip + g_mt + 4*MI_12]
+    mov edx, r12d
+    sub edx, [rip + g_mt + 4*MI_24]
+    M ecx, MI_1
+    COLOR r8d, T_BORDER
+    call gfx_fill
+    mov eax, [rip + g_mt + 4*MI_8]
+    add [rsp + 8], eax
+    inc dword ptr [rsp + 12]
+    jmp .Lmd_item
+31: mov edi, [rsp + 12]
+    add edi, ID_MENU
+    M eax, MI_6
+    mov esi, [rsp]
+    add esi, eax
+    mov edx, [rsp + 8]
+    mov ecx, r12d
+    sub ecx, eax
+    sub ecx, eax
+    mov r8d, ebx
+    call ui_btn
+    mov [rsp + 16], eax
+    test eax, UB_HOVER
+    jz 4f
+    M eax, MI_6
+    mov edi, [rsp]
+    add edi, eax
+    mov esi, [rsp + 8]
+    mov edx, r12d
+    sub edx, eax
+    sub edx, eax
+    mov ecx, ebx
+    M r8d, MI_RADIUS
+    COLOR r9d, T_HOVER
+    call gfx_round_rect
+4:  # the shortcut, right-aligned
+    mov dword ptr [rsp + 20], 0 # its width and a gap
+    mov edi, [rsp + 12]
+    call item_keys
+    test rax, rax
+    jz 41f
+    mov [rsp + 24], rax
+    mov rdi, rax
+    call strlen
+    lea rdi, [rip + g_face_mini]
+    mov rsi, [rsp + 24]
+    mov rdx, rax
+    call text_width
+    mov [rsp + 20], eax
+    lea rdi, [rip + g_face_mini]
+    mov esi, [rsp]
+    add esi, r12d
+    sub esi, [rip + g_mt + 4*MI_16]
+    sub esi, eax
+    mov edx, [rsp + 8]
+    mov ecx, ebx
+    mov r8, [rsp + 24]
+    COLOR r9d, T_MUTED
+    call ui_text_c
+    mov eax, [rip + g_mt + 4*MI_16]
+    add [rsp + 20], eax
+41: # the label, clipped before the shortcut
+    mov edi, [rsp]
+    add edi, [rip + g_mt + 4*MI_16]
+    mov esi, [rsp + 8]
+    mov edx, r12d
+    sub edx, [rip + g_mt + 4*MI_32]
+    sub edx, [rsp + 20]
+    mov ecx, ebx
+    call gfx_clip_push
+    mov ecx, [rsp + 12]
+    shl ecx, 4
+    mov r8, [r15 + rcx]
+    lea rdi, [rip + g_face_small]
+    mov esi, [rsp]
+    add esi, [rip + g_mt + 4*MI_16]
+    mov edx, [rsp + 8]
+    mov ecx, ebx
+    COLOR r9d, T_FG
+    call ui_text_c
+    call gfx_clip_pop
+    test dword ptr [rsp + 16], UB_CLICK
+    jz 5f
+    mov ecx, [rsp + 12]
+    mov [rsp + 32], ecx
+5:  add [rsp + 8], ebx
+    inc dword ptr [rsp + 12]
+    jmp .Lmd_item
+.Lmd_done:
+    # A clicked item's command runs once the whole menu is drawn (this frame is shown whole, not cut
+    # after that item), and the next frame, without the menu, follows at once.
+    mov ecx, [rsp + 32]
+    test ecx, ecx
+    js .Lmd_ret
+    mov dword ptr [rip + menu_open], 0
+    mov dword ptr [rip + g_dirty], 1
+    mov [rip + g_menu_index], ecx
+    shl ecx, 4
+    mov rax, [r15 + rcx + 8]
+    mov dword ptr [rip + g_menu_cmd], 1
+    call rax
+    mov dword ptr [rip + g_menu_cmd], 0
+.Lmd_ret:
+    mov dword ptr [rip + menu_press], 0
+    EPILOGUE
+
+# item_width(i) -> width of the menu item's label, with its shortcut and the gap before it
+item_width:
+    PROLOGUE
+    mov r12d, edi
+    mov rax, [rip + menu_list]
+    mov ecx, r12d
+    shl ecx, 4
+    mov rbx, [rax + rcx]
+    mov rdi, rbx
+    call strlen
+    lea rdi, [rip + g_face_small]
+    mov rsi, rbx
+    mov rdx, rax
+    call text_width
+    mov r13d, eax
+    mov edi, r12d
+    call item_keys
+    test rax, rax
+    jz 1f
+    mov rbx, rax
+    mov rdi, rax
+    call strlen
+    lea rdi, [rip + g_face_mini]
+    mov rsi, rbx
+    mov rdx, rax
+    call text_width
+    add r13d, eax
+    add r13d, [rip + g_mt + 4*MI_32]
+1:  mov eax, r13d
+    EPILOGUE
+
+# item_keys(i) -> the shortcut of the command the menu item runs (with g_menu_keys), or 0
+item_keys:
+    xor eax, eax
+    cmp dword ptr [rip + g_menu_keys], 0
+    je 1f
+    mov rax, [rip + menu_list]
+    shl edi, 4
+    mov rdi, [rax + rdi + 8]
+    call cmd_for_fn
+    test rax, rax
+    jz 1f
+    mov rdi, rax
+    jmp keys_for
+1:  ret
+
+# open_changes(): diff of the file the menu is for
+open_changes:
+    push rbx
+    lea rdi, [rip + g_explorer_target]
+    call git_rel
+    test rax, rax
+    jz 1f
+    xor edi, edi
+    mov rsi, rax
+    call git_open_diff
+1:  pop rbx
+    ret
+
+# the menu's own items: the file opens; a terminal starts in the folder; the path as it is under the
+# project's folder goes to the clipboard
+menu_open_file:
+    lea rdi, [rip + g_explorer_target]
+    push rax
+    call app_open_file
+    mov dword ptr [rip + g_focus], FOCUS_EDITOR
+    pop rax
+    ret
+menu_terminal:
+    lea rax, [rip + g_explorer_target]
+    mov [rip + g_term_dir], rax
+    jmp cmd_new_terminal
+copy_rel_path:
+    push rbx
+    push r12
+    push r13
+    lea rbx, [rip + g_explorer_target]
+    mov r12, [rip + g_project]
+    test r12, r12
+    jz 2f
+    mov rdi, r12
+    call strlen
+    mov r13, rax
+    mov rdi, rbx
+    call strlen
+    cmp rax, r13
+    jbe 2f
+    mov rdi, rbx
+    mov rsi, rax
+    mov rdx, r12
+    mov rcx, r13
+    call str_starts
+    test eax, eax
+    jz 2f
+    cmp byte ptr [rbx + r13], '/'
+    jne 2f
+    lea rbx, [rbx + r13 + 1]
+2:  mov rdi, rbx
+    call strlen
+    mov rdi, rbx
+    mov rsi, rax
+    PCALL P_clip_set
+    pop r13
+    pop r12
+    pop rbx
+    ret
+
+cmd_copy_path:
+    lea rdi, [rip + g_explorer_target]
+    push rdi
+    call strlen
+    pop rdi
+    mov rsi, rax
+    PCALL P_clip_set
+    ret
+
+# the folder the tree shows, for its own menu
+root_path:
+    mov rdi, [rip + root]
+    test rdi, rdi
+    jz 1f
+    mov rdi, [rdi + N_path]
+1:  ret
+root_terminal:
+    push rax
+    call root_path
+    mov [rip + g_term_dir], rdi
+    pop rax
+    jmp cmd_new_terminal
+copy_project_path:
+    call root_path
+    test rdi, rdi
+    jz 1f
+    push rdi
+    call strlen
+    pop rdi
+    mov rsi, rax
+    PCALL P_clip_set
+1:  ret
+
+reveal_project:
+    call root_path
+    test rdi, rdi
+    jz 1f
+    jmp desktop_reveal
+1:  ret
+
+FN cmd_reveal_file
+    push rbx
+    call file_target
+    test eax, eax
+    jz 1f
+    lea rdi, [rip + g_explorer_target]
+    call desktop_reveal
+1:  pop rbx
+    ret
+
+FN explorer_menu_open
+    mov eax, [rip + menu_open]
+    ret
+
+# ctx_menu_open(items, x, y): items are (label, handler) pairs ending with 0
+FN ctx_menu_open
+    mov [rip + menu_list], rdi
+    mov [rip + menu_x], esi
+    mov [rip + menu_y], edx
+    mov eax, [rip + g_pressed]
+    and eax, (1 << BTN_LEFT) | (1 << BTN_RIGHT)
+    mov [rip + menu_press], eax
+    mov dword ptr [rip + menu_open], 1
+    mov dword ptr [rip + g_menu_keys], 0
+    mov dword ptr [rip + g_dirty], 1
+    ret
+
+FN ctx_menu_close
+    mov dword ptr [rip + menu_open], 0
+    mov dword ptr [rip + g_dirty], 1
+    ret
+
+# ctx_menu_list() -> the items of the open menu, or 0
+FN ctx_menu_list
+    xor eax, eax
+    cmp dword ptr [rip + menu_open], 0
+    je 1f
+    mov rax, [rip + menu_list]
+1:  ret
+
+# menu_print(sb): the open menu's labels, a line each ("-" for a separating line), or "none"
+FN menu_print
+    PROLOGUE
+    mov rbx, rdi
+    cmp dword ptr [rip + menu_open], 0
+    jne 1f
+    lea rsi, [rip + .Lp_none]
+    call sb_push_cstr
+    EPILOGUE
+1:  mov r12, [rip + menu_list]
+2:  mov r13, [r12]
+    test r13, r13
+    jz 9f
+    cmp qword ptr [r12 + 8], 0
+    jne 3f
+    lea r13, [rip + .Lp_line]
+3:  mov rdi, rbx
+    mov rsi, r13
+    call sb_push_cstr
+    mov rdi, rbx
+    mov esi, 10
+    call sb_push_byte
+    add r12, 16
+    jmp 2b
+9:  EPILOGUE
+
+.section .rodata
+.Lheader: .asciz "EXPLORER"
+.ifdef MACOS
+.Lno_folder: .asciz "No folder open (\342\207\247\342\214\230O)"
+.else
+.Lno_folder: .asciz "No folder open (Ctrl+Shift+O)"
+.endif
+.Lnew_file: .asciz "New file"
+.Lnew_folder: .asciz "New folder"
+.Lrename: .asciz "Rename"
+.Ldelete_a: .asciz "Delete "
+.Ldelete_b: .asciz "?"
+.Ldelete_text: .asciz "This permanently deletes the item and any folder contents."
+.Lp_none: .asciz "none\n"
+.Lp_line: .asciz "-"
+.Lnot_deleted: .asciz "Could not delete. Check permissions and whether files are in use."
+.Lm1: .asciz "New File"
+.Lm_open: .asciz "Open"
+.Lm_term: .asciz "Open in Terminal"
+.Lm_rel: .asciz "Copy Relative Path"
+.Lm_refresh: .asciz "Refresh"
+.Lm_line: .asciz "-"
+.Lm2: .asciz "New Folder"
+.Lm3: .asciz "Rename"
+.Lm4: .asciz "Delete"
+.Lm5: .asciz "Copy Path"
+.Lm6: .asciz "Open Changes"
+.ifdef MACOS
+.Lm_reveal: .asciz "Show in Finder"
+.else
+.ifdef WINDOWS
+.Lm_reveal: .asciz "Show in Explorer"
+.else
+.Lm_reveal: .asciz "Open in File Manager"
+.endif
+.endif
+.p2align 3
+# the menus of a file, a folder and the project folder (the empty space under the rows), as Terax
+# has them, with Rename kept; a label without a handler is a separating line
+menu_items:
+    .quad .Lm_open, menu_open_file, .Lm_reveal, cmd_reveal_file, .Lm_line, 0
+    .quad .Lm1, cmd_new_file_prompt, .Lm2, cmd_new_folder, .Lm_line, 0
+    .quad .Lm3, cmd_rename_file, .Lm5, cmd_copy_path, .Lm_rel, copy_rel_path, .Lm_line, 0
+    .quad .Lm4, cmd_delete_file, 0, 0
+menu_items_git:
+    .quad .Lm_open, menu_open_file, .Lm6, open_changes, .Lm_reveal, cmd_reveal_file, .Lm_line, 0
+    .quad .Lm1, cmd_new_file_prompt, .Lm2, cmd_new_folder, .Lm_line, 0
+    .quad .Lm3, cmd_rename_file, .Lm5, cmd_copy_path, .Lm_rel, copy_rel_path, .Lm_line, 0
+    .quad .Lm4, cmd_delete_file, 0, 0
+menu_dir:
+    .quad .Lm_term, menu_terminal, .Lm_reveal, cmd_reveal_file, .Lm_line, 0
+    .quad .Lm1, cmd_new_file_prompt, .Lm2, cmd_new_folder, .Lm_line, 0
+    .quad .Lm3, cmd_rename_file, .Lm5, cmd_copy_path, .Lm_rel, copy_rel_path, .Lm_line, 0
+    .quad .Lm4, cmd_delete_file, 0, 0
+menu_items_root:
+    .quad .Lm_term, root_terminal, .Lm_reveal, reveal_project, .Lm_line, 0
+    .quad .Lm1, cmd_new_file_prompt, .Lm2, cmd_new_folder, .Lm_line, 0
+    .quad .Lm5, copy_project_path, .Lm_refresh, explorer_refresh, 0, 0

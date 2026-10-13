@@ -1,0 +1,65 @@
+name: windows
+
+on:
+  push:
+    branches: [main, 'feat/windows*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/cache/restore@v4
+        id: llvm-cache
+        with:
+          path: build/llvm
+          key: llvm-windows-x64-23.1.2
+      - name: LLVM
+        shell: pwsh
+        timeout-minutes: 20
+        run: tools/setup-windows-llvm.ps1
+      - uses: actions/cache/save@v4
+        if: steps.llvm-cache.outputs.cache-hit != 'true'
+        with:
+          path: build/llvm
+          key: llvm-windows-x64-23.1.2
+      - name: Build
+        id: build
+        run: python tools/build-windows.py test
+      - name: Native tests
+        env:
+          RAFTAAR_TEST_ARTIFACTS: build/stabilization/windows
+        run: python tests/windows.py
+      - name: System dark mode
+        env:
+          RAFTAAR_TEST_SYSTEM_APPEARANCE: '1'
+        run: python tests/windows-appearance.py
+      - name: Package
+        id: package
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python tools/package-windows.py
+      - name: Installer tests
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
+        run: python tests/windows-install.py
+      - name: Updater tests
+        if: ${{ !cancelled() && steps.package.outcome == 'success' }}
+        run: python tests/windows-update.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-x86_64
+          path: build/windows/raftaar-*-windows-x86_64.zip
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-stabilization
+          path: build/stabilization/

@@ -1,0 +1,10 @@
+name = PureScript
+files = *.purs
+icon = purescript white
+block = {- -}
+comment = --
+mstring = """
+string = " \
+captypes = yes
+keywords = ado case class data derive do else foreign forall if import in infix infixl infixr instance let module newtype of then type where
+constants = true false Nothing Just

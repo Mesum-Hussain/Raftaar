@@ -1,0 +1,6 @@
+name = Crontab
+files = crontab *.cron *.crontab
+icon = clock yellow
+comment = #
+ident = @
+keywords = @reboot @yearly @annually @monthly @weekly @daily @midnight @hourly

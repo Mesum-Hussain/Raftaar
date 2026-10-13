@@ -1,0 +1,8 @@
+-- half adder
+/* sum and carry
+   outputs */
+entity half_adder is
+    generic (WIDTH : integer := 8);
+    port (a, b : in std_logic; sum, carry : out std_logic);
+end entity half_adder;
+architecture rtl of half_adder is begin sum <= a xor b; end architecture;

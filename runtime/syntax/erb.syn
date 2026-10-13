@@ -1,0 +1,13 @@
+name = ERB
+files = *.erb *.rhtml
+icon = html_erb red
+block = <!-- -->
+string = "
+string = '
+markup = yes
+functions = no
+numbers = no
+operators = no
+region = <%# %> comment multiline
+region = <%= %> preproc multiline
+region = <% %> preproc multiline

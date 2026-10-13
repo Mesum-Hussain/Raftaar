@@ -1,0 +1,14 @@
+name = Shell
+files = *.sh *.bash *.zsh *.ksh .bashrc .bash_profile .bash_aliases .zshrc .zprofile .zshenv .profile PKGBUILD APKBUILD *.ebuild
+icon = shell green
+first_line = sh bash zsh ksh dash
+comment = #
+string = " \
+string = '
+string = ` \
+ident = -
+prefix = $v
+keywords = if then else elif fi case esac for select while until do done in function time coproc return exit break continue local export readonly declare typeset unset shift source alias set trap eval exec
+builtins = echo printf read cd pwd test true false kill wait jobs bg fg command type which grep sed awk find xargs cat head tail sort uniq cut tr wc ls cp mv rm mkdir rmdir touch chmod chown ln tar curl wget git sudo
+functions = no
+operators = no

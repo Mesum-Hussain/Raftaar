@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "getting-started",
+    "title": "Getting started",
+    "description": "Install raftaar, open a project, and find your way around.",
+    "image": "hero",
+    "alt": "raftaar with a project open in the editor",
+    "sections": [
+      [
+        "install",
+        "Install raftaar"
+      ],
+      [
+        "open",
+        "Open a project"
+      ],
+      [
+        "find-your-way",
+        "Find your way"
+      ],
+      [
+        "updates",
+        "Stay up to date"
+      ]
+    ]
+  },
+  {
+    "slug": "editing",
+    "title": "Editing",
+    "description": "Jump between files, search your project, and make the edit.",
+    "image": "quickopen",
+    "alt": "raftaar’s fuzzy file finder above an open document",
+    "sections": [
+      [
+        "navigate",
+        "Move through your code"
+      ],
+      [
+        "search",
+        "Find and replace"
+      ],
+      [
+        "shortcuts",
+        "Everyday edits"
+      ],
+      [
+        "vim",
+        "Vim and long lines"
+      ]
+    ]
+  },
+  {
+    "slug": "terminal",
+    "title": "Terminal",
+    "description": "Run commands, switch terminals, and jump from output to source.",
+    "image": "terminal",
+    "alt": "The built-in terminal below the raftaar editor",
+    "sections": [
+      [
+        "open",
+        "Open a terminal"
+      ],
+      [
+        "keys",
+        "Keys and clipboard"
+      ],
+      [
+        "links",
+        "From output to source"
+      ],
+      [
+        "configure",
+        "Make it yours"
+      ]
+    ]
+  },
+  {
+    "slug": "agents",
+    "title": "Agents",
+    "description": "Follow Claude Code and Codex sessions across your project and worktrees.",
+    "image": "agents",
+    "alt": "The raftaar agents panel showing project sessions",
+    "sections": [
+      [
+        "start",
+        "Bring your agent"
+      ],
+      [
+        "sessions",
+        "Follow your sessions"
+      ],
+      [
+        "worktrees",
+        "Across worktrees"
+      ],
+      [
+        "changes",
+        "Review the changes"
+      ]
+    ]
+  },
+  {
+    "slug": "git",
+    "title": "Git",
+    "description": "Review diffs, stage changes, and follow the history without leaving raftaar.",
+    "image": "git",
+    "alt": "raftaar’s Git history with a branch graph and changed files",
+    "sections": [
+      [
+        "changes",
+        "See what changed"
+      ],
+      [
+        "commit",
+        "Stage and commit"
+      ],
+      [
+        "sync",
+        "Work with remotes"
+      ],
+      [
+        "messages",
+        "Optional message drafts"
+      ]
+    ]
+  },
+  {
+    "slug": "customization",
+    "title": "Customization",
+    "description": "Choose a theme, adjust the feel, and put your shortcuts where you want them.",
+    "image": "settings",
+    "alt": "raftaar settings for appearance and editor behavior",
+    "sections": [
+      [
+        "settings",
+        "Start with Settings"
+      ],
+      [
+        "themes",
+        "Choose your colors"
+      ],
+      [
+        "config",
+        "The config file"
+      ],
+      [
+        "keys",
+        "Your shortcuts"
+      ]
+    ]
+  }
+]

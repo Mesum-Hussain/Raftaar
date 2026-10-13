@@ -1,0 +1,38 @@
+len=0 lines=1 [] starts=0, dirty=0 cur=0
+len=5 lines=1 [hello] starts=0, dirty=1 cur=0
+len=11 lines=2 [hello
+world] starts=0,6, dirty=1 cur=0
+len=17 lines=2 [hello there
+world] starts=0,12, dirty=1 cur=0
+len=21 lines=4 [a
+b
+hello there
+world] starts=0,2,4,16, dirty=1 cur=0
+len=18 lines=2 [ahello there
+world] starts=0,13, dirty=1 cur=0
+len=12 lines=2 [aheere
+world] starts=0,7, dirty=1 cur=0
+len=18 lines=2 [ahello there
+world] starts=0,13, dirty=1 cur=0
+len=21 lines=4 [a
+b
+hello there
+world] starts=0,2,4,16, dirty=1 cur=0
+len=18 lines=2 [ahello there
+world] starts=0,13, dirty=1 cur=1
+len=19 lines=2 [xahello there
+world] starts=0,14, dirty=1 cur=2
+len=20 lines=2 [xyahello there
+world] starts=0,15, dirty=1 cur=3
+len=21 lines=2 [xyzahello there
+world] starts=0,16, dirty=1 cur=4
+len=18 lines=2 [ahello there
+world] starts=0,13, dirty=1 cur=1
+6
+len=19 lines=3 [ahello there
+world
+] starts=0,13,19, dirty=0 cur=1
+len=19 lines=3 [ahello there
+world
+] starts=0,13,19, dirty=0 cur=0
+1

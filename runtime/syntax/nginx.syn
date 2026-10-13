@@ -1,0 +1,8 @@
+name = Nginx
+files = nginx.conf *.nginx
+icon = config green
+comment = #
+string = "
+string = '
+prefix = $v
+keywords = http events server location listen server_name root index return rewrite proxy_pass include upstream worker_processes worker_connections error_log access_log gzip ssl_certificate ssl_certificate_key try_files if allow deny limit_req limit_conn add_header set client_max_body_size keepalive_timeout autoindex alias resolver map types default_type

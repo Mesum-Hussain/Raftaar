@@ -1,0 +1,11 @@
+name = CSS
+files = *.css *.scss *.sass *.less
+icon = css blue
+comment = //
+block = /* */
+string = " \
+string = ' \
+ident = -
+prefix = @a $v #p
+keywords = important and not only from to
+constants = inherit initial unset revert auto none block inline flex grid absolute relative fixed sticky hidden visible bold normal italic center left right top bottom solid dashed transparent currentColor

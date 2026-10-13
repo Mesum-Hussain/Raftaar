@@ -1,0 +1,56 @@
+name = Last Horizon
+kind = dark
+
+bg                 = #0c0b0c
+fg                 = #fafcfb
+accent             = #b59790
+panel              = #090809
+border             = #060606
+selection          = #584e51
+line_highlight     = #181718
+line_number        = #584e51
+line_number_active = #fafcfb
+cursor             = #e2dddc
+error              = #c38b7b
+warning            = #6b5e73
+success            = #87a9b0
+
+[syntax]
+text        = #fafcfb
+keyword     = #c4d8e2
+type        = #6b5e73
+function    = #b59790
+string      = #87a9b0
+number      = #6b5e73
+comment     = #584e51
+constant    = #6b5e73
+operator    = #fafcfb
+punctuation = #838484
+preproc     = #a5a0b6
+variable    = #fafcfb
+builtin     = #a5a0b6
+attribute   = #a5a0b6
+tag         = #6b5e73
+heading     = #b59790
+inserted    = #87a9b0
+deleted     = #c38b7b
+escape      = #c4d8e2
+link        = #b59790
+
+[terminal]
+black          = #0c0b0c
+red            = #c38b7b
+green          = #87a9b0
+yellow         = #6b5e73
+blue           = #b59790
+magenta        = #c4d8e2
+cyan           = #a5a0b6
+white          = #fafcfb
+bright_black   = #584e51
+bright_red     = #c38b7b
+bright_green   = #87a9b0
+bright_yellow  = #6b5e73
+bright_blue    = #b59790
+bright_magenta = #c4d8e2
+bright_cyan    = #a5a0b6
+bright_white   = #e2dddc

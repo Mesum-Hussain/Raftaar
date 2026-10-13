@@ -1,0 +1,8 @@
+% classic family relations
+/* likes(alice, bob) means
+   alice likes bob */
+likes(alice, bob).
+likes(bob, 'Carl').
+age(alice, 30).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+?- likes(alice, W), write(W), nl.

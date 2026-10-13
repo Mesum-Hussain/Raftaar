@@ -1,0 +1,7 @@
+name = Ninja
+files = *.ninja
+icon = makefile grey
+comment = #
+prefix = $v
+ident = _.
+keywords = rule build default pool subninja include

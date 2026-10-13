@@ -1,0 +1,56 @@
+name = Kanagawa
+kind = dark
+
+bg                 = #1f1f28
+fg                 = #dcd7ba
+accent             = #dcd7ba
+panel              = #17171e
+border             = #111116
+selection          = #363646
+line_highlight     = #2a2a37
+line_number        = #54546d
+line_number_active = #dcd7ba
+cursor             = #dcd7ba
+error              = #c34043
+warning            = #c0a36e
+success            = #76946a
+
+[syntax]
+text        = #dcd7ba
+keyword     = #957fb8
+type        = #7aa89f
+function    = #7e9cd8
+string      = #98bb6c
+number      = #d27e99
+comment     = #727169
+constant    = #ffa066
+operator    = #c0a36e
+punctuation = #9cabca
+preproc     = #e46876
+variable    = #dcd7ba
+builtin     = #7fb4ca
+attribute   = #ffa066
+tag         = #7fb4ca
+heading     = #7e9cd8
+inserted    = #76946a
+deleted     = #c34043
+escape      = #c0a36e
+link        = #7fb4ca
+
+[terminal]
+black          = #1f1f28
+red            = #c34043
+green          = #76946a
+yellow         = #c0a36e
+blue           = #7e9cd8
+magenta        = #957fb8
+cyan           = #6a9589
+white          = #dcd7ba
+bright_black   = #54546d
+bright_red     = #e82424
+bright_green   = #98bb6c
+bright_yellow  = #e6c384
+bright_blue    = #7fb4ca
+bright_magenta = #938aa9
+bright_cyan    = #7aa89f
+bright_white   = #dcd7ba

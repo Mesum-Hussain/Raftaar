@@ -1,0 +1,8 @@
+# Rego policy example
+package example.authz
+default allow := false
+allow if {
+    some role in input.user.roles
+    role == "admin"; input.user.age >= 18
+}
+pattern := `raw text`

@@ -1,0 +1,10 @@
+name = GraphQL
+files = *.graphql *.gql
+icon = graphql pink
+comment = #
+mstring = """ \
+string = " \
+prefix = $v @a
+captypes = yes
+keywords = query mutation subscription fragment on type interface union enum input scalar schema extend implements directive repeatable
+constants = true false null

@@ -1,0 +1,7 @@
+" Vim script sample
+let g:count = 42
+    " indented comment
+if exists('g:count')
+    echo "hello"
+endif
+call Greet('World')

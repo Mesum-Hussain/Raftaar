@@ -1,0 +1,11 @@
+name = Haskell
+files = *.hs *.lhs
+icon = haskell purple
+region = {- -} comment multiline
+comment = --
+string = " \
+captypes = yes
+ident = '
+keywords = case class data default deriving do else family forall foreign hiding if import in infix infixl infixr instance let module newtype of qualified then type where
+constants = True False Nothing Just Left Right
+functions = no

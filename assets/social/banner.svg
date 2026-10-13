@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="500" viewBox="0 0 1500 500">
+  <style>
+    @font-face { font-family: "Iosevka Fixed"; src: url("../fonts/IosevkaFixed-Regular.ttf"); }
+    text { font-family: "Iosevka Fixed", monospace; }
+  </style>
+  <defs>
+    <clipPath id="window"><rect x="860" y="40" width="540" height="421" rx="12"/></clipPath>
+  </defs>
+  <rect width="1500" height="500" fill="#111216"/>
+  <g transform="translate(116 110) scale(1.25)">
+    <rect x="4" y="4" width="56" height="56" rx="12.5" fill="#1c1e24"/>
+    <path d="M25 17.1v29.8M25 17.1l12.25 7.9-12.25 7.9 14 14" fill="none" stroke="#8aa4ff" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="218" y="178" font-size="84" fill="#e4e7ee">raftaar</text>
+  <text x="122" y="250" font-size="27" fill="#a3a9b8">A small and fast code editor written in Assembly.</text>
+  <text x="122" y="294" font-size="20" fill="#8aa4ff">tiny · instant · agents panel built in</text>
+  <image href="window-dark.png" x="860" y="40" width="540" height="421" clip-path="url(#window)"/>
+  <rect x="860.5" y="40.5" width="539" height="420" rx="12" fill="none" stroke="#2c2f39"/>
+</svg>

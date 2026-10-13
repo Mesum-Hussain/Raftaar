@@ -1,0 +1,7 @@
+# Tcl sample
+proc greet {name} {
+    set count 42
+    if {$count > 0} {
+        puts "Hello, $name!"
+    }
+}

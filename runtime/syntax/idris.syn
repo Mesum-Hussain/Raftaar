@@ -1,0 +1,10 @@
+name = Idris
+files = *.idr *.lidr
+icon = code red
+comment = --
+block = {- -}
+string = " \
+captypes = yes
+keywords = module import data record class instance where do case of if then else let in namespace using implicit auto mutual postulate parameters proof private public export total partial constructor infix infixl infixr prefix rewrite with pattern
+types = Nat Int Integer Double Char String Bool List Maybe Either IO Type Void Unit
+constants = True False Nothing Just

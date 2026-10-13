@@ -1,0 +1,8 @@
+// Pascal sample
+{$R+}
+{ block
+  comment }
+var Count: Integer = 42;
+begin
+  WriteLn('Hello, ', Count);
+end.

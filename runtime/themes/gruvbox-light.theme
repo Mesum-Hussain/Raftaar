@@ -1,0 +1,32 @@
+name = Gruvbox Light
+kind = light
+
+bg             = #fbf1c7
+fg             = #3c3836
+accent         = #076678
+panel          = #f2e5bc
+border         = #d5c4a1
+selection      = #ebdbb2
+line_highlight = #f4e8be
+line_number    = #a89984
+cursor         = #3c3836
+error          = #9d0006
+warning        = #b57614
+success        = #79740e
+
+[syntax]
+keyword        = #9d0006
+type           = #b57614
+function       = #427b58
+string         = #79740e
+number         = #8f3f71
+comment        = #928374
+constant       = #8f3f71
+operator       = #af3a03
+punctuation    = #7c6f64
+preproc        = #427b58
+builtin        = #af3a03
+attribute      = #b57614
+tag            = #9d0006
+heading        = #b57614
+escape         = #af3a03

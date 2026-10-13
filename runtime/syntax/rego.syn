@@ -1,0 +1,9 @@
+name = Rego
+files = *.rego
+icon = code grey
+comment = #
+string = " \
+string = `
+keywords = package import default not some every in if contains else with as
+constants = true false null
+builtins = input data count sum sprintf format_int type_name

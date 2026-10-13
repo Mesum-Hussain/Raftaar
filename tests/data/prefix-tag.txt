@@ -1,0 +1,2 @@
+%div.box#main text
+  %p hello

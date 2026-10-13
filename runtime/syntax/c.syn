@@ -1,0 +1,12 @@
+name = C
+files = *.c *.h
+icon = c blue
+comment = //
+block = /* */
+string = " \
+string = ' \
+prefix = #p
+keywords = if else for while do switch case default break continue return goto sizeof typedef struct union enum static extern const volatile inline register restrict auto _Alignas _Alignof _Atomic _Generic _Noreturn _Static_assert _Thread_local alignas alignof static_assert thread_local
+types = void char short int long float double signed unsigned bool _Bool size_t ssize_t ptrdiff_t intptr_t uintptr_t int8_t int16_t int32_t int64_t uint8_t uint16_t uint32_t uint64_t FILE va_list wchar_t
+constants = NULL true false EOF stdin stdout stderr errno
+builtins = printf fprintf sprintf snprintf malloc calloc realloc free memcpy memmove memset memcmp strlen strcmp strncmp strcpy strncpy strcat strchr strrchr strstr fopen fclose fread fwrite fgets fputs puts exit abort assert

@@ -1,0 +1,13 @@
+name = reStructuredText
+files = *.rst
+icon = default blue
+line = .. preproc
+line = === heading
+line = --- heading
+line = ~~~ heading
+region = ** ** keyword
+region = `` `` string
+region = ` ` link
+functions = no
+numbers = no
+operators = no

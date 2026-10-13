@@ -1,0 +1,56 @@
+name = Osaka Jade
+kind = dark
+
+bg                 = #111c18
+fg                 = #c1c497
+accent             = #509475
+panel              = #0c1512
+border             = #090f0d
+selection          = #32473b
+line_highlight     = #1a241e
+line_number        = #53685b
+line_number_active = #c1c497
+cursor             = #f7e8b2
+error              = #ff5345
+warning            = #e5c736
+success            = #549e6a
+
+[syntax]
+text        = #c1c497
+keyword     = #75bbb3
+type        = #459451
+function    = #509475
+string      = #549e6a
+number      = #a2734b
+comment     = #53685b
+constant    = #e5c736
+operator    = #c1c497
+punctuation = #697058
+preproc     = #2dd5b7
+variable    = #c1c497
+builtin     = #2dd5b7
+attribute   = #2dd5b7
+tag         = #459451
+heading     = #509475
+inserted    = #549e6a
+deleted     = #ff5345
+escape      = #75bbb3
+link        = #509475
+
+[terminal]
+black          = #111c18
+red            = #ff5345
+green          = #549e6a
+yellow         = #459451
+blue           = #509475
+magenta        = #d2689c
+cyan           = #2dd5b7
+white          = #c1c497
+bright_black   = #53685b
+bright_red     = #db9f9c
+bright_green   = #63b07a
+bright_yellow  = #e5c736
+bright_blue    = #acd4cf
+bright_magenta = #75bbb3
+bright_cyan    = #8cd3cb
+bright_white   = #f7e8b2

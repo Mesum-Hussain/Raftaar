@@ -1,0 +1,33 @@
+name = One Light
+kind = light
+
+bg             = #fafafa
+fg             = #383a42
+accent         = #4078f2
+panel          = #eaeaeb
+border         = #dbdbdc
+selection      = #e5e5e6
+line_highlight = #f0f0f1
+line_number    = #9d9d9f
+cursor         = #526fff
+error          = #e45649
+warning        = #c18401
+success        = #50a14f
+
+[syntax]
+keyword        = #a626a4
+type           = #c18401
+function       = #4078f2
+string         = #50a14f
+number         = #986801
+comment        = #a0a1a7
+constant       = #986801
+operator       = #0184bc
+punctuation    = #383a42
+preproc        = #a626a4
+builtin        = #0184bc
+attribute      = #986801
+tag            = #e45649
+heading        = #e45649
+escape         = #0184bc
+variable       = #e45649

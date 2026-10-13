@@ -1,0 +1,7 @@
+### Get user
+# Fetch user by id
+GET https://api.example.com/users/{{userId}}
+Accept: application/json
+### Create user
+POST https://api.example.com/users
+{"name": "Ada", "age": 30}

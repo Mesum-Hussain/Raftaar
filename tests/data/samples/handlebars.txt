@@ -1,0 +1,4 @@
+<div class="a">
+{{!-- a comment
+   spanning lines --}}
+{{#if user}} hi {{{rawHtml}}} {{/if}}

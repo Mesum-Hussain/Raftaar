@@ -1,0 +1,56 @@
+name = Rosé Pine Dawn
+kind = light
+
+bg                 = #faf4ed
+fg                 = #575279
+accent             = #56949f
+panel              = #ede7e1
+border             = #e1dbd5
+selection          = #dfdad9
+line_highlight     = #f4ede8
+line_number        = #cecacd
+line_number_active = #575279
+cursor             = #575279
+error              = #b4637a
+warning            = #ea9d34
+success            = #286983
+
+[syntax]
+text        = #575279
+keyword     = #286983
+type        = #56949f
+function    = #d7827e
+string      = #ea9d34
+number      = #b4637a
+comment     = #9893a5
+constant    = #b4637a
+operator    = #797593
+punctuation = #797593
+preproc     = #907aa9
+variable    = #575279
+builtin     = #b4637a
+attribute   = #907aa9
+tag         = #286983
+heading     = #907aa9
+inserted    = #286983
+deleted     = #b4637a
+escape      = #b4637a
+link        = #56949f
+
+[terminal]
+black          = #faf4ed
+red            = #b4637a
+green          = #286983
+yellow         = #ea9d34
+blue           = #56949f
+magenta        = #907aa9
+cyan           = #d7827e
+white          = #575279
+bright_black   = #cecacd
+bright_red     = #b4637a
+bright_green   = #286983
+bright_yellow  = #ea9d34
+bright_blue    = #56949f
+bright_magenta = #907aa9
+bright_cyan    = #d7827e
+bright_white   = #575279

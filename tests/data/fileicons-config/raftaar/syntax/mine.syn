@@ -1,0 +1,4 @@
+# a user grammar for tests/fileicon_test: its icon key read when the explorer asks (case ignored)
+name = Mine
+files = *.mine Minefile
+icon = Rust Purple

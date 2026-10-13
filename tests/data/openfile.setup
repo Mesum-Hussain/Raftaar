@@ -1,0 +1,11 @@
+# folders and files for tests/scripts/openfile.rsc, made in the home directory given
+set -e
+cd "$1"
+mkdir -p work/alpha/src work/alpha/Docs work/beta notes
+echo one > work/alpha/a.txt
+echo secret > work/alpha/.env
+printf 'int main(void)\n{\n    return 0;\n}\n' > work/alpha/src/main.c
+echo b > work/alpha/b.txt
+echo readme > work/beta/readme.md
+echo todo > notes/todo.txt
+mkfifo pipe

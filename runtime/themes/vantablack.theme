@@ -1,0 +1,56 @@
+name = Vantablack
+kind = dark
+
+bg                 = #000000
+fg                 = #ffffff
+accent             = #8d8d8d
+panel              = #090909
+border             = #070707
+selection          = #1a1a1a
+line_highlight     = #0d0d0d
+line_number        = #7a7a7a
+line_number_active = #ffffff
+cursor             = #ffffff
+error              = #a4a4a4
+warning            = #cecece
+success            = #b6b6b6
+
+[syntax]
+text        = #ffffff
+keyword     = #9b9b9b
+type        = #cecece
+function    = #8d8d8d
+string      = #b6b6b6
+number      = #b9b9b9
+comment     = #7a7a7a
+constant    = #cecece
+operator    = #ffffff
+punctuation = #808080
+preproc     = #b0b0b0
+variable    = #ffffff
+builtin     = #b0b0b0
+attribute   = #b0b0b0
+tag         = #cecece
+heading     = #8d8d8d
+inserted    = #b6b6b6
+deleted     = #a4a4a4
+escape      = #9b9b9b
+link        = #8d8d8d
+
+[terminal]
+black          = #000000
+red            = #a4a4a4
+green          = #b6b6b6
+yellow         = #cecece
+blue           = #8d8d8d
+magenta        = #9b9b9b
+cyan           = #b0b0b0
+white          = #ffffff
+bright_black   = #7a7a7a
+bright_red     = #a4a4a4
+bright_green   = #b6b6b6
+bright_yellow  = #cecece
+bright_blue    = #8d8d8d
+bright_magenta = #9b9b9b
+bright_cyan    = #b0b0b0
+bright_white   = #ffffff

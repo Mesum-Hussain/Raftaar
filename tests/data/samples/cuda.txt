@@ -1,0 +1,17 @@
+// vector add kernel
+#include <cuda_runtime.h>
+/* one thread
+   per element */
+__global__ void add(const float *a, const float *b, float *c, int n) {
+    int i = blockIdx.x * blockDim.x + threadIdx.x;
+    if (i < n) {
+        c[i] = a[i] + b[i];
+    }
+}
+
+int main() {
+    float *d_a;
+    cudaMalloc(&d_a, 64 * sizeof(float));
+    cudaFree(d_a);
+    return 0;
+}

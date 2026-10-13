@@ -1,0 +1,7 @@
+-- PureScript sample
+module Main where
+{- block
+   comment -}
+greet :: String -> String
+greet name = if name == "" then "Hi" else "Hi, " <> name
+answer = 42

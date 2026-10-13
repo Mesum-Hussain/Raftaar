@@ -1,0 +1,2 @@
+<Multi_key> <o> <c> : "(c)"
+<Multi_key> <q> <q> : "qu\"ote"

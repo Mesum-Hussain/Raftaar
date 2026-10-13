@@ -1,0 +1,33 @@
+name = One Dark
+kind = dark
+
+bg             = #282c34
+fg             = #abb2bf
+accent         = #61afef
+panel          = #21252b
+border         = #181a1f
+selection      = #3e4451
+line_highlight = #2c313c
+line_number    = #495162
+cursor         = #528bff
+error          = #e06c75
+warning        = #e5c07b
+success        = #98c379
+
+[syntax]
+keyword        = #c678dd
+type           = #e5c07b
+function       = #61afef
+string         = #98c379
+number         = #d19a66
+comment        = #5c6370
+constant       = #d19a66
+operator       = #56b6c2
+punctuation    = #abb2bf
+preproc        = #c678dd
+builtin        = #56b6c2
+attribute      = #d19a66
+tag            = #e06c75
+heading        = #e06c75
+escape         = #56b6c2
+variable       = #e06c75

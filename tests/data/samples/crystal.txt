@@ -1,0 +1,7 @@
+# Crystal sample
+class Greeter
+  @name : String = "Bob"
+  def greet(count : Int32)
+    puts "Hi #{@name}" if count > 0
+  end
+end

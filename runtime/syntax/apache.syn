@@ -1,0 +1,7 @@
+name = Apache
+files = .htaccess httpd.conf apache2.conf
+icon = config red
+comment = #
+string = "
+region = < > tag
+keywords = RewriteEngine RewriteRule RewriteCond Options AllowOverride Require ServerRoot ServerName Listen LoadModule DirectoryIndex ErrorDocument ErrorLog CustomLog Alias AliasMatch Redirect RedirectMatch Header SetEnv SetEnvIf Order Allow Deny Satisfy AuthType AuthName AuthUserFile Include IncludeOptional DocumentRoot

@@ -1,0 +1,6 @@
+<html>
+<%# a comment %>
+<%- x = 1 -%>
+<p class="a"><%= "hi #{x}" %></p>
+<%- x %>
+<p>plain text</p>

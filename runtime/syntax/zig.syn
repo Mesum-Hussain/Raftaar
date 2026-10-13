@@ -1,0 +1,11 @@
+name = Zig
+files = *.zig *.zon
+icon = zig orange
+comment = //
+string = " \
+string = ' \
+prefix = @a
+captypes = yes
+keywords = addrspace align allowzero and anyframe anytype asm async await break callconv catch comptime const continue defer else enum errdefer error export extern fn for if inline linksection noalias noinline nosuspend opaque or orelse packed pub resume return struct suspend switch test threadlocal try union unreachable usingnamespace var volatile while
+types = i8 u8 i16 u16 i32 u32 i64 u64 i128 u128 isize usize f16 f32 f64 f80 f128 bool void noreturn type anyerror comptime_int comptime_float c_int c_uint c_long c_ulong c_char
+constants = true false null undefined

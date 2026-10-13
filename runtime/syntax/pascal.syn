@@ -1,0 +1,13 @@
+name = Pascal
+files = *.pas *.dpr *.lpr *.dpk
+icon = code yellow
+case = insensitive
+comment = //
+region = {$ } preproc
+block = { }
+block = (* *)
+string = '
+keywords = and array begin case class const constructor destructor div do downto else end except finally for function goto if implementation in inherited interface label mod not object of or packed private procedure program property protected public published raise record repeat set shl shr then to try type unit until uses var while with xor
+types = integer real boolean char string byte word longint int64 single double extended pointer
+constants = true false nil
+builtins = writeln write readln read

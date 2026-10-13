@@ -1,0 +1,33 @@
+name = Dracula
+kind = dark
+
+bg             = #282a36
+fg             = #f8f8f2
+accent         = #bd93f9
+panel          = #21222c
+border         = #191a21
+selection      = #44475a
+line_highlight = #2e303e
+line_number    = #6272a4
+cursor         = #f8f8f2
+error          = #ff5555
+warning        = #ffb86c
+success        = #50fa7b
+
+[syntax]
+keyword        = #ff79c6
+type           = #8be9fd
+function       = #50fa7b
+string         = #f1fa8c
+number         = #bd93f9
+comment        = #6272a4
+constant       = #bd93f9
+operator       = #ff79c6
+punctuation    = #f8f8f2
+preproc        = #ff79c6
+builtin        = #8be9fd
+attribute      = #50fa7b
+tag            = #ff79c6
+heading        = #bd93f9
+escape         = #ff79c6
+variable       = #f8f8f2

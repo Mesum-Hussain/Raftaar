@@ -1,0 +1,76 @@
+# Explorer icons for files without a grammar, and for names that beat their grammar's icon.
+# A line lists patterns, then an icon (NAME.svg here) and a color: red orange yellow green blue
+# purple pink cyan grey white. A pattern is a whole name or *.ext, matched ignoring case. A whole
+# name beats an extension, and this file a grammar's pattern of the same kind. A language's icon is
+# the icon key of its grammar in runtime/syntax (icon = rust orange). After a change run
+# tools/file-icons.py, then tools/icons.py.
+
+# project files
+LICENSE LICENCE COPYING UNLICENSE LICENSE.md LICENCE.md COPYING.md LICENSE.txt LICENCE.txt COPYING.txt  license yellow
+README README.md README.txt README.rst README.adoc README.org  info blue
+CONTRIBUTING CONTRIBUTING.md CODE_OF_CONDUCT.md SECURITY.md  info green
+TODO TODO.md TODO.txt  todo blue
+.gitignore .gitattributes .gitmodules .gitconfig .gitkeep .mailmap  git grey
+.editorconfig  editorconfig grey
+.DS_Store Thumbs.db desktop.ini  ignored grey
+favicon.ico favicon.svg  favicon yellow
+
+# tools and package managers
+package.json package-lock.json npm-shrinkwrap.json .npmrc .npmignore  npm red
+yarn.lock .yarnrc .yarnrc.yml  yarn blue
+tsconfig.json jsconfig.json  tsconfig blue
+docker-compose.yml docker-compose.yaml compose.yml compose.yaml  docker pink
+Gemfile.lock Brewfile Podfile  ruby red
+go.mod go.sum go.work  go2 cyan
+Cargo.toml Cargo.lock  rust orange
+pyproject.toml requirements.txt Pipfile Pipfile.lock  python blue
+Jenkinsfile  jenkins red
+Procfile  heroku purple
+mix.lock  hex red
+*.gradle gradlew build.gradle.kts settings.gradle.kts  gradle blue
+pom.xml mvnw  maven red
+.babelrc .babelrc.json babel.config.js babel.config.json  babel yellow
+.eslintrc .eslintrc.json .eslintrc.js .eslintrc.cjs .eslintignore eslint.config.js eslint.config.mjs  eslint purple
+webpack.config.js webpack.config.ts  webpack blue
+vite.config.js vite.config.ts vite.config.mjs  vite yellow
+
+# languages that share a grammar
+*.vue  vue green
+*.svelte  svelte red
+*.jsx *.tsx  react blue
+*.scss *.sass  sass pink
+*.less  less blue
+
+# media
+*.png *.jpg *.jpeg *.jpe *.gif *.webp *.bmp *.ico *.icns *.tif *.tiff *.avif *.heic *.heif *.jxl *.qoi *.tga *.ppm *.pgm *.pbm *.pnm *.xcf *.exr *.hdr  image purple
+*.svg *.svgz  svg purple
+*.psd *.psb  photoshop blue
+*.ai *.eps  illustrator yellow
+*.mp3 *.wav *.flac *.ogg *.oga *.opus *.m4a *.aac *.aiff *.aif *.wma *.mid *.midi  audio purple
+*.mp4 *.m4v *.mkv *.mov *.avi *.webm *.wmv *.flv *.mpg *.mpeg *.ogv *.3gp  video pink
+*.ttf *.otf *.woff *.woff2 *.eot *.ttc  font red
+
+# documents and data
+*.pdf  pdf red
+*.doc *.docx *.odt *.rtf  word blue
+*.xls *.xlsx *.xlsm *.ods *.numbers  xls green
+*.csv *.tsv  csv green
+*.ppt *.pptx *.odp  default orange
+*.db *.sqlite *.sqlite3 *.db3 *.duckdb *.mdb *.accdb *.parquet  db pink
+*.ipynb  notebook orange
+*.txt *.text  default white
+*.log  default grey
+
+# archives and packages
+*.zip *.tar *.gz *.tgz *.bz2 *.tbz2 *.xz *.txz *.zst *.7z *.rar *.lz *.lz4 *.cab *.cpio *.iso *.dmg *.deb *.rpm *.apk *.pkg *.whl *.egg *.gem *.crate *.nupkg *.vsix *.snap *.flatpak  zip grey
+*.jar *.war *.ear  zip red
+
+# keys and certificates
+*.pem *.key *.crt *.cer *.der *.p12 *.pfx *.pub *.asc *.gpg *.sig *.kdbx *.keystore *.jks  lock green
+*.lock  lock grey
+
+# compiled and temporary
+*.wasm  wasm purple
+*.wat  wat purple
+*.exe *.dll *.so *.dylib *.o *.a *.obj *.lib *.bin *.class *.pyc *.pyo *.elf *.ko  default grey
+*.tmp *.bak *.swp  clock grey

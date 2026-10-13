@@ -1,0 +1,21 @@
+action=commit-all
+    CHANGES
+    U notes/drafts/two.txt
+    U notes/one.txt
+action=commit-all
+    CHANGES
+    U notes/drafts/two.txt
+    U notes/one.txt
+* Uncommitted changes 2 <
+* First (HEAD -> main)
+    CHANGES
+    U notes/drafts/two.txt
+    U notes/one.txt
+tabs=2 active=one.txt (changes) line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+@@ -0,0 +1 @@
+first note
+<eod>
+tabs=3 active=two.txt (changes) line=1 col=1 sel=0 dirty=0 lang=none focus=0 theme=raftaar-dark
+@@ -0,0 +1 @@
+deep
+<eod>

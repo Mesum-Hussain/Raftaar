@@ -1,0 +1,7 @@
+# AWK sample
+BEGIN { count = 0 }
+{
+    count++
+    print $1, NR
+}
+END { printf "total=%d\n", count }

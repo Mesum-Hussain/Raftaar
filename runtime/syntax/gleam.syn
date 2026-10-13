@@ -1,0 +1,9 @@
+name = Gleam
+files = *.gleam
+icon = code pink
+comment = //
+string = " \
+captypes = yes
+keywords = as assert case const external fn if import let opaque pub todo type use
+types = Int Float String Bool List Result Option BitArray
+constants = True False Nil

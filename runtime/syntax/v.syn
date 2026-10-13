@@ -1,0 +1,11 @@
+name = V
+files = *.v *.vsh
+icon = code blue
+comment = //
+block = /* */
+string = " \
+string = ' \
+captypes = yes
+keywords = as asm assert atomic break const continue defer else enum fn for go goto if import in interface is isreftype lock match module mut none or pub return rlock select shared sizeof spawn static struct type typeof union unsafe volatile __global __offsetof
+types = bool string i8 i16 int i64 i128 u8 u16 u32 u64 u128 rune f32 f64 isize usize voidptr
+constants = true false none

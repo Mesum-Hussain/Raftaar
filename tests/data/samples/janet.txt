@@ -1,0 +1,8 @@
+#!/usr/bin/env janet
+# greet a person by name
+(defn greet [name count]
+  (print "Hello, " name " x" count))
+
+(def msg `a raw
+multi-line string`)
+(greet "World" 3)

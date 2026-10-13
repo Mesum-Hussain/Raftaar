@@ -1,0 +1,9 @@
+name = Erlang
+files = *.erl *.hrl *.escript rebar.config
+icon = code red
+comment = %
+string = " \
+string = ' \
+prefix = ?p
+captypes = yes
+keywords = after and andalso band begin bnot bor bsl bsr bxor case catch cond div end fun if let not of or orelse receive rem try when xor module export import record define include

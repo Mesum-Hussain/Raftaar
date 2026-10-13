@@ -1,0 +1,13 @@
+name = AsciiDoc
+files = *.adoc *.asciidoc
+icon = default blue
+line = = heading
+region = ---- ---- string multiline bol
+region = //// //// comment multiline bol
+comment = //
+region = * eol text bol
+region = * * keyword
+string = `
+functions = no
+numbers = no
+operators = no

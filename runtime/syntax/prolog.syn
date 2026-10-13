@@ -1,0 +1,11 @@
+name = Prolog
+files = *.prolog
+icon = prolog orange
+first_line = swipl
+comment = %
+block = /* */
+string = " \
+string = ' \
+keywords = is not module use_module dynamic discontiguous initialization multifile
+constants = true false fail
+builtins = write writeln nl format assert asserta assertz retract findall bagof setof member append length atom number var nonvar atomic compound functor arg copy_term between forall maplist nth0 nth1 sort msort reverse halt

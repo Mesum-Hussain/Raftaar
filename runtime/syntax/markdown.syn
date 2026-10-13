@@ -1,0 +1,15 @@
+name = Markdown
+files = *.md *.markdown *.mdx README CHANGELOG
+icon = markdown blue
+region = ``` ``` string multiline bol
+region = ~~~ ~~~ string multiline bol
+region = ` ` string
+region = <!-- --> comment multiline
+region = ** ** keyword
+region = __ __ keyword
+region = [ ] link
+line = # heading
+line = > comment
+functions = no
+numbers = no
+operators = no

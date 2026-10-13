@@ -1,0 +1,10 @@
+// Package manifest
+package {
+    name "kdl-demo"
+    version "1.0.0"
+    enabled true
+    replicas 3
+    parent null
+}
+/* multi-line
+   comment */

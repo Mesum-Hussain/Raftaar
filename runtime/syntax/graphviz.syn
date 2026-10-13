@@ -1,0 +1,9 @@
+name = Graphviz
+files = *.dot *.gv
+icon = code grey
+comment = //
+comment = #
+block = /* */
+string = " \
+case = insensitive
+keywords = graph digraph subgraph node edge strict

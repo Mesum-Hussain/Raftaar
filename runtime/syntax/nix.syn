@@ -1,0 +1,11 @@
+name = Nix
+files = *.nix
+icon = code blue
+comment = #
+block = /* */
+region = '' '' string multiline
+string = " \
+ident = -'
+keywords = let in with rec inherit if then else assert import or
+constants = true false null
+builtins = builtins derivation map toString fetchurl fetchTarball

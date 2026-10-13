@@ -1,0 +1,8 @@
+// Prisma schema example
+model User {
+  id    Int     @id @default(autoincrement())
+  name  String  @default("Ada")
+  age   Int     @default(0)
+  email String  @unique
+  admin Boolean @default(false)
+}

@@ -1,0 +1,19 @@
+baseline-420.jpg JPEG 32x24 opaque=1 ca1a82c7
+bgr24.bmp BMP 13x7 opaque=1 3a5eb484
+bitfields32.bmp BMP 13x7 opaque=0 691a242e
+bits.pbm PNM 13x7 opaque=1 8e3c0820
+exif-rotated.jpg JPEG 16x24 opaque=1 d10b36ae
+gray16-adam7.png PNG 13x9 opaque=1 4f77fba2
+huge-frame.gif -
+icon.ico ICO 20x12 opaque=0 1e5be265
+interlaced-transparent.gif GIF 24x16 opaque=0 7161d8f4
+not-an-image.png -
+palette-trns.png PNG 13x9 opaque=0 b311c4f5
+palette8.bmp BMP 13x7 opaque=1 e8be0be3
+plain.ppm PNM 5x3 opaque=1 ee368e0a
+progressive-gray.jpg JPEG 24x16 opaque=1 904259af
+raw.pgm PNM 13x7 opaque=1 60fd2621
+rgba.png PNG 24x16 opaque=0 3a85e9ef
+rgba.qoi QOI 24x16 opaque=0 990f710b
+rle.tga TGA 13x7 opaque=0 9e046b9d
+truncated.png PNG 24x16 opaque=0 58724b17

@@ -1,0 +1,11 @@
+@echo off
+REM this script greets the user
+:: column-0 comment style
+setlocal
+    :: indented comment style
+SET NAME=World
+SET /a COUNT=1
+if "%NAME%"=="" goto skip
+echo Hello, %NAME%! Count: %COUNT%
+:skip
+echo done

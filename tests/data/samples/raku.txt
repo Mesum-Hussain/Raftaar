@@ -1,0 +1,11 @@
+#!/usr/bin/env raku
+# greet everyone in the list
+sub greet(Str $name) {
+    say "Hello, $name!";
+}
+
+my @names = <Alice Bob Carl>;
+for @names -> $n {
+    greet($n);
+}
+my Int $count = 3;

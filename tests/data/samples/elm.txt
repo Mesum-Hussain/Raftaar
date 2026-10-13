@@ -1,0 +1,7 @@
+-- Elm sample
+module Main exposing (main)
+{- block
+   comment -}
+greet name =
+    if name == "" then "Hi" else "Hi, " ++ name
+answer = 42

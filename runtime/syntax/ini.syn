@@ -1,0 +1,9 @@
+name = INI
+files = *.ini *.cfg *.conf *.desktop *.service *.timer *.socket *.mount *.target *.theme *.syn *.editorconfig .editorconfig .gitconfig .gitmodules config .npmrc
+icon = config grey
+comment = #
+comment = ;
+line = [ heading
+ident = -.
+constants = true false yes no on off
+functions = no

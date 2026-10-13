@@ -1,0 +1,12 @@
+name = SQL
+files = *.sql *.psql *.ddl
+icon = db pink
+comment = --
+block = /* */
+string = '
+string = " \
+case = insensitive
+keywords = select from where and or not insert into values update set delete create table view index drop alter add column primary key foreign references unique default null is in like between exists as on join inner left right full outer cross union all distinct group by order having limit offset case when then else end begin commit rollback transaction grant revoke with recursive returning if replace cascade constraint check trigger function procedure return returns language declare asc desc
+types = int integer bigint smallint serial bigserial real double precision float numeric decimal char varchar text boolean bool date time timestamp timestamptz interval json jsonb uuid bytea blob
+constants = true false null
+builtins = count sum avg min max coalesce nullif cast now current_date current_timestamp lower upper length substring trim round

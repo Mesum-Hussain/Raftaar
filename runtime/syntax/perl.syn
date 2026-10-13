@@ -1,0 +1,11 @@
+name = Perl
+files = *.pl *.pm *.t
+icon = perl blue
+first_line = perl
+comment = #
+region = =pod =cut comment multiline bol
+string = " \
+string = ' \
+prefix = $v @v %v
+keywords = my our local sub if elsif else unless while until for foreach do last next redo return use no require package BEGIN END and or not eq ne lt gt le ge cmp qw
+builtins = print printf say open close chomp chop split join push pop shift unshift sort keys values each exists delete defined die warn eval ref scalar

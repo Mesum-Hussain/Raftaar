@@ -1,0 +1,13 @@
+name = Haxe
+files = *.hx
+icon = haxe orange
+comment = //
+block = /* */
+string = " \
+string = ' \
+ident = #
+preprocs = #if #elseif #else #end #error
+keywords = abstract break case cast catch class continue default do dynamic else enum extends extern final for function if implements import in inline interface macro new null override package private public return static super switch this throw try typedef untyped using var while
+types = Int Float Bool String Void Dynamic Array Map Class Enum Null Iterator Iterable
+constants = true false null
+captypes = yes

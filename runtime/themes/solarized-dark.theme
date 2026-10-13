@@ -1,0 +1,32 @@
+name = Solarized Dark
+kind = dark
+
+bg             = #002b36
+fg             = #839496
+accent         = #268bd2
+panel          = #00212b
+border         = #001a22
+selection      = #0a4a5a
+line_highlight = #073642
+line_number    = #586e75
+cursor         = #93a1a1
+error          = #dc322f
+warning        = #b58900
+success        = #859900
+
+[syntax]
+keyword        = #859900
+type           = #b58900
+function       = #268bd2
+string         = #2aa198
+number         = #d33682
+comment        = #586e75
+constant       = #cb4b16
+operator       = #859900
+punctuation    = #839496
+preproc        = #cb4b16
+builtin        = #268bd2
+attribute      = #b58900
+tag            = #268bd2
+heading        = #cb4b16
+escape         = #dc322f

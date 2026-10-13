@@ -1,0 +1,6 @@
+<html>
+<%# a comment %>
+<% const x = 1 %>
+<p class="a"><%= "hi " + x %></p>
+<%_ x %>
+<p>plain text</p>

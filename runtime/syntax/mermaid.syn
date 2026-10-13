@@ -1,0 +1,6 @@
+name = Mermaid
+files = *.mmd *.mermaid
+icon = code pink
+comment = %%
+string = "
+keywords = graph flowchart sequenceDiagram classDiagram stateDiagram erDiagram gantt pie journey participant actor loop alt else end note

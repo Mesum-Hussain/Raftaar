@@ -1,0 +1,10 @@
+name = Dockerfile
+files = Dockerfile *.dockerfile Containerfile
+icon = docker blue
+comment = #
+string = " \
+string = '
+prefix = $v
+case = insensitive
+keywords = from as run cmd label maintainer expose env add copy entrypoint volume user workdir arg onbuild stopsignal healthcheck shell
+functions = no

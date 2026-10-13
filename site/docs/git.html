@@ -1,0 +1,23 @@
+<section id="changes">
+<h2>See what changed</h2>
+<p>Install Git and make sure <code>git</code> is on your PATH. On Windows, use Git for Windows.</p>
+<p>The status bar shows your branch and worktree. In the editor gutter, green marks added lines, amber marks changed lines, and red marks deletions. The explorer shows file status too.</p>
+<p>Run <strong>Git: Open Changes</strong> from the palette to compare a file with HEAD. Open Git history with <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd> (<kbd>Cmd</kbd> on macOS), or use the branch button.</p>
+<p>The history graph includes the latest 3,000 commits across all branches.</p>
+</section>
+<section id="commit">
+<h2>Stage and commit</h2>
+<ol><li>Open the worktree row in Git history to see your changed files.</li><li>Use <strong>+</strong> to stage a file and <strong>−</strong> to unstage it.</li><li>Write a commit message and commit the staged changes.</li></ol>
+<p>In the message input, <kbd>Enter</kbd> adds a line. <kbd>Ctrl</kbd> + <kbd>Enter</kbd> commits (<kbd>Cmd</kbd> + <kbd>Enter</kbd> on macOS).</p>
+<div class="doc-note"><strong>Check what you are committing</strong><p>When nothing is staged, <strong>Commit All</strong> stages all changes before committing. Stage individual files first when you want a smaller commit.</p></div>
+</section>
+<section id="sync">
+<h2>Work with remotes</h2>
+<p>Use <strong>Fetch</strong>, <strong>Pull</strong>, and <strong>Push</strong> from Git history or the command palette. <strong>Sync</strong> pulls, then pushes. <strong>Publish Branch</strong> sets up a branch that has no upstream yet.</p>
+<p>Remote operations use your existing Git credentials. Set up an SSH agent or HTTPS credential helper first; raftaar does not open an interactive password prompt.</p>
+</section>
+<section id="messages">
+<h2>Optional message drafts</h2>
+<p>In Settings → Git, you can enable commit-message drafts using Claude Code, Codex, or a local model through Ollama. This is off by default.</p>
+<p>When you ask for a draft, the selected provider receives the diff. You can edit or cancel the result. Generating a message does not stage files or make a commit.</p>
+</section>

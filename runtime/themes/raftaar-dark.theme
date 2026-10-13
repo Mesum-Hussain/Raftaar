@@ -1,0 +1,33 @@
+name = Raftaar Dark
+kind = dark
+
+bg             = #1c1e24
+fg             = #d5d8df
+accent         = #8aa4ff
+panel          = #17191e
+border         = #101216
+selection      = #2f3a5c
+line_highlight = #22252c
+line_number    = #4c5260
+cursor         = #8aa4ff
+error          = #ff7b86
+warning        = #f2c46f
+success        = #8fd694
+
+[syntax]
+keyword        = #c49cff
+type           = #7fd3c8
+function       = #7cb7ff
+string         = #a8d98a
+number         = #f2b36f
+comment        = #646c7c
+constant       = #f2b36f
+operator       = #9aa4b8
+punctuation    = #838b9c
+preproc        = #ff8fa3
+builtin        = #7fd3c8
+attribute      = #e6c07b
+tag            = #ff8fa3
+heading        = #7cb7ff
+escape         = #f2b36f
+link           = #7cb7ff

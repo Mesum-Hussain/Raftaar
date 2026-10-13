@@ -1,0 +1,11 @@
+name = Verilog
+files = *.sv *.svh *.vh
+icon = code green
+comment = //
+block = /* */
+string = " \
+ident = `$
+preprocs = `define `include `ifdef `ifndef `else `endif `undef `timescale `default_nettype
+builtins = $display $monitor $write $finish $stop $time $random $readmemh $readmemb $dumpfile $dumpvars
+keywords = module endmodule input output inout parameter localparam always always_comb always_ff always_latch initial begin end if else case casex casez endcase default for while do function endfunction task endtask assign posedge negedge or and not xor generate endgenerate genvar package endpackage class endclass interface endinterface program endprogram typedef enum struct union packed unpacked automatic static virtual extends implements import export const return break continue forever repeat wait fork join join_any join_none disable inside dist unique priority tagged null this super new
+types = wire reg logic bit byte shortint longint integer time real shortreal string void

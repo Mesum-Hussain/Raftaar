@@ -1,0 +1,9 @@
+name = HTTP
+files = *.http *.rest
+icon = code green
+comment = #
+region = // eol comment bol
+line = ### heading
+region = {{ }} variable
+string = "
+keywords = GET POST PUT PATCH DELETE HEAD OPTIONS

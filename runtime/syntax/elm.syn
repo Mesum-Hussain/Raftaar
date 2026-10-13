@@ -1,0 +1,10 @@
+name = Elm
+files = *.elm
+icon = elm blue
+block = {- -}
+comment = --
+mstring = """ \
+string = " \
+captypes = yes
+keywords = module import exposing as port type alias case of if then else let in where
+constants = True False Nothing Just

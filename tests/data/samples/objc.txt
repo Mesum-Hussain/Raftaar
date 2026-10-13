@@ -1,0 +1,9 @@
+// Simple Objective-C greeter
+@interface Greeter : NSObject
+@property (nonatomic) NSInteger count;
+@end
+/* multi-line
+   comment */
+@implementation Greeter
+- (void)greet { NSLog(@"Hi %d", 42); }
+@end

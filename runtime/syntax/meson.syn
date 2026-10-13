@@ -1,0 +1,8 @@
+name = Meson
+files = meson.build meson_options.txt meson.options
+icon = makefile green
+comment = #
+mstring = '''
+string = ' \
+keywords = if elif else endif foreach endforeach continue break and or not in
+constants = true false

@@ -1,0 +1,11 @@
+-- adds one to a Nat
+{- total function,
+   never fails -}
+addOne : Nat -> Nat
+addOne n = n + 1
+
+greet : String -> String
+greet name = "hello, " ++ name
+
+main : IO ()
+main = putStrLn (greet "world")

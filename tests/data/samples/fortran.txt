@@ -1,0 +1,7 @@
+! Fortran sample
+program main
+  implicit none
+  integer :: count = 42
+  logical :: ok = .true.
+  print *, "Hello", count
+end program main

@@ -1,0 +1,8 @@
+// jsonnet config
+local port = 8080; # legacy comment
+{
+  name: "service",
+  desc: |||
+    multi-line text
+  |||,
+}

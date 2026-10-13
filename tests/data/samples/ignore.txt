@@ -1,0 +1,6 @@
+# build artifacts
+node_modules/
+*.log
+!important.log
+dist/
+.DS_Store

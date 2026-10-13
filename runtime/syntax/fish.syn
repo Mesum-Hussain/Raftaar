@@ -1,0 +1,10 @@
+name = Fish
+files = *.fish
+icon = shell green
+first_line = fish
+comment = #
+string = " \
+string = ' \
+prefix = $v
+keywords = if else end for in while function return break continue switch case and or not begin set set_color status test source
+functions = no

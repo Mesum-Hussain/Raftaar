@@ -1,0 +1,11 @@
+// F# sample
+[<EntryPoint>]
+let main argv =
+    (* block
+       comment *)
+    let msg = "Hello, world!"
+    printfn "%s %d" msg 42
+    let raw = """
+    text \
+    """
+    0

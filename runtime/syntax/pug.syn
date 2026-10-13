@@ -1,0 +1,13 @@
+name = Pug
+files = *.pug *.jade
+icon = pug red
+prefix = .a #a
+region = //- eol comment bol
+region = // eol comment bol
+toggle_comment = //-
+region = - eol preproc bol
+region = #{ } preproc
+tags = html head body div span ul ol li img br hr h1 h2 h3 h4 h5 h6 nav tr td th thead tbody meta script iframe svg textarea p
+keywords = if else each while case when mixin block extends include
+string = "
+string = '

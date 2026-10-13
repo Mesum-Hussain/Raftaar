@@ -1,0 +1,9 @@
+name = Tcl
+files = *.tcl *.tk *.itcl
+icon = code red
+first_line = tclsh wish
+comment = #
+string = " \
+prefix = $v
+keywords = if else elseif while for foreach switch case break continue return proc set global variable upvar uplevel catch error eval namespace package
+builtins = puts gets format scan string regexp regsub subst incr append lappend llength lindex lrange lsort array dict list exec expr source

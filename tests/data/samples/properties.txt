@@ -1,0 +1,6 @@
+# application settings
+! legacy comment style
+app.name=MyApp
+app.version=1.0.3
+app.port=8080
+db.url=jdbc:postgresql://localhost/db

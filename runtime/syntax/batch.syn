@@ -1,0 +1,13 @@
+name = Batch
+files = *.bat *.cmd
+icon = windows blue
+case = insensitive
+region = REM eol comment bol
+region = rem eol comment bol
+region = :: eol comment bol
+toggle_comment = REM
+string = "
+prefix = %v
+line = :: comment
+line = : function
+keywords = echo set if else for goto call exit pause cls setlocal endlocal shift start title cd copy del move ren rd md dir type findstr exist defined not errorlevel equ neq lss leq gtr geq do in

@@ -1,0 +1,10 @@
+# project setup
+project('myapp', 'c')
+if get_option('tests')
+  subdir('tests')
+endif
+count = 3
+doc = '''
+multi-line text
+raw text \
+'''

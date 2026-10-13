@@ -1,0 +1,9 @@
+name = RON
+files = *.ron
+icon = config orange
+comment = //
+block = /* */
+string = " \
+string = ' \
+captypes = yes
+constants = true false Some None

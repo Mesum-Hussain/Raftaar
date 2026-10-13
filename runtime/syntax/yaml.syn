@@ -1,0 +1,11 @@
+name = YAML
+files = *.yaml *.yml .clang-format .clang-tidy
+icon = yml purple
+comment = #
+string = " \
+string = '
+ident = -
+line = --- keyword
+constants = true false null yes no on off True False Null
+functions = no
+colon_indent = yes

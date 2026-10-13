@@ -1,0 +1,10 @@
+name = Pkl
+files = *.pkl PklProject
+icon = config green
+comment = //
+block = /* */
+mstring = """ \
+string = " \
+keywords = abstract amends as class else extends external for function hidden if import in is let local module new open out outer super this throw trace typealias when
+constants = true false null nothing unknown
+types = String Int Float Boolean Duration DataSize List Map Set Listing Mapping Dynamic Any

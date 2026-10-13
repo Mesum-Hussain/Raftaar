@@ -1,0 +1,8 @@
+# rules for tests/scripts/compose.rsc (tests/ui.sh sets XCOMPOSEFILE)
+<dead_acute> <e>              : "é"   eacute
+<dead_acute> <E>              : "É"
+<Multi_key> <o> <c>           : "©"   copyright
+<Multi_key> <minus> <greater> : "\342\206\222"
+<Multi_key> <U2192> <U2192>   : "⇉"
+<dead_tilde> <n>              : ntilde
+include "tests/data/compose-more.txt"

@@ -1,0 +1,8 @@
+-- Ada sample
+with Ada.Text_IO; use Ada.Text_IO;
+procedure Main is
+   Count : Integer := 42;
+   Flag  : Boolean := True;
+begin
+   Put_Line ("Hello, Ada!");
+end Main;

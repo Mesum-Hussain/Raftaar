@@ -1,0 +1,7 @@
+# build file
+load("//tools:defs.bzl", "cc_library")
+cc_library(name = "mylib", srcs = glob(["*.cc"]))
+x = 1 if True else 2
+notes = """
+multi-line text
+"""

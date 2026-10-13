@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>raftaar: a small, fast code editor written in assembly</title>
+<meta name="description" content="A small, fast code editor for Windows, Linux and macOS. Written in assembly.">
+<link rel="canonical" href="https://rhun.app/">
+<meta name="theme-color" content="#111216">
+<meta name="color-scheme" content="light dark">
+<script src="theme.js?v=@ASSET_VERSION@"></script>
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Vladyslav Shvedov">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="raftaar">
+<meta property="og:title" content="raftaar: a small, fast code editor written in assembly">
+<meta property="og:description" content="A small, fast code editor for Windows, Linux and macOS. Written in assembly.">
+<meta property="og:url" content="https://rhun.app/">
+<meta property="og:image" content="https://rhun.app/img/card.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="raftaar, a small and fast code editor written in assembly">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="raftaar: a small, fast code editor written in assembly">
+<meta name="twitter:description" content="A small, fast code editor for Windows, Linux and macOS. Written in assembly.">
+<meta name="twitter:image" content="https://rhun.app/img/card.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/InstrumentSans-Latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=@ASSET_VERSION@">
+<script src="site.js?v=@ASSET_VERSION@" defer></script>
+<link rel="alternate" type="text/markdown" href="guide.md" title="raftaar guide">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://rhun.app/#app",
+      "name": "raftaar",
+      "alternateName": "rh\u00fbn",
+      "description": "A small, very fast code editor for Windows, Linux and macOS, written in assembly. Tabs, syntax highlighting for 127 languages, a built-in terminal, Git history and diffs, fuzzy search, Vim mode and an agents panel for Claude Code and Codex.",
+      "url": "https://rhun.app/",
+      "applicationCategory": "DeveloperApplication",
+      "applicationSubCategory": "Code editor",
+      "operatingSystem": "Windows (x64), Linux (x86-64), macOS (Apple silicon)",
+      "softwareVersion": "@VERSION@",
+      "downloadUrl": "https://github.com/vshvedov/rhun/releases/latest",
+      "installUrl": "https://github.com/vshvedov/rhun/releases/latest/download/install.sh",
+      "license": "https://opensource.org/licenses/MIT",
+      "isAccessibleForFree": true,
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Vladyslav Shvedov",
+        "url": "https://github.com/vshvedov"
+      },
+      "sameAs": [
+        "https://github.com/vshvedov/rhun"
+      ],
+      "image": "https://rhun.app/img/card.png",
+      "screenshot": [
+        "https://rhun.app/img/hero.webp",
+        "https://rhun.app/img/terminal.webp",
+        "https://rhun.app/img/git.webp",
+        "https://rhun.app/img/palette.webp"
+      ],
+      "featureList": [
+        "Tabs, file explorer, command palette and fuzzy file finder",
+        "Syntax highlighting for 127 languages and file formats",
+        "Find and replace, find in files, go to line",
+        "Built-in terminal with 24-bit color, mouse and scrollback",
+        "Git: changed lines, file status, diffs and a history graph of all branches",
+        "Optional AI commit messages with local open-weight models or existing Claude Code and Codex subscriptions",
+        "Agents panel: live Claude Code and Codex sessions of the project",
+        "Optional Vim mode",
+        "40 dark and light color themes",
+        "Image preview with zoom and pan",
+        "Installs with one command and updates itself from GitHub releases"
+      ]
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "raftaar",
+      "codeRepository": "https://github.com/vshvedov/rhun",
+      "programmingLanguage": "x86-64 assembly",
+      "license": "https://opensource.org/licenses/MIT",
+      "targetProduct": {
+        "@id": "https://rhun.app/#app"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "raftaar",
+      "url": "https://rhun.app/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- GitHub and Discord icons: https://icons.getbootstrap.com/
+The MIT License (MIT)
+
+Copyright (c) 2019-2024 The Bootstrap Authors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+-->
+<svg class="social-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <symbol id="social-docs" viewBox="0 0 24 24"><path d="M12 6C9 4 6 4 3 5v15c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="social-github" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/></symbol>
+  <symbol id="social-discord" viewBox="0 0 16 16"><path d="M13.545 2.907a13.2 13.2 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.2 12.2 0 0 0-3.658 0 8 8 0 0 0-.412-.833.05.05 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.04.04 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032q.003.022.021.037a13.3 13.3 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019q.463-.63.818-1.329a.05.05 0 0 0-.01-.059l-.018-.011a9 9 0 0 1-1.248-.595.05.05 0 0 1-.02-.066l.015-.019q.127-.095.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.05.05 0 0 1 .053.007q.121.1.248.195a.05.05 0 0 1-.004.085 8 8 0 0 1-1.249.594.05.05 0 0 0-.03.03.05.05 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.2 13.2 0 0 0 4.001-2.02.05.05 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.03.03 0 0 0-.02-.019m-8.198 7.307c-.789 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612m5.316 0c-.788 0-1.438-.724-1.438-1.612s.637-1.613 1.438-1.613c.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap nav-inner">
+    <a class="brand" href="./" aria-label="raftaar home"><img class="brand-icon" src="favicon.svg?v=@ASSET_VERSION@" width="40" height="40" alt="">raftaar<span class="brand-dot">.</span></a>
+    <nav class="links" aria-label="Main navigation">
+      <a class="social-link" href="/docs/"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-docs"/></svg>Docs</a><a class="social-link" href="https://github.com/vshvedov/rhun"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-github"/></svg>GitHub</a><a class="social-link" href="https://discord.gg/Aj4drpFbWf"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-discord"/></svg>Discord</a>
+    </nav>
+    <a class="button nav-cta" href="#install">Get raftaar</a>
+    <div class="appearance" role="group" aria-label="Website appearance">
+      <button type="button" data-appearance="auto" aria-pressed="true" title="Follow system appearance">Auto</button>
+      <button type="button" data-appearance="light" aria-pressed="false" title="Light appearance">Light</button>
+      <button type="button" data-appearance="dark" aria-pressed="false" title="Dark appearance">Dark</button>
+    </div>
+  </div>
+</header>
+<main id="main">
+  <section class="hero" aria-labelledby="title">
+    <div class="pixel-field" aria-hidden="true"><canvas id="pixel-canvas"></canvas></div>
+    <div class="wrap hero-stage">
+      <div class="hero-copy">
+        <p class="eyebrow">Agents do the heavy lifting. Keep your code editor light.</p>
+        <h1 id="title"><span>Less weight.</span> <span class="accent">More flow.</span></h1>
+        <p class="hero-description"><span>A small, fast code editor.</span> <span>Written in assembly.</span></p>
+        <div class="hero-actions"><a class="button button-primary" href="#install">Get raftaar</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="showcase" id="features" aria-labelledby="features-h">
+    <div class="wrap">
+      <h2 id="features-h" class="sr-only">Explore raftaar</h2>
+      <div class="editor-stage">
+      <figure class="editor-preview">
+        <div class="editor-light" aria-hidden="true"></div>
+        <img id="editor-image" src="img/hero.webp" srcset="img/hero-800.webp 800w, img/hero.webp 1600w" sizes="(min-width: 1376px) 1280px, (max-width: 760px) calc(100vw - 32px), calc(100vw - 96px)" width="1600" height="1000" alt="raftaar with a file explorer, syntax highlighting, and a live coding agent session" fetchpriority="high" decoding="async" draggable="false">
+        <button type="button" class="promo-play" aria-label="Play raftaar video" aria-haspopup="dialog" aria-controls="promo-lightbox">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 5 11 7-11 7V5Z"/></svg>
+        </button>
+      </figure>
+      </div>
+      <div class="showcase-toolbar">
+        <div class="view-switcher" role="group" aria-label="Editor views">
+          <button type="button" class="view-button" data-view="hero" aria-pressed="true">Editor</button>
+          <button type="button" class="view-button" data-view="terminal" aria-pressed="false">Terminal</button>
+          <button type="button" class="view-button" data-view="git" aria-pressed="false">Git</button>
+          <button type="button" class="view-button" data-view="agents" aria-pressed="false">Agents</button>
+          <button type="button" class="view-button" data-view="themes" aria-pressed="false">Themes</button>
+        </div>
+      </div>
+      <div class="view-description" aria-live="polite">
+        <p data-description="hero">Tabs, syntax highlighting, fuzzy search, and optional Vim mode.</p>
+        <p data-description="terminal" hidden>Built-in terminal emulator with 24-bit color, scrollback, mouse reporting, and alternate-screen support.</p>
+        <p data-description="git" hidden>Built-in Git with staging, diffs, commit history, and commit message generation using a local model or your Claude Code or Codex subscription.</p>
+        <p data-description="agents" hidden>...and in the Darkness bind them: follow your project’s Claude Code and Codex sessions as they work.</p>
+        <p data-description="themes" hidden>Multiple built-in light and dark themes, customizable editor and terminal colors, and automatic theme switching with the system's dark mode and with Omarchy.</p>
+      </div>
+      <div class="theme-controls" id="themes" hidden>
+        <div class="theme-picker" role="group" aria-label="Preview a color theme">
+          <button type="button" data-theme="hero" aria-label="Raftaar Dark" aria-pressed="true" style="--swatch:#24262e;--swatch-accent:#8aa4ff"></button>
+          <button type="button" data-theme="theme-tokyo-night" aria-label="Tokyo Night" aria-pressed="false" style="--swatch:#24283b;--swatch-accent:#bb9af7"></button>
+          <button type="button" data-theme="theme-catppuccin-mocha" aria-label="Catppuccin Mocha" aria-pressed="false" style="--swatch:#313244;--swatch-accent:#f5c2e7"></button>
+          <button type="button" data-theme="theme-gruvbox-dark" aria-label="Gruvbox Dark" aria-pressed="false" style="--swatch:#3c3836;--swatch-accent:#fabd2f"></button>
+          <button type="button" data-theme="theme-rose-pine-dawn" aria-label="Rosé Pine Dawn" aria-pressed="false" style="--swatch:#f2e9e1;--swatch-accent:#b4637a"></button>
+          <button type="button" data-theme="theme-github-light" aria-label="GitHub Light" aria-pressed="false" style="--swatch:#ffffff;--swatch-accent:#0969da"></button>
+          <button type="button" data-theme="theme-nord" aria-label="Nord" aria-pressed="false" style="--swatch:#2e3440;--swatch-accent:#88c0d0"></button>
+          <button type="button" data-theme="theme-dracula" aria-label="Dracula" aria-pressed="false" style="--swatch:#282a36;--swatch-accent:#bd93f9"></button>
+          <button type="button" data-theme="theme-elflord-dark" aria-label="Elflord Dark" aria-pressed="false" style="--swatch:#000000;--swatch-accent:#ffff00"></button>
+        </div>
+        <p class="theme-name" id="theme-name" aria-live="polite">Raftaar Dark</p><span class="theme-count">9 OF 40 THEMES</span>
+      </div>
+    </div>
+  </section>
+  <dialog class="promo-lightbox" id="promo-lightbox" aria-labelledby="promo-title">
+    <div class="promo-header">
+      <h2 id="promo-title">raftaar: a small, fast code editor.</h2>
+      <button type="button" class="promo-close" aria-label="Close video" autofocus>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 6 12 12M6 18 18 6"/></svg>
+      </button>
+    </div>
+    <video class="promo-video" controls playsinline preload="none" src="video/raftaar-promo-1080p-v5.mp4" aria-label="raftaar promotional video">
+      <p><a href="video/raftaar-promo-1080p-v5.mp4">Download the raftaar video</a>.</p>
+    </video>
+  </dialog>
+  <section class="install-section" id="install" aria-labelledby="install-h">
+    <svg class="os-symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+      <symbol id="os-windows" viewBox="0 0 24 24"><path d="M3 4h8v7H3zm10 0h8v7h-8zM3 13h8v7H3zm10 0h8v7h-8z"/></symbol>
+      <symbol id="os-linux" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2c-3 0-4.5 2.3-4.5 5.5v2C6 12 4.5 15 5 18l-3 2 6 2 2-2h4l2 2 6-2-3-2c.5-3-1-6-2.5-8.5v-2C16.5 4.3 15 2 12 2zm-1.5 4a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6zm3 0a.8.8 0 1 0 0 1.6.8.8 0 0 0 0-1.6zM12 11c-2 0-3.5 3-3.5 5.5 0 1.7 1.5 2.5 3.5 2.5s3.5-.8 3.5-2.5C15.5 14 14 11 12 11z"/><path d="m10 8.5 2-1 2 1-2 1.5z"/></symbol>
+      <symbol id="os-macos" viewBox="0 0 24 24"><path d="M16.5 2c.1 1.5-.5 2.7-1.3 3.5-.9.9-2 1.4-3.2 1.3-.1-1.3.6-2.7 1.4-3.5.9-.8 2.1-1.3 3.1-1.3zM19.8 8.3c-1.6-1.8-3.8-1.9-5.1-1.4-1 .3-1.8.7-2.6.7-.9 0-1.7-.5-2.9-.7C6.8 6.4 4.5 8 4 10.5c-.8 3.7 1.3 8.5 3.4 10.7.9.9 1.8 1.1 3 .6 1.1-.5 2.3-.6 3.5 0 1.3.5 2.2.3 3.1-.7 1.1-1.3 2-2.8 2.5-4.2-3.2-1.4-3.9-5.7.3-8.6z"/></symbol>
+    </svg>
+    <div class="wrap install-layout">
+      <div><h2 id="install-h">Install</h2><p class="supported-os"><span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-windows"/></svg>Windows</span><span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-linux"/></svg>Linux</span><span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-macos"/></svg>macOS</span></p><a class="button install-download" href="https://github.com/vshvedov/rhun/releases/latest">Download a release</a></div>
+      <div class="install-box" id="get">
+        <div class="install-box-heading"><span class="install-os-label">Terminal install · <span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-linux"/></svg>Linux</span> &amp; <span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-macos"/></svg>macOS</span></span><span aria-hidden="true">&gt;_</span></div>
+        <div class="command"><span class="prompt" aria-hidden="true">$</span><code id="install-command">curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh</code></div>
+        <button class="copy button" type="button" data-copy="curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh">Copy command</button><span class="copy-status" role="status" aria-live="polite"></span>
+        <div class="windows-install">
+          <div class="install-box-heading"><span class="install-os-label">Terminal install · <span><svg class="os-icon" aria-hidden="true" focusable="false"><use href="#os-windows"/></svg>Windows PowerShell</span></span><span aria-hidden="true">&gt;_</span></div>
+          <div class="command"><span class="prompt" aria-hidden="true">&gt;</span><code>powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/vshvedov/rhun/releases/latest/download/install.ps1).Content))&quot;</code></div>
+          <button class="copy button" type="button" data-copy="powershell -NoProfile -ExecutionPolicy Bypass -Command &quot;&amp; ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/vshvedov/rhun/releases/latest/download/install.ps1).Content))&quot;">Copy command</button><span class="copy-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer><div class="wrap footer-bottom"><a class="brand" href="./" aria-label="raftaar home">raftaar<span class="brand-dot">.</span></a><span>v@VERSION@ <span>·</span> Open source. MIT. No telemetry.</span><nav aria-label="Footer"><a class="social-link" href="/docs/"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-docs"/></svg>Docs</a><a class="social-link" href="https://github.com/vshvedov/rhun"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-github"/></svg>GitHub</a><a class="social-link" href="https://discord.gg/Aj4drpFbWf"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#social-discord"/></svg>Discord</a><a href="#main">Back to top</a></nav></div><details class="wrap font-licenses"><summary>Font licenses</summary><a href="fonts/LICENSE-InstrumentSans.txt">Instrument Sans</a> &amp; <a href="fonts/LICENSE-Iosevka.md">Iosevka</a>, SIL Open Font License.</details></footer>
+</body>
+</html>

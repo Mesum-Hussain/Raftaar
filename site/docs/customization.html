@@ -1,0 +1,41 @@
+<section id="settings">
+<h2>Start with Settings</h2>
+<p>Open Settings with <kbd>Ctrl</kbd> + <kbd>,</kbd> (<kbd>Cmd</kbd> + <kbd>,</kbd> on macOS). Changes apply while raftaar is running.</p>
+<p>Adjust the UI scale, editor and terminal font sizes, word wrap, and Vim mode. Scroll sensitivity sets the normal pace; fast scroll sensitivity controls scrolling while you hold <kbd>Alt</kbd>.</p>
+</section>
+<section id="themes">
+<h2>Choose your colors</h2>
+<p>Choose from 40 dark and light themes in Settings or run <strong>Select Color Theme</strong> from the command palette.</p>
+<p>To make your own, put a <code>.theme</code> file in the <code>themes</code> folder beside your config. Start with a name, kind, and three colors:</p>
+<pre><code>name = My theme
+kind = dark
+bg = #1e1e2e
+fg = #cdd6f4
+accent = #f5c2e7</code></pre>
+<p>Your theme appears in the picker. On Omarchy, choose <strong>Follow Omarchy</strong> to use its current theme.</p>
+</section>
+<section id="config">
+<h2>The config file</h2>
+<p>For settings you want to edit as text, open:</p>
+<dl class="doc-actions"><div><dt>Linux &amp; macOS</dt><dd><code>~/.config/raftaar/config</code></dd></div><div><dt>Windows</dt><dd><code>%APPDATA%\raftaar\config</code></dd></div></dl>
+<p>If you set <code>XDG_CONFIG_HOME</code>, raftaar uses that as the parent directory instead.</p>
+<pre><code>[ui]
+theme = tokyo-night
+scale = 1.25
+
+[editor]
+font_size = 15
+tab_width = 4
+word_wrap = true
+
+[terminal]
+font_size = 14</code></pre>
+</section>
+<section id="keys">
+<h2>Your shortcuts</h2>
+<p>Add overrides under <code>[keys]</code>. Command names follow the palette, in lowercase with underscores. Use <code>none</code> to disable a binding.</p>
+<pre><code>[keys]
+ctrl+shift+d = duplicate_line
+alt+z = none</code></pre>
+<p>For the full list of settings, custom syntax grammars, and scripting commands, see the <a href="https://github.com/vshvedov/rhun/blob/main/docs/guide.md#configuration">technical reference</a>.</p>
+</section>

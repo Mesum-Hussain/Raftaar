@@ -1,0 +1,10 @@
+// RON example config
+GameConfig(
+    title: "My Game",
+    fullscreen: true,
+    resolution: (1920, 1080),
+    player: Some('a'),
+    save: None,
+)
+/* trailing
+   comment */

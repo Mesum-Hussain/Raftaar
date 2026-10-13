@@ -1,0 +1,46 @@
+name = Min Dark
+kind = dark
+
+bg                 = #1f1f1f
+fg                 = #cccccc
+accent             = #fafafa
+panel              = #1a1a1a
+panel_fg           = #888888
+border             = #2a2a2a
+selection          = #264f78
+hover              = #262626
+active             = #303030
+line_highlight     = #252525
+line_number        = #727272
+line_number_active = #c6c6c6
+cursor             = #aeafad
+muted              = #727272
+popup              = #242424
+input              = #2a2a2a
+scrollbar          = #3a3a3a
+guide              = #2a2a2a
+error              = #ff7a84
+warning            = #ffab70
+success            = #85e89d
+
+[syntax]
+text        = #b392f0
+keyword     = #f97583
+type        = #b392f0
+function    = #b392f0
+string      = #ffab70
+number      = #f8f8f8
+comment     = #6b737c
+constant    = #79b8ff
+operator    = #f97583
+punctuation = #bbbbbb
+preproc     = #f97583
+variable    = #b392f0
+builtin     = #79b8ff
+attribute   = #b392f0
+tag         = #ffab70
+heading     = #ff7a84
+inserted    = #85e89d
+deleted     = #f97583
+escape      = #79b8ff
+link        = #ffab70

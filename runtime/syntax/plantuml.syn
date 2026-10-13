@@ -1,0 +1,9 @@
+name = PlantUML
+files = *.puml *.plantuml *.pu *.iuml
+icon = code yellow
+comment = '
+block = /' '/
+string = "
+line = @startuml preproc
+line = @enduml preproc
+keywords = participant actor class interface package component node usecase note as

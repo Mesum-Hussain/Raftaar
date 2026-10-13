@@ -1,0 +1,8 @@
+name = LaTeX
+files = *.tex *.sty *.cls *.ltx *.dtx
+icon = tex blue
+comment = %
+ident = \@
+region = $ $ string
+region = \[ \] string multiline
+keywords = \begin \end \chapter \part \section \subsection \subsubsection \paragraph \usepackage \documentclass \newcommand \renewcommand \newenvironment \label \ref \cite \item \textbf \textit \emph \footnote \include \input \maketitle \title \author \date \tableofcontents \bibliography \bibliographystyle \newpage

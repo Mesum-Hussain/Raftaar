@@ -1,0 +1,14 @@
+name = Ruby
+files = *.rb *.rake *.gemspec Gemfile Rakefile Vagrantfile config.ru
+icon = ruby red
+first_line = ruby
+comment = #
+region = =begin =end comment multiline bol
+string = " \
+string = ' \
+string = ` \
+prefix = @v $v :v
+captypes = yes
+keywords = alias and begin break case class def defined? do else elsif end ensure for if in module next not or redo rescue retry return self super then undef unless until when while yield __method__ require require_relative include extend attr_reader attr_writer attr_accessor private protected public lambda proc
+constants = true false nil
+builtins = puts print p pp raise loop

@@ -1,0 +1,8 @@
+# build recipe
+set shell := ["bash", "-cu"]
+alias b := build
+build:
+    cargo build --release -j 4
+doc := """
+multi-line text
+"""

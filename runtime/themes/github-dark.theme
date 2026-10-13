@@ -1,0 +1,32 @@
+name = GitHub Dark
+kind = dark
+
+bg             = #0d1117
+fg             = #e6edf3
+accent         = #2f81f7
+panel          = #010409
+border         = #21262d
+selection      = #1f3a5f
+line_highlight = #161b22
+line_number    = #6e7681
+cursor         = #2f81f7
+error          = #f85149
+warning        = #d29922
+success        = #3fb950
+
+[syntax]
+keyword        = #ff7b72
+type           = #ffa657
+function       = #d2a8ff
+string         = #a5d6ff
+number         = #79c0ff
+comment        = #8b949e
+constant       = #79c0ff
+operator       = #ff7b72
+punctuation    = #c9d1d9
+preproc        = #ff7b72
+builtin        = #79c0ff
+attribute      = #7ee787
+tag            = #7ee787
+heading        = #79c0ff
+escape         = #79c0ff

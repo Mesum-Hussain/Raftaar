@@ -1,0 +1,11 @@
+name = Jsonnet
+files = *.jsonnet *.libsonnet
+icon = json purple
+comment = //
+comment = #
+block = /* */
+mstring = |||
+string = " \
+string = ' \
+keywords = local function if then else for in error assert import importstr importbin self super tailstrict
+constants = true false null

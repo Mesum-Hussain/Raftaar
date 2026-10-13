@@ -1,0 +1,9 @@
+name = Lean
+files = *.lean
+icon = code white
+comment = --
+block = /- -/
+string = " \
+keywords = theorem lemma def example instance structure inductive class abbrev variable variables universe namespace section end import open where deriving mutual partial unsafe noncomputable private protected axiom if then else match with fun let do by have show from suffices calc this sorry termination_by decreasing_by macro macro_rules syntax elab notation infix prefix postfix
+types = Nat Int Float String Bool Char List Array Option Prop Type Sort
+constants = true false none some

@@ -1,0 +1,43 @@
+name = Elflord Light
+kind = light
+
+bg                 = #ffffff
+fg                 = #005f60
+accent             = #a800a8
+accent_fg          = #ffffff
+panel              = #f2f6f6
+border             = #d3dddd
+selection          = #c9eded
+active             = #cdeaea
+line_highlight     = #eef6f6
+line_number        = #9c8200
+line_number_active = #6b5900
+cursor             = #008b8b
+muted              = #5f7373
+match              = #fff07a
+guide              = #e2eaea
+error              = #c80000
+warning            = #9c7400
+success            = #1d7f1d
+
+[syntax]
+text        = #005f60
+keyword     = #aa3333
+type        = #1d7f1d
+function    = #000000
+string      = #a800a8
+number      = #a800a8
+comment     = #3d5fc4
+constant    = #a800a8
+operator    = #c80000
+punctuation = #3b7b7b
+preproc     = #a8329e
+variable    = #00797a
+builtin     = #000000
+attribute   = #a8329e
+tag         = #aa3333
+heading     = #a800a8
+inserted    = #1d7f1d
+deleted     = #c80000
+escape      = #c80000
+link        = #3d5fc4

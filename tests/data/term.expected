@@ -1,0 +1,103 @@
+hello
+world
+
+cursor 1,5
+
+Y
+  X
+
+cursor 0,1
+
+abc
+
+cursor 0,3
+
+0123456789
+ABC
+
+cursor 1,3
+
+abXYcdef
+Z
+cursor 1,1
+
+a中b|😀|
+
+cursor 0,8
+
+main!
+
+cursor 0,5
+
+ab
+
+cursor 0,2
+reply ^[[1;3R^[[?62;22c^[[0n
+
+┌──┐ x
+│
+cursor 1,1
+
+a       b       c
+xxxx
+cursor 1,4
+
+1
+3
+4
+
+5
+cursor 0,0
+
+t
+
+cursor 0,1
+reply ^[]11;rgb:0000/0000/0000^[\
+
++
+
+
+cursor 0,1
+
+abcdeh
+ij
+cursor 1,2
+
+xy
+
+cursor 0,2
+
+
+
+cursor 0,0
+reply ^[[?2026;2$y^[[?1049;2$y^[[?25;2$y
+
+XYZ
+
+cursor 0,3
+
+cell 00200058 01000001 02010203 
+cell 03000059 02ff8000 00000000 
+cell 0000005a 010000c8 00000000 
+3
+4
+5
+cursor 2,1
+
+scrollback 2
+1
+2
+1
+2
+3
+4
+5
+cursor 4,1
+4
+5
+cursor 1,1
+reply ^[[A^[[1;5A^[[15~^[[3;2~^[OP^C^[x^[[Z^Mй^[^[OA^[OH
+reply a^Mbc^M^[[200~a^Mbc^M^[[201~
+reply ^[[?0u^[[?1u^M^[[13;2u^[[13;3u^[[13;5u^[[13;2u^I^[[9;2u^[[127;5u^[[27u^[[99;5u^[[120;3u^[[97;4u^[[32;5uqQ^[[1;3A
+reply ^[[?0u^[[?1u^[[?1u^[[?0u^[[?0u^[[?1u^[[?0u^[[?1u^[[?1u^[[?0u
+reply ^[[?1u^[[?0u^M^[^M^C^[
