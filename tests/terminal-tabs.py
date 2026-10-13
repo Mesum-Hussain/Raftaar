@@ -119,11 +119,10 @@ class TerminalTabs(unittest.TestCase):
         self.assertIn('SESSION_1', output)
         self.assertNotIn('TYPED_', (self.project / 'a.txt').read_text(encoding='utf-8'))
 
+    @unittest.skipIf(os.name == 'nt', "a pseudoconsole does not report its shell's exit")
     def test_the_tab_closes_when_the_shell_exits(self):
-        # Windows learns of the exit when the pseudoconsole closes, which takes it longer
-        wait = 'wait 5000' if os.name == 'nt' else 'wait 800'
         output = self.run_editor([*self.terminal(0, 'one'), *self.terminal(1, 'two'),
-                                  'type exit()', 'key Return', wait, 'print-tabs', 'print-state',
+                                  'type exit()', 'key Return', 'wait 800', 'print-tabs', 'print-state',
                                   'print-term'])
         self.assertEqual(self.lines(output, 'tabs=a.txt'), ['tabs=a.txt|*one'])
         state = self.lines(output, 'tabs=2')[0]

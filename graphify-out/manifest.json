@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "tests/terminal-tabs.py": {
-    "mtime": 1791895477.5882728,
-    "seen": 1791895507.1434202,
-    "ast_hash": "99effcda5751ae3850a1a2ef5a9dfb35",
+    "mtime": 1791895818.5735412,
+    "seen": 1791895832.0620215,
+    "ast_hash": "d151382aae2ac65f35f370f8aa6d2ac8",
     "semantic_hash": ""
   },
   "tests/tooltips.py": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791894119.367811,
-    "seen": 1791894123.2238023,
-    "ast_hash": "b8988f0267e0217a6ae195060f18b258",
+    "mtime": 1791895818.573961,
+    "seen": 1791895832.0634038,
+    "ast_hash": "70feabb8f9f507739ba0ed22f603927a",
     "semantic_hash": ""
   },
   "site/404.html": {

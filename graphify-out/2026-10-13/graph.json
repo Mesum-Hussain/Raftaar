@@ -53,7 +53,7 @@
       "file_type": "code",
       "norm_label": "settingsui",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L58"
+      "source_location": "L64"
     },
     {
       "id": "tests_windows_install_handler",
@@ -7198,7 +7198,7 @@
       "file_type": "code",
       "norm_label": ".compact_row_y()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L116"
+      "source_location": "L122"
     },
     {
       "id": "tests_settings_ui_settingsui_configure",
@@ -7210,7 +7210,7 @@
       "file_type": "code",
       "norm_label": ".configure()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L72"
+      "source_location": "L78"
     },
     {
       "id": "tests_settings_ui_settingsui_row_y",
@@ -7222,7 +7222,7 @@
       "file_type": "code",
       "norm_label": ".row_y()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L103"
+      "source_location": "L109"
     },
     {
       "id": "tests_settings_ui_settingsui_run_editor",
@@ -7234,7 +7234,7 @@
       "file_type": "code",
       "norm_label": ".run_editor()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L85"
+      "source_location": "L91"
     },
     {
       "id": "tests_settings_ui_settingsui_setup",
@@ -7246,7 +7246,7 @@
       "file_type": "code",
       "norm_label": ".setup()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L59"
+      "source_location": "L65"
     },
     {
       "id": "tests_settings_ui_settingsui_shown",
@@ -7258,7 +7258,7 @@
       "file_type": "code",
       "norm_label": ".shown()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L100"
+      "source_location": "L106"
     },
     {
       "id": "tests_settings_ui_settingsui_teardown",
@@ -7270,7 +7270,7 @@
       "file_type": "code",
       "norm_label": ".teardown()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L69"
+      "source_location": "L75"
     },
     {
       "id": "tests_settings_ui_settingsui_test_check_now_button_uses_local_release_fixture",
@@ -7282,7 +7282,7 @@
       "file_type": "code",
       "norm_label": ".test_check_now_button_uses_local_release_fixture()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L281"
+      "source_location": "L287"
     },
     {
       "id": "tests_settings_ui_settingsui_test_check_now_button_uses_local_release_fixture_do_get",
@@ -7294,7 +7294,7 @@
       "file_type": "code",
       "norm_label": "do_get()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L286"
+      "source_location": "L292"
     },
     {
       "id": "tests_settings_ui_settingsui_test_check_now_button_uses_local_release_fixture_log_message",
@@ -7306,7 +7306,7 @@
       "file_type": "code",
       "norm_label": "log_message()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L292"
+      "source_location": "L298"
     },
     {
       "id": "tests_settings_ui_settingsui_test_compact_rows_keep_strings_and_every_choice_reachable",
@@ -7318,7 +7318,7 @@
       "file_type": "code",
       "norm_label": ".test_compact_rows_keep_strings_and_every_choice_reachable()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L129"
+      "source_location": "L135"
     },
     {
       "id": "tests_settings_ui_settingsui_test_dark_and_light_theme_buttons_pick_for_their_mode",
@@ -7330,7 +7330,7 @@
       "file_type": "code",
       "norm_label": ".test_dark_and_light_theme_buttons_pick_for_their_mode()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L221"
+      "source_location": "L227"
     },
     {
       "id": "tests_settings_ui_settingsui_test_every_boolean_toggles_both_ways",
@@ -7342,7 +7342,7 @@
       "file_type": "code",
       "norm_label": ".test_every_boolean_toggles_both_ways()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L151"
+      "source_location": "L157"
     },
     {
       "id": "tests_settings_ui_settingsui_test_every_choice_segment",
@@ -7354,7 +7354,7 @@
       "file_type": "code",
       "norm_label": ".test_every_choice_segment()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L196"
+      "source_location": "L202"
     },
     {
       "id": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
@@ -7366,7 +7366,7 @@
       "file_type": "code",
       "norm_label": ".test_every_stepper_increases_decreases_and_clamps()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L165"
+      "source_location": "L171"
     },
     {
       "id": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
@@ -7378,7 +7378,7 @@
       "file_type": "code",
       "norm_label": ".test_every_string_commits_enter_cancels_escape_and_commits_blur()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L186"
+      "source_location": "L192"
     },
     {
       "id": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
@@ -7390,7 +7390,7 @@
       "file_type": "code",
       "norm_label": ".test_follow_off_keeps_the_theme_shown()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L242"
+      "source_location": "L248"
     },
     {
       "id": "tests_settings_ui_settingsui_test_inventory_requires_cases_for_every_setting",
@@ -7402,7 +7402,7 @@
       "file_type": "code",
       "norm_label": ".test_inventory_requires_cases_for_every_setting()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L145"
+      "source_location": "L151"
     },
     {
       "id": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
@@ -7414,7 +7414,7 @@
       "file_type": "code",
       "norm_label": ".test_local_model_button_with_provider_off()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L276"
+      "source_location": "L282"
     },
     {
       "id": "tests_settings_ui_settingsui_test_open_settings_file_button",
@@ -7426,7 +7426,7 @@
       "file_type": "code",
       "norm_label": ".test_open_settings_file_button()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L257"
+      "source_location": "L263"
     },
     {
       "id": "tests_settings_ui_settingsui_test_scroll_reaches_last_row_and_returns_to_top",
@@ -7438,7 +7438,7 @@
       "file_type": "code",
       "norm_label": ".test_scroll_reaches_last_row_and_returns_to_top()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L263"
+      "source_location": "L269"
     },
     {
       "id": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
@@ -7450,7 +7450,7 @@
       "file_type": "code",
       "norm_label": ".test_theme_button_preview_cancel_and_accept()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L209"
+      "source_location": "L215"
     },
     {
       "id": "tests_settings_ui_settingsui_value",
@@ -7462,7 +7462,7 @@
       "file_type": "code",
       "norm_label": ".value()",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L95"
+      "source_location": "L101"
     },
     {
       "id": "tests_windows_install_handler_log_message",
@@ -12106,7 +12106,7 @@
       "file_type": "code",
       "norm_label": ".posix_shell()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L168"
+      "source_location": "L170"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_run_editor",
@@ -12166,7 +12166,7 @@
       "file_type": "code",
       "norm_label": ".test_a_hundred_terminals_and_no_more()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L182"
+      "source_location": "L184"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_a_long_title_is_cut_in_the_strip",
@@ -12178,7 +12178,7 @@
       "file_type": "code",
       "norm_label": ".test_a_long_title_is_cut_in_the_strip()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L163"
+      "source_location": "L165"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
@@ -12190,7 +12190,7 @@
       "file_type": "code",
       "norm_label": ".test_a_middle_click_closes_a_terminal_tab()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L140"
+      "source_location": "L142"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_a_terminal_is_a_tab_after_the_active_file",
@@ -12214,7 +12214,7 @@
       "file_type": "code",
       "norm_label": ".test_close_all_tabs_leaves_terminals_running()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L149"
+      "source_location": "L151"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_files_dropped_from_another_program",
@@ -12226,7 +12226,7 @@
       "file_type": "code",
       "norm_label": ".test_files_dropped_from_another_program()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L224"
+      "source_location": "L226"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_keys_go_to_the_terminal_shown",
@@ -12250,7 +12250,7 @@
       "file_type": "code",
       "norm_label": ".test_kill_terminal_closes_its_tab()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L132"
+      "source_location": "L134"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_next_tab_goes_through_terminals_and_files",
@@ -12274,7 +12274,7 @@
       "file_type": "code",
       "norm_label": ".test_reopen_closed_tab_skips_terminals()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L158"
+      "source_location": "L160"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_terminal_tabs_come_back_and_start_their_shells_when_shown",
@@ -12286,7 +12286,7 @@
       "file_type": "code",
       "norm_label": ".test_terminal_tabs_come_back_and_start_their_shells_when_shown()",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L193"
+      "source_location": "L195"
     },
     {
       "id": "tests_terminal_tabs_terminaltabs_test_the_tab_closes_when_the_shell_exits",
@@ -24113,7 +24113,7 @@
       "source_location": ""
     },
     {
-      "id": "tests_terminal_tabs_rationale_169",
+      "id": "tests_terminal_tabs_rationale_171",
       "label": "/bin/sh as the shell, which notes each start in a file: a hundred of them are\u2026",
       "_origin": "ast",
       "community": 36,
@@ -24121,7 +24121,7 @@
       "file_type": "rationale",
       "norm_label": "/bin/sh as the shell, which notes each start in a file: a hundred of them are...",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L169"
+      "source_location": "L171"
     },
     {
       "id": "tests_terminal_tabs_rationale_2",
@@ -50327,7 +50327,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L119",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -50339,7 +50339,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L106",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -50351,7 +50351,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L282",
+      "source_location": "L288",
       "weight": 1.0
     },
     {
@@ -50363,7 +50363,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L299",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -50375,7 +50375,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L299",
+      "source_location": "L305",
       "weight": 1.0
     },
     {
@@ -50387,7 +50387,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L132",
+      "source_location": "L138",
       "weight": 1.0
     },
     {
@@ -50399,7 +50399,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L133",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -50411,7 +50411,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L134",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -50423,7 +50423,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L136",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -50435,7 +50435,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L223",
+      "source_location": "L229",
       "weight": 1.0
     },
     {
@@ -50447,24 +50447,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L225",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
       "source": "tests_settings_ui_settingsui_test_dark_and_light_theme_buttons_pick_for_their_mode",
       "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L226",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_dark_and_light_theme_buttons_pick_for_their_mode",
-      "target": "tests_settings_ui_settingsui_value",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -50475,6 +50463,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_settings_ui_settingsui_test_dark_and_light_theme_buttons_pick_for_their_mode",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
       "source": "tests_settings_ui_settingsui_test_every_boolean_toggles_both_ways",
       "target": "tests_settings_ui_settingsui_configure",
       "relation": "calls",
@@ -50483,7 +50483,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L157",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -50495,7 +50495,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L161",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -50507,7 +50507,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L161",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -50519,7 +50519,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L162",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -50531,7 +50531,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L203",
+      "source_location": "L209",
       "weight": 1.0
     },
     {
@@ -50543,299 +50543,11 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L206",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
       "source": "tests_settings_ui_settingsui_test_every_choice_segment",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L206",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_choice_segment",
-      "target": "tests_settings_ui_settingsui_value",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L207",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L172",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
-      "target": "tests_settings_ui_settingsui_compact_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L181",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
-      "target": "tests_settings_ui_settingsui_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L182",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L183",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
-      "target": "tests_settings_ui_settingsui_value",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L184",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L191",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
-      "target": "tests_settings_ui_settingsui_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L192",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L192",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
-      "target": "tests_settings_ui_settingsui_value",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L194",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L243",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
-      "target": "tests_settings_ui_settingsui_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L245",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L245",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
-      "target": "tests_settings_ui_settingsui_value",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L248",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L277",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
-      "target": "tests_settings_ui_settingsui_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L278",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L278",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_open_settings_file_button",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L258",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_open_settings_file_button",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L259",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_scroll_reaches_last_row_and_returns_to_top",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L264",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_scroll_reaches_last_row_and_returns_to_top",
-      "target": "tests_settings_ui_settingsui_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L268",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
-      "target": "tests_settings_ui_settingsui_configure",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L210",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
-      "target": "tests_settings_ui_settingsui_row_y",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L211",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
       "target": "tests_settings_ui_settingsui_run_editor",
       "relation": "calls",
       "_origin": "ast",
@@ -50847,6 +50559,294 @@
       "weight": 1.0
     },
     {
+      "source": "tests_settings_ui_settingsui_test_every_choice_segment",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L213",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L178",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
+      "target": "tests_settings_ui_settingsui_compact_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
+      "target": "tests_settings_ui_settingsui_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_stepper_increases_decreases_and_clamps",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
+      "target": "tests_settings_ui_settingsui_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_every_string_commits_enter_cancels_escape_and_commits_blur",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L249",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
+      "target": "tests_settings_ui_settingsui_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L251",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L251",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_follow_off_keeps_the_theme_shown",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L283",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
+      "target": "tests_settings_ui_settingsui_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_local_model_button_with_provider_off",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L284",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_open_settings_file_button",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L264",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_open_settings_file_button",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L265",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_scroll_reaches_last_row_and_returns_to_top",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L270",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_scroll_reaches_last_row_and_returns_to_top",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L274",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
+      "target": "tests_settings_ui_settingsui_configure",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L216",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
+      "target": "tests_settings_ui_settingsui_row_y",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L217",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
+      "target": "tests_settings_ui_settingsui_run_editor",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L218",
+      "weight": 1.0
+    },
+    {
       "source": "tests_settings_ui_settingsui_test_theme_button_preview_cancel_and_accept",
       "target": "tests_settings_ui_settingsui_value",
       "relation": "calls",
@@ -50855,7 +50855,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L219",
+      "source_location": "L225",
       "weight": 1.0
     },
     {
@@ -52211,7 +52211,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L183",
+      "source_location": "L185",
       "weight": 1.0
     },
     {
@@ -52223,7 +52223,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L187",
+      "source_location": "L189",
       "weight": 1.0
     },
     {
@@ -52235,7 +52235,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L165",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -52247,7 +52247,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L165",
+      "source_location": "L167",
       "weight": 1.0
     },
     {
@@ -52259,36 +52259,12 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L166",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
       "source": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
       "target": "tests_terminal_tabs_terminaltabs_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/terminal-tabs.py",
-      "source_location": "L142",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
-      "target": "tests_terminal_tabs_terminaltabs_terminal",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/terminal-tabs.py",
-      "source_location": "L142",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
-      "target": "tests_terminal_tabs_terminaltabs_lines",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -52296,6 +52272,30 @@
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
       "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
+      "target": "tests_terminal_tabs_terminaltabs_terminal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/terminal-tabs.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_terminal_tabs_terminaltabs_test_a_middle_click_closes_a_terminal_tab",
+      "target": "tests_terminal_tabs_terminaltabs_lines",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/terminal-tabs.py",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -52343,7 +52343,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L150",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -52355,7 +52355,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L150",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -52367,7 +52367,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L152",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -52379,7 +52379,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L225",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -52391,7 +52391,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L232",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -52403,7 +52403,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L237",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -52433,30 +52433,6 @@
     {
       "source": "tests_terminal_tabs_terminaltabs_test_kill_terminal_closes_its_tab",
       "target": "tests_terminal_tabs_terminaltabs_run_editor",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/terminal-tabs.py",
-      "source_location": "L133",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_terminal_tabs_terminaltabs_test_kill_terminal_closes_its_tab",
-      "target": "tests_terminal_tabs_terminaltabs_terminal",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "tests/terminal-tabs.py",
-      "source_location": "L133",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_terminal_tabs_terminaltabs_test_kill_terminal_closes_its_tab",
-      "target": "tests_terminal_tabs_terminaltabs_lines",
       "relation": "calls",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -52464,6 +52440,30 @@
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
       "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_terminal_tabs_terminaltabs_test_kill_terminal_closes_its_tab",
+      "target": "tests_terminal_tabs_terminaltabs_terminal",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/terminal-tabs.py",
+      "source_location": "L135",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_terminal_tabs_terminaltabs_test_kill_terminal_closes_its_tab",
+      "target": "tests_terminal_tabs_terminaltabs_lines",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/terminal-tabs.py",
+      "source_location": "L137",
       "weight": 1.0
     },
     {
@@ -52511,7 +52511,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L159",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -52523,7 +52523,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L159",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -52535,7 +52535,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L161",
+      "source_location": "L163",
       "weight": 1.0
     },
     {
@@ -52547,7 +52547,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L194",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -52559,7 +52559,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L198",
+      "source_location": "L200",
       "weight": 1.0
     },
     {
@@ -52571,7 +52571,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L215",
+      "source_location": "L217",
       "weight": 1.0
     },
     {
@@ -52583,7 +52583,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L123",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -52595,7 +52595,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L123",
+      "source_location": "L125",
       "weight": 1.0
     },
     {
@@ -52607,7 +52607,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L126",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -61067,7 +61067,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L181",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -61079,7 +61079,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L223",
+      "source_location": "L225",
       "weight": 1.0
     },
     {
@@ -61091,7 +61091,7 @@
       "confidence_score": 1.0,
       "context": "decorator",
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L192",
+      "source_location": "L194",
       "weight": 1.0
     },
     {
@@ -71827,7 +71827,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L58",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -71838,7 +71838,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L286",
+      "source_location": "L292",
       "weight": 1.0
     },
     {
@@ -71849,7 +71849,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L292",
+      "source_location": "L298",
       "weight": 1.0
     },
     {
@@ -79004,13 +79004,24 @@
     },
     {
       "source": "tests_settings_ui_settingsui",
+      "target": "tests_settings_ui_settingsui_value",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/settings-ui.py",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_settings_ui_settingsui",
       "target": "tests_settings_ui_settingsui_shown",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L100",
+      "source_location": "L106",
       "weight": 1.0
     },
     {
@@ -79021,7 +79032,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L103",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -79032,7 +79043,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L116",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -79043,7 +79054,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L129",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -79054,7 +79065,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L145",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -79065,7 +79076,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L151",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -79076,7 +79087,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L165",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -79087,7 +79098,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L186",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -79098,7 +79109,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L196",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -79109,7 +79120,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L209",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -79120,7 +79131,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L221",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -79131,7 +79142,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L242",
+      "source_location": "L248",
       "weight": 1.0
     },
     {
@@ -79142,7 +79153,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L257",
+      "source_location": "L263",
       "weight": 1.0
     },
     {
@@ -79153,7 +79164,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L263",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
@@ -79164,7 +79175,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L276",
+      "source_location": "L282",
       "weight": 1.0
     },
     {
@@ -79175,7 +79186,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L281",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -79186,7 +79197,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L59",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -79197,7 +79208,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L69",
+      "source_location": "L75",
       "weight": 1.0
     },
     {
@@ -79208,7 +79219,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L72",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -79219,18 +79230,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/settings-ui.py",
-      "source_location": "L85",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_settings_ui_settingsui",
-      "target": "tests_settings_ui_settingsui_value",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "tests/settings-ui.py",
-      "source_location": "L95",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -80187,7 +80187,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L132",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -80198,7 +80198,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L140",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -80209,7 +80209,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L149",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -80220,7 +80220,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L158",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -80231,18 +80231,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L163",
-      "weight": 1.0
-    },
-    {
-      "source": "tests_terminal_tabs_terminaltabs",
-      "target": "tests_terminal_tabs_terminaltabs_posix_shell",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "tests/terminal-tabs.py",
-      "source_location": "L168",
+      "source_location": "L165",
       "weight": 1.0
     },
     {
@@ -80258,13 +80247,24 @@
     },
     {
       "source": "tests_terminal_tabs_terminaltabs",
+      "target": "tests_terminal_tabs_terminaltabs_posix_shell",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/terminal-tabs.py",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_terminal_tabs_terminaltabs",
       "target": "tests_terminal_tabs_terminaltabs_test_a_hundred_terminals_and_no_more",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L182",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -80275,7 +80275,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L193",
+      "source_location": "L195",
       "weight": 1.0
     },
     {
@@ -80286,7 +80286,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L224",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -83524,14 +83524,14 @@
       "weight": 1.0
     },
     {
-      "source": "tests_terminal_tabs_rationale_169",
+      "source": "tests_terminal_tabs_rationale_171",
       "target": "tests_terminal_tabs_terminaltabs_posix_shell",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/terminal-tabs.py",
-      "source_location": "L169",
+      "source_location": "L171",
       "weight": 1.0
     },
     {
@@ -86792,7 +86792,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "tests/settings-ui.py",
-      "source_location": "L289",
+      "source_location": "L295",
       "weight": 1.0
     },
     {
@@ -88213,5 +88213,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "035ac897fbd53f5decb331c0f91a4be20019e3f3"
+  "built_at_commit": "68590c681325e7a37b984d1b4d9ac1cfe15e6ecf"
 }

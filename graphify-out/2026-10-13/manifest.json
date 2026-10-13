@@ -420,9 +420,9 @@
     "semantic_hash": ""
   },
   "tests/settings-ui.py": {
-    "mtime": 1791878368.5959039,
-    "seen": 1791879028.875178,
-    "ast_hash": "2109c080391086a7b694c304fa860963",
+    "mtime": 1791895477.5880427,
+    "seen": 1791895507.1432714,
+    "ast_hash": "304813bb48fe5fc406208418f704b68a",
     "semantic_hash": ""
   },
   "tests/shift-wheel.py": {
@@ -462,9 +462,9 @@
     "semantic_hash": ""
   },
   "tests/terminal-tabs.py": {
-    "mtime": 1791891256.3474407,
-    "seen": 1791892576.6655657,
-    "ast_hash": "c2f5d57ba17a20f7088e4d847f154ee8",
+    "mtime": 1791895477.5882728,
+    "seen": 1791895507.1434202,
+    "ast_hash": "99effcda5751ae3850a1a2ef5a9dfb35",
     "semantic_hash": ""
   },
   "tests/tooltips.py": {
