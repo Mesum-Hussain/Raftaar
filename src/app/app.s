@@ -2579,6 +2579,9 @@ FN app_on_key
 .Lk_bind:
     cmp dword ptr [rip + g_focus], FOCUS_EDITOR
     jne 1f
+    call md_active              # a Markdown page has no cursor for vim's keys
+    test eax, eax
+    jnz 1f
     mov edi, r12d
     mov esi, r13d
     mov edx, r14d
@@ -2616,7 +2619,16 @@ FN app_on_key
     mov edx, r14d
     call gitview_key
     jmp 9f
-8:  mov edi, r12d
+8:  call md_active
+    test eax, eax
+    jz .Lk_edkey
+    mov edi, r12d
+    mov esi, r13d
+    mov edx, r14d
+    call md_key
+    jmp 9f
+.Lk_edkey:
+    mov edi, r12d
     mov esi, r13d
     mov edx, r14d
     call editor_key
@@ -3437,6 +3449,16 @@ FN view_draw
 2:  mov rbx, [rip + g_doc]
     test rbx, rbx
     jz .Lvd_done
+    # a Markdown file: its switch, and its page in place of the editor
+    mov rdi, rbx
+    mov esi, [rsp]
+    mov edx, [rsp + 4]
+    mov ecx, [rsp + 8]
+    mov r8d, [rsp + 12]
+    mov r9d, [rsp + 20]
+    call md_view
+    test eax, eax
+    jnz .Lvd_done
     mov rdi, rbx
     mov rsi, [rbx + DOC_scrolly]
     shr rsi, 8
@@ -3451,8 +3473,11 @@ FN view_draw
     mov ecx, [rsp + 12]
     call editor_draw
     cmp dword ptr [rsp + 20], 0
-    je .Lvd_done
+    je .Lvd_md
     call find_draw
+.Lvd_md:
+    mov rdi, rbx
+    call md_view_end
 .Lvd_done:
     cmp dword ptr [rsp + 20], 0
     jne 6f

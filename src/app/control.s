@@ -1054,6 +1054,9 @@ c_print_state:
     mov rsi, [rax + GR_name]
 2:  lea rdi, [rip + out]
     call sb_push_cstr
+    mov rdi, rbx
+    lea rsi, [rip + out]
+    call md_describe
     cmp dword ptr [rip + cfg_vim], 0
     je 1f
     lea rdi, [rip + out]

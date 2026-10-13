@@ -530,6 +530,7 @@ g_commands:
     COMMAND zoom_reset, "Reset Zoom", cmd_zoom_reset, "ctrl+0"
     COMMAND toggle_word_wrap, "Toggle Word Wrap", cmd_toggle_word_wrap, ""
     COMMAND toggle_zen, "Toggle Zen Mode", cmd_toggle_zen, "alt+z"
+    COMMAND toggle_markdown_preview, "Markdown: Toggle Preview", cmd_toggle_md_preview, "ctrl+shift+v"
     COMMAND toggle_whitespace, "Toggle Whitespace", cmd_toggle_whitespace, ""
     COMMAND toggle_line_numbers, "Toggle Line Numbers", cmd_toggle_line_numbers, ""
     COMMAND toggle_vim, "Toggle Vim Mode", cmd_toggle_vim, ""

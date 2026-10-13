@@ -781,6 +781,10 @@ render_glyph:
     mov esi, r15d
     xor edx, edx
     lea rcx, [rip + xform_identity]
+    cmp dword ptr [rbx + FACE_slant], 0
+    je .Lrg_xform
+    lea rcx, [rip + xform_slant]
+.Lrg_xform:
     call decode_glyph
     mov ecx, [rip + ol_n]
     test ecx, ecx
@@ -1224,6 +1228,7 @@ fallback_paths:
 .Lfb9: .asciz "/usr/share/fonts/wenquanyi/wqy-microhei/wqy-microhei.ttc"
 .p2align 2
 xform_identity: .float 1.0, 0.0, 0.0, 1.0, 0.0, 0.0
+xform_slant: .float 1.0, 0.0, 0.2, 1.0, 0.0, 0.0     # x moves right with y: italics
 f_inv16384: .float 0.00006103515625
 f_big: .float 1.0e9
 f_nbig: .float -1.0e9

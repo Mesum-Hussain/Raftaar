@@ -1,25 +1,25 @@
 # Graph Report - Raftaar  (2026-10-13)
 
 ## Corpus Check
-- 134 files · ~319,248 words
+- 135 files · ~340,740 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 431 file(s) not represented in the graph (top: .syn 133, .s 106, .expected 56)
+- Unclassified: 432 file(s) not represented in the graph (top: .syn 133, .s 107, .expected 56)
 
 ## Summary
-- 2328 nodes · 5183 edges · 145 communities (88 shown, 57 thin omitted)
+- 2337 nodes · 5193 edges · 144 communities (88 shown, 56 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 321 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cead0036`
+- Built from commit: `9d9a94be`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - three-0.180.0.min.js
-- a
+- update
 - windows.py
-- getPoint
+- ep
 - CommitAI
 - Translator
 - Raftaar: state for the next agent
@@ -29,17 +29,17 @@
 - constructor
 - wayland-launcher.c
 - rn
+- invert
 - dispose
 - EditorMatrix
 - SidebarSplit
 - SettingsUI
-- update
+- equals
 - linux-appearance.py
 - ReopenClosedTab
 - EditorHScroll
 - linux-scroll.py
 - X11Auth
-- fromBufferAttribute
 - FileLaunch
 - TerminalLinks
 - file-icons.py
@@ -47,11 +47,10 @@
 - ReadOnlySave
 - Tooltips
 - Appearance
-- lookAt
 - _fromTexture
 - LocalModel
 - TerminalTabs
-- expandByObject
+- fromArray
 - FieldBlink
 - .err
 - GitReset
@@ -70,7 +69,7 @@
 - Clipboard
 - LongPaths
 - _onChangeCallback
-- raftaar guide
+- README.md
 - NewWindow
 - ScrollSensitivity
 - Bench
@@ -104,7 +103,7 @@
 - .layout
 - icons.py
 - gen-assets.sh script
-- Jf
+- cc
 - explorer-create.py
 - explorer-tabs.py
 - session.sh
@@ -142,7 +141,8 @@
 - tools/install.sh
 - package-windows.py
 - jt
-- translate
+- desktop.sh
+- b
 - copy
 - Startup stats
 - social/README.md
@@ -174,23 +174,23 @@
 ## Import Cycles
 - None detected.
 
-## Communities (145 total, 57 thin omitted)
+## Communities (144 total, 56 thin omitted)
 
 ### Community 0 - "three-0.180.0.min.js"
 Cohesion: 0.01
-Nodes (61): an(), clearLayerUpdates(), clearViewOffset(), convertLinearToSRGB(), convertSRGBToLinear(), copyLinearToSRGB(), copySampleValue_(), copySRGBToLinear() (+53 more)
+Nodes (70): an(), clearViewOffset(), convertLinearToSRGB(), convertSRGBToLinear(), copyLinearToSRGB(), copySampleValue_(), copySRGBToLinear(), eo() (+62 more)
 
-### Community 1 - "a"
-Cohesion: 0.10
-Nodes (22): addEventListener(), n(), getParameter(), Ka(), Ld(), a(), o(), r() (+14 more)
+### Community 1 - "update"
+Cohesion: 0.07
+Nodes (53): $a(), addEventListener(), clear(), u(), Dd(), h(), deleteAttribute(), enableAll() (+45 more)
 
 ### Community 2 - "windows.py"
 Cohesion: 0.12
 Nodes (42): cls_keeps_prompt(), command(), commit_ai(), control(), crlf_script(), environment(), equal(), file_becomes_symlink() (+34 more)
 
-### Community 3 - "getPoint"
-Cohesion: 0.24
-Nodes (10): getLength(), getLengths(), getPoint(), getPointAt(), getPoints(), getSpacedPoints(), getTangent(), getTangentAt() (+2 more)
+### Community 3 - "ep"
+Cohesion: 0.13
+Nodes (22): clearLayerUpdates(), computeTangents(), P(), ep(), F(), u(), v(), A() (+14 more)
 
 ### Community 4 - "CommitAI"
 Cohesion: 0.06
@@ -210,11 +210,11 @@ Nodes (26): Exception, char_value(), Error, evaluate(), expr(), peek(), primary(
 
 ### Community 9 - "install.sh"
 Cohesion: 0.13
-Nodes (41): add_block(), add_path(), add_posix(), banner(), bash_login(), choose_default_editor(), configure_files(), default_app_dir() (+33 more)
+Nodes (40): add_block(), add_path(), add_posix(), banner(), bash_login(), choose_default_editor(), configure_files(), default_app_dir() (+32 more)
 
 ### Community 10 - "constructor"
-Cohesion: 0.06
-Nodes (51): addGroup(), constructor(), bo(), cc(), Eo(), es(), fe(), hc() (+43 more)
+Cohesion: 0.08
+Nodes (36): addGroup(), constructor(), Eo(), es(), K(), Mo(), ns(), pt() (+28 more)
 
 ### Community 11 - "wayland-launcher.c"
 Cohesion: 0.07
@@ -224,9 +224,13 @@ Nodes (20): HashMap, mode_t, Option, Self, main(), Order, Pricer, String (+12 mo
 Cohesion: 0.12
 Nodes (11): arith_imm(), logical_imm(), reg = v (bits 32 or 64), a register holding v; zero register for 0, emits setup (x9, x10) and returns the AArch64 address operand, d = address of m (64-bit register name), tmp (index) = zero-extended memory value; returns register name, register name holding operand o (bits); 8/16-bit registers may carry high… (+3 more)
 
+### Community 13 - "invert"
+Cohesion: 0.08
+Nodes (28): applyAxisAngle(), applyEuler(), applyQuaternion(), attach(), compose(), conjugate(), ct(), getNormalMatrix() (+20 more)
+
 ### Community 14 - "dispose"
-Cohesion: 0.11
-Nodes (22): Bd(), a(), r(), connect(), et(), W(), Z(), disable() (+14 more)
+Cohesion: 0.16
+Nodes (17): Bd(), a(), r(), connect(), et(), W(), Z(), disable() (+9 more)
 
 ### Community 15 - "EditorMatrix"
 Cohesion: 0.10
@@ -240,9 +244,9 @@ Nodes (4): Panel dividers keep their presses and cursors, scrollbars hide when i
 Cohesion: 0.13
 Nodes (9): Click every settings control, verify saved values, cancellation and limits. Run…, SettingsUI, do_GET(), Handler, install(), install_while_stage_held(), Exercise the Windows installer against local, checksum-verified release…, install, with LICENSE in its staging folder held open from before the folder is… (+1 more)
 
-### Community 18 - "update"
-Cohesion: 0.17
-Nodes (26): clear(), u(), Dd(), m(), A(), getBarycoord(), getFragmentShaderID(), _getShaderStage() (+18 more)
+### Community 18 - "equals"
+Cohesion: 0.67
+Nodes (3): equals(), At(), e()
 
 ### Community 19 - "linux-appearance.py"
 Cohesion: 0.10
@@ -263,10 +267,6 @@ Nodes (20): nodes(), output(), Native Linux launch focus with a competing window
 ### Community 23 - "X11Auth"
 Cohesion: 0.18
 Nodes (5): skipUnless, Capture X11 setup requests using isolated authority files and a fake server., receive(), record(), X11Auth
-
-### Community 24 - "fromBufferAttribute"
-Cohesion: 0.14
-Nodes (21): Ai(), applyMatrix3(), applyNormalMatrix(), computeVertexNormals(), fromBufferAttribute(), getComponent(), getW(), getX() (+13 more)
 
 ### Community 25 - "FileLaunch"
 Cohesion: 0.14
@@ -292,13 +292,9 @@ Nodes (3): skipIf, Saving a read-only file asks first: Overwrite replaces it and
 Cohesion: 0.22
 Nodes (5): skipIf, The strip under the button before hovering, and after hovering for wait ms., Hover tooltips: the delay, what hides them, the setting, and no redraw while…, Generate's tooltip at x y, in the work tree's panel at its narrowest (260 of a…, Tooltips
 
-### Community 33 - "lookAt"
-Cohesion: 0.10
-Nodes (29): angleTo(), computeFrenetFrames(), cross(), crossVectors(), extractBasis(), extractRotation(), getArea(), getNormal() (+21 more)
-
 ### Community 34 - "_fromTexture"
 Cohesion: 0.14
-Nodes (20): _allocateTargets(), _applyPMREM(), Bl(), _blur(), _cleanup(), compileCubemapShader(), compileEquirectangularShader(), _compileMaterial() (+12 more)
+Nodes (21): _allocateTargets(), _applyPMREM(), n(), Bl(), _blur(), _cleanup(), compileCubemapShader(), compileEquirectangularShader() (+13 more)
 
 ### Community 35 - "LocalModel"
 Cohesion: 0.14
@@ -308,9 +304,9 @@ Nodes (4): LocalModel, do_POST(), skipUnless, Exercise the Windows download prot
 Cohesion: 0.21
 Nodes (5): skipIf, /bin/sh as the shell, which notes each start in a file: a hundred of them are…, Terminals are tabs among the files: Toggle Terminal goes to one and back, New…, A new terminal that sets its title and prints SESSION_index (the echo of what…, TerminalTabs
 
-### Community 37 - "expandByObject"
-Cohesion: 0.16
-Nodes (21): addVectors(), computeBoundingBox(), expandByObject(), expandByPoint(), expandByScalar(), getAttribute(), getBoundingBox(), getBoundingSphere() (+13 more)
+### Community 37 - "fromArray"
+Cohesion: 0.13
+Nodes (22): expandByPoint(), expandByScalar(), extractBasis(), extractRotation(), fromArray(), fromJSON(), getBoundingBox(), getBoundingSphere() (+14 more)
 
 ### Community 38 - "FieldBlink"
 Cohesion: 0.15
@@ -325,8 +321,8 @@ Cohesion: 0.16
 Nodes (17): animate(), canvas, context, draw(), hero, narrow, paint(), pointer (+9 more)
 
 ### Community 43 - "ce"
-Cohesion: 0.23
-Nodes (16): af(), ce(), cf(), $d(), ef(), he(), If(), Jd() (+8 more)
+Cohesion: 0.21
+Nodes (17): af(), ce(), cf(), $d(), ef(), he(), hi(), If() (+9 more)
 
 ### Community 44 - "FocusedZoom"
 Cohesion: 0.29
@@ -334,7 +330,7 @@ Nodes (3): FocusedZoom, skipUnless, Editor and terminal font zoom follows focus,
 
 ### Community 45 - "n"
 Cohesion: 0.06
-Nodes (33): clearUpdateRanges(), getInterpolation(), getRGB(), Hd(), kd(), c(), d(), h() (+25 more)
+Nodes (30): clearUpdateRanges(), R(), getRGB(), Hd(), hp(), Ka(), kd(), c() (+22 more)
 
 ### Community 46 - "StartupStats"
 Cohesion: 0.12
@@ -365,12 +361,12 @@ Cohesion: 0.24
 Nodes (4): extended(), LongPaths, skipUnless, Native file operations beyond MAX_PATH without changing the system policy.
 
 ### Community 55 - "_onChangeCallback"
-Cohesion: 0.08
-Nodes (27): clampScalar(), a(), Ft(), getHex(), getHexString(), getHSL(), Kr(), lerpHSL() (+19 more)
+Cohesion: 0.07
+Nodes (32): angleTo(), clamp(), clampScalar(), a(), Ft(), getHex(), getHexString(), getHSL() (+24 more)
 
-### Community 56 - "raftaar guide"
+### Community 56 - "README.md"
 Cohesion: 0.06
-Nodes (27): Explorer file icons, Build, Commit message AI, Configuration, Extensions (planned), Features, Folders and files, Git (+19 more)
+Nodes (32): Explorer file icons, Build, Commit message AI, Configuration, Extensions (planned), Features, Folders and files, Git (+24 more)
 
 ### Community 57 - "NewWindow"
 Cohesion: 0.24
@@ -409,12 +405,12 @@ Cohesion: 0.29
 Nodes (9): assets(), main(), assemble(), executable(), Build native x64 Windows PE files with LLVM, on Windows, Linux or macOS. Only…, PowerShell TEXT without its whole-line comments, here-strings as they are: the…, run(), tool() (+1 more)
 
 ### Community 70 - "Id"
-Cohesion: 0.12
-Nodes (10): $a(), P(), F(), Id(), p(), R(), w(), remove() (+2 more)
+Cohesion: 0.13
+Nodes (12): St(), F(), H(), P(), y(), Id(), f(), m() (+4 more)
 
 ### Community 71 - "applyMatrix4"
-Cohesion: 0.06
-Nodes (42): ap(), applyAxisAngle(), applyEuler(), applyMatrix4(), applyQuaternion(), compose(), conjugate(), ct() (+34 more)
+Cohesion: 0.08
+Nodes (43): addVectors(), Ai(), applyMatrix3(), applyMatrix4(), applyNormalMatrix(), center(), computeBoundingBox(), computeBoundingSphere() (+35 more)
 
 ### Community 72 - "bind"
 Cohesion: 0.50
@@ -429,12 +425,12 @@ Cohesion: 0.31
 Nodes (9): components(), main(), Copy a TrueType font keeping only the tables raftaar reads, optionally only…, code point -> glyph id, from the format 12 or format 4 subtable, offsets of the glyph index fields in a composite glyph, read_cmap(), subset(), tables_of() (+1 more)
 
 ### Community 75 - "mp"
-Cohesion: 0.07
-Nodes (57): computeTangents(), P(), Bt(), C(), it(), te(), ep(), F() (+49 more)
+Cohesion: 0.10
+Nodes (30): Bt(), C(), it(), te(), gp(), dt(), E(), ee() (+22 more)
 
 ### Community 76 - "dot"
-Cohesion: 0.09
-Nodes (41): addScaledVector(), at(), clamp(), clampLength(), clampPoint(), closestPointToPoint(), computeBoundingSphere(), _computeIntersections() (+33 more)
+Cohesion: 0.06
+Nodes (68): add(), addScaledVector(), at(), clampLength(), clampPoint(), closestPointToPoint(), _computeIntersections(), containsPoint() (+60 more)
 
 ### Community 77 - "app.py"
 Cohesion: 0.38
@@ -476,9 +472,9 @@ Nodes (12): arc(), _arc_points(), huge(), line(), _path_lines(), poly(), a Hugei
 Cohesion: 0.50
 Nodes (3): build.sh script, emit(), gen-assets.sh script
 
-### Community 90 - "Jf"
-Cohesion: 0.11
-Nodes (19): Ei(), _f(), ff(), gf(), Jf(), ji(), jl(), kf() (+11 more)
+### Community 90 - "cc"
+Cohesion: 0.16
+Nodes (14): bo(), cc(), fe(), hc(), Q(), decompose(), determinant(), Gd() (+6 more)
 
 ### Community 93 - "session.sh"
 Cohesion: 0.80
@@ -513,35 +509,39 @@ Cohesion: 0.67
 Nodes (3): outputs(), Keep installer extension lists and desktop declarations aligned with the…, text_extensions()
 
 ### Community 136 - "jt"
-Cohesion: 0.22
-Nodes (9): jt(), decompose(), determinant(), disableAll(), enable(), T(), fromArray(), fromJSON() (+1 more)
+Cohesion: 0.19
+Nodes (12): jt(), disableAll(), enable(), T(), getParameter(), getViewport(), Wt(), init() (+4 more)
 
-### Community 148 - "translate"
-Cohesion: 0.17
-Nodes (12): center(), getWorldDirection(), makeRotation(), makeScale(), makeTranslation(), p(), multiplyQuaternions(), negate() (+4 more)
+### Community 141 - "desktop.sh"
+Cohesion: 0.70
+Nodes (4): begin(), end(), desktop.sh script, t()
+
+### Community 148 - "b"
+Cohesion: 0.20
+Nodes (11): b(), makeRotation(), makeScale(), multiply(), multiplyMatrices(), multiplyQuaternions(), onAfterShadow(), onBeforeShadow() (+3 more)
 
 ### Community 156 - "copy"
-Cohesion: 0.07
-Nodes (36): add(), attach(), clone(), r(), St(), copy(), distanceSqToSegment(), distanceTo() (+28 more)
+Cohesion: 0.06
+Nodes (44): ap(), clone(), r(), copy(), cp(), o(), Ei(), _f() (+36 more)
 
 ### Community 157 - "Startup stats"
 Cohesion: 0.40
 Nodes (4): Headless baseline, Interpret results, Run, Startup stats
 
 ## Knowledge Gaps
-- **54 isolated node(s):** `NO_COLOR`, `TERM`, `build.sh script`, `stage`, `preview` (+49 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 602 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **57 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **60 isolated node(s):** `NO_COLOR`, `TERM`, `build.sh script`, `stage`, `preview` (+55 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 608 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **56 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `constructor()` connect `constructor` to `three-0.180.0.min.js`, `a`, `_fromTexture`, `lookAt`, `expandByObject`, `Id`, `applyMatrix4`, `jt`, `bind`, `mp`, `dot`, `n`, `dispose`, `update`, `_onChangeCallback`, `copy`?**
-  _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `mp()` connect `mp` to `three-0.180.0.min.js`, `a`, `applyMatrix4`, `jt`, `constructor`, `dot`, `n`, `dispose`, `update`, `translate`, `copy`?**
+- **Why does `mp()` connect `mp` to `three-0.180.0.min.js`, `update`, `ep`, `fromArray`, `Id`, `jt`, `constructor`, `dot`, `n`, `dispose`, `invert`, `equals`, `copy`?**
   _High betweenness centrality (0.010) - this node is a cross-community bridge._
-- **Why does `gp()` connect `mp` to `three-0.180.0.min.js`, `update`, `constructor`, `Id`?**
-  _High betweenness centrality (0.008) - this node is a cross-community bridge._
+- **Why does `constructor()` connect `constructor` to `three-0.180.0.min.js`, `update`, `_fromTexture`, `fromArray`, `Id`, `applyMatrix4`, `jt`, `bind`, `mp`, `dot`, `invert`, `dispose`, `ce`, `n`, `b`, `_onChangeCallback`, `cc`, `copy`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
+- **Why does `gp()` connect `mp` to `three-0.180.0.min.js`, `update`, `ep`, `Id`, `jt`, `constructor`?**
+  _High betweenness centrality (0.010) - this node is a cross-community bridge._
 - **Are the 6 inferred relationships involving `constructor()` (e.g. with `it()` and `je()`) actually correct?**
   _`constructor()` has 6 INFERRED edges - model-reasoned connections that need verification._
 - **Are the 2 inferred relationships involving `copy()` (e.g. with `e()` and `l()`) actually correct?**
@@ -549,4 +549,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 26 inferred relationships involving `mp()` (e.g. with `at()` and `Bt()`) actually correct?**
   _`mp()` has 26 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `NO_COLOR`, `TERM`, `build.sh script` to the rest of the system?**
-  _54 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _60 weakly-connected nodes found - possible documentation gaps or missing edges._

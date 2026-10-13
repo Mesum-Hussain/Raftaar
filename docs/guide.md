@@ -8,6 +8,7 @@ raftaar draws everything itself: it rasterizes TrueType fonts, icons and widgets
 - Tabs in the title bar; each can be split into panes, side by side and stacked, with dividers to drag
 - Open Recent in the command palette: open a folder or a file from anywhere on disk, or a recent folder, in this window or a new one
 - Image preview: PNG, JPEG, GIF, BMP, ICO, QOI, PNM and TGA open in a tab, with zoom and pan
+- Markdown preview: a Markdown file shown as a page in its own tab, one switch away from its text
 - Syntax highlighting for about 125 languages, defined in plain text grammar files
 - 40 color themes, dark and light, with a match for every Omarchy theme; add your own. A dark and a light theme switch with the system's dark mode on macOS, Windows and Linux, as in VS Code
 - Settings page and a readable config file, both applied while running
@@ -246,6 +247,7 @@ On macOS the title bar is raftaar's too, with the window buttons in it. Command 
 | Ctrl+K | Color theme |
 | Ctrl+B | Toggle explorer |
 | Alt+Z | Zen mode: the tab or pane with the keys alone, over the whole window, until toggled again |
+| Ctrl+Shift+V | Markdown: the file as a page, and back to its text |
 | Ctrl+T, Ctrl+Shift+\` | New terminal, in a tab |
 | Ctrl+Right, Ctrl+Left | Split right, left: a new terminal beside the active pane |
 | Ctrl+Down, Ctrl+Up | Split down, up: a new terminal under or over the active pane |
@@ -405,6 +407,28 @@ PNG, JPEG (baseline and progressive, EXIF orientation applied), GIF (first frame
 | Wheel (Shift+wheel sideways), drag, arrows | Pan |
 
 The status bar shows the size, the file size, the format and the zoom; clicking the zoom switches between fit and 100%.
+
+### Markdown preview
+
+A Markdown file has a switch in the top right corner of its pane: **Preview** shows the file as a
+page, **Edit** shows its text again. **Markdown: Toggle Preview** (Ctrl+Shift+V) does the same. The
+file stays in its tab, and each file keeps its own mode until its tab is closed; files open in Edit.
+
+The page is drawn from the text as it is in the editor, unsaved changes included, and follows the
+file when an agent or another program rewrites it. It shows headings, bold, slanted and struck
+text, code and code blocks, lists, numbered lists and task lists, quotes, tables with their
+columns' alignment, rules and links. HTML tags are left out, apart from `<br>`, `<b>` and `<i>`;
+an image shows as a link to its file.
+
+- A click on a link opens a web address in the browser and a file in a tab, a path taken from the
+  Markdown file's folder. A link to a file that is not there does nothing.
+- The wheel, the scrollbar, the arrows, PageUp, PageDown, Space, Home and End scroll the page.
+- The page takes no edits: typing, pasting and undo wait until the text is shown again. Opening
+  Find goes back to the text.
+- Its text is the editor's font, and follows the editor's zoom.
+
+Code blocks are not colored by language, text on the page cannot be selected, and images are not
+drawn.
 
 ### Vim mode
 

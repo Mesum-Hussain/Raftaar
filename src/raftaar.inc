@@ -331,7 +331,7 @@ F FACE_tabcap, 4
 F FACE_tabn, 4
 F FACE_ascii, 1024  # fast path GL* for cp < 128
 F FACE_embolden, 4
-F FACE_pad2, 4
+F FACE_slant, 4          # 1: glyphs lean to the right (the Markdown page's italics)
 ENDSTRUCT FACE_SIZE
 
 # ---- event loop fd watchers ----
@@ -527,6 +527,8 @@ F DOC_real, 8           # a symlink's file: its path (owned) and name, and its f
 F DOC_rname, 8
 F DOC_wd2, 8
 F DOC_hops, 8           # the symlinks it leads through before that file (watch.s), or 0
+F DOC_mdscroll, 4       # Markdown page: how far it is scrolled, px
+F DOC_mdh, 4            # and its height as last laid out
 ENDSTRUCT DOC_SIZE
 
 .equ DISK_FADE_MS, 800
@@ -537,15 +539,16 @@ ENDSTRUCT DOC_SIZE
 .equ DF_READONLY, 2              # diff views
 .equ DF_EOL, 4                   # the text ended in a newline when read or saved: vim has no line after it
 .equ DF_DISK_CHANGED, 8          # external contents differ and unsaved edits were kept
+.equ DF_PREVIEW, 16              # a Markdown file shown as a page (mdview.s); its text is not edited meanwhile
 
-# return 0 at once when the document is read-only: g_doc, or the one in reg
+# return 0 at once when the document is read-only or shown as a page: g_doc, or the one in reg
 .macro READONLY_RET reg=0
 .ifc \reg,0
     push rax
     mov rax, [rip + g_doc]
     test rax, rax
     jz .Lro\@
-    test dword ptr [rax + DOC_flags], DF_READONLY
+    test dword ptr [rax + DOC_flags], DF_READONLY | DF_PREVIEW
     pop rax
     jz .Lro2\@
     xor eax, eax
@@ -554,7 +557,7 @@ ENDSTRUCT DOC_SIZE
     pop rax
 .Lro2\@:
 .else
-    test dword ptr [\reg + DOC_flags], DF_READONLY
+    test dword ptr [\reg + DOC_flags], DF_READONLY | DF_PREVIEW
     jz .Lro\@
     xor eax, eax
     ret

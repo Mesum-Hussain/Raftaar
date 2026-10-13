@@ -785,6 +785,11 @@ find_rect:
     mov ecx, r13d
     EPILOGUE
 
+# find_is_open() -> not 0 while the find bar is shown
+FN find_is_open
+    mov eax, [rip + find_open]
+    ret
+
 # find_blocks_editor() -> 1 when the pointer is over the open find overlay.
 FN find_blocks_editor
     xor eax, eax
