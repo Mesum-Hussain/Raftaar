@@ -56,6 +56,7 @@ python3 tests/readonly-save.py || fail=1
 python3 tests/reopen-tab.py || fail=1
 python3 tests/focused-zoom.py || fail=1
 sh tests/files.sh || fail=1
+sh tests/desktop.sh || fail=1
 sh tests/update.sh || fail=1
 python3 tests/commit-ai.py || fail=1
 sh tests/detach.sh || fail=1

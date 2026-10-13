@@ -37,21 +37,13 @@ jobs:
       - name: Pack
         run: |
           v=$(cat VERSION)
-          r=stage/raftaar-$v
-          mkdir -p "$r/bin" "$r/share/applications" "$r/share/icons/hicolor/scalable/apps" \
-            "$r/share/icons/hicolor/256x256/apps" "$r/share/icons/hicolor/512x512/apps"
-          cp build/raftaar "$r/bin/"
-          cp assets/raftaar.desktop "$r/share/applications/"
-          cp assets/icons/raftaar.svg "$r/share/icons/hicolor/scalable/apps/"
-          cp assets/icons/raftaar-256.png "$r/share/icons/hicolor/256x256/apps/raftaar.png"
-          cp assets/icons/raftaar-512.png "$r/share/icons/hicolor/512x512/apps/raftaar.png"
-          cp LICENSE "$r/"
-          test "$("$r/bin/raftaar" --version)" = "raftaar $v"
-          tar -czf "raftaar-$v-linux-x86_64.tar.gz" -C stage "raftaar-$v"
+          test "$(build/raftaar --version)" = "raftaar $v"
+          sh tests/desktop.sh
+          cp build/raftaar "raftaar-$v-linux-x86_64"
       - uses: actions/upload-artifact@v4
         with:
           name: linux
-          path: raftaar-*-linux-x86_64.tar.gz
+          path: raftaar-*-linux-x86_64
           if-no-files-found: error
 
   macos:
@@ -175,7 +167,7 @@ jobs:
       - name: Checksums, version and installer
         run: |
           v=$(cat VERSION)
-          test -s "dist/raftaar-$v-linux-x86_64.tar.gz"
+          test -s "dist/raftaar-$v-linux-x86_64"
           test -s "dist/raftaar-$v-macos-arm64.zip"
           test -s "dist/raftaar-$v-macos-arm64.dmg"
           test -s "dist/raftaar-$v-windows-x86_64.zip"

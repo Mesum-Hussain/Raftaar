@@ -16,23 +16,29 @@ if [ "$(uname -s)" = Darwin ]; then os=mac; fi
 H=$w/home
 mkdir -p "$H" "$w/rel/latest/download" "$w/shim"
 
-# release VERSION: a fake release: the archive, SHA256SUMS and the installer
+# release VERSION: a fake release: the download (on Linux the program, on macOS the archive of the
+# app), SHA256SUMS and the installer
 release() {
     v=$1
     d=$w/rel/download/v$v
     s=$w/stage-$v
     mkdir -p "$d" "$s"
     if [ $os = linux ]; then
-        r=$s/raftaar-$v
-        mkdir -p "$r/bin" "$r/share/applications" "$r/share/icons/hicolor/scalable/apps" \
-            "$r/share/icons/hicolor/256x256/apps" "$r/share/icons/hicolor/512x512/apps"
-        printf '#!/bin/sh\nif [ "${1:-}" = --version ]; then echo "raftaar %s"; exit 0; fi\nsleep "${1:-0}"\n' "$v" > "$r/bin/raftaar"
-        chmod 755 "$r/bin/raftaar"
-        cp assets/raftaar.desktop "$r/share/applications/"
-        cp assets/icons/raftaar.svg "$r/share/icons/hicolor/scalable/apps/"
-        cp assets/icons/raftaar-256.png "$r/share/icons/hicolor/256x256/apps/raftaar.png"
-        cp assets/icons/raftaar-512.png "$r/share/icons/hicolor/512x512/apps/raftaar.png"
-        tar -czf "$d/raftaar-$v-linux-x86_64.tar.gz" -C "$s" "raftaar-$v"
+        # as raftaar --install-desktop PREFIX writes them (tests/desktop.sh has the program's own)
+        cat > "$d/raftaar-$v-linux-x86_64" <<EOF
+#!/bin/sh
+if [ "\${1:-}" = --version ]; then echo "raftaar $v"; exit 0; fi
+if [ "\${1:-}" = --install-desktop ]; then
+    i=\$2/share/icons/hicolor
+    mkdir -p "\$2/share/applications" "\$i/scalable/apps" "\$i/256x256/apps" "\$i/512x512/apps" || exit 1
+    sed "s|^Exec=raftaar |Exec=\$0 |" "$root/assets/raftaar.desktop" > "\$2/share/applications/raftaar.desktop" &&
+        cp "$root/assets/icons/raftaar.svg" "\$i/scalable/apps/" &&
+        cp "$root/assets/icons/raftaar-256.png" "\$i/256x256/apps/raftaar.png" &&
+        cp "$root/assets/icons/raftaar-512.png" "\$i/512x512/apps/raftaar.png"
+    exit
+fi
+sleep "\${1:-0}"
+EOF
     else
         mkdir -p "$s/raftaar.app/Contents/MacOS"
         sed "s/@VERSION@/$v/" assets/mac/Info.plist > "$s/raftaar.app/Contents/Info.plist"

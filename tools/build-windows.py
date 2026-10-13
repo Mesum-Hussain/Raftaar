@@ -135,7 +135,8 @@ def main():
     res = OUT / 'raftaar.res'
     # Relative paths avoid llvm-rc interpreting a POSIX absolute path as a /flag.
     run([rc, '/no-preprocess', '/C', '65001', '/fo', res.relative_to(ROOT), resource.relative_to(ROOT)])
-    exclude = {'src/start.s', 'src/plat/wayland.s', 'src/plat/x11.s', 'src/plat/appearance.s'}
+    exclude = {'src/start.s', 'src/plat/wayland.s', 'src/plat/x11.s', 'src/plat/appearance.s',
+               'src/plat/desktop.s'}
     sources = [p for p in sorted((ROOT / 'src').rglob('*.s'))
                if 'mac' not in p.relative_to(ROOT).parts and p.relative_to(ROOT).as_posix() not in exclude]
     generated = OUT / 'assets.s'

@@ -78,13 +78,13 @@ have() {
     command -v "$1" >/dev/null 2>&1
 }
 
-# platform: sets os (linux, mac) and the archive's name ending
+# platform: sets os (linux, mac) and the download's name ending (on Linux the program itself)
 platform() {
     msg="raftaar runs on Linux x86-64 and macOS on Apple silicon"
     case "$(uname -s)" in
     Linux)
         case "$(uname -m)" in
-        x86_64 | amd64) os=linux; ending=linux-x86_64.tar.gz; platform_name='Linux, x86-64' ;;
+        x86_64 | amd64) os=linux; ending=linux-x86_64; platform_name='Linux, x86-64' ;;
         *) fail "$msg; this is Linux on $(uname -m)" ;;
         esac
         ;;
@@ -156,7 +156,7 @@ latest_version() {
     tr -d ' \r\n' < "$tmp/VERSION"
 }
 
-# download: the archive of $version into $tmp, checked against the release's SHA256SUMS
+# download: the release of $version for this platform into $tmp, checked against its SHA256SUMS
 download() {
     name=raftaar-$version-$ending
     say "Downloading raftaar $version"
@@ -187,41 +187,20 @@ installed_version() {
 
 # ---------------- Linux ----------------
 
-unpack_linux() {
-    say 'Unpacking archive'
-    mkdir "$tmp/x"
-    tar -xzf "$tmp/$name" -C "$tmp/x" || fail "could not unpack $name"
-    src=$tmp/x/raftaar-$version
-    [ -f "$src/bin/raftaar" ] || fail "$name has no bin/raftaar"
-}
-
-# place_binary DEST: a new file renamed over the old one, so a running raftaar keeps its copy
+# place_binary DEST: the download, a new file renamed over the old one, so a running raftaar keeps its
+# copy
 place_binary() {
     dir=$(dirname "$1")
     mkdir -p "$dir"
-    cp "$src/bin/raftaar" "$dir/.raftaar.new"
+    cp "$tmp/$name" "$dir/.raftaar.new"
     chmod 755 "$dir/.raftaar.new"
     mv -f "$dir/.raftaar.new" "$1"
 }
 
-# place_desktop PREFIX EXE: the desktop entry, which starts EXE by its path (graphical sessions often
-# lack ~/.local/bin in PATH), and the icons
+# place_desktop PREFIX EXE: the desktop entry and the icons, which EXE carries and writes itself; the
+# entry starts EXE by its path (graphical sessions often lack ~/.local/bin in PATH)
 place_desktop() {
-    apps=$1/share/applications
-    mkdir -p "$apps"
-    exe=$2
-    case "$exe" in *" "*) exe="\"$exe\"" ;; esac
-    exe=$(printf '%s' "$exe" | sed 's/[&|\\]/\\&/g')
-    sed "s|^Exec=raftaar |Exec=$exe |" "$src/share/applications/raftaar.desktop" > "$apps/.raftaar.desktop.new"
-    mv -f "$apps/.raftaar.desktop.new" "$apps/raftaar.desktop"
-    for d in scalable 256x256 512x512; do
-        for f in "$src/share/icons/hicolor/$d/apps"/raftaar.*; do
-            if [ -f "$f" ]; then
-                mkdir -p "$1/share/icons/hicolor/$d/apps"
-                cp "$f" "$1/share/icons/hicolor/$d/apps/"
-            fi
-        done
-    done
+    "$2" --install-desktop "$1" || fail "could not write the desktop entry under $1"
     refresh_desktop "$1"
 }
 
@@ -629,7 +608,6 @@ install_fresh() {
     download
     if [ "$os" = linux ]; then
         prefix=${prefix:-$HOME/.local}
-        unpack_linux
         say 'Installing binary and desktop entry'
         place_binary "$prefix/bin/raftaar"
         place_desktop "$prefix" "$prefix/bin/raftaar"
@@ -659,7 +637,6 @@ update() {
     [ -w "$dir" ] || fail "$dir is not writable; run the installer again"
     download
     if [ "$os" = linux ]; then
-        unpack_linux
         place_binary "$target"
         # the desktop entry and icons too when the installer put them there
         prefix=$(dirname "$dir")

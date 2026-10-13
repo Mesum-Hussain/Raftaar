@@ -20,7 +20,7 @@ stale() {
 name() { echo "$1" | sed 's|/|_|g; s|\.s$||'; }
 
 # translated sources: everything but the Linux entry and display servers
-x86=$(find src -name '*.s' ! -path 'src/mac/*' ! -path 'src/win/*' ! -path src/start.s ! -path src/plat/wayland.s ! -path src/plat/x11.s ! -path src/plat/appearance.s | LC_ALL=C sort)
+x86=$(find src -name '*.s' ! -path 'src/mac/*' ! -path 'src/win/*' ! -path src/start.s ! -path src/plat/wayland.s ! -path src/plat/x11.s ! -path src/plat/appearance.s ! -path src/plat/desktop.s | LC_ALL=C sort)
 [ "$1" = test ] && x86="$x86 $(ls tests/*.s)"
 todo=
 objs=

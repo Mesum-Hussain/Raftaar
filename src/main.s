@@ -118,6 +118,18 @@ parse_args:
     mov r14, [r12 + rbx*8]
     mov rdi, r14
     call help_flag
+.ifndef WINDOWS
+.ifndef MACOS
+    mov rdi, r14
+    lea rsi, [rip + .Lo_install_desktop]
+    call strcmp_eq
+    test eax, eax
+    jz 1f
+    mov rdi, [r12 + rbx*8 + 8]  # the folder, or the 0 that ends the arguments
+    call desktop_install
+1:
+.endif
+.endif
     mov rdi, r14
     lea rsi, [rip + .Lo_headless]
     call strcmp_eq
@@ -510,6 +522,11 @@ open_initial:
 .Lo_help: .asciz "--help"
 .Lo_h: .asciz "-h"
 .Lo_version: .asciz "--version"
+.ifndef WINDOWS
+.ifndef MACOS
+.Lo_install_desktop: .asciz "--install-desktop"
+.endif
+.endif
 .Lversion: .asciz "raftaar "
 .Lnl: .asciz "\n"
 .Lusage: .ascii "usage: raftaar [folder] [files...]\n"
@@ -519,6 +536,12 @@ open_initial:
     .ascii "  --script FILE    run control commands from FILE and exit\n"
     .ascii "  --control PATH   accept control commands on a unix socket\n"
     .ascii "  --scale F        display scale where the platform has none\n"
+.ifndef WINDOWS
+.ifndef MACOS
+    .ascii "  --install-desktop [PREFIX]\n"
+    .ascii "                   put the desktop entry and icons under PREFIX/share (~/.local)\n"
+.endif
+.endif
     .asciz "  --version        print the version\n"
 .p2align 2
 .Lf100: .float 100.0
