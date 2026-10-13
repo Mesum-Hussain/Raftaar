@@ -2,20 +2,8 @@
 .include "raftaar.inc"
 
 .text
-FN cmd_website
-    lea rdi, [rip + .Lwebsite]
-    jmp desktop_open
-
 FN cmd_feedback
     lea rdi, [rip + .Lfeedback]
-    jmp desktop_open
-
-FN cmd_discord
-    lea rdi, [rip + .Ldiscord]
-    jmp desktop_open
-
-FN cmd_email
-    lea rdi, [rip + .Lemail]
     jmp desktop_open
 
 .ifdef WINDOWS
@@ -124,10 +112,7 @@ FN desktop_failed
     jmp app_toast
 
 .section .rodata
-.Lwebsite: .asciz "https://rhun.app"
-.Lfeedback: .asciz "https://github.com/vshvedov/rhun/issues"
-.Ldiscord: .asciz "https://discord.gg/Aj4drpFbWf"
-.Lemail: .asciz "mailto:hi@rhun.app?subject=rhun%20feedback"
+.Lfeedback: .asciz "https://github.com/Mesum-Hussain/Raftaar/issues"
 .Lfailed: .asciz "Could not open the desktop application"
 .ifdef MACOS
 .Lopener: .asciz "open"

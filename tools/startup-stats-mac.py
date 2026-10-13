@@ -40,8 +40,8 @@ def find_binary(requested):
     binary = shutil.which("raftaar")
     if binary:
         return binary
-    for path in [Path("/Applications/rhun.app/Contents/MacOS/raftaar"),
-                 Path.home() / "Applications/rhun.app/Contents/MacOS/raftaar"]:
+    for path in [Path("/Applications/raftaar.app/Contents/MacOS/raftaar"),
+                 Path.home() / "Applications/raftaar.app/Contents/MacOS/raftaar"]:
         if path.is_file() and os.access(path, os.X_OK):
             return str(path)
     return None

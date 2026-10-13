@@ -34,8 +34,8 @@ def until(predicate, message):
 
 with tempfile.TemporaryDirectory(prefix='raftaar-launch-', dir='/tmp') as directory:
     work = Path(directory).resolve()
-    bundle = work / 'rhun.app'
-    shutil.copytree(ROOT / 'build/rhun.app', bundle)
+    bundle = work / 'raftaar.app'
+    shutil.copytree(ROOT / 'build/raftaar.app', bundle)
     identifier = 'com.r13.raftaar.test.' + uuid.uuid4().hex
     plist = bundle / 'Contents/Info.plist'
     metadata = plistlib.loads(plist.read_bytes())

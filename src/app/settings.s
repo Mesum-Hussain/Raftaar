@@ -373,63 +373,15 @@ FN settings_draw
     call cmd_open_config
     jmp .Lsd_end
 3:  add r12d, [rip + g_mt + 4*MI_40]
-    mov edi, 0x4f02
+    mov edi, 0x4f03
     mov esi, [rsp + 20]
     mov edx, r12d
     mov ecx, [rsp + 16]
-    lea r8, [rip + .Lwebsite]
-    call settings_link
-    mov [rsp + 28], edx
-    test eax, UB_CLICK
-    jz 31f
-    call cmd_website
-31: mov edi, [rsp + 28]
-    mov esi, r12d
-    call link_dot
-    mov [rsp + 28], eax
-    mov edi, 0x4f04
-    mov esi, [rsp + 28]
-    mov edx, r12d
-    mov ecx, [rsp + 16]
-    add ecx, [rsp + 20]
-    sub ecx, esi
-    lea r8, [rip + .Lemail]
-    call settings_link
-    mov [rsp + 28], edx
-    test eax, UB_CLICK
-    jz 311f
-    call cmd_email
-311: mov edi, [rsp + 28]
-    mov esi, r12d
-    call link_dot
-    mov [rsp + 28], eax
-    mov edi, 0x4f03
-    mov esi, [rsp + 28]
-    mov edx, r12d
-    mov ecx, [rsp + 16]
-    add ecx, [rsp + 20]
-    sub ecx, esi
     lea r8, [rip + .Lfeedback]
-    call settings_link
-    mov [rsp + 28], edx
-    test eax, UB_CLICK
-    jz 312f
-    call cmd_feedback
-312: mov edi, [rsp + 28]
-    mov esi, r12d
-    call link_dot
-    mov [rsp + 28], eax
-    mov edi, 0x4f05
-    mov esi, [rsp + 28]
-    mov edx, r12d
-    mov ecx, [rsp + 16]
-    add ecx, [rsp + 20]
-    sub ecx, esi
-    lea r8, [rip + .Ldiscord]
     call settings_link
     test eax, UB_CLICK
     jz 32f
-    call cmd_discord
+    call cmd_feedback
 32: add r12d, [rip + g_mt + 4*MI_40]
     # rows
     lea rbx, [rip + g_settings]
@@ -1055,20 +1007,6 @@ FN settings_draw
     cmovg eax, ecx
     ret
 
-# link_dot(x, y) -> eax the next link's x: a muted dot between the header's links
-link_dot:
-    PROLOGUE
-    mov edx, esi
-    mov esi, edi
-    add esi, [rip + g_mt + 4*MI_10]
-    lea rdi, [rip + g_face_small]
-    M ecx, MI_28
-    lea r8, [rip + .Llink_dot]
-    COLOR r9d, T_MUTED
-    call ui_text_c
-    add eax, [rip + g_mt + 4*MI_10]
-    EPILOGUE
-
 # settings_link(id, x, y, max_width, label) -> eax button flags, edx right edge
 settings_link:
     PROLOGUE 32
@@ -1227,11 +1165,7 @@ FN ui_text_v_fit
 .Lt_terminal: .asciz "Terminal"
 .Lt_git: .asciz "Git"
 .Lt_updates: .asciz "Updates"
-.Lwebsite: .asciz "https://rhun.app"
-.Lemail: .asciz "hi@rhun.app"
 .Lfeedback: .asciz "Feedback and issues: GitHub"
-.Ldiscord: .asciz "Discord"
-.Llink_dot: .asciz "\302\267"
 .Lcheck_now: .asciz "Check now"
 
 .data

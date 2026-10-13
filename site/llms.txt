@@ -5,7 +5,7 @@
 Facts:
 
 - One static binary under 700 KB on Linux (fonts, themes and grammars included), with no libc, toolkit or runtime. It draws every pixel itself and speaks Wayland and X11 directly; on macOS the same source is translated to native Apple silicon code and runs in an AppKit window. Windows uses an assembly Win32 adapter and ConPTY.
-- Install on Linux and macOS: `curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh` (or `wget -qO-`). No root; checks SHA-256 checksums and, on macOS, the developer signature. Uninstall: add `sh -s -- --uninstall`.
+- Install on Linux and macOS: `curl -fsSL https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh` (or `wget -qO-`). No root; checks SHA-256 checksums and, on macOS, the developer signature. Uninstall: add `sh -s -- --uninstall`.
 - Updates: raftaar checks GitHub once a day in the background; the status bar offers a new version, installs it and restarts into it on Windows, Linux and macOS. Windows stages a checksum-verified release and installs it after the editor exits for restart; writable ZIP installations also update in place.
 - Settings: `~/.config/raftaar/config`, applied while running. Grammars: `~/.config/raftaar/syntax/NAME.syn`. Themes: `~/.config/raftaar/themes/NAME.theme`.
 - Windows: Windows 10 version 1809 or later, x64. Extract the Windows ZIP and open raftaar.exe, or use the one-command PowerShell installer shown on the website. No package manager is required. Settings are in %APPDATA%\raftaar, sessions in %LOCALAPPDATA%\raftaar. Native ARM64, code signing and the Unix control socket are not included.
@@ -14,14 +14,14 @@ Facts:
 
 - [Docs](https://rhun.app/docs/): short guides to getting started, editing, the terminal, agents, Git, and customization
 - [Full guide](https://rhun.app/guide.md): features, install and update, usage, shortcuts, configuration, grammars and themes
-- [README](https://github.com/vshvedov/rhun/blob/main/README.md): overview
+- [README](https://github.com/Mesum-Hussain/Raftaar/blob/main/README.md): overview
 
 ## Get it
 
-- [Installer](https://github.com/vshvedov/rhun/releases/latest/download/install.sh): the one-command install script for Linux and macOS
-- [Releases](https://github.com/vshvedov/rhun/releases): archives for Linux x86-64, macOS arm64 and Windows x64, with SHA-256 checksums
+- [Installer](https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh): the one-command install script for Linux and macOS
+- [Releases](https://github.com/Mesum-Hussain/Raftaar/releases): archives for Linux x86-64, macOS arm64 and Windows x64, with SHA-256 checksums
 
 ## Optional
 
-- [Source code](https://github.com/vshvedov/rhun): x86-64 assembly, MIT license
+- [Source code](https://github.com/Mesum-Hussain/Raftaar): x86-64 assembly, MIT license
 - [Full text for LLMs](https://rhun.app/llms-full.txt): this file followed by the complete guide

@@ -110,7 +110,7 @@ landing = f'''<main id="main" class="wrap">
     </div>
   </section>
   <div class="docs-explore">{landing_rail}<div class="doc-chapters">{chapters}</div></div>
-  <section class="docs-help"><h2>Need a hand?</h2><div><a class="button" href="https://discord.gg/Aj4drpFbWf">Ask on Discord</a><a class="text-link" href="https://github.com/vshvedov/rhun/blob/main/docs/guide.md">Full technical reference</a></div></section>
+  <section class="docs-help"><h2>Need a hand?</h2><div><a class="button" href="https://discord.gg/Aj4drpFbWf">Ask on Discord</a><a class="text-link" href="https://github.com/Mesum-Hussain/Raftaar/blob/main/docs/guide.md">Full technical reference</a></div></section>
 </main>'''
 (out / 'docs').mkdir(exist_ok=True)
 (out / 'docs/index.html').write_text(document('Get to know your editor', 'Short guides to installing raftaar, editing code, using the terminal, following agents, Git, and customization.', '/docs/', landing, 'docs-index'))

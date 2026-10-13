@@ -4,16 +4,16 @@ set -e
 cd "$(dirname "$0")/.."
 prefix=${1:-$HOME/.local}
 if [ "$(uname -s)" = Darwin ]; then
-    # rhun.app into /Applications (~/Applications when that is not writable), raftaar into prefix/bin
+    # raftaar.app into /Applications (~/Applications when that is not writable), raftaar into prefix/bin
     ./build.sh release
     apps=/Applications
     [ -w "$apps" ] || apps=$HOME/Applications
     mkdir -p "$apps" "$prefix/bin"
-    rm -rf "$apps/rhun.app"
-    cp -R build/rhun.app "$apps/"
-    printf '#!/bin/sh\nexec "%s/rhun.app/Contents/MacOS/raftaar" "$@"\n' "$apps" > "$prefix/bin/raftaar"
+    rm -rf "$apps/raftaar.app"
+    cp -R build/raftaar.app "$apps/"
+    printf '#!/bin/sh\nexec "%s/raftaar.app/Contents/MacOS/raftaar" "$@"\n' "$apps" > "$prefix/bin/raftaar"
     chmod 755 "$prefix/bin/raftaar"
-    echo "installed $apps/rhun.app and $prefix/bin/raftaar"
+    echo "installed $apps/raftaar.app and $prefix/bin/raftaar"
     exit 0
 fi
 ./build.sh release

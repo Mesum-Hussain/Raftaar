@@ -36,7 +36,7 @@ elif tool == "xcrun" and args[:2] == ["stapler", "validate"]:
 elif tool == "spctl" and (failure == "gatekeeper" or (failure == "dmg-gatekeeper" and args[-1].endswith(".dmg"))):
     sys.exit(1)
 elif tool == "build-mac.sh":
-    Path("build/rhun.app").mkdir(parents=True, exist_ok=True)
+    Path("build/raftaar.app").mkdir(parents=True, exist_ok=True)
 elif tool == "ditto":
     Path(args[-1]).touch()
 elif tool == "hdiutil":
@@ -79,9 +79,9 @@ def run_case(name, *, failure="", notarize="1", omit="", expected=1):
             submissions = [e for e in events if e[:3] == ["xcrun", "notarytool", "submit"]]
             assert len(submissions) == 2, events
             zip_index = next(i for i, e in enumerate(events) if e[0] == "ditto" and e[-1].endswith("macos-arm64.zip"))
-            ticket_index = events.index(["xcrun", "stapler", "validate", "build/rhun.app"])
+            ticket_index = events.index(["xcrun", "stapler", "validate", "build/raftaar.app"])
             assert ticket_index < zip_index, events
-            assert ["spctl", "--assess", "--type", "execute", "--verbose=2", "build/rhun.app"] in events[:zip_index], events
+            assert ["spctl", "--assess", "--type", "execute", "--verbose=2", "build/raftaar.app"] in events[:zip_index], events
             assert (work / "build/raftaar-0.17.1-macos-arm64.zip").exists()
             assert (work / "build/raftaar-0.17.1-macos-arm64.dmg").exists()
         print(f"ok   mac-package/{name}")

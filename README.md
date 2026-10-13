@@ -13,19 +13,19 @@
 On Linux (x86-64) or macOS (Apple silicon), run:
 
 ```sh
-curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh
+curl -fsSL https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh
 ```
 
 Or use `wget`:
 
 ```sh
-wget -qO- https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh
+wget -qO- https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh
 ```
 
 On Windows 10 (1809 or later) or Windows 11:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/vshvedov/rhun/releases/latest/download/install.ps1).Content))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.ps1).Content))"
 ```
 
 ## Why raftaar
@@ -58,9 +58,9 @@ Fast built-in terminal:
 ## Contribute
 
 `raftaar` welcomes new contributors. Pull requests are open to everyone: it doesn't matter whether a bug fix or a useful addition was created manually or using AI. Every fix matters.
-Be reasonable, don't change the core functionality without starting [a discussion](https://github.com/vshvedov/rhun/discussions) first, and include a clear rationale for your PR.
+Be reasonable, don't change the core functionality without starting [a discussion](https://github.com/Mesum-Hussain/Raftaar/discussions) first, and include a clear rationale for your PR.
 
-As `raftaar` doesn't use any telemetry (and will *never* use it), we rely on users to report bugs. Encountered a crash? Something's not right? Please file a [bug report](https://github.com/vshvedov/rhun/issues) or fix it yourself and submit a PR.
+As `raftaar` doesn't use any telemetry (and will *never* use it), we rely on users to report bugs. Encountered a crash? Something's not right? Please file a [bug report](https://github.com/Mesum-Hussain/Raftaar/issues) or fix it yourself and submit a PR.
 
 A great place to start a new topic is raftaar's [Product Hunt forum](https://www.producthunt.com/p/raftaar) or [Discord](https://discord.gg/Aj4drpFbWf). [My X](https://x.com/r13) is the place where you can read human-written updates.
 

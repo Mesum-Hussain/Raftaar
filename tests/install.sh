@@ -34,8 +34,8 @@ release() {
         cp assets/icons/raftaar-512.png "$r/share/icons/hicolor/512x512/apps/raftaar.png"
         tar -czf "$d/raftaar-$v-linux-x86_64.tar.gz" -C "$s" "raftaar-$v"
     else
-        mkdir -p "$s/rhun.app/Contents/MacOS"
-        sed "s/@VERSION@/$v/" assets/mac/Info.plist > "$s/rhun.app/Contents/Info.plist"
+        mkdir -p "$s/raftaar.app/Contents/MacOS"
+        sed "s/@VERSION@/$v/" assets/mac/Info.plist > "$s/raftaar.app/Contents/Info.plist"
         cat > "$s/raftaar.c" <<EOF
 #include <stdio.h>
 #include <stdlib.h>
@@ -47,9 +47,9 @@ int main(int argc, char **argv) {
     return 0;
 }
 EOF
-        clang -o "$s/rhun.app/Contents/MacOS/raftaar" "$s/raftaar.c" || exit 1
-        codesign -s - -f "$s/rhun.app" 2>/dev/null || exit 1
-        ditto -c -k --keepParent "$s/rhun.app" "$d/raftaar-$v-macos-arm64.zip"
+        clang -o "$s/raftaar.app/Contents/MacOS/raftaar" "$s/raftaar.c" || exit 1
+        codesign -s - -f "$s/raftaar.app" 2>/dev/null || exit 1
+        ditto -c -k --keepParent "$s/raftaar.app" "$d/raftaar-$v-macos-arm64.zip"
     fi
     (cd "$d" && for f in raftaar-*; do
         if command -v sha256sum >/dev/null 2>&1; then sha256sum "$f"; else shasum -a 256 "$f"; fi
@@ -102,7 +102,7 @@ if [ $os = linux ]; then
     exe=$bin
 else
     set -- --app-dir "$w/apps"
-    target=$w/apps/rhun.app
+    target=$w/apps/raftaar.app
     exe=$target/Contents/MacOS/raftaar
 fi
 

@@ -52,15 +52,15 @@ link() { # out objs...
 link build/raftaar $objs
 [ "$1" = release ] && strip -x build/raftaar
 
-# build/rhun.app, signed ad hoc for this machine (tools/package-mac.sh signs for distribution)
-app=build/rhun.app/Contents
+# build/raftaar.app, signed ad hoc for this machine (tools/package-mac.sh signs for distribution)
+app=build/raftaar.app/Contents
 mkdir -p $app/MacOS $app/Resources
 # a new file, not rewritten in place: a running raftaar keeps its code pages
 cp build/raftaar $app/MacOS/raftaar.new && mv -f $app/MacOS/raftaar.new $app/MacOS/raftaar
 [ -f assets/icons/raftaar.icns ] && cp assets/icons/raftaar.icns $app/Resources/raftaar.icns
 # the bundle versions are numbers only: a prerelease suffix (-rc1) is left out
 sed "s/@VERSION@/$(sed "s/-.*//" VERSION)/" assets/mac/Info.plist > $app/Info.plist
-codesign -s - -f build/rhun.app 2>/dev/null
+codesign -s - -f build/raftaar.app 2>/dev/null
 if [ "$1" = test ]; then
     lib=$(echo $objs | tr ' ' '\n' | grep -v 'src_main.o')
     for t in tests/*.s; do

@@ -92,7 +92,7 @@ def main():
         assert b'Checking latest release' not in output, output
         print('ok   install/output-explicit-version')
 
-        target = home / 'apps/rhun.app' if sys.platform == 'darwin' else home / '.local/bin/raftaar'
+        target = home / 'apps/raftaar.app' if sys.platform == 'darwin' else home / '.local/bin/raftaar'
         output = run_installer(sys.argv[1], home, terminal=True,
                                options=['--update', '--target', str(target)])
         assert output == b'', output

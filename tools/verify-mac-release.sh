@@ -26,8 +26,8 @@ verify_app() {
 }
 
 ditto -x -k "$zip" "$work/zip"
-xattr -w com.apple.quarantine "0081;$(printf '%x' "$(date +%s)");raftaar-release-verification;" "$work/zip/rhun.app"
-verify_app "$work/zip/rhun.app"
+xattr -w com.apple.quarantine "0081;$(printf '%x' "$(date +%s)");raftaar-release-verification;" "$work/zip/raftaar.app"
+verify_app "$work/zip/raftaar.app"
 
 codesign --verify --strict --verbose=2 "$dmg"
 xcrun stapler validate "$dmg"
@@ -35,6 +35,6 @@ spctl --assess --type open --context context:primary-signature --verbose=2 "$dmg
 mkdir "$work/dmg"
 hdiutil attach -quiet -readonly -nobrowse -mountpoint "$work/dmg" "$dmg"
 mounted=1
-verify_app "$work/dmg/rhun.app"
-cmp "$work/zip/rhun.app/Contents/MacOS/raftaar" "$work/dmg/rhun.app/Contents/MacOS/raftaar"
+verify_app "$work/dmg/raftaar.app"
+cmp "$work/zip/raftaar.app/Contents/MacOS/raftaar" "$work/dmg/raftaar.app/Contents/MacOS/raftaar"
 echo "ok   macOS ZIP and DMG: signed, notarized, stapled and accepted by Gatekeeper"

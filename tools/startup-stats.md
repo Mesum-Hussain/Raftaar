@@ -51,7 +51,7 @@ scripts also look in the usual installation locations if Raftaar is not on `PATH
 The macOS script accepts an `.app` path, for example:
 
 ```sh
-python3 tools/startup-stats-mac.py --binary /Applications/rhun.app
+python3 tools/startup-stats-mac.py --binary /Applications/raftaar.app
 ```
 
 Each report includes runs, median, average, fastest, slowest, standard deviation,

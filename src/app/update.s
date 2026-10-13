@@ -1202,7 +1202,7 @@ ver_fields:
 9:  EPILOGUE
 
 .section .rodata
-.Lbase: .asciz "https://github.com/vshvedov/rhun/releases"
+.Lbase: .asciz "https://github.com/Mesum-Hussain/Raftaar/releases"
 .Llatest_path: .asciz "/latest/download/VERSION"
 .Lenv_url: .asciz "RAFTAAR_RELEASES_URL"
 .Lenv_target: .asciz "RAFTAAR_UPDATE_TARGET"

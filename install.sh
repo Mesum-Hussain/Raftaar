@@ -1,12 +1,12 @@
 #!/bin/sh
 # Installs raftaar from its GitHub releases, updates it and removes it; no root needed.
-#   curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh
-#   wget -qO- https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh
+#   curl -fsSL https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh
+#   wget -qO- https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh
 #   ... | sh -s -- [options]
 #
 #   --version X             install X instead of the latest release
 #   --prefix DIR            Linux: install under DIR (default ~/.local)
-#   --app-dir DIR           macOS: where rhun.app goes (default /Applications, or ~/Applications
+#   --app-dir DIR           macOS: where raftaar.app goes (default /Applications, or ~/Applications
 #                           when that is not writable)
 #   --no-modify-path        leave shell startup files alone (by default every shell the user has
 #                           gets raftaar's folder on PATH: zsh, bash, sh, fish, nushell, tcsh)
@@ -25,7 +25,7 @@
 
 set -eu
 
-RELEASES=https://github.com/vshvedov/rhun/releases
+RELEASES=https://github.com/Mesum-Hussain/Raftaar/releases
 TEAM_ID=G29V3JRMJJ
 LSREGISTER=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister
 
@@ -45,11 +45,7 @@ say() {
 banner() {
     printf '\n%s%s' "$bold" "$cyan" >&2
     cat <<'EOF' >&2
-         _       ^
-    _ __| |__  _   _ _ __
-   | '__| '_ \| | | | '_ \
-   | |  | | | | |_| | | | |
-   |_|  |_| |_|\__,_|_| |_|
+   >_ raftaar
 EOF
     printf '%s\n  %sraftaar installer%s\n\n' "$reset" "$dim" "$reset" >&2
 }
@@ -69,7 +65,7 @@ usage() {
 usage: install.sh [options]   (curl -fsSL .../install.sh | sh -s -- [options])
   --version X             install X instead of the latest release
   --prefix DIR            Linux: install under DIR (default ~/.local)
-  --app-dir DIR           macOS: where rhun.app goes (default /Applications)
+  --app-dir DIR           macOS: where raftaar.app goes (default /Applications)
   --no-modify-path        leave shell startup files alone
   --configure-files       configure an existing installation without downloading it
                           add --make-default to make raftaar the default editor manually
@@ -251,12 +247,12 @@ unpack_mac() {
     say 'Unpacking archive'
     mkdir "$tmp/x"
     ditto -x -k "$tmp/$name" "$tmp/x" || fail "could not unpack $name"
-    src=$tmp/x/rhun.app
-    [ -d "$src" ] || fail "$name has no rhun.app"
+    src=$tmp/x/raftaar.app
+    [ -d "$src" ] || fail "$name has no raftaar.app"
     say 'Verifying app signature'
-    codesign --verify --strict --deep "$src" 2>/dev/null || fail "the signature of rhun.app is not valid; nothing was installed"
+    codesign --verify --strict --deep "$src" 2>/dev/null || fail "the signature of raftaar.app is not valid; nothing was installed"
     team=$(codesign -dv "$src" 2>&1 | sed -n 's/^TeamIdentifier=//p')
-    [ "$team" = "${RAFTAAR_TEAM_ID:-$TEAM_ID}" ] || fail "rhun.app is not signed by raftaar's developer ($team); nothing was installed"
+    [ "$team" = "${RAFTAAR_TEAM_ID:-$TEAM_ID}" ] || fail "raftaar.app is not signed by raftaar's developer ($team); nothing was installed"
 }
 
 # place_app DEST: the bundle unpacked beside DEST and swapped in by renames, so a running raftaar keeps
@@ -264,11 +260,11 @@ unpack_mac() {
 place_app() {
     dir=$(dirname "$1")
     mkdir -p "$dir"
-    rm -rf "$dir/.rhun.app.new" "$dir/.rhun.app.old"
-    ditto "$src" "$dir/.rhun.app.new"
-    if [ -e "$1" ]; then mv "$1" "$dir/.rhun.app.old"; fi
-    mv "$dir/.rhun.app.new" "$1"
-    rm -rf "$dir/.rhun.app.old"
+    rm -rf "$dir/.raftaar.app.new" "$dir/.raftaar.app.old"
+    ditto "$src" "$dir/.raftaar.app.new"
+    if [ -e "$1" ]; then mv "$1" "$dir/.raftaar.app.old"; fi
+    mv "$dir/.raftaar.app.new" "$1"
+    rm -rf "$dir/.raftaar.app.old"
     if [ -x "$LSREGISTER" ]; then "$LSREGISTER" -f "$1" >/dev/null 2>&1 || true; fi
 }
 
@@ -310,10 +306,10 @@ choose_default_editor() {
     set_file_defaults
     if [ "$os" = linux ]; then
         set_editor "$prefix/bin/raftaar"
-    elif [ -x "$HOME/.local/bin/raftaar" ] && grep -qF "\"$appdir/rhun.app/Contents/MacOS/raftaar\"" "$HOME/.local/bin/raftaar"; then
+    elif [ -x "$HOME/.local/bin/raftaar" ] && grep -qF "\"$appdir/raftaar.app/Contents/MacOS/raftaar\"" "$HOME/.local/bin/raftaar"; then
         set_editor "$HOME/.local/bin/raftaar"     # the terminal command, when it starts this app
     else
-        set_editor "$appdir/rhun.app/Contents/MacOS/raftaar"
+        set_editor "$appdir/raftaar.app/Contents/MacOS/raftaar"
     fi
 }
 
@@ -359,9 +355,9 @@ set_file_defaults() {
             say "Some default associations were not changed ($missed); choose them in your desktop settings"
         fi
     else
-        [ -d "$appdir/rhun.app" ] || fail "no rhun.app in $appdir; set --app-dir or rerun the installer"
+        [ -d "$appdir/raftaar.app" ] || fail "no raftaar.app in $appdir; set --app-dir or rerun the installer"
         # Use Launch Services, rather than writing its private preferences. Arguments are data.
-        if ! osascript -l JavaScript - "$appdir/rhun.app" "$(text_extensions)" <<'JXA'
+        if ! osascript -l JavaScript - "$appdir/raftaar.app" "$(text_extensions)" <<'JXA'
 ObjC.import('Foundation');
 ObjC.import('CoreServices');
 function run(argv) {
@@ -487,10 +483,10 @@ configure_files() {
         refresh_desktop "$prefix"
     else
         if [ -z "$appdir" ]; then
-            if [ -d /Applications/rhun.app ]; then appdir=/Applications; else appdir=$HOME/Applications; fi
+            if [ -d /Applications/raftaar.app ]; then appdir=/Applications; else appdir=$HOME/Applications; fi
         fi
-        [ -d "$appdir/rhun.app" ] || fail "no rhun.app in $appdir; set --app-dir or run the installer"
-        if [ -x "$LSREGISTER" ]; then "$LSREGISTER" -f "$appdir/rhun.app" >/dev/null 2>&1 || true; fi
+        [ -d "$appdir/raftaar.app" ] || fail "no raftaar.app in $appdir; set --app-dir or run the installer"
+        if [ -x "$LSREGISTER" ]; then "$LSREGISTER" -f "$appdir/raftaar.app" >/dev/null 2>&1 || true; fi
     fi
     choose_default_editor
 }
@@ -644,8 +640,8 @@ install_fresh() {
         appdir=${appdir:-$(default_app_dir)}
         unpack_mac
         say 'Installing app and terminal command'
-        place_app "$appdir/rhun.app"
-        place_wrapper "$appdir/rhun.app"
+        place_app "$appdir/raftaar.app"
+        place_wrapper "$appdir/raftaar.app"
         add_path "$HOME/.local/bin"
         installed "$appdir"
         say "start it from Launchpad or Spotlight, or run: raftaar [folder]"
@@ -687,11 +683,11 @@ uninstall() {
         say "raftaar is removed from $prefix"
     else
         if [ -n "$appdir" ]; then
-            rm -rf "$appdir/rhun.app"
+            rm -rf "$appdir/raftaar.app"
         else
-            rm -rf /Applications/rhun.app "$HOME/Applications/rhun.app" 2>/dev/null || true
+            rm -rf /Applications/raftaar.app "$HOME/Applications/raftaar.app" 2>/dev/null || true
         fi
-        if [ -f "$HOME/.local/bin/raftaar" ] && grep -q 'rhun.app/Contents/MacOS/raftaar' "$HOME/.local/bin/raftaar"; then
+        if [ -f "$HOME/.local/bin/raftaar" ] && grep -q 'raftaar.app/Contents/MacOS/raftaar' "$HOME/.local/bin/raftaar"; then
             rm -f "$HOME/.local/bin/raftaar"
         fi
         say "raftaar is removed"

@@ -3,7 +3,7 @@
 param(
     [string]$Version,
     [string]$InstallDir = (Join-Path $env:LOCALAPPDATA 'Programs\raftaar'),
-    [string]$ReleasesUrl = 'https://github.com/vshvedov/rhun/releases',
+    [string]$ReleasesUrl = 'https://github.com/Mesum-Hussain/Raftaar/releases',
     [switch]$NoModifyPath,
     [switch]$NoShortcut,
     [switch]$MakeDefault,

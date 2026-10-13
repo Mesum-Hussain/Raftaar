@@ -1,11 +1,9 @@
 # The website on GitHub Pages: site/build.sh builds it, on every push to main that touches it.
-# Settings → Pages → Source must be GitHub Actions; Custom domain is rhun.app (DNS on Cloudflare).
+# Settings → Pages → Source must be GitHub Actions; no custom domain is set for Raftaar.
 name: pages
 
+# Run by hand: site/ is still rhun's website, renamed, and is not published for Raftaar yet.
 on:
-  push:
-    branches: [main]
-    paths: ['site/**', 'docs/guide.md', 'VERSION', 'assets/**', '.github/workflows/pages.yml']
   workflow_dispatch:
 
 permissions:

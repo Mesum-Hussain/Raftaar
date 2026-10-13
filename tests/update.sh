@@ -28,9 +28,7 @@ run() {
     c=$1 reply=$2 seed=$3 target=$4 stubfail=$5
     shift 5
     rm -rf "$w/home" "$w/state" "$w/config" "$w/stub.log" "$w/restart.log"
-    mkdir -p "$w/home" "$w/state/raftaar" "$w/config/raftaar"
-    # the check at startup is off by default
-    printf '[updates]\ncheck = true\n' > "$w/config/raftaar/config"
+    mkdir -p "$w/home" "$w/state/raftaar" "$w/config"
     if [ -n "$reply" ]; then printf '%s\n' "$reply" > "$w/rel/latest/download/VERSION"; else rm -f "$w/rel/latest/download/VERSION"; fi
     [ -n "$seed" ] && printf '%s\n' "$seed" > "$w/state/raftaar/update"
     printf '%s\n' "$@" > "$w/$c.rsc"

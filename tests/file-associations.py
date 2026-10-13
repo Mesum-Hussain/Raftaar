@@ -235,7 +235,7 @@ esac
     # Mac requests use argument data and the bundle ID, never interpolated script code.
     (shim / 'uname').write_text('#!/bin/sh\ncase "$1" in -s) echo Darwin;; -m) echo arm64;; esac\n')
     appdir = home / "Apps ' $ &"
-    (appdir / 'rhun.app').mkdir(parents=True)
+    (appdir / 'raftaar.app').mkdir(parents=True)
     run('--app-dir', str(appdir), '--no-make-default')
     assert not (temp / 'mac-args').exists()
     output = run('--app-dir', str(appdir))
@@ -243,7 +243,7 @@ esac
     run_printed_command(output)
     args = (temp / 'mac-args').read_text().splitlines()
     assert args[:3] == ['-l', 'JavaScript', '-']
-    assert args[3] == str(appdir / 'rhun.app')
+    assert args[3] == str(appdir / 'raftaar.app')
     assert {'txt', 'md', 'py'} <= set(args[4].split())
     assert 'LSSetDefaultRoleHandlerForContentType' in (temp / 'mac-script').read_text()
     (shim / 'osascript').write_text('#!/bin/sh\nexit 1\n')
@@ -358,12 +358,12 @@ esac
     # place_wrapper writes it), else through the app's own program
     (shim / 'uname').write_text('#!/bin/sh\ncase "$1" in -s) echo Darwin;; -m) echo arm64;; esac\n')
     ssh = {'SSH_CONNECTION': '192.0.2.1 50000 192.0.2.2 22'}
-    executable.write_text(f'#!/bin/sh\nexec "{appdir}/rhun.app/Contents/MacOS/raftaar" "$@"\n')
+    executable.write_text(f'#!/bin/sh\nexec "{appdir}/raftaar.app/Contents/MacOS/raftaar" "$@"\n')
     run('--app-dir', str(appdir), '--make-default')
     check_shells({}, ssh)
-    executable.write_text('#!/bin/sh\nexec "/Applications/Elsewhere/rhun.app/Contents/MacOS/raftaar" "$@"\n')
+    executable.write_text('#!/bin/sh\nexec "/Applications/Elsewhere/raftaar.app/Contents/MacOS/raftaar" "$@"\n')
     run('--app-dir', str(appdir), '--make-default')
-    check_shells({}, ssh, quoted(appdir / 'rhun.app/Contents/MacOS/raftaar') + ' --wait')
+    check_shells({}, ssh, quoted(appdir / 'raftaar.app/Contents/MacOS/raftaar') + ' --wait')
     print('ok   associations/editor-variables-mac', flush=True)
 
     # --uninstall takes the blocks away, and leaves the user's lines

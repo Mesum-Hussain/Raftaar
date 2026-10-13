@@ -61,7 +61,7 @@ function run() {
             var name = test.native ? nativeObjC.unwrap(nativeObjC.castRefToObject(type)) : type;
             return handlers[name];
         };
-        var argumentsForScript = ['/test/rhun.app', test.extensions];
+        var argumentsForScript = ['/test/raftaar.app', test.extensions];
         var execute = Function('ObjC', '$', 'argumentsForScript', source + '\nreturn run(argumentsForScript);');
         try {execute(ObjC, $, argumentsForScript);}
         catch (failure) {error = String(failure);}

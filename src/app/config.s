@@ -57,7 +57,7 @@ cfg_git: .long 1
 .globl cfg_commit_ai, cfg_commit_model
 cfg_commit_ai: .long 0
 .globl cfg_update_check
-cfg_update_check: .long 0          # off: there are no Raftaar releases to check yet
+cfg_update_check: .long 1
 .p2align 3
 cfg_theme: .quad cfg_def_theme
 cfg_dark_theme: .quad cfg_def_theme
@@ -703,7 +703,7 @@ g_settings:
     SETTING .Ls_editor, animate_disk_changes, ST_BOOL, cfg_animate_disk_changes, 0, 1, 1, 0, "Animate changed text", "Briefly highlight text changed on disk by agents or other tools."
     SETTING .Ls_editor, match_brackets, ST_BOOL, cfg_match_brackets, 0, 1, 1, 0, "Match brackets", "Outline the bracket at the cursor and its partner."
     SETTING .Ls_editor, indent_guides, ST_BOOL, cfg_indent_guides, 0, 1, 1, 0, "Indent guides", "Thin vertical lines at indentation levels."
-    SETTING .Ls_editor, word_wrap, ST_BOOL, cfg_word_wrap, 0, 1, 1, 0, "Word wrap", "Wrap long lines at the edge of the editor (ctrl+w)."
+    SETTING .Ls_editor, word_wrap, ST_BOOL, cfg_word_wrap, 0, 1, 1, 0, "Word wrap", "Wrap long lines at the edge of the editor."
     SETTING .Ls_editor, whitespace, ST_BOOL, cfg_whitespace, 0, 1, 1, 0, "Show whitespace", "Draw dots for spaces and arrows for tabs."
     SETTING .Ls_editor, cursor_blink, ST_BOOL, cfg_cursor_blink, 0, 1, 1, 0, "Blinking cursor", "Blink the text cursor while idle."
     SETTING .Ls_editor, smooth_caret, ST_BOOL, cfg_smooth_caret, 0, 1, 1, 0, "Wide caret", "Draw a 2 point caret instead of a hairline."

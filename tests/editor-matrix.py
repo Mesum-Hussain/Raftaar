@@ -160,7 +160,7 @@ class EditorMatrix(unittest.TestCase):
         self.assertIn('cat Cat cat\nβeta beta\n', output)
 
     def test_closing_settings_restores_document_input(self):
-        for close in ('cmd close_tab', 'key ctrl+F4', 'click 200 20 middle'):
+        for close in ('cmd close_tab', 'key ctrl+w', 'click 200 20 middle'):
             with self.subTest(close=close):
                 output = self.run_editor(['cmd settings', close, 'print-state',
                     'type resumed_', 'print-doc'])

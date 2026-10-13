@@ -81,8 +81,8 @@ with tempfile.TemporaryDirectory(prefix='raftaar-appearance-', dir='/tmp') as di
         subprocess.run([str(helper), '1' if dark else '0'], check=True)
         until(lambda: system_dark() == dark, 'the system appearance did not change')
 
-    bundle = work / 'rhun.app'
-    shutil.copytree(ROOT / 'build/rhun.app', bundle)
+    bundle = work / 'raftaar.app'
+    shutil.copytree(ROOT / 'build/raftaar.app', bundle)
     identifier = 'com.r13.raftaar.test.' + uuid.uuid4().hex
     plist = bundle / 'Contents/Info.plist'
     metadata = plistlib.loads(plist.read_bytes())

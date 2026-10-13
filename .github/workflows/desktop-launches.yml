@@ -1,9 +1,7 @@
 name: desktop launches
 
+# Run by hand: every push would spend Linux and macOS runner minutes.
 on:
-  push:
-    branches: [main, 'feat/windows-desktop*']
-  pull_request:
   workflow_dispatch:
 
 permissions:

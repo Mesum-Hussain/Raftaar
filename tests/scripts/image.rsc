@@ -20,7 +20,7 @@ print-state
 cmd zoom_reset
 print-state
 key Right
-key ctrl+F4
+key ctrl+w
 print-state
 open tests/data/images/truncated.png
 print-state

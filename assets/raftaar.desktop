@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Name=raftaar
+Name=Raftaar
 GenericName=Code Editor
 Comment=A small and fast code editor written in assembly
 Exec=raftaar %F

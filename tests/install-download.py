@@ -59,7 +59,7 @@ class Downloads(unittest.TestCase):
                            RAFTAAR_RELEASES_URL=f"http://127.0.0.1:{server.server_port}")
                 options = []
                 if quiet:
-                    target = home / "rhun.app" if sys.platform == "darwin" else home / "raftaar"
+                    target = home / "raftaar.app" if sys.platform == "darwin" else home / "raftaar"
                     binary = target / "Contents" / "MacOS" / "raftaar" if sys.platform == "darwin" else target
                     binary.parent.mkdir(parents=True, exist_ok=True)
                     binary.write_text("#!/bin/sh\nprintf 'raftaar 1.0.0\\n'\n")

@@ -169,8 +169,7 @@ with tempfile.TemporaryDirectory(prefix='raftaar-desktop-') as temporary:
                 time.sleep(.02)
             return output, [call.split('\n') for call in log.read_text().split('\n\n')[:-1]]
 
-        links = [('website', 'https://rhun.app'), ('email', 'mailto:hi@rhun.app?subject=rhun%20feedback'),
-                 ('feedback', 'https://github.com/vshvedov/rhun/issues')]
+        links = [('feedback', 'https://github.com/Mesum-Hussain/Raftaar/issues')]
         for name, url in links:
             calls = opens([project, file], ['cmd ' + name])[1]
             assert calls == [[url]], (name, calls)
@@ -181,8 +180,7 @@ with tempfile.TemporaryDirectory(prefix='raftaar-desktop-') as temporary:
 
         with config.open('a') as settings:
             settings.write('[ui]\nagents_panel = false\nsidebar_width = 240\n')
-        buttons = [*links, ('discord', 'https://discord.gg/Aj4drpFbWf')]
-        for x, (_, url) in zip((300, 410, 510, 695), buttons):
+        for x, (_, url) in zip((300,), links):
             calls = opens([project], ['cmd settings', f'click {x} 166'])[1]
             assert calls == [[url]], (x, calls)
         print('ok   desktop/settings-links')

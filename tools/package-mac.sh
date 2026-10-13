@@ -1,5 +1,5 @@
 #!/bin/sh
-# macOS release: rhun.app signed with a Developer ID (hardened runtime), notarized and stapled, in
+# macOS release: raftaar.app signed with a Developer ID (hardened runtime), notarized and stapled, in
 # build/raftaar-VERSION-macos-arm64.zip (for install.sh and updates) and build/raftaar-VERSION-macos-arm64.dmg.
 # usage: tools/package-mac.sh
 #   RAFTAAR_SIGN_ID          signing identity (default: the first Developer ID Application certificate)
@@ -33,7 +33,7 @@ if [ "$notarize" = 1 ] && [ -z "${RAFTAAR_NOTARY_KEY:-}" ] &&
     exit 1
 fi
 version=$(cat VERSION)
-app=build/rhun.app
+app=build/raftaar.app
 zip=build/raftaar-$version-macos-arm64.zip
 dmg=build/raftaar-$version-macos-arm64.dmg
 

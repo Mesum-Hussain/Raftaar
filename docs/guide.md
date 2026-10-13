@@ -59,14 +59,14 @@ as any other.
 On Linux and macOS:
 
 ```sh
-curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh
-wget -qO- https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh   # without curl
+curl -fsSL https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh
+wget -qO- https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh   # without curl
 ```
 
 The installer needs no root. It checks the download against the release's SHA-256 checksums, and on macOS also that the app is signed by raftaar's developer.
 
 - Linux: `~/.local/bin/raftaar`, the desktop entry in `~/.local/share/applications` (it starts raftaar by its full path) and the icons in `~/.local/share/icons/hicolor`; the desktop's menu and icon caches are refreshed.
-- macOS: `rhun.app` in `/Applications` (`~/Applications` when that is not writable), and a `raftaar` command in `~/.local/bin`.
+- macOS: `raftaar.app` in `/Applications` (`~/Applications` when that is not writable), and a `raftaar` command in `~/.local/bin`.
 - So that `raftaar` starts from any terminal, every shell you use gets that `bin` folder on its PATH, in a block marked `# raftaar`: your login shell, `$SHELL`, and each shell with a configuration in your home folder (zsh `.zshrc`, bash `.bashrc` and `.bash_profile`, sh, dash and ksh `.profile`, fish `conf.d/raftaar.fish`, nushell `env.nu`, tcsh `.tcshrc`). The lines check PATH first, so nothing is added twice.
 
 Options go after `sh -s --`, as in `curl -fsSL .../install.sh | sh -s -- --version 0.14.0`:
@@ -75,7 +75,7 @@ Options go after `sh -s --`, as in `curl -fsSL .../install.sh | sh -s -- --versi
 | --- | --- |
 | `--version X` | install X instead of the latest release |
 | `--prefix DIR` | Linux: install under DIR instead of `~/.local` |
-| `--app-dir DIR` | macOS: put rhun.app in DIR |
+| `--app-dir DIR` | macOS: put raftaar.app in DIR |
 | `--no-modify-path` | leave shell startup files alone |
 | `--configure-files` | configure an existing installation without downloading or replacing it |
 | `--uninstall` | remove raftaar, the PATH line and the editor lines; your settings in `~/.config/raftaar` stay |
@@ -98,7 +98,7 @@ Updates refresh file handler registration without asking about or changing defau
 `--configure-files --make-default` command enables defaults without reinstalling:
 
 ```sh
-curl -fsSL https://github.com/vshvedov/rhun/releases/latest/download/install.sh | sh -s -- --configure-files --make-default
+curl -fsSL https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.sh | sh -s -- --configure-files --make-default
 ```
 
 Use `--prefix` or `--app-dir` too if raftaar is installed somewhere else. This configures the metadata
@@ -115,11 +115,11 @@ Run the commands below from the repository root.
 Linux on x86-64 needs GNU as and ld (binutils). macOS on Apple silicon needs the Xcode command line tools (`xcode-select --install`).
 
 ```sh
-./build.sh           # build/raftaar with debug symbols (and build/rhun.app on macOS)
+./build.sh           # build/raftaar with debug symbols (and build/raftaar.app on macOS)
 ./build.sh release   # stripped
 tests/run.sh         # unit tests and scripted UI tests
 tools/install.sh     # release build into ~/.local, with the desktop entry and icon;
-                     # on macOS rhun.app into /Applications and the raftaar command into ~/.local/bin
+                     # on macOS raftaar.app into /Applications and the raftaar command into ~/.local/bin
 ```
 
 ### macOS
@@ -139,10 +139,10 @@ tools/package-mac.sh   # build/raftaar-VERSION-macos-arm64.zip and .dmg
 
 The Windows build targets Windows 10 version 1809 or later and Windows 11, on x64. Native ARM64 and Windows code signing are not included in 0.16.0. Windows may display an unknown-publisher warning for the unsigned download.
 
-Download `raftaar-VERSION-windows-x86_64.zip` from [Releases](https://github.com/vshvedov/rhun/releases/latest), extract it, and open `raftaar.exe`. Keep `raftaar.com` beside it for terminal use. For a Start menu shortcut and a terminal command, paste this into PowerShell:
+Download `raftaar-VERSION-windows-x86_64.zip` from [Releases](https://github.com/Mesum-Hussain/Raftaar/releases/latest), extract it, and open `raftaar.exe`. Keep `raftaar.com` beside it for terminal use. For a Start menu shortcut and a terminal command, paste this into PowerShell:
 
 ```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/vshvedov/rhun/releases/latest/download/install.ps1).Content))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "& ([scriptblock]::Create((Invoke-WebRequest -UseBasicParsing https://github.com/Mesum-Hussain/Raftaar/releases/latest/download/install.ps1).Content))"
 ```
 
 The installer verifies SHA-256, installs under `%LOCALAPPDATA%\Programs\raftaar`, adds a Start menu shortcut and updates your user PATH. Open a new terminal after installation. Options are `-Version X`, `-InstallDir DIR`, `-NoModifyPath`, `-NoShortcut`, and `-Uninstall`. It refuses to replace a running editor or a directory containing unrelated files. Use the status bar to download an update and restart into it, or close raftaar and rerun the installer. Automatic checks are enabled for release builds, with installation and restart initiated by you. Uninstalling keeps settings and sessions.
@@ -225,7 +225,7 @@ sensitivity** applies instead (`fast_scroll_sensitivity = 4.0`).
 Shift turns the wheel sideways in the editor and in images, on Linux and Windows as macOS does by
 itself. The terminal keeps Shift's wheel for its scrollback.
 
-Settings includes links to [rhun.app](https://rhun.app), [hi@rhun.app](mailto:hi@rhun.app), and [GitHub issues](https://github.com/vshvedov/rhun/issues) for feedback and bug reports in a single row. The email link follows the website and opens the default email app. All three are also available from the command palette.
+Settings has a link to the [GitHub issues](https://github.com/Mesum-Hussain/Raftaar/issues) of this repository, for feedback and bug reports; **Send Feedback or Report a Bug** in the command palette opens the same page.
 
 Started from a terminal, raftaar goes on by itself: the prompt comes back at once, and closing the terminal leaves raftaar open. `raftaar --wait` stays until raftaar is closed, which is what programs that wait for an editor need, such as git: `export EDITOR="raftaar --wait"`, which the installer's default-editor command sets for you.
 
@@ -258,8 +258,7 @@ On macOS the title bar is raftaar's too, with the window buttons in it. Command 
 | Ctrl+/ | Toggle comment |
 | Alt+Up, Alt+Down | Move lines |
 | Ctrl+Shift+D, Ctrl+Shift+K | Duplicate, delete line |
-| Ctrl+Tab, Ctrl+F4 | Next tab, close tab |
-| Ctrl+W | Toggle word wrap |
+| Ctrl+Tab, Ctrl+W | Next tab, close tab |
 | Ctrl+Shift+W | Close all tabs |
 | Ctrl+Shift+T | Reopen closed tab |
 
@@ -296,7 +295,7 @@ else under `[keys]`, for example `ctrl+Right = none`.
 
 Panes meet at a line with a small handle in its middle. Drag the handle (or the line) to resize the
 two sides; double-click the handle to swap them. A click in a pane gives it the keys, and a thin
-outline shows which one has them. Close Tab (Ctrl+F4) closes the active pane, a terminal's too, and the one beside it
+outline shows which one has them. Close Tab (Ctrl+W) closes the active pane, a terminal's too, and the one beside it
 takes its room. Next Tab and Previous Tab go from one tab of the title bar to the next, to the pane
 that had the keys there.
 
