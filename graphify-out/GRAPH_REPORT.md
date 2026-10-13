@@ -1,17 +1,17 @@
-# Graph Report - rhun  (2026-10-13)
+# Graph Report - Raftaar  (2026-10-13)
 
 ## Corpus Check
-- 134 files · ~318,250 words
+- 134 files · ~318,434 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 431 file(s) not represented in the graph (top: .syn 133, .s 106, .expected 56)
 
 ## Summary
-- 2320 nodes · 5160 edges · 145 communities (88 shown, 57 thin omitted)
+- 2321 nodes · 5162 edges · 145 communities (88 shown, 57 thin omitted)
 - Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 321 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0d64434a`
+- Built from commit: `7b550e52`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -445,8 +445,8 @@ Cohesion: 0.33
 Nodes (3): Shop.Notifier, handle_cast(), handle_info()
 
 ### Community 80 - "desktop-ux.py"
-Cohesion: 0.33
-Nodes (4): opens(), the output, and the opener's calls once there is one. raftaar starts the opener…, Startup project precedence and desktop actions, with isolated user state., run()
+Cohesion: 0.32
+Nodes (5): opens(), the output, and the opener's calls once there is one. raftaar starts the opener…, Startup project precedence and desktop actions, with isolated user state., run(), shell()
 
 ### Community 81 - "flatten"
 Cohesion: 0.33

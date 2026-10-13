@@ -21130,7 +21130,7 @@
       "file_type": "code",
       "norm_label": "opens()",
       "source_file": "tests/desktop-ux.py",
-      "source_location": "L160"
+      "source_location": "L182"
     },
     {
       "id": "tests_desktop_ux_run",
@@ -21143,6 +21143,18 @@
       "norm_label": "run()",
       "source_file": "tests/desktop-ux.py",
       "source_location": "L32"
+    },
+    {
+      "id": "tests_desktop_ux_shell",
+      "label": "shell()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 80,
+      "community_name": "desktop-ux.py",
+      "file_type": "code",
+      "norm_label": "shell()",
+      "source_file": "tests/desktop-ux.py",
+      "source_location": "L154"
     },
     {
       "id": "tools_gen_agent_icons_contours",
@@ -26521,7 +26533,7 @@
       "source_location": "L1"
     },
     {
-      "id": "tests_desktop_ux_rationale_161",
+      "id": "tests_desktop_ux_rationale_183",
       "label": "the output, and the opener's calls once there is one. raftaar starts the opener\u2026",
       "_origin": "ast",
       "community": 80,
@@ -26529,7 +26541,7 @@
       "file_type": "rationale",
       "norm_label": "the output, and the opener's calls once there is one. raftaar starts the opener...",
       "source_file": "tests/desktop-ux.py",
-      "source_location": "L161"
+      "source_location": "L183"
     },
     {
       "id": "tests_desktop_ux_rationale_2",
@@ -43945,7 +43957,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tests/desktop-ux.py",
-      "source_location": "L165",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_desktop_ux_shell",
+      "target": "tests_desktop_ux_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/desktop-ux.py",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -70425,13 +70449,24 @@
     },
     {
       "source": "tests_desktop_ux",
+      "target": "tests_desktop_ux_shell",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/desktop-ux.py",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_desktop_ux",
       "target": "tests_desktop_ux_opens",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/desktop-ux.py",
-      "source_location": "L160",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -82524,14 +82559,14 @@
       "weight": 1.0
     },
     {
-      "source": "tests_desktop_ux_rationale_161",
+      "source": "tests_desktop_ux_rationale_183",
       "target": "tests_desktop_ux_opens",
       "relation": "rationale_for",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tests/desktop-ux.py",
-      "source_location": "L161",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -87862,5 +87897,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0d64434add4899fcecb6247d07ffdeccea92639a"
+  "built_at_commit": "7b550e525beabb63564df492fe4585325a5b8758"
 }

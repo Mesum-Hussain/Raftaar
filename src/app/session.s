@@ -10,6 +10,7 @@ out: .zero SB_SIZE
 rc_dir: .zero SB_SIZE
 last_path: .zero SB_SIZE
 last_project: .zero 4096
+last_dir: .zero 4096            # session_last_dir
 recent_time: .zero 8 * RECENT_MAX     # when each was written, in nanoseconds
 recent_n: .long 0
 rc_path: .zero 4096
@@ -57,17 +58,51 @@ state_dir:
 
 # Keep the last opened project independently of the restore-open-files preference.
 last_project_file:
+    lea rsi, [rip + .Llast_project]
+# state_file(rsi "/name") -> cstr path of that file in the state folder, or 0
+state_file:
     push rbx
+    mov rbx, rsi
     lea rdi, [rip + last_path]
     call state_dir
     test eax, eax
     jz 1f
     lea rdi, [rip + last_path]
-    lea rsi, [rip + .Llast_project]
+    mov rsi, rbx
     call sb_push_cstr
     mov rax, [rip + last_path + SB_ptr]
 1:  pop rbx
     ret
+
+# state_write(path, text, len): written only when the file says something else: a relaunch into the
+# same project read it, and the write (a new file, synced and renamed in place) cost half a
+# millisecond at startup and exit
+state_write:
+    PROLOGUE
+    mov r12, rdi
+    mov r13, rsi
+    mov r14, rdx
+    call file_read_all
+    test rax, rax
+    jz 1f
+    mov rbx, rax
+    xor r15d, r15d
+    cmp rdx, r14
+    jne 2f
+    mov rdi, rbx
+    mov rsi, r13
+    mov rdx, r14
+    call memeq
+    mov r15d, eax
+2:  mov rdi, rbx
+    call mem_free
+    test r15d, r15d
+    jnz 9f
+1:  mov rdi, r12
+    mov rsi, r13
+    mov rdx, r14
+    call file_write_all
+9:  EPILOGUE
 
 FN session_remember_project
     PROLOGUE
@@ -80,35 +115,99 @@ FN session_remember_project
     test rax, rax
     jz 9f
     mov r12, rax
-    # written only when it names another folder: a relaunch into the same project read it, and the
-    # write (a new file, synced and renamed in place) cost half a millisecond at startup and exit
-    mov rdi, rax
-    call file_read_all
-    test rax, rax
-    jz 1f
-    mov r13, rax
-    mov r14, rdx
     mov rdi, rbx
-    call strlen
-    xor r15d, r15d
-    cmp rax, r14
-    jne 2f
-    mov rdi, r13
-    mov rsi, rbx
-    mov rdx, rax
-    call memeq
-    mov r15d, eax
-2:  mov rdi, r13
-    call mem_free
-    test r15d, r15d
-    jnz 9f
-1:  mov rdi, rbx
     call strlen
     mov rdx, rax
     mov rsi, rbx
     mov rdi, r12
-    call file_write_all
+    call state_write
 9:  EPILOGUE
+
+# session_remember_dir(): the folder the terminal was in, kept with the project it was in
+# ("project<LF>folder") for the next launch that reopens that project
+FN session_remember_dir
+    PROLOGUE
+    mov rbx, [rip + g_project]
+    test rbx, rbx
+    jz 9f
+    cmp dword ptr [rip + g_project_adopted], 0
+    jne 9f
+    lea rdi, [rip + rc_path]
+    call term_shown_cwd         # a shell still running says where it is now
+    cmp byte ptr [rip + g_term_last_cwd], 0
+    je 9f
+    lea rdi, [rip + out]
+    call sb_clear
+    lea rdi, [rip + out]
+    mov rsi, rbx
+    call sb_push_cstr
+    lea rdi, [rip + out]
+    mov esi, 10
+    call sb_push_byte
+    lea rdi, [rip + out]
+    lea rsi, [rip + g_term_last_cwd]
+    call sb_push_cstr
+    lea rsi, [rip + .Llast_dir]
+    call state_file
+    test rax, rax
+    jz 9f
+    mov rdi, rax
+    mov rsi, [rip + out + SB_ptr]
+    mov rdx, [rip + out + SB_len]
+    call state_write
+9:  EPILOGUE
+
+# session_last_dir() -> the folder the terminal was in when the open project was last closed, in a
+# static buffer, or 0: another project was closed since, or the folder is gone
+FN session_last_dir
+    PROLOGUE
+    lea rsi, [rip + .Llast_dir]
+    call state_file
+    test rax, rax
+    jz 9f
+    mov rdi, rax
+    call file_read_all
+    test rax, rax
+    jz 9f
+    mov rbx, rax
+    mov r12, rdx
+    xor r14d, r14d
+    mov r13, [rip + g_project]
+    test r13, r13
+    jz 8f
+    mov rdi, r13
+    call strlen
+    lea rcx, [rax + 1]
+    cmp r12, rcx
+    jbe 8f
+    cmp byte ptr [rbx + rax], 10
+    jne 8f
+    sub r12, rcx
+    cmp r12, 4095
+    ja 8f
+    lea r15, [rbx + rcx]
+    mov rdi, rbx
+    mov rsi, r13
+    mov rdx, rax
+    call memeq
+    test eax, eax
+    jz 8f
+    lea rdi, [rip + last_dir]
+    mov byte ptr [rdi + r12], 0
+    mov rsi, r15
+    mov rdx, r12
+    call memcpy
+    lea rdi, [rip + last_dir]
+    call file_is_dir
+    test eax, eax
+    jz 8f
+    lea r14, [rip + last_dir]
+8:  mov rdi, rbx
+    call mem_free
+    mov rax, r14
+    EPILOGUE
+9:  xor eax, eax
+    EPILOGUE
 
 # session_last_project() -> existing directory in a static buffer, or 0.
 FN session_last_project
@@ -552,6 +651,7 @@ FN session_restore
 .Lraftaar_dir: .asciz "/raftaar"
 .Lext: .asciz ".session"
 .Llast_project: .asciz "/last-project"
+.Llast_dir: .asciz "/last-folder"
 .Lpercent: .asciz "%%25"
 .Lempty: .asciz ""
 

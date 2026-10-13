@@ -145,6 +145,30 @@ with tempfile.TemporaryDirectory(prefix='raftaar-desktop-') as temporary:
     check_project(run(), project.name)
     print('ok   desktop/last-closed-project')
 
+    # The folder the shell is in is the project, and comes back on a launch without paths, also
+    # when the shell was left with exit; a folder given on the command line starts in itself, and
+    # a folder that is gone gives way to the one raftaar starts in.
+    if os.name != 'nt':
+        env.update(SHELL='/bin/sh', PS1='$ ', ENV='', HISTFILE='/dev/null')
+        (project / 'sub').mkdir()
+
+        def shell(paths, line, *after):
+            output = run(paths, ['cmd new_terminal', 'wait-term $', f'type {line}; echo at$((1 + 1))',
+                                 'key Return', 'wait-term at2', 'wait 200', 'print-term', *after,
+                                 'quit'])
+            return output.splitlines()[1]
+
+        shell([project], 'cd sub')
+        assert marker.read_text(encoding='utf-8') == (project / 'sub').as_posix()
+        check_project(run(), project.name + '/sub')
+        assert shell([], 'pwd') == (project / 'sub').as_posix()
+        assert shell([project], 'pwd') == project.as_posix()
+        shell([], 'cd sub', 'type exit', 'key Return', 'wait 500')
+        assert shell([], 'pwd') == (project / 'sub').as_posix()
+        (project / 'sub').rmdir()
+        assert shell([], 'pwd') == other.as_posix()
+        print('ok   desktop/terminal-folder')
+
     # Never open real desktop applications in the automated suite.
     if os.name != 'nt':
         bin_dir = work / 'bin'

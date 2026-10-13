@@ -92,6 +92,7 @@ FN main
 .Lm_exit:
     call ai_shutdown
     call session_remember_project
+    call session_remember_dir
     call session_save
     cmp dword ptr [rip + g_settings_changed], 0
     je 4f
@@ -439,6 +440,8 @@ open_initial:
     jz 21f
     mov rdi, rax
     call app_set_project
+    call session_last_dir       # and its first terminal starts where the last one was
+    mov [rip + g_term_dir], rax
     jmp 3f
 21: # bare launch: the current directory is the project
     lea rdi, [rip + cwd]

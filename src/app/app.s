@@ -85,6 +85,8 @@ crumb_isdir: .zero CRUMB_MAX
 crumb_items: .zero 16 * (CRUMB_SHOW + 2)
 crumb_path: .zero 4096
 crumb_tmp: .zero 4352
+cwd_now: .zero 4096              # follow_cwd: the folder the shell shown is in
+cwd_seen: .zero 4096             # and the one it was in when last looked at
 crumb_dir: .zero 4096
 crumb_names: .zero CRUMB_BLOB
 crumb_buf: .zero CRUMB_BUF
@@ -233,6 +235,52 @@ set_project:
     call session_remember_project
     mov dword ptr [rip + g_dirty], 1
     EPILOGUE
+
+# follow_cwd(): the folder the shell shown is in is the project: the tree, git, new files and the next
+# launch go by it. The project turns when the shell is seen in another folder than before, so a
+# folder opened as the project (Open Folder) stays until the shell moves. A window without a
+# project (--empty, --wait) keeps none.
+follow_cwd:
+    cmp dword ptr [rip + g_term_open], 0
+    je 1f
+    cmp qword ptr [rip + g_project], 0
+    jne 2f
+1:  ret
+2:  PROLOGUE
+    lea rdi, [rip + cwd_now]
+    call term_shown_cwd
+    test rax, rax
+    jle 9f
+    lea rdi, [rip + cwd_now]
+    lea rsi, [rip + cwd_seen]
+    call strcmp_eq
+    test eax, eax
+    jnz 9f
+    lea rdi, [rip + cwd_seen]
+    lea rsi, [rip + cwd_now]
+    call cstr_copy
+    mov rdi, [rip + g_project]
+    lea rsi, [rip + cwd_now]
+    call strcmp_eq
+    test eax, eax
+    jnz 9f
+    # the same folder by another spelling (the project opened through a symlink) stays as it is
+    lea rdi, [rip + cwd_now]
+    call file_id
+    test rax, rax
+    jz 9f
+    mov r12, rax
+    mov r13, rdx
+    mov rdi, [rip + g_project]
+    call file_id
+    cmp rax, r12
+    jne 3f
+    cmp rdx, r13
+    je 9f
+3:  lea rdi, [rip + cwd_now]
+    call set_project
+    call app_update_title
+9:  EPILOGUE
 
 # app_new_window(folder): another raftaar opens the folder in a window of its own (on macOS with a Dock
 # icon of its own) and this one keeps its project. It runs this program with the same environment,
@@ -2697,6 +2745,7 @@ FN app_render
     PROLOGUE 64
     call ui_update_metrics
     call focus_sync
+    call follow_cwd
     call ui_begin
     mov dword ptr [rip + tip_cand], 0   # hovered-button candidates are collected below
     mov eax, [rip + g_cv + CV_w]

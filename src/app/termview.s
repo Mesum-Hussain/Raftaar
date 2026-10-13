@@ -24,6 +24,8 @@ ENDSTRUCT TS_SIZE
 sessions: .zero VEC_SIZE        # TS*
 .globl g_term_dir
 g_term_dir: .quad 0             # the folder the next shell starts in, 0: the project's
+.globl g_term_last_cwd
+g_term_last_cwd: .zero 4096     # the folder a shell shown was last seen in: it outlives the shell
 cur: .quad 0                    # TS* of the terminal shown, or of the last one shown, or 0
 env: .quad 0
 .globl g_face_term, g_term_open
@@ -810,6 +812,26 @@ FN term_tab_key
     lea rcx, [rip + cmd_close_tab]
     cmp rax, rcx
     je .Ltk_no
+.ifndef WINDOWS
+    # at the shell's prompt raftaar's commands keep their keys (Go to File, New File, the explorer),
+    # but not those that edit a document: their keys are the shell's (ctrl+c, ctrl+d, ctrl+a). A
+    # program running in the terminal gets every key.
+    test rax, rax
+    jz 7f
+    lea rcx, [rip + doc_cmds]
+6:  mov rdx, [rcx]
+    test rdx, rdx
+    jz 8f
+    add rcx, 8
+    cmp rax, rdx
+    jne 6b
+    jmp 7f
+8:  mov rdi, rbx
+    call term_busy
+    test eax, eax
+    jz .Ltk_no
+7:
+.endif
 .endif
     mov eax, r14d
     and eax, MOD_CTRL | MOD_SHIFT
@@ -876,6 +898,18 @@ FN term_tab_key
     xor eax, eax
     EPILOGUE
 
+.ifndef WINDOWS
+.section .rodata
+.p2align 3
+doc_cmds:                       # commands on a document: in a terminal their keys are the program's
+    .quad cmd_save, cmd_save_as, cmd_undo, cmd_redo, cmd_cut, cmd_copy, cmd_paste, cmd_select_all
+    .quad cmd_select_line, cmd_select_next, cmd_duplicate_line, cmd_delete_line, cmd_move_line_up
+    .quad cmd_move_line_down, cmd_indent, cmd_outdent, cmd_toggle_comment, cmd_newline_below
+    .quad cmd_newline_above, cmd_find_bar, cmd_replace_bar, cmd_find_next, cmd_find_prev
+    .quad cmd_goto_line, cmd_rename_file, 0
+.text
+.endif
+
 # view_scroll(lines): move the view back (positive) or forward in the scrollback (rbx session)
 view_scroll:
     mov rcx, [rbx + TS_term]
@@ -895,13 +929,26 @@ view_scroll:
 # term_shown_cwd(buf of 4096) -> the length of the folder the shell shown is in, written to buf, or
 #   not positive when it is not known
 FN term_shown_cwd
-    mov rsi, rdi
     mov rax, [rip + cur]
     test rax, rax
     jz 1f
+    push rbx
+    mov rbx, rdi
+    mov rsi, rdi
     mov edi, [rax + TS_pid]
     mov edx, 4096
-    jmp proc_cwd
+    call proc_cwd
+    test rax, rax
+    jle 2f
+    push rax
+    push rax
+    lea rdi, [rip + g_term_last_cwd]
+    mov rsi, rbx
+    call cstr_copy
+    pop rax
+    pop rax
+2:  pop rbx
+    ret
 1:  mov rax, -1
     ret
 

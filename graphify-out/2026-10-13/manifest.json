@@ -24,15 +24,15 @@
     "semantic_hash": ""
   },
   "install.ps1": {
-    "mtime": 1791878368.5186021,
-    "seen": 1791879028.8746414,
-    "ast_hash": "887024bb6e5004dbc40b41170845072c",
+    "mtime": 1791881809.736057,
+    "seen": 1791882910.1302874,
+    "ast_hash": "f35a9231426fc2ca1ac38539b640afae",
     "semantic_hash": ""
   },
   "install.sh": {
-    "mtime": 1791878368.5181978,
-    "seen": 1791879028.8746438,
-    "ast_hash": "77721d85e7c5919b41acb70fa005d0e9",
+    "mtime": 1791882200.850618,
+    "seen": 1791882910.1302936,
+    "ast_hash": "d4cf8346fd416ce519318ce2a20475ae",
     "semantic_hash": ""
   },
   "runtime/ai/commit.ps1": {
@@ -60,9 +60,9 @@
     "semantic_hash": ""
   },
   "site/docs/build.py": {
-    "mtime": 1791878368.5523314,
-    "seen": 1791879028.874656,
-    "ast_hash": "c8c7e01d5947df1d6c3fdb8d8164b958",
+    "mtime": 1791881809.7843294,
+    "seen": 1791882910.130527,
+    "ast_hash": "b1019d907c2e75c6ee93681a6eb3a473",
     "semantic_hash": ""
   },
   "site/docs/docs.js": {
@@ -210,9 +210,9 @@
     "semantic_hash": ""
   },
   "tests/desktop-ux.py": {
-    "mtime": 1791878368.5963147,
-    "seen": 1791879028.875072,
-    "ast_hash": "ea734854307b9875c1c315f2d9b44170",
+    "mtime": 1791881809.861573,
+    "seen": 1791882910.1312795,
+    "ast_hash": "c626b856778c63344b82f6c5c48227e6",
     "semantic_hash": ""
   },
   "tests/detach.sh": {
@@ -228,9 +228,9 @@
     "semantic_hash": ""
   },
   "tests/editor-matrix.py": {
-    "mtime": 1791878450.0560853,
-    "seen": 1791879028.8750792,
-    "ast_hash": "2810a542fc2bb7dec7aae262147031f2",
+    "mtime": 1791881809.7315404,
+    "seen": 1791882910.1313286,
+    "ast_hash": "3f8ec61785d71f6867c240246f207d73",
     "semantic_hash": ""
   },
   "tests/explorer-create.py": {
@@ -258,9 +258,9 @@
     "semantic_hash": ""
   },
   "tests/file-associations.py": {
-    "mtime": 1791878368.6013956,
-    "seen": 1791879028.8750906,
-    "ast_hash": "e1f9e713fe208135bca2deb463aad7f4",
+    "mtime": 1791881830.3254693,
+    "seen": 1791882910.1314254,
+    "ast_hash": "79ba5ba62d22fca36f1073bb79f70f68",
     "semantic_hash": ""
   },
   "tests/file-faults.sh": {
@@ -312,21 +312,21 @@
     "semantic_hash": ""
   },
   "tests/install-download.py": {
-    "mtime": 1791878368.5883267,
-    "seen": 1791879028.875135,
-    "ast_hash": "302c494d6f7da9a8093d70754d2aa9ad",
+    "mtime": 1791881809.8466592,
+    "seen": 1791882910.1316135,
+    "ast_hash": "682a3b81a5304bdb0c0285c29109af46",
     "semantic_hash": ""
   },
   "tests/install-output.py": {
-    "mtime": 1791878368.5914035,
-    "seen": 1791879028.8751373,
-    "ast_hash": "f4be1956c27185c549f4473507d0ed9d",
+    "mtime": 1791881830.3141053,
+    "seen": 1791882910.1316166,
+    "ast_hash": "d234bb774c3c6a2673616e654f1fdbe0",
     "semantic_hash": ""
   },
   "tests/install.sh": {
-    "mtime": 1791878368.5923572,
-    "seen": 1791879028.87514,
-    "ast_hash": "f4aa7255978d1147251cbbbd52797fe0",
+    "mtime": 1791881830.3159323,
+    "seen": 1791882910.1316187,
+    "ast_hash": "178e4f3ee8fd558fa0ef4335d8a609ac",
     "semantic_hash": ""
   },
   "tests/linux-appearance.py": {
@@ -354,27 +354,27 @@
     "semantic_hash": ""
   },
   "tests/mac-appearance.py": {
-    "mtime": 1791878368.5912879,
-    "seen": 1791879028.8751523,
-    "ast_hash": "eb7509a16a3486ffbf8281117715e715",
+    "mtime": 1791881830.313026,
+    "seen": 1791882910.1317303,
+    "ast_hash": "d1b4a82c7cb73d19b67e470cef03cf48",
     "semantic_hash": ""
   },
   "tests/mac-defaults.py": {
-    "mtime": 1791878368.5978866,
-    "seen": 1791879028.8751547,
-    "ast_hash": "9ddd6fcdff447da5e96bfee6c40e7fbc",
+    "mtime": 1791881830.3220615,
+    "seen": 1791882910.1317332,
+    "ast_hash": "c0abe161336764fa035ebf9790cffe92",
     "semantic_hash": ""
   },
   "tests/mac-launch.py": {
-    "mtime": 1791878368.5960822,
-    "seen": 1791879028.8751569,
-    "ast_hash": "6ee41e04ec7d5b468032a53a60b4ba29",
+    "mtime": 1791881830.3203266,
+    "seen": 1791882910.131736,
+    "ast_hash": "d6517ffb9b51fd316ff1730ab2370054",
     "semantic_hash": ""
   },
   "tests/mac-package.py": {
-    "mtime": 1791878368.5969632,
-    "seen": 1791879028.8751593,
-    "ast_hash": "a39b6b841937e229d70e8b79edea760d",
+    "mtime": 1791881830.3210204,
+    "seen": 1791882910.1317394,
+    "ast_hash": "05a06701fe4ab96c64678f84da81bc4f",
     "semantic_hash": ""
   },
   "tests/new-window.py": {
@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   "tests/update.sh": {
-    "mtime": 1791878728.3334515,
-    "seen": 1791879028.8752007,
-    "ast_hash": "df4d62eca9219e0b77d05f6639a1866e",
+    "mtime": 1791881809.733002,
+    "seen": 1791882910.1321254,
+    "ast_hash": "69df744cefbbb00236490bb1035559b1",
     "semantic_hash": ""
   },
   "tests/wayland-launcher.c": {
@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "tools/build-mac.sh": {
-    "mtime": 1791878368.5494807,
-    "seen": 1791879028.8752527,
-    "ast_hash": "cde8bc79cfbe8f0a11df31156141cf05",
+    "mtime": 1791881830.3009915,
+    "seen": 1791882910.132385,
+    "ast_hash": "49ddcc34d7622f8c0eed551ed1775c56",
     "semantic_hash": ""
   },
   "tools/build-windows.py": {
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "tools/install.sh": {
-    "mtime": 1791878368.5485299,
-    "seen": 1791879028.8753471,
-    "ast_hash": "aed27cc0cd39b77dc8274934df5c6065",
+    "mtime": 1791881830.3000948,
+    "seen": 1791882910.1325965,
+    "ast_hash": "97890bde04d2482f3d398b87cf2efdce",
     "semantic_hash": ""
   },
   "tools/mkfont.py": {
@@ -618,9 +618,9 @@
     "semantic_hash": ""
   },
   "tools/package-mac.sh": {
-    "mtime": 1791878368.549871,
-    "seen": 1791879028.8753524,
-    "ast_hash": "20ecb5549c142e05ad5dfc642f6fab60",
+    "mtime": 1791881830.3016415,
+    "seen": 1791882910.1326213,
+    "ast_hash": "00b919331c397e60eb67fa8a84902cc9",
     "semantic_hash": ""
   },
   "tools/package-windows.py": {
@@ -660,9 +660,9 @@
     "semantic_hash": ""
   },
   "tools/startup-stats-mac.py": {
-    "mtime": 1791878368.5481563,
-    "seen": 1791879028.8754117,
-    "ast_hash": "1520db1651f7a74b91041105b1aa4efb",
+    "mtime": 1791881830.2978945,
+    "seen": 1791882910.1327913,
+    "ast_hash": "4b12a4c83e8230b1d4e45552da9ce051",
     "semantic_hash": ""
   },
   "tools/startup-stats-win.py": {
@@ -678,21 +678,21 @@
     "semantic_hash": ""
   },
   "tools/verify-mac-release.sh": {
-    "mtime": 1791878368.5500479,
-    "seen": 1791879028.8754191,
-    "ast_hash": "f8b5dd0a228cc1d774f6e556616ef367",
+    "mtime": 1791881830.3024795,
+    "seen": 1791882910.1328435,
+    "ast_hash": "8f579733c484c523360045719e8c2b52",
     "semantic_hash": ""
   },
   ".github/workflows/desktop-launches.yml": {
-    "mtime": 1791878368.5197477,
-    "seen": 1791879028.8754215,
-    "ast_hash": "ffeca74604f778c0bf7e94824195a5f3",
+    "mtime": 1791881843.3513212,
+    "seen": 1791882910.1328468,
+    "ast_hash": "9871582a901ded05a3eec02210695062",
     "semantic_hash": ""
   },
   ".github/workflows/pages.yml": {
-    "mtime": 1791095710.7840648,
-    "seen": 1791786000.9069397,
-    "ast_hash": "639e45d549d3bcd39e3c5ae694fbab0d",
+    "mtime": 1791881843.348891,
+    "seen": 1791882910.1328497,
+    "ast_hash": "5a7df5e1284953e9081f4b972ef3aea3",
     "semantic_hash": ""
   },
   ".github/workflows/release.yml": {
@@ -708,15 +708,15 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791878450.0607278,
-    "seen": 1791879028.8754644,
-    "ast_hash": "5789703c0cc253f61e7ab4cdd48509d1",
+    "mtime": 1791881809.7544434,
+    "seen": 1791882910.13291,
+    "ast_hash": "258dee39c8f6e8e0e063dddc342a889a",
     "semantic_hash": ""
   },
   "SECURITY.md": {
-    "mtime": 1791878368.5187821,
-    "seen": 1791879028.8754668,
-    "ast_hash": "825bbdda96954158207e2681b35244c6",
+    "mtime": 1791881830.365874,
+    "seen": 1791882910.1329129,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
     "semantic_hash": ""
   },
   "assets/fonts/LICENSE-Iosevka.md": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791878450.0603647,
-    "seen": 1791879028.8756855,
-    "ast_hash": "8d19c33b974eea3a8cacc4236cd698dd",
+    "mtime": 1791881830.365874,
+    "seen": 1791882910.133166,
+    "ast_hash": "577fc4d58a4b013720492200b36dad03",
     "semantic_hash": ""
   },
   "site/404.html": {
@@ -786,9 +786,9 @@
     "semantic_hash": ""
   },
   "site/docs/customization.html": {
-    "mtime": 1791878368.5526328,
-    "seen": 1791879028.8756921,
-    "ast_hash": "be8c198d869d5ba9d8196b15063595fb",
+    "mtime": 1791881809.7845354,
+    "seen": 1791882910.1332228,
+    "ast_hash": "95c538247cf28d0b2f594b6868d07b67",
     "semantic_hash": ""
   },
   "site/docs/editing.html": {
@@ -798,9 +798,9 @@
     "semantic_hash": ""
   },
   "site/docs/getting-started.html": {
-    "mtime": 1791878368.552142,
-    "seen": 1791879028.8756974,
-    "ast_hash": "4ca0810ab15938c9db786f14bd1b71ca",
+    "mtime": 1791881809.78413,
+    "seen": 1791882910.1332533,
+    "ast_hash": "2fded736364c3b08ff5feed84e45a59a",
     "semantic_hash": ""
   },
   "site/docs/git.html": {
@@ -822,15 +822,15 @@
     "semantic_hash": ""
   },
   "site/index.html": {
-    "mtime": 1791878368.5508888,
-    "seen": 1791879028.8757346,
-    "ast_hash": "a72487326e2ee5353d6296578f104bfa",
+    "mtime": 1791881809.7831595,
+    "seen": 1791882910.1333373,
+    "ast_hash": "9b8098b2438847837c8d4900b19c79ba",
     "semantic_hash": ""
   },
   "site/llms.txt": {
-    "mtime": 1791878368.5511684,
-    "seen": 1791879028.8757374,
-    "ast_hash": "5a25f418a319836050188f8a3f195c63",
+    "mtime": 1791881809.7835965,
+    "seen": 1791882910.13334,
+    "ast_hash": "aec7f0d13c72993734ba5c084ded8f49",
     "semantic_hash": ""
   },
   "site/robots.txt": {
@@ -1434,9 +1434,9 @@
     "semantic_hash": ""
   },
   "tools/startup-stats.md": {
-    "mtime": 1791878368.5497336,
-    "seen": 1791879028.8785114,
-    "ast_hash": "bcbe5af1ef3fe7088a7d917a43fa873b",
+    "mtime": 1791881830.301316,
+    "seen": 1791882910.1361694,
+    "ast_hash": "1d8c69839e8bf825daabbfc7c506abee",
     "semantic_hash": ""
   },
   "assets/icons/files/R.svg": {
@@ -2601,6 +2601,12 @@
     "mtime": 1791783059.4043176,
     "seen": 1791879028.8837466,
     "ast_hash": "49bf3d4d89536f6938a7188c5ac2ccc7",
+    "semantic_hash": ""
+  },
+  "progress.md": {
+    "mtime": 1791883778.079157,
+    "seen": 1791884044.2084224,
+    "ast_hash": "68e9e1143dc3c3e22636710fe9ebdd11",
     "semantic_hash": ""
   }
 }

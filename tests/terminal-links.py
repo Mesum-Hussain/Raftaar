@@ -145,9 +145,13 @@ class TerminalLinks(unittest.TestCase):
         self.command(f'click {x} {y} ctrl')
         self.assertIn('active=inner.md ', self.state())
 
-    def test_output_from_before_a_cd_resolves_in_the_project(self):
+    def test_the_project_follows_a_cd(self):
+        # the shell's folder is the project: a name printed before the cd is not looked for in the
+        # folder the shell left
         self.run_line('ls && cd sub && echo moved', 'moved')
-        self.assertEqual(self.link_at('notes.txt'), 'link=file ' + (self.project / 'notes.txt').as_posix())
+        self.assertEqual(self.command('print-project'), f'project={self.project.as_posix()}/sub\n'
+                         .replace(self.work.as_posix(), '~'))
+        self.assertEqual(self.link_at('notes.txt'), 'link=')
 
     def test_line_and_column(self):
         self.run_line('echo notes.txt:3:6: error and ./notes.txt:2, too', 'error and')

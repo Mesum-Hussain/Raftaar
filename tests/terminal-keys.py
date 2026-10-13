@@ -143,6 +143,27 @@ class TerminalKeys(unittest.TestCase):
         _, sent = self.read_keys('legacy', ['shift+Return'])
         self.assertEqual(sent, ['^M'])
 
+    def test_a_running_program_gets_the_keys_of_raftaars_commands(self):
+        _, sent = self.read_keys('legacy', ['ctrl+n', 'ctrl+b', 'ctrl+e', 'ctrl+p', 'ctrl+o',
+                                            'ctrl+c', 'ctrl+a'])
+        self.assertEqual(sent, ['^N', '^B', '^E', '^P', '^O', '^C', '^A'])
+        self.assertIn('tabs=1 ', self.command('print-state'))
+
+    def test_raftaars_commands_keep_their_keys_at_the_prompt(self):
+        self.command('wait-term $')
+        self.command('key ctrl+n')
+        self.assertIn('tabs=2 ', self.command('print-state'))
+        self.command('cmd close_tab')
+        self.command('key ctrl+p')
+        self.assertTrue(self.command('print-palette').startswith('field='))
+        self.command('key Escape')
+        # a document's commands are the shell's keys: ctrl+a is the start of the line, not Select All
+        self.command('type cho here$((1 + 1))')
+        self.command('key ctrl+a')
+        self.command('type e')
+        self.command('key Return')
+        self.command('wait-term here2')
+
 
 if __name__ == '__main__':
     unittest.main()
