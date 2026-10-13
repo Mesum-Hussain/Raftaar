@@ -165,14 +165,76 @@ class TerminalTabs(unittest.TestCase):
         output = self.run_editor([*self.terminal(0, title), 'print-tabs'])
         self.assertEqual(self.lines(output, 'tabs=')[0], 'tabs=a.txt|*' + 'é' * 20 + '…')
 
-    def test_sixteen_terminals_and_no_more(self):
+    def posix_shell(self, restore=False):
+        """/bin/sh as the shell, which notes each start in a file: a hundred of them are light."""
+        config = self.home / 'config/raftaar/config'
+        config.write_text('[ui]\nsidebar = false\n[terminal]\nshell = /bin/sh\n'
+                          '[files]\nrestore_session = ' + str(restore).lower() +
+                          '\nrestore_project = false\n'
+                          '[editor]\nhome_on_launch = false\n'
+                          '[updates]\ncheck = false\n[git]\nenabled = false\n', encoding='utf-8')
+        self.started = self.home / 'started'
+        rc = self.home / 'rc'
+        rc.write_text(f'echo $PWD >> "{self.started.as_posix()}"\n', encoding='utf-8')
+        self.env.update(ENV=rc.as_posix(), PS1='$ ', HISTFILE='/dev/null')
+
+    @unittest.skipIf(os.name == 'nt', 'a POSIX shell')
+    def test_a_hundred_terminals_and_no_more(self):
+        self.posix_shell()
         lines = []
-        for index in range(17):
-            lines += ['cmd new_terminal', 'wait 150']
+        for index in range(101):
+            lines += ['cmd new_terminal', 'wait 20']
         output = self.run_editor([*lines, 'print-state', 'print-toast'])
-        self.assertIn('tabs=17 ', output)
-        self.assertIn('term=16', output)
+        self.assertIn('tabs=101 ', output)
+        self.assertIn('term=100', output)
         self.assertIn('Could not start a shell', output)
+
+    @unittest.skipIf(os.name == 'nt', 'the shell\'s folder is not known on Windows')
+    def test_terminal_tabs_come_back_and_start_their_shells_when_shown(self):
+        self.posix_shell(restore=True)
+        sub = self.project / 'sub'
+        sub.mkdir()
+        # the folder of the shell shown is the project, whose session this is: back in it at the end
+        output = self.run_editor(['cmd new_terminal', 'wait-term $',
+                                  'type cd sub; echo in$((1 + 1))', 'key Return', 'wait-term in2',
+                                  'wait 200', 'cmd new_terminal', 'wait-term $',
+                                  'type cd ..; echo up$((1 + 1))', 'key Return', 'wait-term up2',
+                                  'wait 200', 'cmd new_terminal', 'wait-term $', 'cmd prev_tab',
+                                  'wait 200', 'print-state'])
+        self.assertIn('tabs=4 ', output)
+        # the tabs are back, in their places and named after their folders; only the one shown has
+        # a shell, started where it was
+        self.started.unlink()
+        output = self.run_editor(['wait-term $', 'print-state', 'print-tabs',
+                                  'type pwd; echo at$((1 + 1))', 'key Return', 'wait-term at2',
+                                  'print-term'], files=())
+        self.assertIn('tabs=4 ', output)
+        self.assertIn('term=3', output)
+        self.assertEqual(self.started.read_text().splitlines(), [self.project.as_posix()])
+        self.assertIn(self.project.as_posix() + '\n', output)
+        self.assertEqual(self.lines(output, 'tabs=')[1], 'tabs=a.txt|sub|*sh|project')
+        # and the others get theirs as they are looked at
+        self.started.unlink()
+        self.run_editor(['wait-term $', 'cmd next_tab', 'wait-term $', 'cmd next_tab', 'wait 200',
+                         'cmd next_tab', 'wait-term $'], files=())
+        self.assertEqual(sorted(self.started.read_text().splitlines()),
+                         sorted([sub.as_posix(), self.project.as_posix(), self.project.as_posix()]))
+
+    @unittest.skipIf(os.name == 'nt', 'a POSIX shell')
+    def test_files_dropped_from_another_program(self):
+        self.posix_shell()
+        folder = self.project / 'my dir'
+        folder.mkdir()
+        (folder / "it's.txt").write_text('quoted-content\n', encoding='utf-8')
+        uri = 'file://' + self.project.as_posix() + "/my%20dir/it's.txt"
+        other = 'file://localhost' + (self.project / 'b.txt').as_posix()
+        # a terminal gets the paths typed, quoted for the shell; a file's tab opens them
+        output = self.run_editor(['cmd new_terminal', 'wait-term $', 'type cat', 'key Space',
+                                  f'drop {uri}|# a comment|{other}', 'key Return',
+                                  'wait-term quoted-content', 'wait-term b.txt', 'print-term',
+                                  'cmd prev_tab', f'drop {uri}', 'print-tabs'])
+        self.assertIn('quoted-content\nb.txt\n', output)
+        self.assertEqual(self.lines(output, 'tabs=')[0], "tabs=a.txt|*it's.txt|sh")
 
 
 if __name__ == '__main__':

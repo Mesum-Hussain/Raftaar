@@ -44,6 +44,7 @@ activation_sent: .long 0
 id_sync: .long 0
 sync_done: .long 0
 seat_ver: .long 0
+ddm_ver: .long 0
 
 id_surface: .long 0
 id_xdg_surface: .long 0
@@ -95,10 +96,16 @@ offer_new: .long 0
 offer_new_text: .long 0
 sel_offer: .long 0
 sel_offer_text: .long 0
+# files dragged in: the offer over the window, and the one dropped, read as text/uri-list
+offer_new_uri: .long 0
+dnd_offer: .long 0
+drop_offer: .long 0
+drop_pipe: .zero 8
 id_source: .long 0
 .p2align 3
 clip_sb: .zero SB_SIZE
 paste_sb: .zero SB_SIZE
+drop_sb: .zero SB_SIZE
 
 .text
 
@@ -665,6 +672,7 @@ wl_dispatch:
     mov eax, [r13]
     mov [rip + offer_new], eax
     mov dword ptr [rip + offer_new_text], 0
+    mov dword ptr [rip + offer_new_uri], 0
     jmp .Ld_ret
 1:  cmp r12d, 5                   # selection
     jne 2f
@@ -685,19 +693,90 @@ wl_dispatch:
     mov ecx, [rip + offer_new_text]
 4:  mov [rip + sel_offer_text], ecx
     jmp .Ld_ret
-2:  cmp r12d, 1                   # dnd enter: not supported, drop the offer
-    jne .Ld_ret
-    mov eax, [r13 + 16]
-    test eax, eax
+2:  cmp r12d, 1                   # enter: a drag came over the window
+    jne 5f
+    mov ebx, [r13 + 16]
+    test ebx, ebx
     jz .Ld_ret
-    MSG eax, 2
+    cmp dword ptr [rip + dnd_offer], 0
+    jne 21f
+    cmp ebx, [rip + offer_new]
+    jne 21f
+    cmp dword ptr [rip + offer_new_uri], 0
+    jne 22f
+21: MSG ebx, 2                    # not files: the offer is dropped
     END
+    jmp .Ld_ret
+22: # files (text/uri-list) are taken, as a copy
+    mov [rip + dnd_offer], ebx
+    MSG ebx, 0                    # accept(serial, mime)
+    ARG [r13]
+    SARG .Lmime_uri
+    END
+    cmp dword ptr [rip + ddm_ver], 3
+    jb .Ld_ret
+    MSG [rip + dnd_offer], 4      # set_actions(copy, preferred copy)
+    ARG 1
+    ARG 1
+    END
+    jmp .Ld_ret
+5:  cmp r12d, 2                   # leave without a drop
+    jne 6f
+    mov ebx, [rip + dnd_offer]
+    test ebx, ebx
+    jz .Ld_ret
+    mov dword ptr [rip + dnd_offer], 0
+    MSG ebx, 2
+    END
+    jmp .Ld_ret
+6:  cmp r12d, 4                   # drop: the files' names come through a pipe (on_drop_readable)
+    jne .Ld_ret
+    mov ebx, [rip + dnd_offer]
+    test ebx, ebx
+    jz .Ld_ret
+    mov dword ptr [rip + dnd_offer], 0
+    cmp dword ptr [rip + drop_fd], -1
+    jne 61f
+    lea rdi, [rip + drop_pipe]
+    mov esi, O_CLOEXEC
+    SYS SYS_pipe2
+    test rax, rax
+    jns 62f
+61: MSG ebx, 2
+    END
+    jmp .Ld_ret
+62: mov [rip + drop_offer], ebx
+    MSG ebx, 1                    # receive(mime, fd)
+    SARG .Lmime_uri
+    END
+    mov edi, [rip + drop_pipe + 4]
+    call wl_flush_fd
+    mov edi, [rip + drop_pipe + 4]
+    SYS SYS_close
+    mov edi, [rip + drop_pipe]
+    mov [rip + drop_fd], edi
+    lea rdi, [rip + drop_sb]
+    call sb_clear
+    mov edi, [rip + drop_fd]
+    mov esi, POLLIN
+    lea rdx, [rip + on_drop_readable]
+    xor ecx, ecx
+    call watch_add
     jmp .Ld_ret
 
 .Ld_offer:
     test r12d, r12d
     jnz .Ld_ret
     lea rdi, [r13 + 4]
+    mov esi, [r13]
+    dec esi
+    lea rdx, [rip + .Lmime_uri]
+    call str_eq_cstr
+    test eax, eax
+    jz 1f
+    mov dword ptr [rip + offer_new_uri], 1
+    jmp .Ld_ret
+1:  lea rdi, [r13 + 4]
     mov esi, [r13]
     dec esi
     call mime_is_text
@@ -800,11 +879,18 @@ wl_on_global:
     ARG [rsp + 4]
     END
     mov rax, [rbx + 8]
+    lea rcx, [rip + id_ddm]
+    cmp rax, rcx
+    je .Lg_ddm
     lea rcx, [rip + id_seat]
     cmp rax, rcx
     jne .Lg_ret
     mov eax, [rsp]
     mov [rip + seat_ver], eax
+    jmp .Lg_ret
+.Lg_ddm:
+    mov eax, [rsp]
+    mov [rip + ddm_ver], eax
 .Lg_ret:
     EPILOGUE
 
@@ -1837,6 +1923,42 @@ on_paste_readable:
     pop rbx
     ret
 
+# the dropped files' names arrive: at the end the drag is finished and the app gets them
+on_drop_readable:
+    push rbx
+    mov ebx, edi
+    lea rdi, [rip + drop_sb]
+    mov esi, 65536
+    call sb_reserve
+    mov edi, ebx
+    mov rsi, rax
+    mov edx, 65536
+    SYS SYS_read
+    test rax, rax
+    jle 1f
+    add [rip + drop_sb + SB_len], rax
+    pop rbx
+    ret
+1:  mov edi, ebx
+    call watch_remove
+    mov edi, ebx
+    SYS SYS_close
+    mov dword ptr [rip + drop_fd], -1
+    cmp dword ptr [rip + ddm_ver], 3
+    jb 2f
+    MSG [rip + drop_offer], 3     # finish
+    END
+2:  MSG [rip + drop_offer], 2     # destroy
+    END
+    mov dword ptr [rip + drop_offer], 0
+    mov edi, -1
+    call wl_flush_fd
+    mov rdi, [rip + drop_sb + SB_ptr]
+    mov rsi, [rip + drop_sb + SB_len]
+    call app_on_drop
+    pop rbx
+    ret
+
 # ---------------- setup ----------------
 
 # wl_connect() -> 1 on success, 0 if no wayland display
@@ -2088,6 +2210,7 @@ global_table:
 .Lapp_id: .asciz "raftaar"
 .Lkmdump: .asciz "RAFTAAR_DUMP_KEYMAP"
 .Lmime_utf8: .asciz "text/plain;charset=utf-8"
+.Lmime_uri: .asciz "text/uri-list"
 .Lmime_plain: .asciz "text/plain"
 .Lmime_utf8str: .asciz "UTF8_STRING"
 .Lproto_err: .asciz "wayland protocol error: "
@@ -2104,6 +2227,7 @@ int_scale: .long 1
 rep_rate: .long 25
 rep_delay: .long 400
 paste_fd: .long -1
+drop_fd: .long -1
 .globl g_csd, g_dpi_scale
 g_csd: .long 1
 deco_applied: .long -1

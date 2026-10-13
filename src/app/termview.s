@@ -7,15 +7,18 @@ F TS_wbuf, SB_SIZE      # bytes the program has not taken yet
 F TS_pid, 4
 F TS_fd, 4
 F TS_name, 32
+F TS_dir, 8             # not started yet: the folder its shell starts in once the tab is shown
+F TS_frame, 4           # the frame it was drawn in last (frame_no)
+F TS_titlev, 4          # TM_titlev as the tab strip has drawn it
 ENDSTRUCT TS_SIZE
 
 .equ TERM_FRAME_MS, 16            # output keeps to about a frame a display refresh
 .equ ID_TLINK, 0x6003           # the link under the pointer, for its tooltip
 .equ ID_TSCROLL, 0x6005
-.equ MAX_SESS, 16
+.equ MAX_SESS, 100
 .equ LABEL_MAX, 40              # bytes of a title in the tab strip, before the ellipsis
 .equ RBUF, 65536
-.equ MAX_ZOMB, 16
+.equ MAX_ZOMB, 128
 .equ LMAX, 4096                 # cells of a line searched for a link
 .equ LROWS, 16                  # rows of a wrapped line before the pointer's, and after
 
@@ -27,6 +30,10 @@ g_term_dir: .quad 0             # the folder the next shell starts in, 0: the pr
 .globl g_term_last_cwd
 g_term_last_cwd: .zero 4096     # the folder a shell shown was last seen in: it outlives the shell
 cur: .quad 0                    # TS* of the terminal shown, or of the last one shown, or 0
+spawn_into: .quad 0             # term_spawn starts the shell of this session (sess_start), 0: a new one
+frame_no: .long 0               # counts frames: a session drawn in the last one is on the screen
+.globl g_term_hold
+g_term_hold: .long 0            # tabs are being restored: one made active in passing starts no shell
 env: .quad 0
 .globl g_face_term, g_term_open
 g_face_term: .zero FACE_SIZE
@@ -126,8 +133,11 @@ term_metrics:
 # term_spawn() -> TS* of the shell started, or 0
 FN term_spawn
     PROLOGUE 48
+    cmp qword ptr [rip + spawn_into], 0
+    jne 0f
     cmp qword ptr [rip + sessions + VEC_len], MAX_SESS
     jae .Lsp_fail
+0:
     cmp qword ptr [rip + env], 0
     jne 1f
     lea rdi, [rip + env_extras]
@@ -208,16 +218,26 @@ FN term_spawn
     mov edi, r13d
     SYS SYS_close
     jmp .Lsp_free
-3:  mov edi, TS_SIZE
+3:  mov rbx, [rip + spawn_into]
+    test rbx, rbx
+    jnz 30f
+    mov edi, TS_SIZE
     call mem_alloc
     mov rbx, rax
-    mov [rbx + TS_pid], r15d
-    mov [rbx + TS_fd], r13d
+    mov eax, [rip + frame_no]
+    mov [rbx + TS_frame], eax
     mov edi, 80
     mov esi, 24
     mov edx, [rip + cfg_term_scrollback]
     call term_new
     mov [rbx + TS_term], rax
+30: mov [rbx + TS_pid], r15d
+    mov [rbx + TS_fd], r13d
+    xor eax, eax
+    mov [rbx + TS_name], rax
+    mov [rbx + TS_name + 8], rax
+    mov [rbx + TS_name + 16], rax
+    mov [rbx + TS_name + 24], rax
     # shell name for the tab
     mov rdi, r12
     call strlen
@@ -235,11 +255,13 @@ FN term_spawn
     inc rdi
     dec ecx
     jnz 4b
-5:  lea rdi, [rip + sessions]
+5:  cmp qword ptr [rip + spawn_into], 0
+    jne 50f
+    lea rdi, [rip + sessions]
     mov esi, 8
     call vec_push
     mov [rax], rbx
-    mov edi, r13d
+50: mov edi, r13d
     mov esi, POLLIN
     lea rdx, [rip + on_pty]
     mov rcx, rbx
@@ -256,6 +278,127 @@ FN term_spawn
     lea rdi, [rip + .Lno_shell]
     call app_toast
     xor eax, eax
+    EPILOGUE
+
+# term_lazy(folder cstr) -> TS* of a terminal whose shell starts in that folder once it is shown, or
+#   0: a tab brought back with the session costs no process until it is looked at
+FN term_lazy
+    PROLOGUE
+    mov r12, rdi
+    cmp qword ptr [rip + sessions + VEC_len], MAX_SESS
+    jae 8f
+    mov edi, TS_SIZE
+    call mem_alloc
+    mov rbx, rax
+    mov dword ptr [rbx + TS_fd], -1
+    mov edi, 80
+    mov esi, 24
+    mov edx, [rip + cfg_term_scrollback]
+    call term_new
+    mov [rbx + TS_term], rax
+    mov rdi, r12
+    call strlen
+    mov r13, rax
+    mov rdi, r12
+    mov rsi, r13
+    call mem_dup
+    mov [rbx + TS_dir], rax
+    # the tab is named after the folder until the shell names it
+    mov rdi, r12
+    mov rsi, r13
+    call path_basename
+    test rdx, rdx
+    jnz 1f
+    mov rax, r12
+1:  lea rdi, [rbx + TS_name]
+    xor ecx, ecx
+2:  movzx edx, byte ptr [rax + rcx]
+    test edx, edx
+    jz 4f
+    cmp ecx, 28
+    jb 3f
+    # near the end only the rest of a character begun
+    and edx, 0xc0
+    cmp edx, 0x80
+    jne 4f
+    cmp ecx, 31
+    jae 4f
+    movzx edx, byte ptr [rax + rcx]
+3:  mov [rdi + rcx], dl
+    inc ecx
+    jmp 2b
+4:  lea rdi, [rip + sessions]
+    mov esi, 8
+    call vec_push
+    mov [rax], rbx
+    mov rax, rbx
+    EPILOGUE
+8:  xor eax, eax
+    EPILOGUE
+
+# sess_start(session): the shell of a terminal that has none yet (term_lazy)
+sess_start:
+    cmp dword ptr [rdi + TS_fd], 0
+    jge 1f
+    cmp qword ptr [rdi + TS_dir], 0
+    jne 2f
+1:  ret
+2:  push rbx
+    mov rbx, rdi
+    mov [rip + spawn_into], rbx
+    mov rax, [rbx + TS_dir]
+    mov [rip + g_term_dir], rax
+    call term_spawn
+    mov qword ptr [rip + spawn_into], 0
+    mov qword ptr [rip + g_term_dir], 0
+    mov rdi, [rbx + TS_dir]
+    mov qword ptr [rbx + TS_dir], 0     # started, or it cannot be: not tried again
+    call mem_free
+    mov eax, [rip + frame_no]
+    mov [rbx + TS_frame], eax
+    pop rbx
+    ret
+
+# term_sess_cwd(session, buf of 4096) -> the length of the folder its shell is in (the one it will
+#   start in, before it has), written to buf, or not positive when it is not known
+FN term_sess_cwd
+    mov rax, [rdi + TS_dir]
+    test rax, rax
+    jnz 1f
+    mov edi, [rdi + TS_pid]
+    mov edx, 4096
+    test edi, edi
+    jg proc_cwd
+    mov rax, -1
+    ret
+1:  push rbx
+    mov rbx, rsi
+    mov rdi, rsi
+    mov rsi, rax
+    call cstr_copy
+    sub rax, rbx
+    pop rbx
+    ret
+
+# term_frame_begin(): a frame is about to be drawn. The terminals the last one did not draw are
+#   hidden: their scrollback is packed (term_pack)
+FN term_frame_begin
+    PROLOGUE
+    xor r12d, r12d
+1:  cmp r12, [rip + sessions + VEC_len]
+    jae 9f
+    mov rax, [rip + sessions + VEC_ptr]
+    mov rbx, [rax + r12*8]
+    inc r12
+    mov eax, [rip + frame_no]
+    cmp eax, [rbx + TS_frame]
+    je 1b
+    mov rdi, [rbx + TS_term]
+    cmp dword ptr [rdi + TM_pack], 0
+    jne 1b
+    call term_pack
+    jmp 1b
+9:  inc dword ptr [rip + frame_no]
     EPILOGUE
 
 # on_pty(fd, revents, session): output of the shell, room to write more
@@ -284,8 +427,17 @@ on_pty:
     dec r13d
     jnz 2b
 3:  call send_replies
+    # output of a terminal that is not on the screen draws nothing, unless it names its tab
+    mov rcx, [rbx + TS_term]
+    mov ecx, [rcx + TM_titlev]
+    mov eax, [rip + frame_no]
+    cmp eax, [rbx + TS_frame]
+    je 31f
+    cmp ecx, [rbx + TS_titlev]
+    je 32f
+31: mov [rbx + TS_titlev], ecx
     call output_frame
-    EPILOGUE
+32: EPILOGUE
 .Lop_end:
     mov rdi, rbx
     call app_close_term         # its tab closes, which ends the session
@@ -409,7 +561,11 @@ FN term_end
     call watch_remove
     mov edi, [rbx + TS_fd]
     SYS SYS_close
-4:  # the session's processes get SIGHUP; reap the shell now or later
+4:  mov rdi, [rbx + TS_dir]
+    call mem_free
+    cmp dword ptr [rbx + TS_pid], 0     # never started: no process, and 0 would name our own group
+    jle 5f
+    # the session's processes get SIGHUP; reap the shell now or later
     mov edi, [rbx + TS_pid]
     neg edi
     mov esi, SIGHUP
@@ -561,7 +717,14 @@ FN cmd_new_terminal
 
 # term_tab_sync(session or 0): the active tab shows this terminal, or is not a terminal
 FN term_tab_sync
-    xor eax, eax
+    test rdi, rdi
+    jz 0f
+    cmp dword ptr [rip + g_term_hold], 0
+    jne 0f
+    push rdi
+    call sess_start
+    pop rdi
+0:  xor eax, eax
     test rdi, rdi
     jz 1f
     mov eax, 1
@@ -935,9 +1098,8 @@ FN term_shown_cwd
     push rbx
     mov rbx, rdi
     mov rsi, rdi
-    mov edi, [rax + TS_pid]
-    mov edx, 4096
-    call proc_cwd
+    mov rdi, rax
+    call term_sess_cwd
     test rax, rax
     jle 2f
     push rax
@@ -1047,7 +1209,12 @@ FN term_tab_draw
     test rax, rax
     jz .Lpd_ret
     mov rbx, rax
+    mov rdi, rbx
+    call sess_start
+    mov eax, [rip + frame_no]
+    mov [rbx + TS_frame], eax
     mov r12, [rbx + TS_term]
+    mov dword ptr [r12 + TM_pack], 0    # on the screen: its scrollback is cells as it is read
     # grid
     M eax, MI_8
     add eax, [rsp + 4]
@@ -1789,7 +1956,17 @@ draw_grid:
     COLOR r8d, T_CURSOR
     call outline
     jmp .Ldg_ret
-7:  mov eax, [rbx + TM_cursor]
+7:  # it blinks as the editor's caret does, unless the program asked for a steady one (DECSCUSR 2,
+    # 4, 6)
+    mov eax, [rbx + TM_cursor]
+    test eax, eax
+    jz 70f
+    test eax, 1
+    jz 71f
+70: call ed_caret_blink
+    test eax, eax
+    jz .Ldg_ret
+71: mov eax, [rbx + TM_cursor]
     cmp eax, 3
     jb 9f
     cmp eax, 5

@@ -341,7 +341,7 @@ F PW_events, 4
 F PW_handler, 8         # handler(fd, revents, ctx)
 F PW_ctx, 8
 ENDSTRUCT PW_SIZE
-.equ MAX_WATCH, 96
+.equ MAX_WATCH, 256
 
 # ---- platform vtable (wayland / x11 / headless) ----
 STRUCT
@@ -1016,6 +1016,9 @@ ENDSTRUCT TH_SIZE
 .equ LN_flags, 4
 .equ LN_HDR, 8
 .equ LF_WRAPPED, 1              # continues on the next line
+.equ LF_PACKED, 2               # a scrollback line of a hidden terminal, packed (pack_line in term.s)
+.equ PACK_BUF, 65536
+.equ RUN_HDR, 14                # of a run in a packed line
 
 # modes
 .equ TMM_WRAP, 1
@@ -1073,6 +1076,8 @@ F TM_sbhead, 4          # oldest line in the ring
 F TM_sblen, 4
 F TM_view, 4            # lines scrolled back
 F TM_tabcap, 4
+F TM_pack, 4            # hidden: lines entering the scrollback are packed (term_pack)
+F TM_titlev, 4          # counts the titles the program set
 F TM_lines, 8           # line pointers of the active screen
 F TM_other, 8           # the inactive screen
 F TM_sb, 8              # scrollback ring

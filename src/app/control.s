@@ -493,6 +493,30 @@ c_open:
     xor eax, eax
     ret
 
+# drop URI-LIST: files dragged in from another program ("\n" between them as "|")
+c_drop:
+    mov rdi, rbx
+    mov rsi, r12
+    call mem_dup
+    push rax
+    push rax
+    xor ecx, ecx
+1:  cmp rcx, r12
+    jae 2f
+    cmp byte ptr [rax + rcx], '|'
+    jne 11f
+    mov byte ptr [rax + rcx], 10
+11: inc rcx
+    jmp 1b
+2:  mov rdi, rax
+    mov rsi, r12
+    call app_on_drop
+    pop rdi
+    pop rdi
+    call mem_free
+    xor eax, eax
+    ret
+
 c_cmd:
     mov rdi, rbx
     mov rsi, r12
@@ -1432,6 +1456,7 @@ on_client:
 .Lc_up: .asciz "up"
 .Lc_scroll: .asciz "scroll"
 .Lc_open: .asciz "open"
+.Lc_drop: .asciz "drop"
 .Lc_cmd: .asciz "cmd"
 .Lc_shot: .asciz "shot"
 .Lc_wait: .asciz "wait"
@@ -1498,6 +1523,7 @@ on_client:
 ctl_table:
     .quad .Lc_key, c_key, .Lc_type, c_type, .Lc_move, c_move, .Lc_click, c_click, .Lc_tap, c_tap
     .quad .Lc_down, c_down, .Lc_up, c_up, .Lc_updown, c_updown, .Lc_scroll, c_scroll, .Lc_open, c_open
+    .quad .Lc_drop, c_drop
     .quad .Lc_cmd, c_cmd, .Lc_shot, c_shot, .Lc_wait, c_wait, .Lc_resize, c_resize
     .quad .Lc_quit, c_quit, .Lc_echo, c_echo, .Lc_print_doc, c_print_doc
     .quad .Lc_print_state, c_print_state, .Lc_print_syntax, c_print_syntax, .Lc_xkey, c_xkey

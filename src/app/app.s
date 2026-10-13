@@ -86,6 +86,9 @@ crumb_items: .zero 16 * (CRUMB_SHOW + 2)
 crumb_path: .zero 4096
 crumb_tmp: .zero 4352
 cwd_now: .zero 4096              # follow_cwd: the folder the shell shown is in
+drop_path: .zero 4096            # app_on_drop: a dropped file's path
+.p2align 3
+drop_text: .zero SB_SIZE         # and what a terminal is given for the files
 cwd_seen: .zero 4096             # and the one it was in when last looked at
 crumb_dir: .zero 4096
 crumb_names: .zero CRUMB_BLOB
@@ -235,6 +238,135 @@ set_project:
     call session_remember_project
     mov dword ptr [rip + g_dirty], 1
     EPILOGUE
+
+# app_on_drop(text, len): files dragged in from another program, as a text/uri-list (a line each,
+# "file://host/path" with %xx escapes). A terminal gets their paths typed at its cursor, quoted for
+# the shell, as other terminals do; anywhere else they open as tabs (a folder as the project).
+FN app_on_drop
+    PROLOGUE
+    mov r12, rdi
+    lea r13, [rdi + rsi]
+    lea rdi, [rip + drop_text]
+    call sb_clear
+.Lod_line:
+    cmp r12, r13
+    jae .Lod_done
+    mov r14, r12
+1:  cmp r14, r13
+    jae 2f
+    mov al, [r14]
+    cmp al, 13
+    je 2f
+    cmp al, 10
+    je 2f
+    inc r14
+    jmp 1b
+2:  mov rax, r14
+    sub rax, r12
+    cmp rax, 8
+    jb .Lod_next
+    cmp dword ptr [r12], 0x656c6966     # "file"
+    jne .Lod_next
+    cmp word ptr [r12 + 4], 0x2f3a      # ":/"
+    jne .Lod_next
+    cmp byte ptr [r12 + 6], '/'
+    jne .Lod_next
+    lea rsi, [r12 + 7]
+3:  cmp rsi, r14                        # past the host
+    jae .Lod_next
+    cmp byte ptr [rsi], '/'
+    je 4f
+    inc rsi
+    jmp 3b
+4:  lea rdi, [rip + drop_path]
+    xor ecx, ecx
+5:  cmp rsi, r14
+    jae 7f
+    cmp ecx, 4094
+    jae .Lod_next
+    movzx eax, byte ptr [rsi]
+    inc rsi
+    cmp al, '%'
+    jne 6f
+    lea rdx, [rsi + 2]
+    cmp rdx, r14
+    ja 6f
+    movzx edx, byte ptr [rsi]
+    call drop_hex
+    js 6f
+    mov r8d, edx
+    movzx edx, byte ptr [rsi + 1]
+    call drop_hex
+    js 6f
+    shl r8d, 4
+    lea eax, [r8 + rdx]
+    add rsi, 2
+    test eax, eax
+    jz .Lod_next
+    jmp 61f
+6:  movzx eax, byte ptr [rsi - 1]
+61: mov [rdi + rcx], al
+    inc ecx
+    jmp 5b
+7:  mov byte ptr [rdi + rcx], 0
+    test ecx, ecx
+    jz .Lod_next
+    cmp dword ptr [rip + g_term_open], 0
+    jne 8f
+    lea rdi, [rip + drop_path]
+    call app_open_path
+    jmp .Lod_next
+8:  # 'path' and a space, a quote in it as '\''
+    lea rdi, [rip + drop_text]
+    mov esi, 39
+    call sb_push_byte
+    lea rbx, [rip + drop_path]
+81: movzx esi, byte ptr [rbx]
+    test esi, esi
+    jz 83f
+    inc rbx
+    cmp esi, 39
+    jne 82f
+    lea rdi, [rip + drop_text]
+    lea rsi, [rip + .Ldrop_quote]
+    call sb_push_cstr
+    jmp 81b
+82: lea rdi, [rip + drop_text]
+    call sb_push_byte
+    jmp 81b
+83: lea rdi, [rip + drop_text]
+    lea rsi, [rip + .Ldrop_end]
+    call sb_push_cstr
+.Lod_next:
+    lea r12, [r14 + 1]
+    jmp .Lod_line
+.Lod_done:
+    mov rsi, [rip + drop_text + SB_len]
+    test rsi, rsi
+    jz 9f
+    mov rdi, [rip + drop_text + SB_ptr]
+    call term_tab_paste
+9:  mov dword ptr [rip + g_dirty], 1
+    EPILOGUE
+
+# drop_hex(edx character) -> edx its value as a hex digit, the sign flag set when it is none
+drop_hex:
+    sub edx, '0'
+    cmp edx, 9
+    jbe 1f
+    or edx, 32
+    sub edx, 'a' - '0' - 10
+    cmp edx, 10
+    jb 2f
+    cmp edx, 15
+    ja 2f
+1:  test edx, edx
+    ret
+2:  mov edx, -1
+    test edx, edx
+    ret
+CSTR .Ldrop_quote, "'\\''"
+CSTR .Ldrop_end, "' "
 
 # follow_cwd(): the folder the shell shown is in is the project: the tree, git, new files and the next
 # launch go by it. The project turns when the shell is seen in another folder than before, so a
@@ -2746,6 +2878,7 @@ FN app_render
     call ui_update_metrics
     call focus_sync
     call follow_cwd
+    call term_frame_begin
     call ui_begin
     mov dword ptr [rip + tip_cand], 0   # hovered-button candidates are collected below
     mov eax, [rip + g_cv + CV_w]

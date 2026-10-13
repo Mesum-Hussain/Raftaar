@@ -3425,6 +3425,12 @@ FN ed_caret_draw
     call gfx_fill
 9:  EPILOGUE
 
+# ed_caret_blink() -> eax 1 while a caret with the keyboard that is drawn elsewhere shows (a
+#   terminal's cursor): it is noted for the blink
+FN ed_caret_blink
+    mov dword ptr [rip + caret_frame], 1
+    jmp ed_caret_shown
+
 # ed_blink_frame(): the frame is drawn: whether it had a caret to blink
 FN ed_blink_frame
     mov eax, [rip + caret_frame]

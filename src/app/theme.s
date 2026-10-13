@@ -142,7 +142,8 @@ theme_derive:
     push rbx
     CONST T_BG, 0xff1e1f24
     CONST T_FG, 0xffd4d6dc
-    CONST T_ACCENT, 0xff7aa2f7
+    # the accent is Raftaar's own in every theme: the red of its logo
+    mov dword ptr [rip + g_theme + 4*T_ACCENT], 0xffe5262e
     cmp dword ptr [rip + g_theme_dark], 0
     je .Ltd_light
     DERIVE_C T_PANEL, T_BG, 0xff000000, 40

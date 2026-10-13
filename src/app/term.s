@@ -28,6 +28,7 @@
 # has none): the kitty keyboard protocol names a key by it, Ctrl+Shift+2 as 2 with Shift
 .globl g_key_base
 g_key_base: .long 0
+pack_buf: .zero PACK_BUF        # pack_line writes here first
 
 .text
 
@@ -293,7 +294,16 @@ ring_push:
     lea rdx, [r13 + r13*2]
     shl rdx, 2
     call memcpy
-    inc qword ptr [rbx + TM_total]
+    cmp dword ptr [rbx + TM_pack], 0
+    je 20f
+    mov rdi, r14
+    call pack_line
+    test rax, rax
+    jz 20f
+    xchg rax, r14
+    mov rdi, rax
+    call mem_free
+20: inc qword ptr [rbx + TM_total]
     call view_keep
     mov ecx, [rbx + TM_sbcap]
     mov eax, [rbx + TM_sblen]
@@ -325,6 +335,167 @@ ring_push:
     pop r12
     ret
 
+# A terminal that is not shown keeps its scrollback packed: a cell is 12 bytes, and a line of text is
+# mostly runs of cells with the same attributes and colours. A packed line (LF_PACKED) holds, after
+# the header of any line, its runs: the attribute bits (4 bytes), fg (4), bg (4), a count (2) and
+# then the characters, a byte each, or 0xff and three bytes for one of 0xff and above. Lines are
+# cells again as they are read (term_row, ring_pop), so only what is looked at is unpacked.
+
+# pack_line(line) -> a packed copy, or 0 when it would be no smaller
+pack_line:
+    PROLOGUE
+    mov r12, rdi
+    mov r13d, [r12 + LN_cap]
+    cmp r13d, 2
+    jb 8f
+    lea r14, [rip + pack_buf]
+    lea r15, [r13 + r13*2]
+    shl r15, 2                  # the cells' bytes: the most a packed line may take
+    cmp r15, PACK_BUF - 32
+    jbe 1f
+    mov r15d, PACK_BUF - 32
+1:  add r15, r14
+    lea rsi, [r12 + LN_HDR]
+    xor ecx, ecx
+2:  cmp ecx, r13d
+    jae 6f
+    lea rax, [r14 + RUN_HDR]
+    cmp rax, r15
+    ja 8f
+    mov edx, [rsi]
+    and edx, ~CP_MASK
+    mov [r14], edx
+    mov r8d, [rsi + 4]
+    mov [r14 + 4], r8d
+    mov r9d, [rsi + 8]
+    mov [r14 + 8], r9d
+    mov r10, r14
+    add r14, RUN_HDR
+    xor r11d, r11d
+3:  lea rax, [r14 + 4]
+    cmp rax, r15
+    ja 8f
+    mov eax, [rsi]
+    and eax, CP_MASK
+    cmp eax, 0xff
+    jae 4f
+    mov [r14], al
+    inc r14
+    jmp 5f
+4:  mov byte ptr [r14], 0xff
+    mov [r14 + 1], ax
+    shr eax, 16
+    mov [r14 + 3], al
+    add r14, 4
+5:  inc r11d
+    add rsi, CELL_SIZE
+    inc ecx
+    cmp ecx, r13d
+    jae 51f
+    cmp r11d, 0xffff
+    jae 51f
+    mov eax, [rsi]
+    and eax, ~CP_MASK
+    cmp eax, edx
+    jne 51f
+    cmp [rsi + 4], r8d
+    jne 51f
+    cmp [rsi + 8], r9d
+    je 3b
+51: mov [r10 + 12], r11w
+    jmp 2b
+6:  lea rax, [rip + pack_buf]
+    sub r14, rax
+    lea rdi, [r14 + LN_HDR]
+    call mem_alloc
+    mov r15, rax
+    mov [r15 + LN_cap], r13d
+    mov eax, [r12 + LN_flags]
+    or eax, LF_PACKED
+    mov [r15 + LN_flags], eax
+    lea rdi, [r15 + LN_HDR]
+    lea rsi, [rip + pack_buf]
+    mov rdx, r14
+    call memcpy
+    mov rax, r15
+    EPILOGUE
+8:  xor eax, eax
+    EPILOGUE
+
+# unpack_line(packed line) -> a copy as cells
+unpack_line:
+    PROLOGUE
+    mov r12, rdi
+    mov r13d, [r12 + LN_cap]
+    lea rdi, [r13 + r13*2]
+    lea rdi, [rdi*4 + LN_HDR]
+    call mem_alloc
+    mov r14, rax
+    mov [r14 + LN_cap], r13d
+    mov eax, [r12 + LN_flags]
+    and eax, ~LF_PACKED
+    mov [r14 + LN_flags], eax
+    lea rsi, [r12 + LN_HDR]
+    lea rdi, [r14 + LN_HDR]
+    xor ecx, ecx
+1:  cmp ecx, r13d
+    jae 9f
+    mov edx, [rsi]
+    mov r8d, [rsi + 4]
+    mov r9d, [rsi + 8]
+    movzx r10d, word ptr [rsi + 12]
+    add rsi, RUN_HDR
+    test r10d, r10d
+    jz 9f
+2:  movzx eax, byte ptr [rsi]
+    inc rsi
+    cmp eax, 0xff
+    jne 3f
+    movzx eax, word ptr [rsi]
+    movzx r11d, byte ptr [rsi + 2]
+    shl r11d, 16
+    or eax, r11d
+    add rsi, 3
+3:  or eax, edx
+    mov [rdi], eax
+    mov [rdi + 4], r8d
+    mov [rdi + 8], r9d
+    add rdi, CELL_SIZE
+    inc ecx
+    dec r10d
+    jnz 2b
+    jmp 1b
+9:  mov rax, r14
+    EPILOGUE
+
+# term_pack(t): the terminal is hidden: its scrollback is packed, and so is what enters it from now
+#   on, until term_shown
+FN term_pack
+    PROLOGUE
+    mov rbx, rdi
+    mov dword ptr [rbx + TM_pack], 1
+    xor r12d, r12d
+1:  cmp r12d, [rbx + TM_sblen]
+    jae 9f
+    mov eax, r12d
+    add eax, [rbx + TM_sbhead]
+    xor edx, edx
+    div dword ptr [rbx + TM_sbcap]
+    mov rax, [rbx + TM_sb]
+    lea r13, [rax + rdx*8]
+    mov rdi, [r13]
+    test dword ptr [rdi + LN_flags], LF_PACKED
+    jnz 2f
+    call pack_line
+    test rax, rax
+    jz 2f
+    mov rdi, [r13]
+    mov [r13], rax
+    call mem_free
+2:  inc r12d
+    jmp 1b
+9:  EPILOGUE
+
 # ring_add(line): into scrollback; the line itself is freed
 ring_add:
     push rdi
@@ -332,8 +503,38 @@ ring_add:
     pop rdi
     jmp mem_free
 
-# ring_pop() -> newest scrollback line (taken out), or 0
+# ring_pop() -> newest scrollback line (taken out, as cells), or 0
 ring_pop:
+    call ring_pop_raw
+    test rax, rax
+    jz 9f
+    test dword ptr [rax + LN_flags], LF_PACKED
+    jz 9f
+    push rcx
+    push rsi
+    push rdi
+    push r8
+    push r9
+    push r10
+    push r11
+    push rax
+    mov rdi, rax
+    call unpack_line
+    pop rdi
+    push rax
+    call mem_free
+    pop rax
+    pop r11
+    pop r10
+    pop r9
+    pop r8
+    pop rdi
+    pop rsi
+    pop rcx
+9:  ret
+
+# ring_pop_raw() -> the same, packed when it was
+ring_pop_raw:
     mov eax, [rbx + TM_sblen]
     test eax, eax
     jz 9f
@@ -352,7 +553,7 @@ ring_pop:
 # ring_clear(): drop the scrollback
 ring_clear:
     push r12
-1:  call ring_pop
+1:  call ring_pop_raw
     test rax, rax
     jz 2f
     mov rdi, rax
@@ -2361,6 +2562,7 @@ osc_dispatch:
     xor esi, esi
     call sb_push_byte
     dec qword ptr [rbx + TM_title + SB_len]
+    inc dword ptr [rbx + TM_titlev]
     jmp 9f
 2:  # 10, 11, 12 ; ? : colors of the text, background and cursor
     lea eax, [r14 - 10]
@@ -2676,9 +2878,39 @@ FN term_row
     xor edx, edx
     div dword ptr [rdi + TM_sbcap]
     mov rax, [rdi + TM_sb]
-    mov rax, [rax + rdx*8]
+    lea rdx, [rax + rdx*8]
+    mov rax, [rdx]
+    test dword ptr [rax + LN_flags], LF_PACKED
+    jnz 3f
     ret
 2:  xor eax, eax
+    ret
+3:  # packed while its terminal was hidden: cells again from here on. Callers keep their registers
+    push rcx
+    push rsi
+    push rdi
+    push r8
+    push r9
+    push r10
+    push r11
+    push rdx
+    push rax
+    mov rdi, rax
+    call unpack_line
+    pop rdi
+    mov rdx, [rsp]
+    mov [rdx], rax
+    push rax
+    call mem_free
+    pop rax
+    pop rdx
+    pop r11
+    pop r10
+    pop r9
+    pop r8
+    pop rdi
+    pop rsi
+    pop rcx
     ret
 
 # term_text(t, sb, row0, col0, row1, col1): text of the cells from (row0, col0) up to (row1, col1),

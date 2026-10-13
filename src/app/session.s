@@ -523,8 +523,31 @@ FN session_save
     call tab_at
     mov r12, [rax + TAB_doc]
     test r12, r12
-    jz 2f
-    cmp qword ptr [r12 + DOC_path], 0
+    jnz 10f
+    # a terminal: ">folder", the one its shell is in (where that is known: Linux and macOS)
+    cmp qword ptr [rax + TAB_kind], TAB_TERM
+    jne 2f
+    mov rdi, [rax + TAB_term]
+    lea rsi, [rip + rc_path]
+    call term_sess_cwd
+    test rax, rax
+    jle 2f
+    cmp rbx, [rip + g_tab_cur]
+    jne 12f
+    lea rdi, [rip + out]
+    mov esi, '*'
+    call sb_push_byte
+12: lea rdi, [rip + out]
+    mov esi, '>'
+    call sb_push_byte
+    lea rdi, [rip + out]
+    lea rsi, [rip + rc_path]
+    call sb_push_cstr
+    lea rdi, [rip + out]
+    lea rsi, [rip + .Lterm_end]
+    call sb_push_cstr
+    jmp 2f
+10: cmp qword ptr [r12 + DOC_path], 0
     je 2f
     cmp rbx, [rip + g_tab_cur]
     jne 11f
@@ -568,6 +591,7 @@ FN session_restore
     jz 9f
     mov r12, rax
     mov r13, rdx
+    mov dword ptr [rip + g_term_hold], 1
     mov qword ptr [rsp], -1     # active tab
     xor r14d, r14d
 1:  cmp r14, r13
@@ -597,7 +621,24 @@ FN session_restore
     inc rdi
     jmp 5b
 6:  mov byte ptr [rdi], 0
-    lea rsi, [rdi + 1]
+    cmp byte ptr [rbx], '>'
+    jne 60f
+    # a terminal: a tab whose shell starts in that folder once the tab is shown
+    lea rdi, [rbx + 1]
+    call file_is_dir
+    test eax, eax
+    jz 7f
+    lea rdi, [rbx + 1]
+    call term_lazy
+    test rax, rax
+    jz 7f
+    mov rdi, rax
+    call app_add_term
+    cmp dword ptr [rsp + 8], 0
+    je 7f
+    mov [rsp], rax
+    jmp 7f
+60: lea rsi, [rdi + 1]
     push rsi
     push rsi
     mov rdi, rbx
@@ -638,6 +679,7 @@ FN session_restore
     jmp 1b
 8:  mov rdi, r12
     call mem_free
+    mov dword ptr [rip + g_term_hold], 0
     mov rdi, [rsp]
     test rdi, rdi
     js 9f
@@ -652,6 +694,7 @@ FN session_restore
 .Lext: .asciz ".session"
 .Llast_project: .asciz "/last-project"
 .Llast_dir: .asciz "/last-folder"
+.Lterm_end: .asciz "\t0\n"
 .Lpercent: .asciz "%%25"
 .Lempty: .asciz ""
 

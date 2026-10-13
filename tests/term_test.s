@@ -230,6 +230,64 @@ FN main
     call term_dump
     mov rdi, rbx
     call term_free
+    # a hidden terminal's scrollback is packed; read back, a line is the cells it was, and a taller
+    # screen pulls packed lines back onto it
+    lea rdi, [rip + c_pack]
+    call run
+    mov rbx, rax
+    mov rdi, rbx
+    mov esi, -2
+    call term_row
+    mov r13d, [rax + LN_cap]
+    lea r13, [r13 + r13*2]
+    lea r13, [r13*4 + LN_HDR]
+    mov rdi, rax
+    mov rsi, r13
+    call mem_dup
+    mov r12, rax
+    mov rdi, rbx
+    call term_pack
+    mov eax, [rbx + TM_sblen]
+    sub eax, 2
+    mov rcx, [rbx + TM_sb]
+    mov rcx, [rcx + rax*8]
+    mov r14d, [rcx + LN_flags]
+    shr r14d, 1
+    and r14d, 1
+    lea rdi, [rip + out]
+    lea rsi, [rip + pk_packed]
+    call sb_push_cstr
+    lea rdi, [rip + out]
+    mov esi, r14d
+    call sb_push_u64
+    mov rdi, rbx
+    mov esi, -2
+    call term_row
+    mov rdi, rax
+    mov rsi, r12
+    mov rdx, r13
+    call memeq
+    mov r14d, eax
+    lea rdi, [rip + out]
+    lea rsi, [rip + pk_same]
+    call sb_push_cstr
+    lea rdi, [rip + out]
+    mov esi, r14d
+    call sb_push_u64
+    lea rdi, [rip + out]
+    mov esi, 10
+    call sb_push_byte
+    mov rdi, r12
+    call mem_free
+    mov rdi, rbx
+    mov esi, 30
+    mov edx, 5
+    call term_resize
+    mov rdi, rbx
+    lea rsi, [rip + out]
+    call term_dump
+    mov rdi, rbx
+    call term_free
     # keys
     mov edi, 20
     mov esi, 3
@@ -352,6 +410,10 @@ t16: .byte 10, 2
     .asciz "\033[?2026$p\033[?1049$p\033[?25l\033[?25$p"
 c_sgr: .byte 10, 2
     .asciz "\033[1;31;48;2;1;2;3mX\033[0;38:2::255:128:0;4;7mY\033[22;24;27;39;38;5;200mZ"
+c_pack: .byte 30, 2
+    .asciz "\033[1;31;44mred \342\206\222 caf\303\251\033[0m plain\r\nsecond plain line\r\nthird\r\nfourth"
+pk_packed: .asciz "packed "
+pk_same: .asciz " same "
 c_scroll: .byte 10, 3
     .asciz "1\r\n2\r\n3\r\n4\r\n5"
 .p2align 3

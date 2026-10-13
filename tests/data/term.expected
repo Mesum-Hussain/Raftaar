@@ -96,6 +96,17 @@ cursor 4,1
 4
 5
 cursor 1,1
+third
+fourth
+cursor 1,6
+
+packed 1 same 1
+red → café plain
+second plain line
+third
+fourth
+
+cursor 3,6
 reply ^[[A^[[1;5A^[[15~^[[3;2~^[OP^C^[x^[[Z^Mй^[^[OA^[OH
 reply a^Mbc^M^[[200~a^Mbc^M^[[201~
 reply ^[[?0u^[[?1u^M^[[13;2u^[[13;3u^[[13;5u^[[13;2u^I^[[9;2u^[[127;5u^[[27u^[[99;5u^[[120;3u^[[97;4u^[[32;5uqQ^[[1;3A
