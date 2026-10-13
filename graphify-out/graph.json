@@ -841,18 +841,6 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_ap",
-      "label": "ap()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "three-0.180.0.min.js",
-      "file_type": "code",
-      "norm_label": "ap()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_bf",
       "label": "bf()",
       "_callable": true,
@@ -973,16 +961,16 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_cp",
-      "label": "cp()",
+      "id": "site_vendor_three_0_180_0_min_copysamplevalue",
+      "label": "copySampleValue_()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "three-0.180.0.min.js",
       "file_type": "code",
-      "norm_label": "cp()",
+      "norm_label": "copysamplevalue_()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
+      "source_location": "L40"
     },
     {
       "id": "site_vendor_three_0_180_0_min_create",
@@ -1089,6 +1077,18 @@
       "community_name": "three-0.180.0.min.js",
       "file_type": "code",
       "norm_label": "eo()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_evaluate",
+      "label": "evaluate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "three-0.180.0.min.js",
+      "file_type": "code",
+      "norm_label": "evaluate()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
     },
@@ -1249,6 +1249,18 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_getsettings",
+      "label": "getSettings_()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "three-0.180.0.min.js",
+      "file_type": "code",
+      "norm_label": "getsettings_()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getvalue_array",
       "label": "_getValue_array()",
       "_callable": true,
@@ -1401,6 +1413,30 @@
       "community_name": "three-0.180.0.min.js",
       "file_type": "code",
       "norm_label": "interpolantfactorymethodsmooth()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_interpolate",
+      "label": "interpolate_()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "three-0.180.0.min.js",
+      "file_type": "code",
+      "norm_label": "interpolate_()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_intervalchanged",
+      "label": "intervalChanged_()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "three-0.180.0.min.js",
+      "file_type": "code",
+      "norm_label": "intervalchanged_()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
     },
@@ -1921,18 +1957,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_rp",
-      "label": "rp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "three-0.180.0.min.js",
-      "file_type": "code",
-      "norm_label": "rp()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_sanitizenodename",
       "label": "sanitizeNodeName()",
       "_callable": true,
@@ -1991,18 +2015,6 @@
       "norm_label": "setcomponent()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setcomponents",
-      "label": "setComponents()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "three-0.180.0.min.js",
-      "file_type": "code",
-      "norm_label": "setcomponents()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
     },
     {
       "id": "site_vendor_three_0_180_0_min_setcrossorigin",
@@ -2111,18 +2123,6 @@
       "norm_label": "setfrompointsandindices()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfromprojectionmatrix",
-      "label": "setFromProjectionMatrix()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "three-0.180.0.min.js",
-      "file_type": "code",
-      "norm_label": "setfromprojectionmatrix()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
     },
     {
       "id": "site_vendor_three_0_180_0_min_setfromspherical",
@@ -2485,18 +2485,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_setxy",
-      "label": "setXY()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "three-0.180.0.min.js",
-      "file_type": "code",
-      "norm_label": "setxy()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_setxyzw",
       "label": "setXYZW()",
       "_callable": true,
@@ -2555,6 +2543,18 @@
       "norm_label": "shift()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_slerpflat",
+      "label": "slerpFlat()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "three-0.180.0.min.js",
+      "file_type": "code",
+      "norm_label": "slerpflat()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_subscalar",
@@ -2785,30 +2785,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_computetangents",
-      "label": "computeTangents()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "computetangents()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_computetangents_p",
-      "label": "P()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "p()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_computetangents_u",
       "label": "u()",
       "_callable": true,
@@ -2817,6 +2793,66 @@
       "community_name": "s",
       "file_type": "code",
       "norm_label": "u()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_dd",
+      "label": "Dd()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "dd()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_dd_h",
+      "label": "h()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "h()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_dd_l",
+      "label": "l()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "l()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_deleteattribute",
+      "label": "deleteAttribute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "deleteattribute()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_enableall",
+      "label": "enableAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "enableall()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -2869,6 +2905,18 @@
       "source_location": "L3780"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_getnormalmatrix",
+      "label": "getNormalMatrix()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "getnormalmatrix()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getshaderstage",
       "label": "_getShaderStage()",
       "_callable": true,
@@ -2893,148 +2941,40 @@
       "source_location": "L3780"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_gp_a",
-      "label": "A()",
+      "id": "site_vendor_three_0_180_0_min_hd",
+      "label": "Hd()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "s",
       "file_type": "code",
-      "norm_label": "a()",
+      "norm_label": "hd()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3808"
+      "source_location": "L3729"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_gp_f",
-      "label": "F()",
+      "id": "site_vendor_three_0_180_0_min_hd_n",
+      "label": "n()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "s",
       "file_type": "code",
-      "norm_label": "f()",
+      "norm_label": "n()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3808"
+      "source_location": "L3729"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_gp_te",
-      "label": "te()",
+      "id": "site_vendor_three_0_180_0_min_hd_s",
+      "label": "s()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "s",
       "file_type": "code",
-      "norm_label": "te()",
+      "norm_label": "s()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3808"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_hasattribute",
-      "label": "hasAttribute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "hasattribute()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id",
-      "label": "Id()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "id()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_a",
-      "label": "A()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "a()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_b",
-      "label": "b()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "b()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_c",
-      "label": "c()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "c()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_d",
-      "label": "d()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "d()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_h",
-      "label": "h()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "h()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_l",
-      "label": "l()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "l()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_m",
-      "label": "m()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "m()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
+      "source_location": "L3729"
     },
     {
       "id": "site_vendor_three_0_180_0_min_id_o",
@@ -3047,90 +2987,6 @@
       "norm_label": "o()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_p",
-      "label": "p()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "p()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_r",
-      "label": "R()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_t",
-      "label": "T()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "t()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_u",
-      "label": "u()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "u()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_v",
-      "label": "v()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "v()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_id_w",
-      "label": "w()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "w()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_jf_p",
-      "label": "P()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "p()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3773"
     },
     {
       "id": "site_vendor_three_0_180_0_min_mp_s",
@@ -3181,26 +3037,14 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_rd",
-      "label": "Rd()",
+      "id": "site_vendor_three_0_180_0_min_rd_m",
+      "label": "m()",
       "_callable": true,
       "_origin": "ast",
       "community": 1,
       "community_name": "s",
       "file_type": "code",
-      "norm_label": "rd()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_rd_v",
-      "label": "v()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "v()",
+      "norm_label": "m()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3579"
     },
@@ -3229,6 +3073,18 @@
       "source_location": "L40"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_setfrommatrix4",
+      "label": "setFromMatrix4()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "setfrommatrix4()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_sp",
       "label": "sp()",
       "_callable": true,
@@ -3239,18 +3095,6 @@
       "norm_label": "sp()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_sp_c",
-      "label": "c()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "c()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
     },
     {
       "id": "site_vendor_three_0_180_0_min_sp_d",
@@ -3313,18 +3157,6 @@
       "source_location": "L3832"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_sp_m",
-      "label": "m()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "m()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_sp_p",
       "label": "p()",
       "_callable": true,
@@ -3333,18 +3165,6 @@
       "community_name": "s",
       "file_type": "code",
       "norm_label": "p()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_sp_u",
-      "label": "u()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": "u()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3832"
     },
@@ -3359,6 +3179,18 @@
       "norm_label": "v()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3832"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_transpose",
+      "label": "transpose()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "s",
+      "file_type": "code",
+      "norm_label": "transpose()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_addgroup",
@@ -3477,6 +3309,18 @@
       "community_name": "constructor",
       "file_type": "code",
       "norm_label": "je()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3832"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_constructor_jt",
+      "label": "jt()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "constructor",
+      "file_type": "code",
+      "norm_label": "jt()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3832"
     },
@@ -3673,6 +3517,18 @@
       "source_location": "L3832"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_determinant",
+      "label": "determinant()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "constructor",
+      "file_type": "code",
+      "norm_label": "determinant()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_disable",
       "label": "disable()",
       "_callable": true,
@@ -3733,16 +3589,28 @@
       "source_location": "L3808"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getdataurl",
-      "label": "getDataURL()",
+      "id": "site_vendor_three_0_180_0_min_gd",
+      "label": "Gd()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "constructor",
       "file_type": "code",
-      "norm_label": "getdataurl()",
+      "norm_label": "gd()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L3729"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gd_r",
+      "label": "r()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "constructor",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3729"
     },
     {
       "id": "site_vendor_three_0_180_0_min_getdepthtexture",
@@ -3805,16 +3673,28 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_il",
-      "label": "Il()",
+      "id": "site_vendor_three_0_180_0_min_getviewport",
+      "label": "getViewport()",
       "_callable": true,
       "_origin": "ast",
       "community": 10,
       "community_name": "constructor",
       "file_type": "code",
-      "norm_label": "il()",
+      "norm_label": "getviewport()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_init",
+      "label": "init()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "constructor",
+      "file_type": "code",
+      "norm_label": "init()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3832"
     },
     {
       "id": "site_vendor_three_0_180_0_min_mp_dt",
@@ -3839,18 +3719,6 @@
       "norm_label": "wt()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3808"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_multiply",
-      "label": "multiply()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "constructor",
-      "file_type": "code",
-      "norm_label": "multiply()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_multiplymatrices",
@@ -4103,18 +3971,6 @@
       "norm_label": "uf()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ui",
-      "label": "Ui()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "constructor",
-      "file_type": "code",
-      "norm_label": "ui()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_updatemorphtargets",
@@ -4691,6 +4547,150 @@
       "norm_label": "run_case()",
       "source_file": "tests/mac-package.py",
       "source_location": "L47"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gp_f",
+      "label": "F()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "f()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3808"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id",
+      "label": "Id()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "id()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_a",
+      "label": "A()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "a()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_c",
+      "label": "c()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_h",
+      "label": "h()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "h()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_l",
+      "label": "l()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "l()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_p",
+      "label": "p()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "p()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_r",
+      "label": "R()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_t",
+      "label": "T()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "t()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_u",
+      "label": "u()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "u()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_v",
+      "label": "v()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "v()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_w",
+      "label": "w()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": "w()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
     },
     {
       "id": "tools_arm64_arith_imm",
@@ -5329,18 +5329,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getinterpolation",
-      "label": "getInterpolation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 136,
-      "community_name": "a",
-      "file_type": "code",
-      "norm_label": "getinterpolation()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_getparameter",
       "label": "getParameter()",
       "_callable": true,
@@ -5435,6 +5423,30 @@
       "norm_label": "s()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_d",
+      "label": "d()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "a",
+      "file_type": "code",
+      "norm_label": "d()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ka",
+      "label": "Ka()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "a",
+      "file_type": "code",
+      "norm_label": "ka()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_ld",
@@ -5605,16 +5617,28 @@
       "source_location": "L3780"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_remove",
-      "label": "remove()",
+      "id": "site_vendor_three_0_180_0_min_rd_u",
+      "label": "u()",
       "_callable": true,
       "_origin": "ast",
       "community": 136,
       "community_name": "a",
       "file_type": "code",
-      "norm_label": "remove()",
+      "norm_label": "u()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_rd_v",
+      "label": "v()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "a",
+      "file_type": "code",
+      "norm_label": "v()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_setfromeuler",
@@ -5629,6 +5653,18 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_sp_c",
+      "label": "c()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 136,
+      "community_name": "a",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3832"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_vd",
       "label": "Vd()",
       "_callable": true,
@@ -5637,18 +5673,6 @@
       "community_name": "a",
       "file_type": "code",
       "norm_label": "vd()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_vd_a",
-      "label": "a()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 136,
-      "community_name": "a",
-      "file_type": "code",
-      "norm_label": "a()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3729"
     },
@@ -5673,18 +5697,6 @@
       "community_name": "a",
       "file_type": "code",
       "norm_label": "h()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_vd_l",
-      "label": "l()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 136,
-      "community_name": "a",
-      "file_type": "code",
-      "norm_label": "l()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3729"
     },
@@ -5754,7 +5766,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "bd()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5766,7 +5778,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "a()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5778,7 +5790,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "r()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5790,7 +5802,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "s()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5802,7 +5814,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "dispose()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5814,7 +5826,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "fp()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5826,7 +5838,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "r()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5838,7 +5850,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "t()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5850,47 +5862,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "fromequirectangulartexture()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L5"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_gd",
-      "label": "Gd()",
+      "id": "site_vendor_three_0_180_0_min_halfblur",
+      "label": "_halfBlur()",
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
-      "norm_label": "gd()",
+      "norm_label": "_halfblur()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_gd_r",
-      "label": "r()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "dispose",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_gp_r",
-      "label": "R()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "dispose",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3808"
+      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_rd_a",
@@ -5898,7 +5886,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "a()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5910,11 +5898,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "removeeventlistener()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_scenetocubeuv",
+      "label": "_sceneToCubeUV()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": ".render",
+      "file_type": "code",
+      "norm_label": "_scenetocubeuv()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_setsize",
@@ -5922,11 +5922,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "setsize()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_texturetocubeuv",
+      "label": "_textureToCubeUV()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": ".render",
+      "file_type": "code",
+      "norm_label": "_texturetocubeuv()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_ud",
@@ -5934,7 +5946,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "ud()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5946,7 +5958,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "e()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5958,7 +5970,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "n()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5970,7 +5982,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "r()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -5982,11 +5994,71 @@
       "_callable": true,
       "_origin": "ast",
       "community": 14,
-      "community_name": "dispose",
+      "community_name": ".render",
       "file_type": "code",
       "norm_label": "s()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_vd_a",
+      "label": "a()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": ".render",
+      "file_type": "code",
+      "norm_label": "a()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3729"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_xr",
+      "label": "Xr()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": ".render",
+      "file_type": "code",
+      "norm_label": "xr()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_disableall",
+      "label": "disableAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 142,
+      "community_name": "enable",
+      "file_type": "code",
+      "norm_label": "disableall()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_enable",
+      "label": "enable()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 142,
+      "community_name": "enable",
+      "file_type": "code",
+      "norm_label": "enable()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_t",
+      "label": "T()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 142,
+      "community_name": "enable",
+      "file_type": "code",
+      "norm_label": "t()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
     },
     {
       "id": "tests_editor_matrix_editormatrix_run_editor",
@@ -6373,14 +6445,14 @@
       "source_location": "L281"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_a",
-      "label": "$a()",
+      "id": "site_vendor_three_0_180_0_min_attach",
+      "label": "attach()",
       "_callable": true,
       "_origin": "ast",
       "community": 156,
       "community_name": "copy",
       "file_type": "code",
-      "norm_label": "$a()",
+      "norm_label": "attach()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -6393,6 +6465,18 @@
       "community_name": "copy",
       "file_type": "code",
       "norm_label": "clone()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_conjugate",
+      "label": "conjugate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 156,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "conjugate()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -6481,6 +6565,18 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_getworlddirection",
+      "label": "getWorldDirection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 156,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "getworlddirection()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getworldquaternion",
       "label": "getWorldQuaternion()",
       "_callable": true,
@@ -6515,6 +6611,18 @@
       "norm_label": "gf()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3729"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_invert",
+      "label": "invert()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 156,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "invert()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_localtoworld",
@@ -6649,6 +6757,30 @@
       "source_location": "L3832"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_multiply",
+      "label": "multiply()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 156,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "multiply()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_negate",
+      "label": "negate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 156,
+      "community_name": "copy",
+      "file_type": "code",
+      "norm_label": "negate()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_p",
       "label": "_p()",
       "_callable": true,
@@ -6709,18 +6841,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_scenetocubeuv",
-      "label": "_sceneToCubeUV()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 156,
-      "community_name": "copy",
-      "file_type": "code",
-      "norm_label": "_scenetocubeuv()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_setfromvector3",
       "label": "setFromVector3()",
       "_callable": true,
@@ -6729,18 +6849,6 @@
       "community_name": "copy",
       "file_type": "code",
       "norm_label": "setfromvector3()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setindex",
-      "label": "setIndex()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 156,
-      "community_name": "copy",
-      "file_type": "code",
-      "norm_label": "setindex()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -7573,112 +7681,16 @@
       "source_location": "L86"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_clamppoint",
-      "label": "clampPoint()",
+      "id": "site_vendor_three_0_180_0_min_computefrenetframes",
+      "label": "computeFrenetFrames()",
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
-      "norm_label": "clamppoint()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_computeboundingsphere",
-      "label": "computeBoundingSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "computeboundingsphere()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_constructor_zr",
-      "label": "Zr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "zr()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_containspoint",
-      "label": "containsPoint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "containspoint()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_distanceto",
-      "label": "distanceTo()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "distanceto()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_distancetoplane",
-      "label": "distanceToPlane()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "distancetoplane()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_distancetopoint",
-      "label": "distanceToPoint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "distancetopoint()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_distancetosphere",
-      "label": "distanceToSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "distancetosphere()",
+      "norm_label": "computefrenetframes()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_distancetosquared",
-      "label": "distanceToSquared()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "distancetosquared()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_getlength",
@@ -7686,7 +7698,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getlength()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7698,7 +7710,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getlengths()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7710,7 +7722,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getpoint()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7722,7 +7734,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getpointat()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7734,7 +7746,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getpoints()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7746,7 +7758,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getspacedpoints()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7758,7 +7770,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "gettangent()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7770,7 +7782,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "gettangentat()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -7782,141 +7794,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "getutotmapping()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_intersectbox",
-      "label": "intersectBox()",
+      "id": "site_vendor_three_0_180_0_min_makerotationaxis",
+      "label": "makeRotationAxis()",
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
-      "norm_label": "intersectbox()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectplane",
-      "label": "intersectPlane()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectplane()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectsbox",
-      "label": "intersectsBox()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectsbox()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectsline",
-      "label": "intersectsLine()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectsline()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectsobject",
-      "label": "intersectsObject()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectsobject()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectsplane",
-      "label": "intersectsPlane()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectsplane()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectssphere",
-      "label": "intersectsSphere()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectssphere()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intersectssprite",
-      "label": "intersectsSprite()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "intersectssprite()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_projectpoint",
-      "label": "projectPoint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "projectpoint()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_raycast",
-      "label": "raycast()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "raycast()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_recast",
-      "label": "recast()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 18,
-      "community_name": "distanceToPoint",
-      "file_type": "code",
-      "norm_label": "recast()",
+      "norm_label": "makerotationaxis()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -7926,7 +7818,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 18,
-      "community_name": "distanceToPoint",
+      "community_name": "computeFrenetFrames",
       "file_type": "code",
       "norm_label": "updatearclengths()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -9901,206 +9793,302 @@
       "source_location": "L159"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_ms",
-      "label": "Ms()",
+      "id": "site_vendor_three_0_180_0_min_ai",
+      "label": "Ai()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "ms()",
+      "norm_label": "ai()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ap",
+      "label": "ap()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "ap()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_applymatrix3",
+      "label": "applyMatrix3()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "applymatrix3()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_applynormalmatrix",
+      "label": "applyNormalMatrix()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "applynormalmatrix()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_computevertexnormals",
+      "label": "computeVertexNormals()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "computevertexnormals()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_cp",
+      "label": "cp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "cp()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_cp_c",
+      "label": "c()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "c()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_frombufferattribute",
+      "label": "fromBufferAttribute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "frombufferattribute()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getcomponent",
+      "label": "getComponent()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "getcomponent()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getw",
+      "label": "getW()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "getw()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getx",
+      "label": "getX()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "getx()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gety",
+      "label": "getY()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "gety()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getz",
+      "label": "getZ()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "getz()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_identity",
+      "label": "identity()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "identity()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_normalize",
+      "label": "normalize()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "normalize()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_normalizenormals",
+      "label": "normalizeNormals()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "normalizenormals()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_rp",
+      "label": "rp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "rp()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setcomponents",
+      "label": "setComponents()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 24,
+      "community_name": "normalize",
+      "file_type": "code",
+      "norm_label": "setcomponents()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_np",
-      "label": "np()",
+      "id": "site_vendor_three_0_180_0_min_setfromprojectionmatrix",
+      "label": "setFromProjectionMatrix()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "np()",
+      "norm_label": "setfromprojectionmatrix()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
+      "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_np_e",
-      "label": "e()",
+      "id": "site_vendor_three_0_180_0_min_setfromunitvectors",
+      "label": "setFromUnitVectors()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "e()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_np_n",
-      "label": "n()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "n()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_np_r",
-      "label": "r()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_np_s",
-      "label": "s()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "s()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_np_t",
-      "label": "t()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "t()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_random",
-      "label": "random()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "random()",
+      "norm_label": "setfromunitvectors()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_sp_t",
-      "label": "t()",
+      "id": "site_vendor_three_0_180_0_min_setlength",
+      "label": "setLength()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "t()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ta",
-      "label": "ta()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "ta()",
+      "norm_label": "setlength()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_tojson",
-      "label": "toJSON()",
+      "id": "site_vendor_three_0_180_0_min_setxy",
+      "label": "setXY()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "tojson()",
+      "norm_label": "setxy()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_tojson_a",
-      "label": "a()",
+      "id": "site_vendor_three_0_180_0_min_setxyz",
+      "label": "setXYZ()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "a()",
+      "norm_label": "setxyz()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_tojson_r",
-      "label": "r()",
+      "id": "site_vendor_three_0_180_0_min_transformdirection",
+      "label": "transformDirection()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "r()",
+      "norm_label": "transformdirection()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_tojson_s",
-      "label": "s()",
+      "id": "site_vendor_three_0_180_0_min_transformuv",
+      "label": "transformUv()",
       "_callable": true,
       "_origin": "ast",
       "community": 24,
-      "community_name": "toJSON",
+      "community_name": "normalize",
       "file_type": "code",
-      "norm_label": "s()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_traverse",
-      "label": "traverse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "traverse()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_traverseancestors",
-      "label": "traverseAncestors()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "traverseancestors()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_traversevisible",
-      "label": "traverseVisible()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 24,
-      "community_name": "toJSON",
-      "file_type": "code",
-      "norm_label": "traversevisible()",
+      "norm_label": "transformuv()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -11185,6 +11173,18 @@
       "source_location": "L96"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_a",
+      "label": "$a()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "add",
+      "file_type": "code",
+      "norm_label": "$a()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_add",
       "label": "add()",
       "_callable": true,
@@ -11193,18 +11193,6 @@
       "community_name": "add",
       "file_type": "code",
       "norm_label": "add()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_attach",
-      "label": "attach()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "attach()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -11221,174 +11209,6 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_constructor_jt",
-      "label": "jt()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "jt()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_dd",
-      "label": "Dd()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "dd()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_dd_h",
-      "label": "h()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "h()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_dd_l",
-      "label": "l()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "l()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_decompose",
-      "label": "decompose()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "decompose()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_deleteattribute",
-      "label": "deleteAttribute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "deleteattribute()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_determinant",
-      "label": "determinant()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "determinant()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_disableall",
-      "label": "disableAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "disableall()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_enable",
-      "label": "enable()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "enable()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_enableall",
-      "label": "enableAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "enableall()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep",
-      "label": "ep()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "ep()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_a",
-      "label": "A()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "a()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_b",
-      "label": "b()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "b()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_f",
-      "label": "F()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "f()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_ep_p",
       "label": "P()",
       "_callable": true,
@@ -11397,42 +11217,6 @@
       "community_name": "add",
       "file_type": "code",
       "norm_label": "p()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_r",
-      "label": "R()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "r()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_t",
-      "label": "T()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "t()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ep_u",
-      "label": "u()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "u()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3780"
     },
@@ -11449,18 +11233,6 @@
       "source_location": "L3780"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_ep_w",
-      "label": "w()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "w()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_gethandjoint",
       "label": "_getHandJoint()",
       "_callable": true,
@@ -11473,64 +11245,16 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getnormalmatrix",
-      "label": "getNormalMatrix()",
+      "id": "site_vendor_three_0_180_0_min_remove",
+      "label": "remove()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "add",
       "file_type": "code",
-      "norm_label": "getnormalmatrix()",
+      "norm_label": "remove()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getviewport",
-      "label": "getViewport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "getviewport()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_init",
-      "label": "init()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "init()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3832"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_invert",
-      "label": "invert()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "invert()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_rd_m",
-      "label": "m()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "add",
-      "file_type": "code",
-      "norm_label": "m()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_removefromparent",
@@ -11545,28 +11269,52 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_setfrommatrix4",
-      "label": "setFromMatrix4()",
+      "id": "site_vendor_three_0_180_0_min_setindex",
+      "label": "setIndex()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "add",
       "file_type": "code",
-      "norm_label": "setfrommatrix4()",
+      "norm_label": "setindex()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_transpose",
-      "label": "transpose()",
+      "id": "site_vendor_three_0_180_0_min_updatecoordinatesystem",
+      "label": "updateCoordinateSystem()",
       "_callable": true,
       "_origin": "ast",
       "community": 3,
       "community_name": "add",
       "file_type": "code",
-      "norm_label": "transpose()",
+      "norm_label": "updatecoordinatesystem()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L5"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_updatematrixworld",
+      "label": "updateMatrixWorld()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "add",
+      "file_type": "code",
+      "norm_label": "updatematrixworld()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_vd_l",
+      "label": "l()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "add",
+      "file_type": "code",
+      "norm_label": "l()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3729"
     },
     {
       "id": "tests_tooltips_tooltips_command",
@@ -11766,7 +11514,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "an()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -11778,7 +11526,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "convertlineartosrgb()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -11790,7 +11538,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "convertsrgbtolinear()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -11802,7 +11550,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "copylineartosrgb()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -11814,45 +11562,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "copysrgbtolinear()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_extractbasis",
-      "label": "extractBasis()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "extractbasis()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_fromarray",
-      "label": "fromArray()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "fromarray()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_fromjson",
-      "label": "fromJSON()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "fromjson()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -11862,9 +11574,33 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "gc()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getdataurl",
+      "label": "getDataURL()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "gc",
+      "file_type": "code",
+      "norm_label": "getdataurl()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_il",
+      "label": "Il()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "gc",
+      "file_type": "code",
+      "norm_label": "il()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -11874,45 +11610,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "li()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfrommatrix3column",
-      "label": "setFromMatrix3Column()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "setfrommatrix3column()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfrommatrixcolumn",
-      "label": "setFromMatrixColumn()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "setfrommatrixcolumn()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfrommatrixscale",
-      "label": "setFromMatrixScale()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 31,
-      "community_name": "fromArray",
-      "file_type": "code",
-      "norm_label": "setfrommatrixscale()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -11922,9 +11622,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 31,
-      "community_name": "fromArray",
+      "community_name": "gc",
       "file_type": "code",
       "norm_label": "srgbtolinear()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ui",
+      "label": "Ui()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 31,
+      "community_name": "gc",
+      "file_type": "code",
+      "norm_label": "ui()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -12421,18 +12133,6 @@
       "source_location": "L3579"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_halfblur",
-      "label": "_halfBlur()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "_fromTexture",
-      "file_type": "code",
-      "norm_label": "_halfblur()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_od",
       "label": "Od()",
       "_callable": true,
@@ -12441,18 +12141,6 @@
       "community_name": "_fromTexture",
       "file_type": "code",
       "norm_label": "od()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_texturetocubeuv",
-      "label": "_textureToCubeUV()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "_fromTexture",
-      "file_type": "code",
-      "norm_label": "_texturetocubeuv()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3579"
     },
@@ -12479,18 +12167,6 @@
       "norm_label": "xo()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3674"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_xr",
-      "label": "Xr()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 34,
-      "community_name": "_fromTexture",
-      "file_type": "code",
-      "norm_label": "xr()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
     },
     {
       "id": "site_vendor_three_0_180_0_min_zl",
@@ -12949,14 +12625,26 @@
       "source_location": "L95"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_addvectors",
-      "label": "addVectors()",
+      "id": "site_vendor_three_0_180_0_min_computetangents",
+      "label": "computeTangents()",
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
-      "norm_label": "addvectors()",
+      "norm_label": "computetangents()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_expandbyobject",
+      "label": "expandByObject()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "expandByObject",
+      "file_type": "code",
+      "norm_label": "expandbyobject()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -12966,7 +12654,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "expandbypoint()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -12978,9 +12666,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "expandbyscalar()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_getattribute",
+      "label": "getAttribute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "expandByObject",
+      "file_type": "code",
+      "norm_label": "getattribute()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -12990,7 +12690,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "getboundingbox()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13002,7 +12702,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "getboundingsphere()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13014,21 +12714,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "getcenter()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getmidpoint",
-      "label": "getMidpoint()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "isEmpty",
-      "file_type": "code",
-      "norm_label": "getmidpoint()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -13038,9 +12726,21 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "getsize()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_hasattribute",
+      "label": "hasAttribute()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "expandByObject",
+      "file_type": "code",
+      "norm_label": "hasattribute()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -13050,7 +12750,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "intersect()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13062,7 +12762,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "intersectstriangle()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13074,7 +12774,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "isempty()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13086,7 +12786,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "makeempty()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13098,7 +12798,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "na()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13110,7 +12810,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "setfromarray()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13122,7 +12822,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "setfrombufferattribute()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -13134,9 +12834,33 @@
       "_callable": true,
       "_origin": "ast",
       "community": 37,
-      "community_name": "isEmpty",
+      "community_name": "expandByObject",
       "file_type": "code",
       "norm_label": "setfromobject()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfrompoints",
+      "label": "setFromPoints()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "expandByObject",
+      "file_type": "code",
+      "norm_label": "setfrompoints()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_union",
+      "label": "union()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "expandByObject",
+      "file_type": "code",
+      "norm_label": "union()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -14917,6 +14641,18 @@
       "source_location": "L68"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_getinterpolation",
+      "label": "getInterpolation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "getinterpolation()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getrgb",
       "label": "getRGB()",
       "_callable": true,
@@ -14939,42 +14675,6 @@
       "norm_label": "_getshadercacheformaterial()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_hd",
-      "label": "Hd()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "hd()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_hd_n",
-      "label": "n()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "n()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_hd_s",
-      "label": "s()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "s()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3729"
     },
     {
       "id": "site_vendor_three_0_180_0_min_hp",
@@ -15011,18 +14711,6 @@
       "norm_label": "n()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ka",
-      "label": "Ka()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "ka()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_kd",
@@ -15145,6 +14833,90 @@
       "source_location": "L3832"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_ms",
+      "label": "Ms()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "ms()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np",
+      "label": "np()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "np()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np_e",
+      "label": "e()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "e()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np_n",
+      "label": "n()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "n()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np_r",
+      "label": "r()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np_s",
+      "label": "s()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "s()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_np_t",
+      "label": "t()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "t()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_pd",
       "label": "Pd()",
       "_callable": true,
@@ -15241,16 +15013,124 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_rd_u",
-      "label": "u()",
+      "id": "site_vendor_three_0_180_0_min_random",
+      "label": "random()",
       "_callable": true,
       "_origin": "ast",
       "community": 45,
       "community_name": "update",
       "file_type": "code",
-      "norm_label": "u()",
+      "norm_label": "random()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3579"
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_sp_t",
+      "label": "t()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "t()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ta",
+      "label": "ta()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "ta()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_tojson",
+      "label": "toJSON()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "tojson()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_tojson_a",
+      "label": "a()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "a()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_tojson_r",
+      "label": "r()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_tojson_s",
+      "label": "s()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "s()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_traverse",
+      "label": "traverse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "traverse()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_traverseancestors",
+      "label": "traverseAncestors()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "traverseancestors()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_traversevisible",
+      "label": "traverseVisible()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 45,
+      "community_name": "update",
+      "file_type": "code",
+      "norm_label": "traversevisible()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
     },
     {
       "id": "site_vendor_three_0_180_0_min_update",
@@ -15263,30 +15143,6 @@
       "norm_label": "update()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L5"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_updatecoordinatesystem",
-      "label": "updateCoordinateSystem()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "updatecoordinatesystem()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L5"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_updatematrixworld",
-      "label": "updateMatrixWorld()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 45,
-      "community_name": "update",
-      "file_type": "code",
-      "norm_label": "updatematrixworld()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
     },
     {
       "id": "tests_startup_stats_load",
@@ -17065,96 +16921,12 @@
       "source_location": "L79"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_clamp",
-      "label": "clamp()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "clamp()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_clampscalar",
-      "label": "clampScalar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "clampscalar()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_conjugate",
-      "label": "conjugate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "conjugate()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_constructor_a",
-      "label": "a()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "a()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_ft",
-      "label": "Ft()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "ft()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_gethex",
-      "label": "getHex()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "gethex()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_gethexstring",
-      "label": "getHexString()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "gethexstring()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_gethsl",
       "label": "getHSL()",
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "gethsl()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17166,7 +16938,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "kr()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17178,7 +16950,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "lerphsl()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17190,7 +16962,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "ma()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17202,7 +16974,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "mc()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17214,57 +16986,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "offsethsl()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_onchangecallback",
-      "label": "_onChangeCallback()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "_onchangecallback()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_order",
-      "label": "order()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "order()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_reorder",
-      "label": "reorder()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "reorder()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_rotateonworldaxis",
-      "label": "rotateOnWorldAxis()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "rotateonworldaxis()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -17274,7 +16998,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "set()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17286,45 +17010,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "setcolorname()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfromaxisangle",
-      "label": "setFromAxisAngle()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "setfromaxisangle()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfromquaternion",
-      "label": "setFromQuaternion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "setfromquaternion()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfromrotationmatrix",
-      "label": "setFromRotationMatrix()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "setfromrotationmatrix()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -17334,7 +17022,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "sethex()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17346,7 +17034,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "sethsl()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17358,7 +17046,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "setrgb()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17370,7 +17058,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "setstyle()",
       "source_file": "site/vendor/three-0.180.0.min.js",
@@ -17382,45 +17070,9 @@
       "_callable": true,
       "_origin": "ast",
       "community": 55,
-      "community_name": "_onChangeCallback",
+      "community_name": "setStyle",
       "file_type": "code",
       "norm_label": "n()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_w",
-      "label": "w()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "w()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_y",
-      "label": "y()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "y()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_z",
-      "label": "z()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "_onChangeCallback",
-      "file_type": "code",
-      "norm_label": "z()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -18502,7 +18154,7 @@
       "file_type": "code",
       "norm_label": "main()",
       "source_file": "tools/build-windows.py",
-      "source_location": "L119"
+      "source_location": "L122"
     },
     {
       "id": "tools_build_windows_main_assemble",
@@ -18514,7 +18166,7 @@
       "file_type": "code",
       "norm_label": "assemble()",
       "source_file": "tools/build-windows.py",
-      "source_location": "L147"
+      "source_location": "L150"
     },
     {
       "id": "tools_build_windows_main_executable",
@@ -18526,7 +18178,7 @@
       "file_type": "code",
       "norm_label": "executable()",
       "source_file": "tools/build-windows.py",
-      "source_location": "L184"
+      "source_location": "L187"
     },
     {
       "id": "tools_build_windows_run",
@@ -19093,98 +18745,254 @@
       "source_location": "L128"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_copysamplevalue",
-      "label": "copySampleValue_()",
+      "id": "site_vendor_three_0_180_0_min_constructor_a",
+      "label": "a()",
       "_callable": true,
       "_origin": "ast",
       "community": 70,
-      "community_name": "evaluate",
+      "community_name": "_onChangeCallback",
       "file_type": "code",
-      "norm_label": "copysamplevalue_()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_evaluate",
-      "label": "evaluate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "evaluate",
-      "file_type": "code",
-      "norm_label": "evaluate()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getsettings",
-      "label": "getSettings_()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "evaluate",
-      "file_type": "code",
-      "norm_label": "getsettings_()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_interpolate",
-      "label": "interpolate_()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "evaluate",
-      "file_type": "code",
-      "norm_label": "interpolate_()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_intervalchanged",
-      "label": "intervalChanged_()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "evaluate",
-      "file_type": "code",
-      "norm_label": "intervalchanged_()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_slerpflat",
-      "label": "slerpFlat()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 70,
-      "community_name": "evaluate",
-      "file_type": "code",
-      "norm_label": "slerpflat()",
+      "norm_label": "a()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_ai",
-      "label": "Ai()",
+      "id": "site_vendor_three_0_180_0_min_decompose",
+      "label": "decompose()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "decompose()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_extractbasis",
+      "label": "extractBasis()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "extractbasis()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_extractrotation",
+      "label": "extractRotation()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "extractrotation()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_fromarray",
+      "label": "fromArray()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "fromarray()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_fromjson",
+      "label": "fromJSON()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "fromjson()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_length",
+      "label": "length()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "length()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_onchangecallback",
+      "label": "_onChangeCallback()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "_onchangecallback()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_order",
+      "label": "order()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "order()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_reorder",
+      "label": "reorder()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "reorder()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_rotateonworldaxis",
+      "label": "rotateOnWorldAxis()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "rotateonworldaxis()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfromaxisangle",
+      "label": "setFromAxisAngle()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfromaxisangle()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfrommatrix3column",
+      "label": "setFromMatrix3Column()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfrommatrix3column()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfrommatrixcolumn",
+      "label": "setFromMatrixColumn()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfrommatrixcolumn()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfrommatrixscale",
+      "label": "setFromMatrixScale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfrommatrixscale()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfromquaternion",
+      "label": "setFromQuaternion()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfromquaternion()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_setfromrotationmatrix",
+      "label": "setFromRotationMatrix()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "setfromrotationmatrix()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_w",
+      "label": "w()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "w()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_y",
+      "label": "y()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "y()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_z",
+      "label": "z()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 70,
+      "community_name": "_onChangeCallback",
+      "file_type": "code",
+      "norm_label": "z()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_addvectors",
+      "label": "addVectors()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "ai()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_applymatrix3",
-      "label": "applyMatrix3()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "applymatrix3()",
+      "norm_label": "addvectors()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19197,18 +19005,6 @@
       "community_name": "applyMatrix4",
       "file_type": "code",
       "norm_label": "applymatrix4()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_applynormalmatrix",
-      "label": "applyNormalMatrix()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "applynormalmatrix()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19237,100 +19033,28 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_computefrenetframes",
-      "label": "computeFrenetFrames()",
+      "id": "site_vendor_three_0_180_0_min_computeboundingsphere",
+      "label": "computeBoundingSphere()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "computefrenetframes()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L40"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_computevertexnormals",
-      "label": "computeVertexNormals()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "computevertexnormals()",
+      "norm_label": "computeboundingsphere()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_cp_c",
-      "label": "c()",
+      "id": "site_vendor_three_0_180_0_min_constructor_zr",
+      "label": "Zr()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "c()",
+      "norm_label": "zr()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_expandbyobject",
-      "label": "expandByObject()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "expandbyobject()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_extractrotation",
-      "label": "extractRotation()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "extractrotation()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_frombufferattribute",
-      "label": "fromBufferAttribute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "frombufferattribute()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getattribute",
-      "label": "getAttribute()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "getattribute()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getcomponent",
-      "label": "getComponent()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "getcomponent()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L3832"
     },
     {
       "id": "site_vendor_three_0_180_0_min_getmaxscaleonaxis",
@@ -19345,100 +19069,40 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getvertexposition",
-      "label": "getVertexPosition()",
+      "id": "site_vendor_three_0_180_0_min_getmidpoint",
+      "label": "getMidpoint()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "getvertexposition()",
+      "norm_label": "getmidpoint()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getw",
-      "label": "getW()",
+      "id": "site_vendor_three_0_180_0_min_intersectsobject",
+      "label": "intersectsObject()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "getw()",
+      "norm_label": "intersectsobject()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_getworlddirection",
-      "label": "getWorldDirection()",
+      "id": "site_vendor_three_0_180_0_min_intersectssprite",
+      "label": "intersectsSprite()",
       "_callable": true,
       "_origin": "ast",
       "community": 71,
       "community_name": "applyMatrix4",
       "file_type": "code",
-      "norm_label": "getworlddirection()",
+      "norm_label": "intersectssprite()",
       "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getx",
-      "label": "getX()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "getx()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_gety",
-      "label": "getY()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "gety()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_getz",
-      "label": "getZ()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "getz()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_identity",
-      "label": "identity()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "identity()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_length",
-      "label": "length()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "length()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
+      "source_location": "L40"
     },
     {
       "id": "site_vendor_three_0_180_0_min_makerotation",
@@ -19449,18 +19113,6 @@
       "community_name": "applyMatrix4",
       "file_type": "code",
       "norm_label": "makerotation()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_makerotationaxis",
-      "label": "makeRotationAxis()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "makerotationaxis()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19497,42 +19149,6 @@
       "community_name": "applyMatrix4",
       "file_type": "code",
       "norm_label": "multiplyquaternions()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_negate",
-      "label": "negate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "negate()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_normalize",
-      "label": "normalize()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "normalize()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_normalizenormals",
-      "label": "normalizeNormals()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "normalizenormals()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19629,54 +19245,6 @@
       "community_name": "applyMatrix4",
       "file_type": "code",
       "norm_label": "scale()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setfrompoints",
-      "label": "setFromPoints()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "setfrompoints()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setxyz",
-      "label": "setXYZ()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "setxyz()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_transformdirection",
-      "label": "transformDirection()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "transformdirection()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_transformuv",
-      "label": "transformUv()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 71,
-      "community_name": "applyMatrix4",
-      "file_type": "code",
-      "norm_label": "transformuv()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19837,18 +19405,6 @@
       "source_location": "L131"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_at",
-      "label": "at()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 75,
-      "community_name": "mp",
-      "file_type": "code",
-      "norm_label": "at()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_clearlayerupdates",
       "label": "clearLayerUpdates()",
       "_callable": true,
@@ -19857,6 +19413,18 @@
       "community_name": "mp",
       "file_type": "code",
       "norm_label": "clearlayerupdates()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_computetangents_p",
+      "label": "P()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "p()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -19909,6 +19477,90 @@
       "source_location": "L3832"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_ep",
+      "label": "ep()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "ep()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_a",
+      "label": "A()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "a()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_b",
+      "label": "b()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "b()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_f",
+      "label": "F()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "f()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_r",
+      "label": "R()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_u",
+      "label": "u()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "u()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_ep_w",
+      "label": "w()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "w()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_gp",
       "label": "gp()",
       "_callable": true,
@@ -19917,6 +19569,18 @@
       "community_name": "mp",
       "file_type": "code",
       "norm_label": "gp()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3808"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gp_a",
+      "label": "A()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "a()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3808"
     },
@@ -20101,6 +19765,18 @@
       "source_location": "L3808"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_gp_r",
+      "label": "R()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "r()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3808"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_gp_rt",
       "label": "Rt()",
       "_callable": true,
@@ -20121,6 +19797,18 @@
       "community_name": "mp",
       "file_type": "code",
       "norm_label": "t()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3808"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gp_te",
+      "label": "te()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "te()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3808"
     },
@@ -20245,6 +19933,18 @@
       "source_location": "L3808"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_id_b",
+      "label": "b()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "b()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_id_f",
       "label": "f()",
       "_callable": true,
@@ -20255,6 +19955,30 @@
       "norm_label": "f()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_id_m",
+      "label": "m()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "m()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_jf_p",
+      "label": "P()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "p()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3773"
     },
     {
       "id": "site_vendor_three_0_180_0_min_mp",
@@ -20509,6 +20233,42 @@
       "source_location": "L3808"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_rd",
+      "label": "Rd()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "rd()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3579"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_sp_m",
+      "label": "m()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "m()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3832"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_sp_u",
+      "label": "u()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 75,
+      "community_name": "mp",
+      "file_type": "code",
+      "norm_label": "u()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3832"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_addscaledvector",
       "label": "addScaledVector()",
       "_callable": true,
@@ -20533,6 +20293,30 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_at",
+      "label": "at()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "at()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_clamp",
+      "label": "clamp()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "clamp()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_clamplength",
       "label": "clampLength()",
       "_callable": true,
@@ -20541,6 +20325,30 @@
       "community_name": "dot",
       "file_type": "code",
       "norm_label": "clamplength()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_clamppoint",
+      "label": "clampPoint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "clamppoint()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_clampscalar",
+      "label": "clampScalar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "clampscalar()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -20565,6 +20373,18 @@
       "community_name": "dot",
       "file_type": "code",
       "norm_label": "_computeintersections()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_containspoint",
+      "label": "containsPoint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "containspoint()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -20629,6 +20449,66 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_distanceto",
+      "label": "distanceTo()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "distanceto()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_distancetoplane",
+      "label": "distanceToPlane()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "distancetoplane()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_distancetopoint",
+      "label": "distanceToPoint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "distancetopoint()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_distancetosphere",
+      "label": "distanceToSphere()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "distancetosphere()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_distancetosquared",
+      "label": "distanceToSquared()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "distancetosquared()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_dividescalar",
       "label": "divideScalar()",
       "_callable": true,
@@ -20653,6 +20533,18 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_ft",
+      "label": "Ft()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "ft()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getarea",
       "label": "getArea()",
       "_callable": true,
@@ -20661,6 +20553,30 @@
       "community_name": "dot",
       "file_type": "code",
       "norm_label": "getarea()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gethex",
+      "label": "getHex()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "gethex()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_gethexstring",
+      "label": "getHexString()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "gethexstring()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -20701,6 +20617,18 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_getvertexposition",
+      "label": "getVertexPosition()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "getvertexposition()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_getviewbounds",
       "label": "getViewBounds()",
       "_callable": true,
@@ -20725,6 +20653,18 @@
       "source_location": "L5"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_intersectbox",
+      "label": "intersectBox()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectbox()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_intersectline",
       "label": "intersectLine()",
       "_callable": true,
@@ -20737,6 +20677,42 @@
       "source_location": "L40"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_intersectplane",
+      "label": "intersectPlane()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectplane()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_intersectsbox",
+      "label": "intersectsBox()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectsbox()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_intersectsline",
+      "label": "intersectsLine()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectsline()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_intersectsphere",
       "label": "intersectSphere()",
       "_callable": true,
@@ -20745,6 +20721,30 @@
       "community_name": "dot",
       "file_type": "code",
       "norm_label": "intersectsphere()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_intersectsplane",
+      "label": "intersectsPlane()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectsplane()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_intersectssphere",
+      "label": "intersectsSphere()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "intersectssphere()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -20821,6 +20821,42 @@
       "source_location": "L1"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_projectpoint",
+      "label": "projectPoint()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "projectpoint()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L40"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_raycast",
+      "label": "raycast()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "raycast()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_recast",
+      "label": "recast()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 76,
+      "community_name": "dot",
+      "file_type": "code",
+      "norm_label": "recast()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L1"
+    },
+    {
       "id": "site_vendor_three_0_180_0_min_reflect",
       "label": "reflect()",
       "_callable": true,
@@ -20869,30 +20905,6 @@
       "source_location": "L40"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_setfromunitvectors",
-      "label": "setFromUnitVectors()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 76,
-      "community_name": "dot",
-      "file_type": "code",
-      "norm_label": "setfromunitvectors()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_setlength",
-      "label": "setLength()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 76,
-      "community_name": "dot",
-      "file_type": "code",
-      "norm_label": "setlength()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_setscalar",
       "label": "setScalar()",
       "_callable": true,
@@ -20925,18 +20937,6 @@
       "community_name": "dot",
       "file_type": "code",
       "norm_label": "subvectors()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_union",
-      "label": "union()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 76,
-      "community_name": "dot",
-      "file_type": "code",
-      "norm_label": "union()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L1"
     },
@@ -21862,6 +21862,18 @@
       "source_location": "L128"
     },
     {
+      "id": "tests_markdown_preview_pasted",
+      "label": "pasted()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "markdown-preview.py",
+      "file_type": "code",
+      "norm_label": "pasted()",
+      "source_file": "tests/markdown-preview.py",
+      "source_location": "L85"
+    },
+    {
       "id": "tests_markdown_preview_run",
       "label": "run()",
       "_callable": true,
@@ -21993,17 +22005,6 @@
       "source_location": "L1"
     },
     {
-      "id": "site_vendor_three_0_180_0_min_jf_getattributes",
-      "label": ".getAttributes()",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "s",
-      "file_type": "code",
-      "norm_label": ".getattributes()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3780"
-    },
-    {
       "id": "site_vendor_three_0_180_0_min_constructor_renderbufferdirect",
       "label": ".renderBufferDirect()",
       "_origin": "ast",
@@ -22013,17 +22014,6 @@
       "norm_label": ".renderbufferdirect()",
       "source_file": "site/vendor/three-0.180.0.min.js",
       "source_location": "L3832"
-    },
-    {
-      "id": "site_vendor_three_0_180_0_min_fp_render",
-      "label": ".render()",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "constructor",
-      "file_type": "code",
-      "norm_label": ".render()",
-      "source_file": "site/vendor/three-0.180.0.min.js",
-      "source_location": "L3808"
     },
     {
       "id": "site_vendor_three_0_180_0_min_jf_getuniforms",
@@ -22740,6 +22730,17 @@
       "source_location": "L44"
     },
     {
+      "id": "site_vendor_three_0_180_0_min_jf_getattributes",
+      "label": ".getAttributes()",
+      "_origin": "ast",
+      "community": 118,
+      "community_name": "Id",
+      "file_type": "code",
+      "norm_label": ".getattributes()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3780"
+    },
+    {
       "id": "tools_release",
       "label": "release.sh",
       "_origin": "ast",
@@ -23225,6 +23226,17 @@
       "norm_label": "ppm2png.py",
       "source_file": "tools/ppm2png.py",
       "source_location": "L1"
+    },
+    {
+      "id": "site_vendor_three_0_180_0_min_fp_render",
+      "label": ".render()",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": ".render",
+      "file_type": "code",
+      "norm_label": ".render()",
+      "source_file": "site/vendor/three-0.180.0.min.js",
+      "source_location": "L3808"
     },
     {
       "id": "tools_setup_windows_llvm",
@@ -25307,7 +25319,7 @@
       "node_kind": "heading",
       "norm_label": "configuration",
       "source_file": "docs/guide.md",
-      "source_location": "L448"
+      "source_location": "L456"
     },
     {
       "id": "docs_guide_extensions_planned",
@@ -25319,7 +25331,7 @@
       "node_kind": "heading",
       "norm_label": "extensions (planned)",
       "source_file": "docs/guide.md",
-      "source_location": "L557"
+      "source_location": "L565"
     },
     {
       "id": "docs_guide_features",
@@ -25391,7 +25403,7 @@
       "node_kind": "heading",
       "norm_label": "languages",
       "source_file": "docs/guide.md",
-      "source_location": "L504"
+      "source_location": "L512"
     },
     {
       "id": "docs_guide_license",
@@ -25403,7 +25415,7 @@
       "node_kind": "heading",
       "norm_label": "license",
       "source_file": "docs/guide.md",
-      "source_location": "L585"
+      "source_location": "L593"
     },
     {
       "id": "docs_guide_macos",
@@ -25475,7 +25487,7 @@
       "node_kind": "heading",
       "norm_label": "scripting",
       "source_file": "docs/guide.md",
-      "source_location": "L541"
+      "source_location": "L549"
     },
     {
       "id": "docs_guide_source",
@@ -25487,7 +25499,7 @@
       "node_kind": "heading",
       "norm_label": "source",
       "source_file": "docs/guide.md",
-      "source_location": "L566"
+      "source_location": "L574"
     },
     {
       "id": "docs_guide_themes",
@@ -25499,7 +25511,7 @@
       "node_kind": "heading",
       "norm_label": "themes",
       "source_file": "docs/guide.md",
-      "source_location": "L472"
+      "source_location": "L480"
     },
     {
       "id": "docs_guide_vim_mode",
@@ -25511,7 +25523,7 @@
       "node_kind": "heading",
       "norm_label": "vim mode",
       "source_file": "docs/guide.md",
-      "source_location": "L433"
+      "source_location": "L441"
     },
     {
       "id": "docs_guide_website",
@@ -27845,14 +27857,25 @@
     },
     {
       "id": "tests_markdown_preview_rationale_2",
-      "label": "A Markdown file can be shown as a page in place of its text: the command and\u2026",
+      "label": "A Markdown file opens as a page in place of its text: the command and the\u2026",
       "_origin": "ast",
       "community": 90,
       "community_name": "markdown-preview.py",
       "file_type": "rationale",
-      "norm_label": "a markdown file can be shown as a page in place of its text: the command and...",
+      "norm_label": "a markdown file opens as a page in place of its text: the command and the...",
       "source_file": "tests/markdown-preview.py",
       "source_location": "L2"
+    },
+    {
+      "id": "tests_markdown_preview_rationale_86",
+      "label": "what the clipboard holds after the lines: pasted into a new file and printed",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "markdown-preview.py",
+      "file_type": "rationale",
+      "norm_label": "what the clipboard holds after the lines: pasted into a new file and printed",
+      "source_file": "tests/markdown-preview.py",
+      "source_location": "L86"
     },
     {
       "id": "tests_explorer_create",
@@ -48913,6 +48936,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_markdown_preview_pasted",
+      "target": "tests_markdown_preview_run",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/markdown-preview.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
       "source": "tests_markdown_preview_states",
       "target": "tests_markdown_preview_run",
       "relation": "calls",
@@ -59373,7 +59408,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/build-windows.py",
-      "source_location": "L137",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -59385,7 +59420,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/build-windows.py",
-      "source_location": "L143",
+      "source_location": "L146",
       "weight": 1.0
     },
     {
@@ -59397,7 +59432,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/build-windows.py",
-      "source_location": "L171",
+      "source_location": "L174",
       "weight": 1.0
     },
     {
@@ -59409,7 +59444,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/build-windows.py",
-      "source_location": "L187",
+      "source_location": "L190",
       "weight": 1.0
     },
     {
@@ -60885,7 +60920,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "tools/build-windows.py",
-      "source_location": "L184",
+      "source_location": "L187",
       "weight": 1.0
     },
     {
@@ -61854,7 +61889,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L472",
+      "source_location": "L480",
       "weight": 1.0
     },
     {
@@ -61865,7 +61900,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L504",
+      "source_location": "L512",
       "weight": 1.0
     },
     {
@@ -61909,7 +61944,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L448",
+      "source_location": "L456",
       "weight": 1.0
     },
     {
@@ -61931,7 +61966,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L541",
+      "source_location": "L549",
       "weight": 1.0
     },
     {
@@ -61942,7 +61977,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L557",
+      "source_location": "L565",
       "weight": 1.0
     },
     {
@@ -61953,7 +61988,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L566",
+      "source_location": "L574",
       "weight": 1.0
     },
     {
@@ -61975,7 +62010,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L585",
+      "source_location": "L593",
       "weight": 1.0
     },
     {
@@ -62041,7 +62076,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L433",
+      "source_location": "L441",
       "weight": 1.0
     },
     {
@@ -72044,6 +72079,17 @@
       "weight": 1.0
     },
     {
+      "source": "tests_markdown_preview",
+      "target": "tests_markdown_preview_pasted",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/markdown-preview.py",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
       "source": "tests_new_window",
       "target": "tests_new_window_newwindow",
       "relation": "contains",
@@ -73448,7 +73494,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "tools/build-windows.py",
-      "source_location": "L119",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -83649,6 +83695,17 @@
       "weight": 1.0
     },
     {
+      "source": "tests_markdown_preview_rationale_86",
+      "target": "tests_markdown_preview_pasted",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/markdown-preview.py",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
       "source": "tests_new_window_rationale_2",
       "target": "tests_new_window",
       "relation": "rationale_for",
@@ -84657,7 +84714,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L587",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -84668,7 +84725,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "docs/guide.md",
-      "source_location": "L587",
+      "source_location": "L595",
       "weight": 1.0
     },
     {
@@ -87244,7 +87301,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "tools/build-windows.py",
-      "source_location": "L124",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -87256,7 +87313,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "tools/build-windows.py",
-      "source_location": "L176",
+      "source_location": "L179",
       "weight": 1.0
     },
     {
@@ -88569,5 +88626,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9d9a94beb236852b6ea3555b780dc238c4f07642"
+  "built_at_commit": "0b79ce12e32c099e643b9e0d77db6b66b814ac5f"
 }

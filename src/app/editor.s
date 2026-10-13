@@ -1040,6 +1040,9 @@ copy_to_clip:
     EPILOGUE
 
 FN cmd_copy
+    call md_active              # a Markdown page: what is selected on it
+    test eax, eax
+    jnz md_copy
     mov rdi, [rip + g_doc]
     test rdi, rdi
     jz 1f
@@ -1119,6 +1122,9 @@ FN ed_paste
 9:  EPILOGUE
 
 FN cmd_select_all
+    call md_active
+    test eax, eax
+    jnz md_select_all
     mov rdi, [rip + g_doc]
     test rdi, rdi
     jz 1f

@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   "tools/build-windows.py": {
-    "mtime": 1791898479.5950716,
-    "seen": 1791898780.4467456,
-    "ast_hash": "73b2840448256d3ded8f7e51744258a2",
+    "mtime": 1791904780.2616794,
+    "seen": 1791905849.221399,
+    "ast_hash": "a93cbfaff08012201c29c9b2b67e31bc",
     "semantic_hash": ""
   },
   "tools/casefold.py": {
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "tools/gen-assets.sh": {
-    "mtime": 1791878368.5491436,
-    "seen": 1791879028.87534,
-    "ast_hash": "542c8acb5b484a4b3de34593f28df03e",
+    "mtime": 1791904780.2612774,
+    "seen": 1791905849.22152,
+    "ast_hash": "9bbe2afecfc6b74b159d202a2f1751ad",
     "semantic_hash": ""
   },
   "tools/gen-keysyms.sh": {
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791903903.292537,
-    "seen": 1791904179.5218894,
-    "ast_hash": "87c02c9ed3047f67b575d3c8326f6066",
+    "mtime": 1791905581.3196218,
+    "seen": 1791905849.2219632,
+    "ast_hash": "8f4c624cc0013573e73b4aad5c85ef04",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -726,9 +726,9 @@
     "semantic_hash": ""
   },
   "assets/fonts/README.md": {
-    "mtime": 1791095710.7857344,
-    "seen": 1791786000.906954,
-    "ast_hash": "aeeaeeb77469c73abf19a17e3eb4e8f2",
+    "mtime": 1791904780.2618892,
+    "seen": 1791905849.2220232,
+    "ast_hash": "1ba2961f05a8842b6e512b2ff9c57c75",
     "semantic_hash": ""
   },
   "assets/icons/files/LICENSE-Seti.md": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791903897.245021,
-    "seen": 1791904179.5221913,
-    "ast_hash": "f9eae174a5b7b0697adb95ffb7bcfba8",
+    "mtime": 1791905581.3186991,
+    "seen": 1791905849.2222433,
+    "ast_hash": "6add6237b09ade4000c541085ef5c431",
     "semantic_hash": ""
   },
   "site/404.html": {
@@ -2568,9 +2568,9 @@
     "semantic_hash": ""
   },
   "src/raftaar.inc": {
-    "mtime": 1791903731.6835508,
-    "seen": 1791904179.519655,
-    "ast_hash": "9b0527d5cac97da24d6f782126dcedc6",
+    "mtime": 1791904576.516348,
+    "seen": 1791905849.2197752,
+    "ast_hash": "a41d00dc6d9fb8bf61a68c66833e9f46",
     "semantic_hash": ""
   },
   "tools/app-icons.py": {
@@ -2622,9 +2622,9 @@
     "semantic_hash": ""
   },
   "tests/markdown-preview.py": {
-    "mtime": 1791903883.5355268,
-    "seen": 1791904179.520564,
-    "ast_hash": "f1405049563f344d3dcb77f48bd7aba8",
+    "mtime": 1791905274.5767517,
+    "seen": 1791905849.2206752,
+    "ast_hash": "0d3ca18466fc0c278445ffadbb520566",
     "semantic_hash": ""
   }
 }

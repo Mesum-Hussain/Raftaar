@@ -8,6 +8,10 @@ echo '.section .rodata'
 emit commit_ai_script runtime/ai/commit.sh
 # one font for the interface and the code
 emit font_mono assets/fonts/IosevkaFixed-Regular.ttf
+# the Markdown page's bold and italics (Latin only: other text is drawn bold or slanted from font_mono)
+emit font_bold assets/fonts/IosevkaFixed-Bold.ttf
+emit font_italic assets/fonts/IosevkaFixed-Italic.ttf
+emit font_bolditalic assets/fonts/IosevkaFixed-BoldItalic.ttf
 printf '.globl font_ui, font_ui_end\n.set font_ui, font_mono\n.set font_ui_end, font_mono_end\n' 
 # name table of runtime files: (name ptr, data ptr, data end); a grammar's entry also has its name,
 # files, first_line and icon, for syntax_load_all to register it without parsing

@@ -540,6 +540,7 @@ ENDSTRUCT DOC_SIZE
 .equ DF_EOL, 4                   # the text ended in a newline when read or saved: vim has no line after it
 .equ DF_DISK_CHANGED, 8          # external contents differ and unsaved edits were kept
 .equ DF_PREVIEW, 16              # a Markdown file shown as a page (mdview.s); its text is not edited meanwhile
+.equ DF_MDSEEN, 32               # a Markdown file whose first mode has been chosen (md_first)
 
 # return 0 at once when the document is read-only or shown as a page: g_doc, or the one in reg
 .macro READONLY_RET reg=0

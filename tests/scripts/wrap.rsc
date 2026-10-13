@@ -4,6 +4,8 @@
 cmd toggle_sidebar
 resize 779 860
 open tests/data/prose.md
+# as its text: a Markdown file opens as a page
+cmd toggle_markdown_preview
 cmd toggle_word_wrap
 key Down
 key Down

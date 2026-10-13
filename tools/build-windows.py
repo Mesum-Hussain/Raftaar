@@ -85,6 +85,9 @@ def assets():
     assert len(encoded_update) < 30000, 'Update helper exceeds the Windows command-line budget'
     lines += ['.globl windows_update_script', 'windows_update_script: .asciz "' + encoded_update + '"']
     emit('font_mono', ROOT / 'assets/fonts/IosevkaFixed-Regular.ttf')
+    emit('font_bold', ROOT / 'assets/fonts/IosevkaFixed-Bold.ttf')
+    emit('font_italic', ROOT / 'assets/fonts/IosevkaFixed-Italic.ttf')
+    emit('font_bolditalic', ROOT / 'assets/fonts/IosevkaFixed-BoldItalic.ttf')
     lines += ['.globl font_ui, font_ui_end', '.set font_ui,font_mono',
               '.set font_ui_end,font_mono_end']
     for kind in ('themes', 'syntax'):

@@ -8,7 +8,7 @@ raftaar draws everything itself: it rasterizes TrueType fonts, icons and widgets
 - Tabs in the title bar; each can be split into panes, side by side and stacked, with dividers to drag
 - Open Recent in the command palette: open a folder or a file from anywhere on disk, or a recent folder, in this window or a new one
 - Image preview: PNG, JPEG, GIF, BMP, ICO, QOI, PNM and TGA open in a tab, with zoom and pan
-- Markdown preview: a Markdown file shown as a page in its own tab, one switch away from its text
+- Markdown preview: a Markdown file opens as a page, with pictures, tables and colored code, one switch away from its text
 - Syntax highlighting for about 125 languages, defined in plain text grammar files
 - 40 color themes, dark and light, with a match for every Omarchy theme; add your own. A dark and a light theme switch with the system's dark mode on macOS, Windows and Linux, as in VS Code
 - Settings page and a readable config file, both applied while running
@@ -247,7 +247,7 @@ On macOS the title bar is raftaar's too, with the window buttons in it. Command 
 | Ctrl+K | Color theme |
 | Ctrl+B | Toggle explorer |
 | Alt+Z | Zen mode: the tab or pane with the keys alone, over the whole window, until toggled again |
-| Ctrl+Shift+V | Markdown: the file as a page, and back to its text |
+| Ctrl+Shift+V | Markdown: the file's text, and back to its page |
 | Ctrl+T, Ctrl+Shift+\` | New terminal, in a tab |
 | Ctrl+Right, Ctrl+Left | Split right, left: a new terminal beside the active pane |
 | Ctrl+Down, Ctrl+Up | Split down, up: a new terminal under or over the active pane |
@@ -410,25 +410,33 @@ The status bar shows the size, the file size, the format and the zoom; clicking 
 
 ### Markdown preview
 
-A Markdown file has a switch in the top right corner of its pane: **Preview** shows the file as a
-page, **Edit** shows its text again. **Markdown: Toggle Preview** (Ctrl+Shift+V) does the same. The
-file stays in its tab, and each file keeps its own mode until its tab is closed; files open in Edit.
+A Markdown file opens as a page: its text rendered, as in Terax. A switch in the top right corner
+of its pane goes between the two: **Rendered** shows the page, **Raw** the text to edit.
+**Markdown: Toggle Preview** (Ctrl+Shift+V) does the same. The file stays in its tab, and each file
+keeps its own mode until its tab is closed.
 
 The page is drawn from the text as it is in the editor, unsaved changes included, and follows the
-file when an agent or another program rewrites it. It shows headings, bold, slanted and struck
-text, code and code blocks, lists, numbered lists and task lists, quotes, tables with their
-columns' alignment, rules and links. HTML tags are left out, apart from `<br>`, `<b>` and `<i>`;
-an image shows as a link to its file.
+file when an agent or another program rewrites it. It shows:
 
-- A click on a link opens a web address in the browser and a file in a tab, a path taken from the
-  Markdown file's folder. A link to a file that is not there does nothing.
-- The wheel, the scrollbar, the arrows, PageUp, PageDown, Space, Home and End scroll the page.
-- The page takes no edits: typing, pasting and undo wait until the text is shown again. Opening
-  Find goes back to the text.
-- Its text is the editor's font, and follows the editor's zoom.
+- headings, bold, italic and struck text, in bold and italic fonts of their own
+- code, and code blocks in the colors of their language, under a bar that names it and has **Copy**
+- lists, numbered lists and task lists, quotes, rules
+- tables, with their columns' alignment
+- links: a click opens a web address in the browser and a file in a tab, a path taken from the
+  Markdown file's folder. A link to a file that is not there does nothing
+- pictures from files (`![alt](picture.png)`, `<img src="picture.png" width="96">`), no wider than
+  the text. One on the web is not fetched: its words show as a link
+- of HTML: `<h1>` to `<h6>`, `align="center"`, `<br>`, `<b>`, `<strong>`, `<i>`, `<em>` and `<img>`;
+  other tags are left out and their text stays
 
-Code blocks are not colored by language, text on the page cannot be selected, and images are not
-drawn.
+Drag over the page to select its text and copy it with Ctrl+C; Ctrl+A selects all of it and Esc
+none. The wheel, the scrollbar, the arrows, PageUp, PageDown, Space, Home and End scroll the page.
+The page takes no edits: typing, pasting and undo wait until the text is shown again. Opening Find
+goes back to the text. The page's text is the editor's font and follows its zoom; with a font of
+your own (`font` under `[editor]`) bold is that font drawn twice over and italics are it slanted.
+
+A picture is read once: after it changes on disk the page shows the old one until Raftaar starts
+again.
 
 ### Vim mode
 
@@ -577,7 +585,7 @@ An extension that crashes or hangs cannot take the editor with it.
 | `src/mac/` | macOS, native AArch64: entry, Linux system calls on libSystem, FSEvents, the AppKit window |
 | `tools/arm64.py` | the x86-64 to AArch64 translator for Apple silicon |
 | `runtime/` | themes and grammars embedded into the binary |
-| `assets/fonts/` | Iosevka Fixed, cut down (SIL Open Font License) |
+| `assets/fonts/` | Iosevka Fixed, cut down (SIL Open Font License): Regular, and Bold, Italic and Bold Italic for the Markdown page |
 | `assets/icons/files/` | the explorer's file icons, from Seti UI (MIT), and the file types they go with |
 
 Porting to another platform means another file in `src/plat/` that fills the platform table in `src/raftaar.inc`; macOS fills it from `src/mac/cocoa.s`. Code that differs by system is in `.ifdef MACOS` or `.ifdef WINDOWS` blocks.

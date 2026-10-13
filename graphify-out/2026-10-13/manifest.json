@@ -402,9 +402,9 @@
     "semantic_hash": ""
   },
   "tests/run.sh": {
-    "mtime": 1791898492.4962666,
-    "seen": 1791898780.4461915,
-    "ast_hash": "285ce787a727f0729cd674f95869dd81",
+    "mtime": 1791903897.2438257,
+    "seen": 1791904179.520664,
+    "ast_hash": "0e76e0eb013fd39d7ddf2507d9c83ab6",
     "semantic_hash": ""
   },
   "tests/scroll-sensitivity.py": {
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791902252.4353175,
-    "seen": 1791902258.5529275,
-    "ast_hash": "9cf34692a9292e3a43218c3271062d8b",
+    "mtime": 1791903903.292537,
+    "seen": 1791904179.5218894,
+    "ast_hash": "87c02c9ed3047f67b575d3c8326f6066",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791898492.4969802,
-    "seen": 1791898780.4476101,
-    "ast_hash": "3518c7df66b9e859a3fccab288fbe62d",
+    "mtime": 1791903897.245021,
+    "seen": 1791904179.5221913,
+    "ast_hash": "f9eae174a5b7b0697adb95ffb7bcfba8",
     "semantic_hash": ""
   },
   "site/404.html": {
@@ -2568,9 +2568,9 @@
     "semantic_hash": ""
   },
   "src/raftaar.inc": {
-    "mtime": 1791890614.0399547,
-    "seen": 1791892576.6643732,
-    "ast_hash": "b306ec0130ed938188cfb3dfb0b13f30",
+    "mtime": 1791903731.6835508,
+    "seen": 1791904179.519655,
+    "ast_hash": "9b0527d5cac97da24d6f782126dcedc6",
     "semantic_hash": ""
   },
   "tools/app-icons.py": {
@@ -2619,6 +2619,12 @@
     "mtime": 1791902208.406756,
     "seen": 1791902258.5605133,
     "ast_hash": "c8db4f46b4c635112c57546c6ec03393",
+    "semantic_hash": ""
+  },
+  "tests/markdown-preview.py": {
+    "mtime": 1791903883.5355268,
+    "seen": 1791904179.520564,
+    "ast_hash": "f1405049563f344d3dcb77f48bd7aba8",
     "semantic_hash": ""
   }
 }

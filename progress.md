@@ -62,6 +62,16 @@ Rebrand
 - `site/` is still rhun's website with the name swapped; `rhun.app` strings remain there. Not published.
 - `.github/workflows/pages.yml` and `desktop-launches.yml` are manual-only; `release.yml` still fires on `v*` tags and expects upstream's signing secrets for macOS.
 
+Markdown page (`src/app/mdview.s`, 0.1.2)
+- A Markdown doc (`md_is`: `GR_name` "Markdown", not a diff) opens as a page: `DF_PREVIEW`, set once by `md_first` (`DF_MDSEEN`). `md_view` (from `app.s` view dispatch) draws the page in place of `editor_draw`; `md_view_end` draws the Rendered | Raw switch. Ctrl+Shift+V `cmd_toggle_md_preview`.
+- `READONLY_RET` also returns for `DF_PREVIEW`, so every edit command is off on a page. Keys go to `md_key`, not `vim_key`/`editor_key`; `cmd_copy` and `cmd_select_all` jump to `md_copy`/`md_select_all`. Find open clears the page (same corner).
+- One pass per frame over `doc_contiguous`: `md_blocks` (lines -> blocks) -> `flow` (inline marks, wrapping) -> `word_flush` -> `tok_draw`. Nothing is cached but `DOC_mdh`; lines off screen are measured, not drawn. `md_nodraw` measures (tables, centered blocks: `flow_center`).
+- Fonts: `font_bold|italic|bolditalic` (gen-assets.sh, build-windows.py), Latin only; `pick_face` falls back to the regular drawn twice (`fl_twice`) or slanted (`FACE_slant`, `xform_slant` in font.s) for other scripts and for a configured font.
+- Code blocks: `code_grammar` (name, alias, or `x.LANG` through `syntax_for_name`), `tokenize` per line, Copy button ids `ID_MD_COPY + n`.
+- Selection: page coordinates `sel_*`; `sel_piece` highlights and, when `md_collect`, gathers into `md_copy_sb` during the next frame.
+- Pictures: `img_cache` (16, by path, never refreshed), shrunk once to at most `sc(900)` wide (`img_shrink`), `img_blit` nearest. Web pictures are not fetched.
+- Tests: `tests/markdown-preview.py`. Scripts that edit a `.md` must `cmd toggle_markdown_preview` first (`tests/scripts/wrap.rsc`).
+
 ## Test conventions learned the hard way
 - Tests that click fixed coordinates pin `sidebar_width = 240` in their config; without it the sidebar fits and the layout moves.
 - Headless starts with zero tabs and never auto-quits; real launches differ. The launch tab and quit-on-empty paths have no automated cover.
