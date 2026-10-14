@@ -378,6 +378,118 @@ FN cmd_next_pane
     call app_activate_tab
 9:  EPILOGUE
 
+# the active pane trades places with its neighbor on that side; nothing when there is none there
+FN cmd_swap_left
+    xor edi, edi
+    jmp pane_swap
+FN cmd_swap_right
+    mov edi, 1
+    jmp pane_swap
+FN cmd_swap_up
+    mov edi, 2
+    jmp pane_swap
+FN cmd_swap_down
+    mov edi, 3
+    jmp pane_swap
+
+# pane_swap(side 0 left 1 right 2 up 3 down): of the panes beside the active one on that side (their
+#   edges a few pixels apart, overlapping it across), the nearest, then the one most in line with it
+pane_swap:
+    PROLOGUE 16
+    mov r15d, edi
+    mov rdi, [rip + g_tab_cur]
+    test rdi, rdi
+    js 9f
+    call tab_at
+    mov r12, [rax + TAB_group]
+    mov rdi, [rax + TAB_id]
+    call pn_leaf
+    cmp eax, -1
+    je 9f
+    mov edi, eax
+    call pn_ptr
+    mov r13, rax                # the active leaf
+    mov r14, -1                 # the best key so far
+    mov qword ptr [rsp], 0      # its leaf
+    xor ebx, ebx
+1:  mov edi, ebx
+    call pn_ptr
+    cmp dword ptr [rax + PN_kind], PN_LEAF
+    jne 8f
+    cmp [rax + PN_group], r12d
+    jne 8f
+    cmp rax, r13
+    je 8f
+    # across: x for left and right, y for up and down; along: the other
+    mov r8d, [r13 + PN_y]       # active's span across
+    mov r9d, [r13 + PN_h]
+    mov r10d, [rax + PN_y]      # the other's
+    mov r11d, [rax + PN_h]
+    cmp r15d, 2
+    jb 2f
+    mov r8d, [r13 + PN_x]
+    mov r9d, [r13 + PN_w]
+    mov r10d, [rax + PN_x]
+    mov r11d, [rax + PN_w]
+2:  # they overlap across
+    lea ecx, [r10 + r11]
+    cmp r8d, ecx
+    jge 8f
+    lea ecx, [r8 + r9]
+    cmp r10d, ecx
+    jge 8f
+    # the gap along: from the active's edge on that side to the other's facing edge
+    cmp r15d, 1
+    ja 3f
+    mov ecx, [rax + PN_x]       # right: other.x - (x + w)
+    mov edx, [r13 + PN_x]
+    add edx, [r13 + PN_w]
+    test r15d, r15d
+    jnz 4f
+    mov ecx, [r13 + PN_x]       # left: x - (other.x + other.w)
+    mov edx, [rax + PN_x]
+    add edx, [rax + PN_w]
+    jmp 4f
+3:  mov ecx, [rax + PN_y]       # down: other.y - (y + h)
+    mov edx, [r13 + PN_y]
+    add edx, [r13 + PN_h]
+    cmp r15d, 3
+    je 4f
+    mov ecx, [r13 + PN_y]       # up: y - (other.y + other.h)
+    mov edx, [rax + PN_y]
+    add edx, [rax + PN_h]
+4:  sub ecx, edx
+    cmp ecx, -4
+    jl 8f
+    add ecx, 8
+    shl rcx, 32
+    # in line: the distance between the middles across
+    lea edx, [r10 + r10]
+    add edx, r11d
+    lea esi, [r8 + r8]
+    add esi, r9d
+    sub edx, esi
+    mov esi, edx
+    neg esi
+    cmovns edx, esi
+    or rcx, rdx
+    cmp rcx, r14
+    jae 8f
+    mov r14, rcx
+    mov [rsp], rax
+8:  inc ebx
+    cmp ebx, PN_MAX
+    jb 1b
+    mov rax, [rsp]
+    test rax, rax
+    jz 9f
+    mov rcx, [rax + PN_view]
+    mov rdx, [r13 + PN_view]
+    mov [rax + PN_view], rdx
+    mov [r13 + PN_view], rcx
+    mov dword ptr [rip + g_dirty], 1
+9:  EPILOGUE
+
 # pn_key(node, key ptr): where a pane is clockwise around the tab's middle (ord_mid), as
 #   {double angle, double tie, u32 node}. The angle is a diamond angle, 0 to 4 from the right through
 #   below, left and above; the middle itself is -1. Panes in a line from the middle (a row, a column)

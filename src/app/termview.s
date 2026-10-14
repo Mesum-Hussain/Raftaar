@@ -968,6 +968,19 @@ FN term_tab_key
     lea rcx, [rip + cmd_split_up]
     cmp rax, rcx
     je .Ltk_no
+    # and the panes trade places
+    lea rcx, [rip + cmd_swap_left]
+    cmp rax, rcx
+    je .Ltk_no
+    lea rcx, [rip + cmd_swap_right]
+    cmp rax, rcx
+    je .Ltk_no
+    lea rcx, [rip + cmd_swap_up]
+    cmp rax, rcx
+    je .Ltk_no
+    lea rcx, [rip + cmd_swap_down]
+    cmp rax, rcx
+    je .Ltk_no
     lea rcx, [rip + cmd_new_terminal]
     cmp rax, rcx
     je .Ltk_no
