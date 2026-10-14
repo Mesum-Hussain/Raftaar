@@ -21,13 +21,19 @@
 
 ## A Terminal Development Environment
 
-Raftaar is a terminal, but not only a terminal. It is a **TDE**: a terminal with the three things you still need around it when a coding agent writes most of the code.
+IDEs like VS Code are built around files. The editor sits at the center, because for decades writing code meant typing it into files yourself, and the terminal is a panel docked below it.
 
-- **A file tree** that follows your shell. `cd` somewhere and the tree, git and the next terminal go with you.
-- **A file viewer** with syntax highlighting for about 125 languages. Files that an agent rewrites reload on their own, and the changed lines fade in so you see what moved.
-- **A view of the changes**: marks in the gutter, diffs against the last commit, and the history of every branch as a graph.
+AI changed where the work happens. Today you run Claude Code, Codex or Gemini CLI in a terminal, tell them what to build, and review what they changed. The terminal is now the center of development, and the files are what you check.
 
-That is the whole idea. In the era of AI coding, you do not need more than an extremely lightweight terminal that can show you your files and what happened to them.
+Raftaar is built around that. It is a **TDE** (Terminal Development Environment): the terminal is the center, and around it are the three things a normal terminal app doesn't have:
+
+- **A built-in file tree.** It tracks your shell's cwd: `cd` and the tree, git and new terminals follow. No shell hooks needed.
+- **A built-in file viewer.** Open any file in a tab next to your terminals, with syntax highlighting for ~125 languages. When an agent edits it, it reloads and highlights the changed lines.
+- **Built-in git.** Gutter diff markers, diffs against `HEAD`, and a history tab (Ctrl+Shift+G) with a commit graph of all branches, per-commit diffs, and stage, commit, pull and push.
+
+When you want to focus, **Zen mode** (Alt+Z) takes the tab or pane you're in, whether that's an agent's session, a file or the git history, and gives it the whole window. Alt+Z again brings everything back.
+
+Nothing more, which is why it launches in ~40 ms and idles at ~11 MB ([benchmarks](#benchmarks)).
 
 ## Why I built it
 
@@ -75,7 +81,7 @@ One machine, one day: expect other numbers on yours, and roughly the same ratios
 - **Markdown preview.** A Markdown file opens as a rendered page, with pictures, tables and colored code blocks. One switch (or Ctrl+Shift+V) shows its text to edit, in the same tab.
 - **Image preview** for PNG, JPEG, GIF, BMP, ICO, QOI, PNM and TGA, with zoom and pan.
 - **40 themes**, dark and light, that switch with your system's dark mode.
-- **Zen mode** (Alt+Z): the pane you are in, over the whole window, and nothing else.
+- **Zen mode** (Alt+Z): the tab or pane you are in, over the whole window, and nothing else.
 
 Raftaar draws everything itself. It rasterizes its own fonts, icons and widgets into a pixel buffer, and on Linux it speaks the Wayland and X11 wire protocols directly, with no toolkit and no libc. About 97,000 lines of assembly, in one static binary.
 
