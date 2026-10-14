@@ -5,7 +5,7 @@
 <h1 align="center">Raftaar</h1>
 
 <p align="center">
-  <b>A Terminal Development Environment written in Assembly.</b><br>
+  <b>An extremely fast Terminal Development Environment written in Assembly.</b>
   One 1 MB file. No runtime, no libc, no telemetry.
 </p>
 
