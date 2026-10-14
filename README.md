@@ -17,7 +17,7 @@
 
 ![Raftaar running Claude Code beside two shells, with the file tree on the left](assets/social/screenshot-tde.png)
 
-*Raftaar* (रफ़्तार) is the Hindi word for speed.
+***Raftaar*** (रफ़्तार) is the Hindi word for **Speed**.
 
 ## A Terminal Development Environment
 
