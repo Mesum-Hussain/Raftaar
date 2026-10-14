@@ -37,12 +37,12 @@ Nothing more, which is why it launches in ~40 ms and idles at ~11 MB ([benchmark
 
 ## Why I built it
 
-Two projects made me want this, and neither was quite it.
+Two projects made me want this, and each got half of it right.
 
-[Terax](https://github.com/crynta/terax-ai) has a UI I loved, on a web tech stack I did not like for a Terminal app that it is.
-[rhun](https://github.com/vshvedov/rhun) has a philosophy I loved, extreme minimalism, so much such that the app is written in assembly.....with a UI I did not like (why be just another VS Code clone?).
+[Terax](https://github.com/crynta/terax-ai) had the UI I wanted: a terminal-first layout with a file tree, a file viewer and git around it. But it is built on a web stack, and a terminal is the one app that should never feel heavy.
+[rhun](https://github.com/vshvedov/rhun) had the philosophy I wanted: extreme minimalism, to the point of being written entirely in assembly. But its UI is another VS Code clone, built around files rather than the terminal.
 
-So I forked rhun and gave it the Terax UI. Raftaar is the result: rhun's engine, Terax's layout!
+So I forked rhun and gave it Terax's UI. Raftaar is the result: rhun's engine with Terax's layout.
 
 ## Benchmarks
 
@@ -72,7 +72,7 @@ One machine, one day: expect other numbers on yours, and roughly the same ratios
 
 ## What you get
 
-- **Terminals in tabs and panes.** 24-bit color, mouse, scrollback and full-screen programs. Ctrl with an arrow splits the active pane on that side; drag the divider to resize.
+- **Terminals in tabs and panes.** 24-bit color, mouse, scrollback and full-screen programs. Ctrl with an arrow splits the active pane on that side. Drag the handle on the line between two panes to resize them, or double-click it to swap them.
 - **A file tree** with file type icons and git status colors. It widens to fit the longest name and folds away when you drag it shut.
 - **Clickable paths.** Ctrl+click a `file:LINE` in compiler output to open it at that line, or a URL to open it in the browser. The status bar's folders are buttons too: click one to `cd` there.
 - **Git, without leaving the window.** Stage, commit, pull and push, read diffs, and browse history. Optionally draft commit messages with your Claude or Codex subscription, or a local Ollama model.
@@ -126,6 +126,7 @@ Raftaar updates itself: when a new version is out, the status bar offers it.
 | --- | --- |
 | Ctrl+T | New terminal in a tab |
 | Ctrl+Arrow | Split the active pane on that side |
+| Ctrl+Shift+Tab | Move to the next pane, clockwise |
 | Ctrl+W | Close the tab or pane |
 | Ctrl+B | Show or hide the file tree |
 | Ctrl+P | Go to file |

@@ -40,6 +40,7 @@ drag_path: .zero DRAG_MAX
 drop_rect: .zero 16             # the half of a pane a drop would take
 drop_view: .quad 0              # that pane's view (TAB_id), 0 none
 drop_dir: .long 0               # SPLIT_*, 0 the whole pane: an ordinary tab
+ord_mid: .zero 8                # Next Pane: the middle of the tab, doubled x and y
 
 .text
 
@@ -284,6 +285,173 @@ FN cmd_split_up
     call cmd_new_terminal
     mov dword ptr [rip + g_split_next], 0
     pop rax
+    ret
+
+# the next pane of the active tab, clockwise around its middle; a tab with one view stays as it is
+FN cmd_next_pane
+    PROLOGUE 96                 # [rsp] the pane with the keys, +24 one looked at, +48 the next after
+                                #   it, +72 the first of all (each an order key: pn_key)
+    mov rdi, [rip + g_tab_cur]
+    test rdi, rdi
+    js 9f
+    call tab_at
+    mov r12, [rax + TAB_group]
+    mov r13, [rax + TAB_id]
+    mov edi, r12d
+    call pn_root
+    cmp eax, -1
+    je 9f
+    mov edi, eax
+    call pn_ptr
+    mov ecx, [rax + PN_x]       # the tab's middle, doubled
+    add ecx, ecx
+    add ecx, [rax + PN_w]
+    mov [rip + ord_mid], ecx
+    mov ecx, [rax + PN_y]
+    add ecx, ecx
+    add ecx, [rax + PN_h]
+    mov [rip + ord_mid + 4], ecx
+    mov rdi, r13
+    call pn_leaf
+    cmp eax, -1
+    je 9f
+    mov edi, eax
+    lea rsi, [rsp]
+    call pn_key
+    xor r14d, r14d              # a next one found
+    xor r15d, r15d              # a first one found
+    xor ebx, ebx
+1:  mov edi, ebx
+    call pn_ptr
+    cmp dword ptr [rax + PN_kind], PN_LEAF
+    jne 4f
+    cmp [rax + PN_group], r12d
+    jne 4f
+    mov edi, ebx
+    lea rsi, [rsp + 24]
+    call pn_key
+    test r15d, r15d
+    jz 2f
+    lea rdi, [rsp + 24]
+    lea rsi, [rsp + 72]
+    call key_before
+    test eax, eax
+    jz 3f
+2:  movdqu xmm0, [rsp + 24]
+    movdqu [rsp + 72], xmm0
+    mov rax, [rsp + 40]
+    mov [rsp + 88], rax
+    mov r15d, 1
+3:  lea rdi, [rsp]
+    lea rsi, [rsp + 24]
+    call key_before
+    test eax, eax
+    jz 4f
+    test r14d, r14d
+    jz 31f
+    lea rdi, [rsp + 24]
+    lea rsi, [rsp + 48]
+    call key_before
+    test eax, eax
+    jz 4f
+31: movdqu xmm0, [rsp + 24]
+    movdqu [rsp + 48], xmm0
+    mov rax, [rsp + 40]
+    mov [rsp + 64], rax
+    mov r14d, 1
+4:  inc ebx
+    cmp ebx, PN_MAX
+    jb 1b
+    lea rax, [rsp + 48]
+    test r14d, r14d
+    jnz 5f
+    lea rax, [rsp + 72]         # past the last: round to the first
+5:  mov edi, [rax + 16]
+    call pn_ptr
+    mov rdi, [rax + PN_view]
+    call view_index
+    test rax, rax
+    js 9f
+    cmp rax, [rip + g_tab_cur]
+    je 9f
+    mov rdi, rax
+    call app_activate_tab
+9:  EPILOGUE
+
+# pn_key(node, key ptr): where a pane is clockwise around the tab's middle (ord_mid), as
+#   {double angle, double tie, u32 node}. The angle is a diamond angle, 0 to 4 from the right through
+#   below, left and above; the middle itself is -1. Panes in a line from the middle (a row, a column)
+#   share an angle and go outward on the right and below, inward on the left and above
+pn_key:
+    push rsi
+    call pn_ptr
+    pop rsi
+    mov [rsi + 16], edi
+    mov ecx, [rax + PN_x]       # dx, doubled
+    add ecx, ecx
+    add ecx, [rax + PN_w]
+    sub ecx, [rip + ord_mid]
+    mov edx, [rax + PN_y]       # dy, doubled
+    add edx, edx
+    add edx, [rax + PN_h]
+    sub edx, [rip + ord_mid + 4]
+    mov r8d, ecx                # |dx|
+    neg r8d
+    cmovs r8d, ecx
+    mov r9d, edx                # |dy|
+    neg r9d
+    cmovs r9d, edx
+    lea r10d, [r8 + r9]
+    test r10d, r10d
+    jnz 1f
+    mov rax, 0xbff0000000000000 # -1.0
+    mov [rsi], rax
+    mov qword ptr [rsi + 8], 0
+    ret
+1:  test edx, edx
+    js 2f
+    xor eax, eax                # below the middle: right 0, left 1
+    mov r11d, r9d
+    test ecx, ecx
+    jns 3f
+    mov eax, 1
+    mov r11d, r8d
+    jmp 3f
+2:  mov eax, 2                  # above: left 2, right 3
+    mov r11d, r9d
+    test ecx, ecx
+    js 3f
+    mov eax, 3
+    mov r11d, r8d
+3:  cvtsi2sd xmm0, r11d
+    cvtsi2sd xmm1, r10d
+    divsd xmm0, xmm1
+    cvtsi2sd xmm1, eax
+    addsd xmm0, xmm1
+    movsd [rsi], xmm0
+    cmp eax, 2
+    jb 4f
+    neg r10d
+4:  cvtsi2sd xmm1, r10d
+    movsd [rsi + 8], xmm1
+    ret
+
+# key_before(a, b) -> eax 1 when pn_key a comes before b
+key_before:
+    movsd xmm0, [rdi]
+    ucomisd xmm0, [rsi]
+    jb 1f
+    ja 2f
+    movsd xmm0, [rdi + 8]
+    ucomisd xmm0, [rsi + 8]
+    jb 1f
+    ja 2f
+    mov ecx, [rdi + 16]
+    cmp ecx, [rsi + 16]
+    jb 1f
+2:  xor eax, eax
+    ret
+1:  mov eax, 1
     ret
 
 # ---------------- drawing ----------------

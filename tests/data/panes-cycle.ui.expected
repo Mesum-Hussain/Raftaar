@@ -1,0 +1,6 @@
+tabs=case.txt | sh | *sh
+tabs=*case.txt | sh | sh
+tabs=case.txt | *sh | sh
+tabs=case.txt | sh | *sh
+tabs=case.txt | sh | sh | *sh
+tabs=case.txt | sh | sh | *sh

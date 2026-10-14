@@ -104,7 +104,7 @@ class TerminalTabs(unittest.TestCase):
     def test_next_tab_goes_through_terminals_and_files(self):
         output = self.run_editor([*self.terminal(0, 'one'), *self.terminal(1, 'two'),
                                   'key ctrl+Tab', 'print-tabs', 'key ctrl+Tab', 'print-tabs',
-                                  'key ctrl+Tab', 'print-tabs', 'key ctrl+shift+Tab', 'print-tabs'])
+                                  'key ctrl+Tab', 'print-tabs', 'key ctrl+PageUp', 'print-tabs'])
         self.assertEqual(self.lines(output, 'tabs='),
                          ['tabs=*a.txt|one|two', 'tabs=a.txt|*one|two', 'tabs=a.txt|one|*two',
                           'tabs=a.txt|*one|two'])
