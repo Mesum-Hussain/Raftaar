@@ -27,6 +27,12 @@
 .equ BRW_DIR, 1                 # IT_data of the path browser: a folder
 .equ BRW_HERE, 2                # the "Open <folder>" row
 .equ BRW_NEW, 4                 # and "Open <folder> in a new window" under it
+# search anything (PM_FILES): what an item is, in the top byte of IT_data
+.equ ANY_SHIFT, 56
+.equ ANY_FILE, 0                # a file of the project; IT_label its relative path
+.equ ANY_DIR, 1                 # a folder of the project, "path/"
+.equ ANY_CMD, 2                 # a command; the rest of IT_data its CMD
+.equ ANY_TAB, 3                 # an open tab, a terminal's too; the rest its TAB_id
 
 STRUCT
 F IT_label, 8
@@ -87,6 +93,8 @@ brw_kind: .long 0               # the path browser picks: 0 a file, 1 a folder
 brw_dir: .zero 4096             # the folder it lists
 brw_next: .zero 4096
 brw_label: .zero 4096
+any_scan: .long 0               # the scan is search anything's: folders too, open files left out
+any_plen: .long 0               # the project folder's length then
 
 .text
 
@@ -126,7 +134,7 @@ palette_open:
 1:  mov dword ptr [rip + g_focus], FOCUS_PALETTE
     cmp ebx, PM_FILES
     jne 1f
-    call load_files
+    call load_anything
     jmp 8f
 1:  cmp ebx, PM_COMMANDS
     jne 2f
@@ -173,11 +181,17 @@ pal_return_focus:
 1:  mov [rip + g_focus], eax
     ret
 
+# search anything: open tabs, commands, the project's files and folders in one list (Shift twice);
+# Go to File and Command Palette open it too
 FN cmd_quick_open
+FN cmd_command_palette
     mov edi, PM_FILES
     jmp palette_open
-FN cmd_command_palette
-    mov edi, PM_COMMANDS
+# cmd_search_anything(): Shift twice: opens it, or closes it when it is open
+FN cmd_search_anything
+    cmp dword ptr [rip + pal_mode], PM_FILES
+    je palette_close
+    mov edi, PM_FILES
     jmp palette_open
 # Select Color Theme picks for the setting in use: theme, or the dark or light mode's theme
 # while the theme follows the system (VS Code saves it in the same place)
@@ -972,6 +986,125 @@ load_files:
     jmp 1b
 9:  EPILOGUE
 
+# load_anything(): search anything's items: the open tabs, the commands, then the project's files and
+#   folders (a file open in a tab is the tab's item). With nothing typed they show in this order
+load_anything:
+    PROLOGUE 16
+    lea rdi, [rip + strings]
+    call sb_clear
+    # the tabs: their names as the title bar shows them, as offsets into strings for now
+    xor ebx, ebx
+1:  cmp rbx, [rip + g_tabs + VEC_len]
+    jae 2f
+    mov rdi, rbx
+    call app_tab_label
+    mov r13, [rip + strings + SB_len]
+    lea rdi, [rip + strings]
+    mov rsi, rax
+    call sb_push_cstr
+    mov r14, [rip + strings + SB_len]
+    sub r14, r13
+    lea rdi, [rip + strings]
+    xor esi, esi
+    call sb_push_byte
+    mov rdi, rbx
+    call tab_at
+    mov rcx, [rax + TAB_id]
+    mov rax, ANY_TAB << ANY_SHIFT
+    or rcx, rax
+    mov rdi, r13
+    mov rsi, r14
+    xor edx, edx
+    call item_add
+    inc rbx
+    jmp 1b
+2:  mov [rsp], rbx              # the commands start here
+    lea rbx, [rip + g_commands]
+3:  mov r12, [rbx + CMD_title]
+    test r12, r12
+    jz 4f
+    cmp byte ptr [r12], 0
+    je 31f
+    mov rdi, r12
+    call strlen
+    mov rcx, ANY_CMD << ANY_SHIFT
+    or rcx, rbx
+    mov rdi, r12
+    mov rsi, rax
+    xor edx, edx
+    call item_add
+31: add rbx, CMD_SIZE
+    jmp 3b
+4:  mov rax, [rip + items + VEC_len]
+    mov [rsp + 8], rax          # and end here
+    mov rdi, [rip + g_project]
+    test rdi, rdi
+    jz 5f
+    call strlen
+    mov [rip + any_plen], eax
+    mov dword ptr [rip + any_scan], 1
+    mov dword ptr [rip + scan_plen], 0
+    mov dword ptr [rip + scan_depth], 0
+    mov rdi, [rip + g_project]
+    call scan_dir
+    mov dword ptr [rip + any_scan], 0
+5:  # labels point into strings (stable now), the commands' are their own
+    xor ebx, ebx
+6:  cmp rbx, [rip + items + VEC_len]
+    jae 9f
+    cmp rbx, [rsp]
+    jb 7f
+    cmp rbx, [rsp + 8]
+    jb 8f
+7:  imul rax, rbx, IT_SIZE
+    add rax, [rip + items + VEC_ptr]
+    mov rcx, [rip + strings + SB_ptr]
+    add [rax + IT_label], rcx
+8:  inc rbx
+    jmp 6b
+9:  EPILOGUE
+
+# is_open_rel(relative path, len) -> eax 1 when that file of the project is open in a tab
+is_open_rel:
+    PROLOGUE
+    mov r12, rdi
+    mov r13, rsi
+    mov r14d, [rip + any_plen]
+    xor ebx, ebx
+1:  cmp rbx, [rip + g_tabs + VEC_len]
+    jae 8f
+    mov rdi, rbx
+    call tab_at
+    mov rax, [rax + TAB_doc]
+    test rax, rax
+    jz 2f
+    mov r15, [rax + DOC_path]
+    test r15, r15
+    jz 2f
+    mov rdi, r15
+    call strlen
+    cmp rax, r14
+    jbe 2f
+    mov rdi, r15
+    mov rsi, rax
+    mov rdx, [rip + g_project]
+    mov rcx, r14
+    call str_starts
+    test eax, eax
+    jz 2f
+    cmp byte ptr [r15 + r14], '/'
+    jne 2f
+    mov rdi, r12
+    mov rsi, r13
+    lea rdx, [r15 + r14 + 1]
+    call str_eq_cstr
+    test eax, eax
+    jnz 9f
+2:  inc rbx
+    jmp 1b
+8:  xor eax, eax
+9:  EPILOGUE
+
 # scan_dir(abs dir): recursion via dir_each callback
 scan_dir:
     PROLOGUE
@@ -1014,6 +1147,24 @@ scan_cb:
     jae 9f
     lea rax, [rip + scan_prefix]
     mov byte ptr [rax + r15], '/'
+    cmp dword ptr [rip + any_scan], 0
+    je 2f
+    # search anything lists it too, as "path/"
+    mov rax, [rip + strings + SB_len]
+    mov [rsp], rax
+    lea rdi, [rip + strings]
+    lea rsi, [rip + scan_prefix]
+    lea rdx, [r15 + 1]
+    call sb_push
+    lea rdi, [rip + strings]
+    xor esi, esi
+    call sb_push_byte
+    mov rdi, [rsp]
+    lea rsi, [r15 + 1]
+    xor edx, edx
+    mov rcx, ANY_DIR << ANY_SHIFT
+    call item_add
+2:
     lea eax, [r15 + 1]
     mov [rip + scan_plen], eax
     mov rdi, r12
@@ -1026,8 +1177,16 @@ scan_cb:
     call mem_free
     mov [rip + scan_plen], ebx
     jmp 9f
-1:  # file: store offset now, pointer fixed up after the scan
-    mov rax, [rip + strings + SB_len]
+1:  # file: store offset now, pointer fixed up after the scan; search anything leaves out the files
+    # that are open, as their tabs are in the list
+    cmp dword ptr [rip + any_scan], 0
+    je 11f
+    lea rdi, [rip + scan_prefix]
+    mov rsi, r15
+    call is_open_rel
+    test eax, eax
+    jnz 9f
+11: mov rax, [rip + strings + SB_len]
     mov [rsp], rax
     lea rdi, [rip + strings]
     lea rsi, [rip + scan_prefix]
@@ -1710,7 +1869,21 @@ FN palette_filter
     test eax, eax
     js 4f
     mov r13d, eax
-    lea rdi, [rip + results]
+    # search anything: an open tab, then a command, before a file that matches as well
+    cmp dword ptr [rip + pal_mode], PM_FILES
+    jne 3f
+    test r15, r15
+    jz 3f
+    mov rax, [r12 + IT_data]
+    shr rax, ANY_SHIFT
+    cmp eax, ANY_TAB
+    jne 2f
+    add r13d, 20
+    jmp 3f
+2:  cmp eax, ANY_CMD
+    jne 3f
+    add r13d, 15
+3:  lea rdi, [rip + results]
     mov esi, RS_SIZE
     call vec_push
     mov [rax + RS_item], ebx
@@ -1755,28 +1928,35 @@ FN palette_changed
     je 1f
     mov dword ptr [rip + pal_sel], 0
     mov dword ptr [rip + pal_scroll], 0
-1:  # '>' switches files -> commands
+1:  # '#' turns search anything into find in files, with what follows it
     cmp dword ptr [rip + pal_mode], PM_FILES
     jne 2f
     mov rax, [rip + pal_tf + TF_sb + SB_ptr]
     test rax, rax
     jz 2f
-    cmp byte ptr [rax], '>'
-    jne 3f
-    push rbx
-    call cmd_command_palette
-    pop rbx
-    ret
-3:  cmp byte ptr [rax], ':'
-    jne 2f
-    cmp qword ptr [rip + g_doc], 0
+    cmp qword ptr [rip + pal_tf + TF_sb + SB_len], 0
     je 2f
-    mov dword ptr [rip + pal_mode], PM_GOTO
-    lea rdi, [rip + pal_tf]
+    cmp byte ptr [rax], '#'
+    jne 2f
+    cmp qword ptr [rip + g_project], 0
+    je 2f
+    push rbx
+    lea rdi, [rip + tmp]
+    call sb_clear
+    mov rax, [rip + pal_tf + TF_sb + SB_ptr]
     lea rsi, [rax + 1]
     mov rdx, [rip + pal_tf + TF_sb + SB_len]
     dec rdx
+    lea rdi, [rip + tmp]
+    call sb_push
+    mov edi, PM_GREP
+    call palette_open
+    mov dword ptr [rip + gload_state], GL_SCAN
+    lea rdi, [rip + pal_tf]
+    mov rsi, [rip + tmp + SB_ptr]
+    mov rdx, [rip + tmp + SB_len]
     call tf_set
+    pop rbx
 2:  jmp palette_filter
 
 # selected item -> IT* or 0
@@ -1885,8 +2065,17 @@ FN palette_key
     mov rdi, rax
     call browse_complete
     jmp .Lpk_yes
-51:
-    lea rdi, [rip + pal_tf]
+51: # Backspace in find in files' empty field: back to search anything, as if '#' were deleted
+    cmp r12d, KEY_BACKSPACE
+    jne 52f
+    cmp dword ptr [rip + pal_mode], PM_GREP
+    jne 52f
+    cmp qword ptr [rip + pal_tf + TF_sb + SB_len], 0
+    jne 52f
+    mov edi, PM_FILES
+    call palette_open
+    jmp .Lpk_yes
+52: lea rdi, [rip + pal_tf]
     mov esi, r12d
     mov edx, r13d
     mov ecx, r14d
@@ -1922,6 +2111,59 @@ palette_accept:
     je .Lpa_grep
     cmp ebx, PM_FILES
     jne 1f
+    mov rax, [r12 + IT_data]
+    mov rcx, rax
+    shr rcx, ANY_SHIFT
+    mov rdx, (1 << ANY_SHIFT) - 1
+    and rax, rdx
+    cmp ecx, ANY_CMD
+    jne .Lpa_any_tab
+    mov [rsp], rax
+    mov dword ptr [rip + pal_mode], PM_NONE
+    call pal_return_focus
+    mov rax, [rsp]
+    call [rax + CMD_fn]
+    jmp .Lpa_ret
+.Lpa_any_tab:
+    cmp ecx, ANY_TAB
+    jne .Lpa_any_dir
+    mov [rsp], rax
+    call palette_close
+    mov rdi, [rsp]
+    call view_index
+    test rax, rax
+    js .Lpa_ret
+    mov rdi, rax
+    call app_activate_tab
+    jmp .Lpa_ret
+.Lpa_any_dir:
+    cmp ecx, ANY_DIR
+    jne .Lpa_any_file
+    # a folder: a new terminal in it, in a pane beside the active one
+    mov rdi, [rip + g_project]
+    mov rsi, [r12 + IT_label]
+    call path_join
+    mov r13, rax
+    lea rdi, [rip + pal_path]
+    mov rsi, rax
+    call cstr_copy
+    mov rdi, r13
+    call mem_free
+    lea rdi, [rip + pal_path]
+    call strlen
+    cmp rax, 1
+    jbe .Lpa_any_term
+    lea rcx, [rip + pal_path]
+    cmp byte ptr [rcx + rax - 1], '/'
+    jne .Lpa_any_term
+    mov byte ptr [rcx + rax - 1], 0
+.Lpa_any_term:
+    call palette_close
+    lea rax, [rip + pal_path]
+    mov [rip + g_term_dir], rax
+    call cmd_split_right
+    jmp .Lpa_ret
+.Lpa_any_file:
     mov rdi, [rip + g_project]
     mov rsi, [r12 + IT_label]
     call path_join
@@ -2531,8 +2773,14 @@ FN palette_draw
     M r8d, MI_RADIUS
     COLOR r9d, T_HOVER
     call gfx_round_rect
-10: # detail width
-    mov dword ptr [rsp + 56], 0
+10: # detail width; search anything has an icon there instead
+    cmp dword ptr [rip + pal_mode], PM_FILES
+    jne 100f
+    M eax, MI_16
+    lea eax, [rax*2 + rax]
+    mov [rsp + 56], eax
+    jmp 101f
+100:mov dword ptr [rsp + 56], 0
     mov rax, [rsp + 24]
     mov rdi, [rax + IT_detail]
     test rdi, rdi
@@ -2574,7 +2822,18 @@ FN palette_draw
     call draw_highlighted
     call gfx_clip_pop
     # detail on the right
-    cmp dword ptr [rsp + 56], 0
+    cmp dword ptr [rip + pal_mode], PM_FILES
+    jne 103f
+    mov rdi, [rsp + 24]
+    mov esi, r13d
+    add esi, r12d
+    sub esi, [rip + g_mt + 4*MI_16]
+    sub esi, [rip + g_mt + 4*MI_16]
+    mov edx, [rsp + 20]
+    mov ecx, ebx
+    call any_icon_draw
+    jmp 11f
+103:cmp dword ptr [rsp + 56], 0
     je 11f
     mov esi, r13d
     add esi, r12d
@@ -2599,6 +2858,84 @@ FN palette_draw
 12: inc dword ptr [rsp + 12]
     jmp .Lpd_row
 .Lpd_ret:
+    EPILOGUE
+
+# any_icon_draw(item, x, y, row h): what a search anything row is, MI_16 wide at x: a green $ for a
+#   command, a folder, a file's icon by its name, or a tab's as the title bar has it
+any_icon_draw:
+    PROLOGUE 16
+    mov rbx, rdi
+    mov r12d, esi
+    mov [rsp], edx
+    mov [rsp + 4], ecx
+    mov r13, [rdi + IT_data]
+    mov r14, r13
+    shr r14, ANY_SHIFT
+    mov rax, (1 << ANY_SHIFT) - 1
+    and r13, rax
+    cmp r14d, ANY_CMD
+    jne 1f
+    lea rdi, [rip + g_face_code]
+    mov esi, r12d
+    mov edx, [rsp]
+    mov ecx, [rsp + 4]
+    lea r8, [rip + .Ldollar]
+    COLOR r9d, T_GIT_ADD
+    call ui_text_c
+    EPILOGUE
+1:  mov edi, IC_FOLDER
+    COLOR r8d, T_ACCENT
+    cmp r14d, ANY_DIR
+    je 8f
+    cmp r14d, ANY_TAB
+    je 3f
+    # a file: by the name after the last '/'
+    mov rax, [rbx + IT_label]
+    mov rcx, [rbx + IT_len]
+2:  test rcx, rcx
+    jz 21f
+    cmp byte ptr [rax + rcx - 1], '/'
+    je 21f
+    dec rcx
+    jmp 2b
+21: lea rdi, [rax + rcx]
+    jmp 5f
+3:  mov rdi, r13
+    call view_index
+    mov edi, IC_FILE
+    COLOR r8d, T_FG
+    test rax, rax
+    js 8f
+    mov rdi, rax
+    call tab_at
+    mov rcx, [rax + TAB_doc]
+    test rcx, rcx
+    jz 4f
+    mov rdi, [rcx + DOC_name]
+    jmp 5f
+4:  COLOR r8d, T_FG
+    mov edi, IC_TERMINAL
+    cmp qword ptr [rax + TAB_kind], TAB_TERM
+    je 8f
+    mov edi, IC_CLOCK
+    cmp qword ptr [rax + TAB_kind], TAB_GIT
+    je 8f
+    mov edi, IC_HOME
+    cmp qword ptr [rax + TAB_kind], TAB_HOME
+    je 8f
+    mov edi, IC_SLIDERS
+    jmp 8f
+5:  call file_icon
+    lea rcx, [rip + g_theme]
+    mov r8d, [rcx + rdx*4]
+    mov edi, eax
+8:  M ecx, MI_16
+    mov esi, r12d
+    mov edx, [rsp + 4]
+    sub edx, ecx
+    sar edx, 1
+    add edx, [rsp]
+    call icon_draw
     EPILOGUE
 
 # prompt_title(x, y): the prompt's label ("New file", "New folder", ...) with its icon, in the top
@@ -2798,8 +3135,9 @@ hint_text:
 .Llight: .asciz "light"
 .Lplain: .asciz "Plain Text"
 .Lempty: .asciz ""
+.Ldollar: .asciz "$"
 .Lfailed: .asciz "That didn't work"
-.Lph_files: .asciz "Search files by name  (> commands, : line)"
+.Lph_files: .asciz "Search anything  (# searches in files)"
 .Lph_cmds: .asciz "Type a command"
 .Lph_themes: .asciz "Select a color theme"
 .Lph_dark: .asciz "Select a theme for dark mode"

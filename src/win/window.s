@@ -558,6 +558,18 @@ win_wndproc:
     call app_on_key
     jmp .Lwm_zero
 .Lwm_keydown:
+    # Shift alone, for Shift twice (search anything); not the repeats of a Shift held down
+    cmp r13d, 16
+    jne .Lwm_noshift
+    test r14d, 1 << 30
+    jnz .Lwm_zero
+    call win_mods
+    mov edx, eax
+    mov edi, KEY_SHIFT_L
+    xor esi, esi
+    call app_on_key
+    jmp .Lwm_zero
+.Lwm_noshift:
     call win_mods
     mov r15d, eax
     test eax, MOD_ALT

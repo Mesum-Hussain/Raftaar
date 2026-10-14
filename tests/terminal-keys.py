@@ -151,7 +151,9 @@ class TerminalKeys(unittest.TestCase):
 
     def test_raftaars_commands_keep_their_keys_at_the_prompt(self):
         self.command('wait-term $')
-        self.command('key ctrl+shift+p')
+        # Shift twice opens search anything at the prompt too
+        self.command('key Shift_L')
+        self.command('key Shift_L')
         self.assertTrue(self.command('print-palette').startswith('field='))
         self.command('key Escape')
         # ctrl+p, ctrl+n, ctrl+b, ctrl+k and the like are the shell's: history, not Raftaar's commands

@@ -2344,6 +2344,7 @@ FN app_on_pointer_leave
 # app_on_button(btn, pressed, mods)
 FN app_on_button
     mov [rip + g_mods], edx
+    mov qword ptr [rip + shift_tap], 0     # a click between two Shift taps: not search anything
     # the caret shows at once, as after a key: a press or a release may have placed it
     push rdi
     push rsi
@@ -2405,6 +2406,7 @@ FN wheel_xy
     ret
 
 FN app_on_focus
+    mov qword ptr [rip + shift_tap], 0
     mov [rip + g_win_focused], edi
     # files may have changed while away
     test edi, edi
@@ -2486,6 +2488,12 @@ field_changed:
     je vim_field_changed
     ret
 
+.equ SHIFT_TAP_MS, 400
+.bss
+.p2align 3
+shift_tap: .quad 0              # when Shift alone was last pressed, 0 after any other key or a click
+.text
+
 # app_on_key(keysym, cp, mods)
 FN app_on_key
     PROLOGUE 16
@@ -2511,7 +2519,22 @@ FN app_on_key
     mov edi, r12d
     call dialog_key
     jmp 9f
-1:  # Esc closes a context menu
+1:  # Shift tapped twice, nothing between: search anything opens, or closes again
+    lea eax, [r12 - KEY_SHIFT_L]
+    cmp eax, 1
+    jbe 11f
+    mov qword ptr [rip + shift_tap], 0
+    jmp 12f
+11: call time_ms
+    mov rcx, rax
+    sub rcx, [rip + shift_tap]
+    mov [rip + shift_tap], rax
+    cmp rcx, SHIFT_TAP_MS
+    ja 12f
+    mov qword ptr [rip + shift_tap], 0
+    call cmd_search_anything
+    jmp 9f
+12:  # Esc closes a context menu
     cmp r12d, KEY_ESCAPE
     jne 10f
     call explorer_menu_open

@@ -475,8 +475,9 @@ key_names:
 .p2align 3
 .globl g_commands
 g_commands:
-    COMMAND quick_open, "Go to File", cmd_quick_open, ""
-    COMMAND command_palette, "Command Palette", cmd_command_palette, "ctrl+shift+p F1"
+    COMMAND quick_open, "", cmd_quick_open, ""
+    COMMAND command_palette, "", cmd_command_palette, ""
+    COMMAND search_anything, "", cmd_search_anything, ""
     COMMAND new_file, "New File", cmd_new_file, ""
     COMMAND new_file_here, "New File in Current Folder", cmd_new_file_here, "ctrl+shift+t"
     COMMAND save, "Save", cmd_save, "ctrl+s"
@@ -508,7 +509,7 @@ g_commands:
     COMMAND replace, "Replace", cmd_replace_bar, "ctrl+h"
     COMMAND find_next, "Find Next", cmd_find_next, "F3"
     COMMAND find_prev, "Find Previous", cmd_find_prev, "shift+F3"
-    COMMAND find_in_files, "Find in Files", cmd_find_in_files, "ctrl+shift+f"
+    COMMAND find_in_files, "Find in Files", cmd_find_in_files, ""
     COMMAND goto_line, "Go to Line", cmd_goto_line, "ctrl+g"
     COMMAND settings, "Open Settings", cmd_settings, ""
     COMMAND open_config, "Open Settings File", cmd_open_config, ""
