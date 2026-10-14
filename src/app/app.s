@@ -6390,28 +6390,22 @@ tip_table:
 .Lplain: .asciz "Plain Text"
 .Ldlg_q: .asciz "Save changes to "
 .Ldlg_msg: .asciz "Your changes will be lost if you don't save them."
-.Lw1: .asciz "Go to file"
 .Lw2: .asciz "Command palette"
 .Lw3: .asciz "New file"
 .Lw5: .asciz "Toggle explorer"
 .Lw9: .asciz "Zen mode"
-.Lw7: .asciz "Open file"
 .Lw8: .asciz "Open folder"
 .ifdef MACOS
-.Lk1: .asciz "\342\214\230P"
 .Lk2: .asciz "\342\207\247\342\214\230P"
-.Lk3: .asciz "\342\214\230N"
-.Lk5: .asciz "\342\214\230B"
+.Lk3: .asciz "\342\207\247\342\214\230T"
+.Lk5: .asciz "\342\214\203`"
 .Lk9: .asciz "\342\214\245Z"
-.Lk7: .asciz "\342\214\230O"
 .Lk8: .asciz "\342\207\247\342\214\230O"
 .else
-.Lk1: .asciz "Ctrl+P"
 .Lk2: .asciz "Ctrl+Shift+P"
-.Lk3: .asciz "Ctrl+N"
-.Lk5: .asciz "Ctrl+B"
+.Lk3: .asciz "Ctrl+Shift+T"
+.Lk5: .asciz "Ctrl+`"
 .Lk9: .asciz "Alt+Z"
-.Lk7: .asciz "Ctrl+O"
 .Lk8: .asciz "Ctrl+Shift+O"
 .endif
 .Lpm_folder: .asciz "Open Folder\342\200\246"
@@ -6431,10 +6425,8 @@ tip_table:
 .Ld2: .asciz "Save"
 .p2align 3
 welcome_rows:
-    .quad .Lw1, .Lk1, cmd_quick_open
     .quad .Lw2, .Lk2, cmd_command_palette
-    .quad .Lw3, .Lk3, cmd_new_file
-    .quad .Lw7, .Lk7, cmd_open_file
+    .quad .Lw3, .Lk3, cmd_new_file_here
     .quad .Lw8, .Lk8, cmd_open_folder
     .quad .Lw5, .Lk5, cmd_toggle_sidebar
     .quad .Lw9, .Lk9, cmd_toggle_zen

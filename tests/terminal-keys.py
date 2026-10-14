@@ -151,12 +151,12 @@ class TerminalKeys(unittest.TestCase):
 
     def test_raftaars_commands_keep_their_keys_at_the_prompt(self):
         self.command('wait-term $')
-        self.command('key ctrl+n')
-        self.assertIn('tabs=2 ', self.command('print-state'))
-        self.command('cmd close_tab')
-        self.command('key ctrl+p')
+        self.command('key ctrl+shift+p')
         self.assertTrue(self.command('print-palette').startswith('field='))
         self.command('key Escape')
+        # ctrl+p, ctrl+n, ctrl+b, ctrl+k and the like are the shell's: history, not Raftaar's commands
+        self.command('key ctrl+p')
+        self.assertIn('focus=8 ', self.command('print-state'))
         # a document's commands are the shell's keys: ctrl+a is the start of the line, not Select All
         self.command('type cho here$((1 + 1))')
         self.command('key ctrl+a')

@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "tests/reopen-tab.py": {
-    "mtime": 1791878368.6007767,
-    "seen": 1791879028.8751688,
-    "ast_hash": "d14603cd0987ba4ea8727217db1226cd",
+    "mtime": 1791977083.0546632,
+    "seen": 1791977713.9484622,
+    "ast_hash": "e71a3e7d2ddadac6482f8843956e57ba",
     "semantic_hash": ""
   },
   "tests/run.sh": {
@@ -450,9 +450,9 @@
     "semantic_hash": ""
   },
   "tests/terminal-keys.py": {
-    "mtime": 1791888161.2207425,
-    "seen": 1791892576.6655602,
-    "ast_hash": "8e0ec1b4b5b9be33d016e5aafe02fe69",
+    "mtime": 1791977083.0551176,
+    "seen": 1791977713.9486547,
+    "ast_hash": "d25ad8ee9ddae0833edff9d217b2e5c2",
     "semantic_hash": ""
   },
   "tests/terminal-links.py": {
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "README.md": {
-    "mtime": 1791968225.47583,
-    "seen": 1791968235.3474526,
-    "ast_hash": "c738a5b4146f8ce5aa04ea2a81f9c9f2",
+    "mtime": 1791977155.7118516,
+    "seen": 1791977713.9496775,
+    "ast_hash": "242ec6293e8c643987d2e6f5949fa144",
     "semantic_hash": ""
   },
   "SECURITY.md": {
@@ -768,9 +768,9 @@
     "semantic_hash": ""
   },
   "docs/guide.md": {
-    "mtime": 1791968230.5384223,
-    "seen": 1791968235.3477376,
-    "ast_hash": "6d86cfe39d0a3c1f1bcb71e1b91a7f5f",
+    "mtime": 1791977155.711096,
+    "seen": 1791977713.9499562,
+    "ast_hash": "c568e37a82d6ce5e7c5728a2a648d858",
     "semantic_hash": ""
   },
   "site/404.html": {

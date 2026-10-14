@@ -1403,6 +1403,18 @@ FN explorer_draw
     call gfx_clip_pop
     EPILOGUE
 
+# cmd_new_file_here(): the New File prompt in the project folder, the folder the shell is in
+FN cmd_new_file_here
+    PROLOGUE
+    mov rsi, [rip + root]
+    test rsi, rsi
+    jz 9f
+    mov rsi, [rsi + N_path]
+    lea rdi, [rip + g_explorer_dir]
+    call cstr_copy
+    call cmd_new_file_prompt
+9:  EPILOGUE
+
 FN cmd_new_file_prompt
     lea rdi, [rip + .Lnew_file]
     mov esi, PROMPT_NEW_FILE

@@ -23,15 +23,13 @@
 
 IDEs like VS Code are built around files. The editor sits at the center, because for decades writing code meant typing it into files yourself, and the terminal is a panel docked below it.
 
-AI changed where the work happens. Today you run Claude Code, Codex or Gemini CLI in a terminal, tell them what to build, and review what they changed. The terminal is now the center of development, and the files are what you check.
+AI changed where the work happens. Today you run Claude Code, Codex, Gemini, OpenCode or any of your favorite CLI coding agents in a terminal, tell them what to build, and review what they changed. The terminal is now the center of development, and the files are what you check.
 
-Raftaar is built around that. It is a **TDE** (Terminal Development Environment): the terminal is the center, and around it are the three things a normal terminal app doesn't have:
+Raftaar is built around that idea. It is a **TDE** (Terminal Development Environment): the terminal is the center, and around it are the three things a normal terminal app doesn't have:
 
-- **A built-in file tree.** It tracks your shell's cwd: `cd` and the tree, git and new terminals follow. No shell hooks needed.
-- **A built-in file viewer.** Open any file in a tab next to your terminals, with syntax highlighting for ~125 languages. When an agent edits it, it reloads and highlights the changed lines.
-- **Built-in git.** Gutter diff markers, diffs against `HEAD`, and a history tab (Ctrl+Shift+G) with a commit graph of all branches, per-commit diffs, and stage, commit, pull and push.
-
-When you want to focus, **Zen mode** (Alt+Z) takes the tab or pane you're in, whether that's an agent's session, a file or the git history, and gives it the whole window. Alt+Z again brings everything back.
+- **A built-in file tree:** It tracks your shell's cwd: `cd` and the tree, git and new terminals follow. No shell hooks needed.
+- **A built-in file viewer:** Open any file in a tab next to your terminals, with syntax highlighting for ~125 languages. When an agent edits it, it reloads and highlights the changed lines.
+- **Built-in git:** Gutter diff markers, diffs against `HEAD`, and a history tab (Ctrl+Shift+G) with a commit graph of all branches, per-commit diffs, and stage, commit, pull and push.
 
 Nothing more, which is why it launches in ~40 ms and idles at ~11 MB ([benchmarks](#benchmarks)).
 
@@ -77,7 +75,7 @@ One machine, one day: expect other numbers on yours, and roughly the same ratios
 - **Clickable paths.** Ctrl+click a `file:LINE` in compiler output to open it at that line, or a URL to open it in the browser. The status bar's folders are buttons too: click one to `cd` there.
 - **Git, without leaving the window.** Stage, commit, pull and push, read diffs, and browse history. Optionally draft commit messages with your Claude or Codex subscription, or a local Ollama model.
 - **An editor when you need one.** Undo and redo, find and replace, find in files, and an optional Vim mode.
-- **Find anything.** Fuzzy file finder (Ctrl+P) and a command palette (Ctrl+Shift+P) that lists every command.
+- **Find anything.** Fuzzy file finder and a command palette (Ctrl+Shift+P) that lists every command.
 - **Markdown preview.** A Markdown file opens as a rendered page, with pictures, tables and colored code blocks. One switch (or Ctrl+Shift+V) shows its text to edit, in the same tab.
 - **Image preview** for PNG, JPEG, GIF, BMP, ICO, QOI, PNM and TGA, with zoom and pan.
 - **40 themes**, dark and light, that switch with your system's dark mode.
@@ -128,12 +126,11 @@ Raftaar updates itself: when a new version is out, the status bar offers it.
 | Ctrl+Arrow | Split the active pane on that side |
 | Ctrl+Shift+Tab | Move to the next pane, clockwise |
 | Ctrl+W | Close the tab or pane |
-| Ctrl+B | Show or hide the file tree |
-| Ctrl+P | Go to file |
+| Ctrl+\` | Show or hide the file tree |
+| Ctrl+Shift+T | New file in the current folder |
 | Ctrl+Shift+P | Command palette |
 | Ctrl+Shift+F | Find in files |
 | Ctrl+Shift+G | Git history and source control |
-| Ctrl+K | Color theme |
 | Alt+Z | Zen mode |
 
 Every key can be rebound in `~/.config/raftaar/config`. The [guide](docs/guide.md) covers all shortcuts, settings, themes, language grammars and scripting.

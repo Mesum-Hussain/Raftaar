@@ -102,7 +102,7 @@ class ReopenClosedTab(unittest.TestCase):
             self.command(f'open {self.project / name}')
 
     def reopen(self):
-        self.command('key ctrl+shift+t')
+        self.command('cmd reopen_closed_tab')
 
     def test_reopens_where_it_was_with_its_cursor_and_selection(self):
         self.start()
@@ -301,14 +301,14 @@ class ReopenClosedTab(unittest.TestCase):
         self.reopen()
         self.assertEqual(self.tabs(), 'tabs=')
 
-    def test_theme_picker_keeps_ctrl_k(self):
+    def test_theme_picker_opens_after_a_reopen(self):
         self.start()
         self.open('a.txt')
         self.command('cmd close_tab')
         self.reopen()
         self.assertEqual(self.state()['focus'], '0')
         self.assertEqual(self.tabs(), 'tabs=*a.txt')
-        self.command('key ctrl+k')
+        self.command('cmd select_theme')
         self.assertEqual(self.state()['focus'], '1')
         self.assertIn('Dracula', self.command('print-palette'))
 

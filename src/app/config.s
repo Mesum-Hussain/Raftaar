@@ -686,7 +686,7 @@ g_settings:
     SETTING .Ls_ui, scale, ST_INT, cfg_ui_scale, 50, 300, 10, 1, "Interface zoom", "Scales everything on top of the display scale."
     SETTING .Ls_ui, font_size, ST_INT, cfg_ui_font_size, 9, 24, 1, 0, "Interface font size", "Font size of panels, tabs and menus."
     SETTING .Ls_ui, font, ST_STR, cfg_ui_font, 0, 0, 0, 0, "Interface font", "Path to a .ttf file. Empty uses the built-in Iosevka."
-    SETTING .Ls_ui, sidebar, ST_BOOL, cfg_sidebar, 0, 1, 1, 0, "Show file explorer", "Project tree on the left (ctrl+b)."
+    SETTING .Ls_ui, sidebar, ST_BOOL, cfg_sidebar, 0, 1, 1, 0, "Show file explorer", "Project tree on the left (ctrl+`)."
     SETTING .Ls_ui, sidebar_width, ST_INT, cfg_sidebar_w, 140, 600, 10, 0, "Explorer width", "Width of the file explorer in points."
     SETTING .Ls_ui, tooltips, ST_BOOL, cfg_tooltips, 0, 1, 1, 0, "Tooltips", "Show a button's name and shortcut on hover."
     SETTING .Ls_ui, auto_hide_scrollbars, ST_BOOL, cfg_autohide_scrollbars, 0, 1, 1, 0, "Auto-hide scrollbars", "Show scrollbars only while scrolling or under the pointer."

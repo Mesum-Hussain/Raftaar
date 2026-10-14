@@ -98,21 +98,18 @@ FN main
 unknown: .asciz "unknown_command_x"
 ok: .asciz "ok\n"
 replace_name: .asciz "replace"
-quick_name: .asciz "quick_open"
 next_name: .asciz "next_tab"
-term_name: .asciz "toggle_terminal"
+sidebar_name: .asciz "toggle_sidebar"
 .ifdef MACOS
 replace_hint: .asciz "\342\214\203H"
-quick_hint: .asciz "\342\214\230P"
 next_hint: .asciz "\342\214\203Tab"
-term_hint: .asciz "\342\214\203`"
+sidebar_hint: .asciz "\342\214\203`"
 .else
 replace_hint: .asciz "Ctrl+H"
-quick_hint: .asciz "Ctrl+P"
 next_hint: .asciz "Ctrl+Tab"
-term_hint: .asciz "Ctrl+`"
+sidebar_hint: .asciz "Ctrl+`"
 .endif
 .p2align 3
 hints:
-    .quad replace_name, replace_hint, quick_name, quick_hint
+    .quad replace_name, replace_hint, sidebar_name, sidebar_hint
     .quad next_name, next_hint, 0, 0

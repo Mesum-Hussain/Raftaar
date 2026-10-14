@@ -34,7 +34,7 @@ files still reload. The config key is `animate_disk_changes = true` under `[edit
 
 Opening files from a file manager or with `raftaar file.rb` starts a quick edit: the window shows just
 those files as tabs, without the explorer, whatever Settings say; that is never
-saved to Settings. Ctrl+B brings it back, and opening a folder in the window
+saved to Settings. Ctrl+\` brings it back, and opening a folder in the window
 shows it again. The first file's folder becomes the project: the explorer shows it, and new
 files and terminals start there. That folder is not remembered as the last project, and its saved session is
 neither restored nor overwritten; open the folder itself (Open Folder) to bring its session back and
@@ -240,15 +240,13 @@ On macOS the title bar is raftaar's too, with the window buttons in it. Command 
 
 | Key | Action |
 | --- | --- |
-| Ctrl+P | Go to file |
-| Ctrl+O | Open file |
+| Ctrl+Shift+T | New file in the shell's folder: asks for its name |
 | Ctrl+Shift+O | Open folder |
 | Ctrl+Shift+P, F1 | Command palette |
-| Ctrl+K | Color theme |
-| Ctrl+B | Toggle explorer |
+| Ctrl+\` | Toggle explorer |
 | Alt+Z | Zen mode: the tab or pane with the keys alone, over the whole window, until toggled again |
 | Ctrl+Shift+V | Markdown: the file's text, and back to its page |
-| Ctrl+T, Ctrl+Shift+\` | New terminal, in a tab |
+| Ctrl+T | New terminal, in a tab |
 | Ctrl+Right, Ctrl+Left | Split right, left: a new terminal beside the active pane |
 | Ctrl+Down, Ctrl+Up | Split down, up: a new terminal under or over the active pane |
 | Alt+Left, Alt+Right | Previous, next word (Ctrl with the arrows splits) |
@@ -263,15 +261,14 @@ On macOS the title bar is raftaar's too, with the window buttons in it. Command 
 | Ctrl+Tab, Ctrl+W | Next tab, close tab |
 | Ctrl+Shift+Tab | Next pane of the tab, clockwise; nothing in a tab with one view |
 | Ctrl+Shift+W | Close all tabs |
-| Ctrl+Shift+T | Reopen closed tab |
 
-**Reopen Closed Tab** (Ctrl+Shift+T) brings back the tabs you closed, the last one first, in their place among the tabs and with the cursor, selection and scroll a file had. Pressing it again goes further back, up to 20 tabs; tabs that are already open and files that are gone are skipped. Opening another folder starts the list over.
+**Reopen Closed Tab** (in the command palette) brings back the tabs you closed, the last one first, in their place among the tabs and with the cursor, selection and scroll a file had. Pressing it again goes further back, up to 20 tabs; tabs that are already open and files that are gone are skipped. Opening another folder starts the list over.
 
 Find, replace and find in files ignore case until their Aa is on, in every script: `été` finds `Été`, `яблоко` finds `ЯБЛОКО` and `οδος` finds `ΟΔΟΣ`. Accented letters stay apart from plain ones, so `ete` does not find `été`.
 
 All commands are listed in the command palette. In the terminal, Ctrl+Shift+C and Ctrl+Shift+V copy and paste, Ctrl+Shift+W goes to the program instead of closing the editor's tabs, Shift+PageUp and Shift+PageDown scroll back, and Shift keeps the mouse for selecting when a program uses it. A command run from the palette acts where its shortcut would: Zoom In with the terminal focused zooms the terminal.
 
-A terminal is a tab among the files. **Toggle Terminal** (in the command palette, without a key of its own) goes to the terminal shown last, starting one when there is none, and from a terminal back to the tab you came from; **New Terminal** (Ctrl+Shift+\`) opens another after the active tab. Ctrl+Tab (next) and Ctrl+PageUp (previous) go through terminals and files alike. Closing a terminal's tab ends its shell, as **Kill Terminal** does, and the tab closes by itself when the shell exits (Linux and macOS; on Windows the tab stays until it is closed). **Close All Tabs** leaves terminals open. On Linux, while the shell waits at its prompt, raftaar's commands keep their keys in a terminal (Ctrl+P, Ctrl+N, Ctrl+B, Ctrl+O, Ctrl+E, Ctrl+K, Ctrl+Q, F1); the keys of commands that edit a document stay the shell's (Ctrl+C, Ctrl+D, Ctrl+A, Ctrl+L, Ctrl+Z and the like), and a program running in the terminal gets every key. Up to 100 terminals can be open, panes included. Terminal tabs come back with the session (Linux and macOS), each in the folder its shell was in: a tab's shell starts when the tab is first shown, so tabs that are not looked at cost no process. A terminal that is not on the screen keeps its scrollback packed, at a fraction of the memory, and its output draws nothing until it is shown again. The cursor blinks as the editor's caret does (`cursor_blink` under `[editor]`), unless the program in the terminal asks for a steady one. Files dragged in from a file manager (Wayland) are typed at the terminal's cursor as paths quoted for the shell; dropped anywhere else they open as tabs.
+A terminal is a tab among the files. **Toggle Terminal** (in the command palette, without a key of its own) goes to the terminal shown last, starting one when there is none, and from a terminal back to the tab you came from; **New Terminal** (Ctrl+T) opens another after the active tab. Ctrl+Tab (next) and Ctrl+PageUp (previous) go through terminals and files alike. Closing a terminal's tab ends its shell, as **Kill Terminal** does, and the tab closes by itself when the shell exits (Linux and macOS; on Windows the tab stays until it is closed). **Close All Tabs** leaves terminals open. No default key takes a shell's control key at its prompt: Ctrl+P, Ctrl+N, Ctrl+B, Ctrl+E, Ctrl+K and the like are the shell's. On Linux, while the shell waits at its prompt, raftaar's other commands keep their keys in a terminal (Ctrl+Shift+P, Ctrl+Shift+T, F1); the keys of commands that edit a document stay the shell's (Ctrl+C, Ctrl+D, Ctrl+A, Ctrl+L, Ctrl+Z and the like), and a program running in the terminal gets every key. Up to 100 terminals can be open, panes included. Terminal tabs come back with the session (Linux and macOS), each in the folder its shell was in: a tab's shell starts when the tab is first shown, so tabs that are not looked at cost no process. A terminal that is not on the screen keeps its scrollback packed, at a fraction of the memory, and its output draws nothing until it is shown again. The cursor blinks as the editor's caret does (`cursor_blink` under `[editor]`), unless the program in the terminal asks for a steady one. Files dragged in from a file manager (Wayland) are typed at the terminal's cursor as paths quoted for the shell; dropped anywhere else they open as tabs.
 
 Links in the terminal open with Cmd+click on macOS and Ctrl+click on Linux and Windows, as in VS Code; a plain click still selects. Hovering a link underlines it, and its tooltip names the click. An `http://` or `https://` URL opens in the default browser, such as the `http://localhost:5173/` a dev server prints. The path of a file that exists opens in a tab: a name from `ls`, a relative or absolute path, or `~/...`, and `file:LINE` or `file:LINE:COL` from a compiler or `grep -n` opens at that place. Relative paths start in the shell's current folder on Linux and macOS, and in the project folder on Windows. The click works in programs that take the mouse too.
 
@@ -282,7 +279,7 @@ Zoom In, Zoom Out and Reset Zoom change the focused editor or terminal independe
 ### Window, tabs and panes
 
 The tabs are in the title bar, between the sidebar's toggle and, at the right, the search button
-(Go to File, Ctrl+P) and the buttons for the history and Settings; the history's
+(Go to File) and the buttons for the history and Settings; the history's
 button carries the number of changed files in a repository. The **+** after the last tab opens a
 terminal in a new one (Ctrl+T). A terminal opened while a terminal has the keys starts in the folder that one's shell is in. Files,
 terminals, the history and Settings are all tabs. A terminal's tab is named after the folder its
@@ -314,7 +311,7 @@ was (Linux and macOS). A folder opened with Open Folder stays the project until 
 the panes has a handle at its middle. No name in the tree is cut short: the sidebar widens to its
 longest one (up to half the window), and dragging it narrower than that folds it away; the same drag
 pulls it out again until the button is let go. In a narrow window it gives way by itself.
-Shown again (Ctrl+B or its button), it takes its default width, or more when a name in the tree
+Shown again (Ctrl+\` or its button), it takes its default width, or more when a name in the tree
 would be cut, up to half the window.
 
 The status bar shows the folders down to what the active pane shows, from Home when it is under it,
@@ -450,7 +447,7 @@ The Vim mode switch in Settings (`vim_mode = true` under `[editor]`) or Toggle V
 - `/` and `?` search from the command line in the status bar, going to the first match as you type; Enter stays there, Esc goes back, `n` and `N` repeat it. They are motions too (`d/foo`, `v?bar`). The text is found as typed, not as a regular expression, and case matters only when the find bar's Aa is on. `*` and `#` find the word under the cursor as a whole word.
 - `:` opens a command line in the status bar: `:w :q :q! :wq :x :wa :qa :qa! :e path :e! :noh`, and `:N` goes to line N.
 - Yanks and deletes go to the clipboard. `p` puts text copied in other programs too, as whole lines when it ends with a newline.
-- A mouse selection is a visual selection. Keys bound to commands (Ctrl+S, Ctrl+P, ...) keep working, except Ctrl+R, Ctrl+D, Ctrl+U and Ctrl+[ outside insert mode.
+- A mouse selection is a visual selection. Keys bound to commands (Ctrl+S, Ctrl+Shift+P, ...) keep working, except Ctrl+R, Ctrl+D, Ctrl+U and Ctrl+[ outside insert mode.
 
 Registers, marks, macros, ranges and `:s`, visual block and replace mode are not there.
 
@@ -480,7 +477,7 @@ Key names are those of the command palette entries in snake case (see `src/app/k
 
 ### Themes
 
-The theme follows the system's dark mode: `dark_theme` shows while the system is in dark mode and `light_theme` while it is in light mode, Raftaar Dark and Raftaar Light to start with. Pick them in Settings > Appearance, or with the theme picker (Ctrl+K), which saves the theme for the mode the system is in. Turn off **Follow system dark mode** (`follow_system = false`) to keep one theme, `theme`, whatever the system does; it starts as the theme on screen. **Toggle Light/Dark Theme** in the command palette then switches `theme` between the dark and the light one.
+The theme follows the system's dark mode: `dark_theme` shows while the system is in dark mode and `light_theme` while it is in light mode, Raftaar Dark and Raftaar Light to start with. Pick them in Settings > Appearance, or with the theme picker (**Select Color Theme** in the command palette), which saves the theme for the mode the system is in. Turn off **Follow system dark mode** (`follow_system = false`) to keep one theme, `theme`, whatever the system does; it starts as the theme on screen. **Toggle Light/Dark Theme** in the command palette then switches `theme` between the dark and the light one.
 
 raftaar reads the mode as VS Code does and switches as soon as the system does:
 
