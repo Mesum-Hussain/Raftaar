@@ -1237,7 +1237,7 @@ FN term_tab_draw
     sub ecx, eax
     sub ecx, [rip + g_mt + 4*MI_4]
     mov [rsp + 28], ecx         # grid h
-    M eax, MI_20                # a margin each side; the scrollbar sits in the right one
+    M eax, MI_32                # a margin each side; the scrollbar sits in the right one
     mov ecx, [rsp]
     add ecx, eax
     mov [rsp + 16], ecx         # grid x
