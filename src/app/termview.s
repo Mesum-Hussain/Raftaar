@@ -1237,7 +1237,7 @@ FN term_tab_draw
     sub ecx, eax
     sub ecx, [rip + g_mt + 4*MI_4]
     mov [rsp + 28], ecx         # grid h
-    M eax, MI_12
+    M eax, MI_20                # a margin each side; the scrollbar sits in the right one
     mov ecx, [rsp]
     add ecx, eax
     mov [rsp + 16], ecx         # grid x
@@ -1303,10 +1303,11 @@ FN term_tab_draw
     mov eax, [rsp + 32 + 8]
     push rax
     mov edi, ID_TSCROLL
-    mov esi, [rsp + 16 + 16]
-    add esi, [rsp + 16 + 24]
-    mov edx, [rsp + 16 + 20]
     M ecx, MI_12
+    mov esi, [rsp + 16]
+    add esi, [rsp + 16 + 8]
+    sub esi, ecx                # against the pane's right edge
+    mov edx, [rsp + 16 + 20]
     mov r8d, [rsp + 16 + 28]
     lea r9, [rip + scroll_px]
     call ui_scrollbar
