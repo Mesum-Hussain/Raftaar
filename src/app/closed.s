@@ -155,6 +155,8 @@ reopen_probe:
     je .Lrp_settings
     cmp rax, TAB_GIT
     je .Lrp_git
+    cmp rax, TAB_FILES
+    je .Lrp_files
     cmp rax, CK_DIFF
     je .Lrp_diff
     # a file, as long as it is still there
@@ -197,6 +199,9 @@ reopen_probe:
     je 8f
     call cmd_git_history
     jmp .Lrp_place
+.Lrp_files:
+    call cmd_files
+    jmp .Lrp_place
 .Lrp_diff:
     cmp dword ptr [rip + g_git_on], 0
     je 8f
@@ -222,6 +227,8 @@ probe_open:
     cmp r13, TAB_SETTINGS
     je 1f
     cmp r13, TAB_GIT
+    je 1f
+    cmp r13, TAB_FILES
     je 1f
     cmp r13, CK_DIFF
     je 1f

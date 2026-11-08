@@ -134,6 +134,15 @@ def rrect(x0, y0, x1, y1, r, n=4):
 def poly(pts):
     return line(pts + [pts[0]])
 
+def mirror(ops):
+    """the drawing program flipped left for right"""
+    return [(op[0], 128 - op[1], op[2]) if op[0] in 'ML' else op for op in ops]
+
+def star(cx, cy, r, ri):
+    """a five pointed star's corners, its first point up"""
+    return [(round(cx + (r if i % 2 == 0 else ri) * math.cos(math.radians(-90 + 36 * i))),
+             round(cy + (r if i % 2 == 0 else ri) * math.sin(math.radians(-90 + 36 * i)))) for i in range(10)]
+
 # the outline style of the chrome: thin strokes, round joins and rounded corners
 SW = 9
 box = rrect(12, 18, 116, 110, 20)
@@ -196,6 +205,16 @@ ICONS = [
     ('MORE', huge('MoreHorizontalIcon', 12)),
     ('GRAPH',    [('W', SW), ('O', 34, 24, 12), ('O', 34, 104, 12), ('O', 94, 64, 12), ('M', 34, 36), ('L', 34, 92)]
                  + line([(34, 44)] + arc(54, 44, 20, 180, 90, 4) + [(82, 64)])),
+    # ---- the file manager's places ----
+    ('CHEV_L', mirror(huge('ArrowRight01Icon'))),
+    ('STAR',     [('W', SW)] + poly(star(64, 68, 54, 24))),
+    ('TRASH',    [('W', SW), ('M', 18, 34), ('L', 110, 34)] + line([(46, 34), (50, 18), (78, 18), (82, 34)])
+                 + line([(30, 34), (36, 108), (92, 108), (98, 34)]) + [('M', 54, 54), ('L', 55, 88), ('M', 74, 54), ('L', 73, 88)]),
+    ('MUSIC',    [('W', SW), ('O', 38, 96, 14), ('O', 92, 86, 14), ('M', 52, 96), ('L', 52, 30), ('M', 106, 86), ('L', 106, 20),
+                  ('M', 52, 30), ('L', 106, 20)]),
+    ('VIDEO',    [('W', SW)] + rrect(12, 32, 84, 96, 14) + poly([(84, 56), (116, 38), (116, 90), (84, 72)])),
+    ('DRIVE',    [('W', SW)] + rrect(12, 30, 116, 98, 16) + [('M', 12, 72), ('L', 116, 72), ('D', 94, 85, 6)]),
+    ('EJECT',    [('P', 3, 64, 22, 108, 72, 20, 72), ('P', 4, 20, 88, 108, 88, 108, 104, 20, 104)]),
 ]
 
 root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')

@@ -240,7 +240,7 @@ class SidebarSplit(unittest.TestCase):
         # adjacent toolbar tips skip the delay once one is open
         v = self.values(['wait 200', 'move 846 14', 'wait 650', 'echo first=', 'print-tip',
                          'move 876 14', 'wait 60', 'echo second=', 'print-tip'])
-        self.assertIn('Go to file', v['first'])
+        self.assertIn('File manager', v['first'])
         self.assertIn('Settings', v['second'])
 
     def test_tooltip_instant_across_the_gap_between_buttons(self):

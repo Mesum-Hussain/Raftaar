@@ -1542,6 +1542,7 @@ seg_edge:
     jmp raster_line
 
 # fmt_age(unix time, buf) -> eax length of "3 days ago"
+.globl fmt_age
 fmt_age:
     PROLOGUE
     mov r12, rsi

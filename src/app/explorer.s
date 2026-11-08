@@ -1669,11 +1669,14 @@ item_keys:
     mov rax, [rip + menu_list]
     shl edi, 4
     mov rdi, [rax + rdi + 8]
+    push rdi
     call cmd_for_fn
+    pop rdi
     test rax, rax
-    jz 1f
+    jz 2f
     mov rdi, rax
     jmp keys_for
+2:  jmp files_menu_key          # the file manager's items have keys of their own
 1:  ret
 
 # open_changes(): diff of the file the menu is for

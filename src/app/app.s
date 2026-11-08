@@ -12,6 +12,7 @@
 .equ ID_PROJECT_BTN, 0x2009
 .equ ID_TAB_NEW, 0x200a
 .equ ID_SEARCH, 0x200b
+.equ ID_FILES_BTN, 0x200c
 .equ ID_CRUMB, 0x2c00               # + folder of the status bar's path; + 100 "…", + 101 Home
 .equ CRUMB_MAX, 200                 # entries of a folder read for its menu
 .equ CRUMB_SHOW, 22                 # and shown
@@ -74,6 +75,7 @@ g_argb: .long 0                  # the window's pixels have alpha (Wayland): its
 g_side_shown: .long 0            # the sidebar is drawn (it gives way in a narrow window)
 crumb_term: .long 0              # the status bar's folders are a terminal's: a click is a cd
 crumb_leaf: .long 0              # the last of them is a file's name
+crumb_fm: .long 0                # they are the file manager's folder: a click goes there
 crumb_homelen: .long 0           # bytes of crumb_path that are the home folder, 0: not under it
 crumb_nsegs: .long 0
 crumb_first: .long 0             # the first one shown; those before it are behind "…"
@@ -1529,6 +1531,9 @@ FN app_tab_label
 3:  lea rax, [rip + .Lhome_tab]
     cmp qword ptr [rcx + TAB_kind], TAB_HOME
     je 2f
+    lea rax, [rip + .Lfiles_tab]
+    cmp qword ptr [rcx + TAB_kind], TAB_FILES
+    je 2f
     lea rax, [rip + .Lsettings]
     cmp qword ptr [rcx + TAB_kind], TAB_GIT
     jne 2f
@@ -2600,7 +2605,19 @@ FN app_on_key
     test eax, eax
     jnz 9f
 .Lk_bind:
+    # the file manager has its keys first (Ctrl+C copies a file there)
     cmp dword ptr [rip + g_focus], FOCUS_EDITOR
+    jne 0f
+    call files_here
+    test eax, eax
+    jz 0f
+    mov edi, r12d
+    mov esi, r13d
+    mov edx, r14d
+    call files_key
+    test eax, eax
+    jnz 9f
+0:  cmp dword ptr [rip + g_focus], FOCUS_EDITOR
     jne 1f
     call md_active              # a Markdown page has no cursor for vim's keys
     test eax, eax
@@ -2954,12 +2971,17 @@ FN app_render
     mov edi, [rip + cfg_sidebar_w]
     call sc
     mov [rip + g_side_px], eax
-    # showing the history's details, the sidebar is as wide as they need
+    # showing the history's details or the file manager's places, the sidebar is as wide as they need
     call gitview_side
     test eax, eax
-    jz 0f
+    jz 18f
     call gitview_side_least
-    cmp [rip + g_side_px], eax
+    jmp 19f
+18: call files_side
+    test eax, eax
+    jz 0f
+    call files_side_least
+19: cmp [rip + g_side_px], eax
     jge 0f
     mov [rip + g_side_px], eax
 0:  M eax, MI_TITLE
@@ -2993,6 +3015,10 @@ FN app_render
     mov dword ptr [rip + side_narrow], 1
     push rax
     call gitview_side
+    push rax
+    call files_side
+    pop rcx
+    or eax, ecx
     or eax, [rip + side_asked]
     pop rcx
     and eax, ecx
@@ -3471,8 +3497,12 @@ FN view_draw
     call term_pane_draw
     jmp .Lvd_done
 5:  cmp r14, TAB_GIT
-    jne 1f
+    jne 51f
     call gitview_draw
+    jmp .Lvd_done
+51: cmp r14, TAB_FILES
+    jne 1f
+    call files_draw
     jmp .Lvd_done
 1:  cmp r14, TAB_SETTINGS
     jne 11f
@@ -3680,9 +3710,34 @@ FN titlebar_draw
     test eax, UB_CLICK
     jz 8f
     call cmd_toggle_settings
-8:  cmp dword ptr [rip + g_git_on], 0
+8:  # the file manager's
+    M eax, MI_64
+    cmp [rsp + 64], eax
+    jl 81f
+    sub r12d, r13d
+    sub r12d, [rip + g_mt + 4*MI_2]
+    mov edi, ID_FILES_BTN
+    mov esi, r12d
+    mov edx, [rsp + 12]
+    sub edx, r13d
+    sar edx, 1
+    mov ecx, r13d
+    mov r8d, r13d
+    mov r9d, IC_FOLDER
+    call ui_icon_btn
+    mov r8d, eax
+    mov edi, ID_FILES_BTN
+    mov esi, r12d
+    M edx, MI_TITLE
+    mov ecx, r13d
+    call tip_note               # keeps the button flags in eax
+    test eax, UB_CLICK
+    jz 81f
+    call cmd_toggle_files
+81: cmp dword ptr [rip + g_git_on], 0
     je 9f
     M eax, MI_64
+    add eax, [rip + g_mt + 4*MI_32]
     cmp [rsp + 64], eax
     jl 9f
     sub r12d, r13d
@@ -3760,7 +3815,7 @@ FN titlebar_draw
     call cmd_toggle_git
 9:  # the search button before them: Go to File
     M eax, MI_64
-    add eax, [rip + g_mt + 4*MI_32]
+    add eax, [rip + g_mt + 4*MI_64]
     cmp [rsp + 64], eax
     jl 95f
     sub r12d, r13d
@@ -3973,7 +4028,8 @@ FN cmd_project_menu
     jmp project_menu_open
 
 # sidebar_draw(x, y, w, h): the explorer; while the history tab has the keys, its details instead
-#   (source control on the work tree's row, else the commit's message and files)
+#   (source control on the work tree's row, else the commit's message and files); while the file
+#   manager has them, its places
 sidebar_draw:
     PROLOGUE 16
     mov [rsp], edi
@@ -3982,6 +4038,8 @@ sidebar_draw:
     mov [rsp + 12], ecx
     call gitview_side
     mov ebx, eax
+    call files_side
+    mov r12d, eax
     mov edi, [rsp]
     mov esi, [rsp + 4]
     mov edx, [rsp + 8]
@@ -3990,7 +4048,11 @@ sidebar_draw:
     jz 1f
     call gitview_side_draw
     EPILOGUE
-1:  call explorer_draw
+1:  test r12d, r12d
+    jz 2f
+    call files_side_draw
+    EPILOGUE
+2:  call explorer_draw
     EPILOGUE
 
 # tabs_draw(x, y, w, h) -> eax the x after the last one: the title bar's tabs, a rounded one for each
@@ -4169,6 +4231,9 @@ FN tabs_draw
     mov edi, IC_HOME
     cmp qword ptr [r15 + TAB_kind], TAB_HOME
     je 82f
+    mov edi, IC_FOLDER
+    cmp qword ptr [r15 + TAB_kind], TAB_FILES
+    je 82f
     mov edi, IC_SLIDERS
 82: mov r8d, [rsp + 76]
 83: mov esi, r12d
@@ -4319,7 +4384,15 @@ crumbs_draw:
     mov r12d, edi
     mov dword ptr [rip + crumb_term], 0
     mov dword ptr [rip + crumb_leaf], 0
-    cmp dword ptr [rip + g_term_open], 0
+    mov dword ptr [rip + crumb_fm], 0
+    call files_crumb_path
+    test rax, rax
+    jz 0f
+    js .Lcr_ret
+    mov dword ptr [rip + crumb_fm], 1
+    mov rsi, rax
+    jmp 21f
+0:  cmp dword ptr [rip + g_term_open], 0
     je 1f
     lea rdi, [rip + crumb_path]
     call term_shown_cwd
@@ -4633,7 +4706,13 @@ crumb_act:
     test ebx, ebx
     jnz 2f
     mov word ptr [rax], 0x002f
-2:  # the shell goes there; the folder it is in lists its folders instead
+2:  # the file manager goes there
+    cmp dword ptr [rip + crumb_fm], 0
+    je 3f
+    lea rdi, [rip + crumb_tmp]
+    call files_go
+    jmp 9f
+3:  # the shell goes there; the folder it is in lists its folders instead
     cmp dword ptr [rip + crumb_term], 0
     je 4f
     lea eax, [r12 + 1]
@@ -5068,11 +5147,16 @@ FN statusbar_draw
 95: mov r13, [rip + tmp_sb + SB_ptr]
     call .Lsb_item
     jmp 9f
-96: # no text: the path of what the tab shows, or the project's folder
+96: # no text: the path of what the tab shows, or the project's folder; the file manager's
+    # selected item at the right
+    mov edi, [rsp + 20]
+    mov esi, [rsp + 4]
+    mov edx, [rsp + 12]
+    call files_status
+    mov ecx, eax
     mov edi, [rsp + 24]
     mov esi, [rsp + 4]
     mov edx, [rsp + 12]
-    mov ecx, [rsp + 20]
     call crumbs_draw
 9:  call gfx_clip_pop
     EPILOGUE
@@ -6407,6 +6491,7 @@ FN cmd_move_line_down
 # tip_table: button, text, the handler it runs (0: not a command, no shortcut); 0 ends it
 tip_table:
     .quad ID_GIT_BTN, .Ltip_git, cmd_toggle_git
+    .quad ID_FILES_BTN, .Ltip_files, cmd_toggle_files
     .quad ID_SETTINGS_BTN, .Ltip_settings, cmd_settings
     .quad ID_TOG_SIDE, .Ltip_side, cmd_toggle_sidebar
     .quad ID_EXP_NEW, .Ltip_exp_new, 0
@@ -6416,6 +6501,7 @@ tip_table:
     .quad ID_TAB_NEW, .Ltip_new_term, cmd_new_terminal
     .quad 0, 0, 0
 .Ltip_git: .asciz "Git history"
+.Ltip_files: .asciz "File manager"
 .Ltip_new_term: .asciz "New terminal"
 .Lsearch: .asciz "Go to file"
 .Lenv_home: .asciz "HOME"
@@ -6429,6 +6515,7 @@ tip_table:
 .Ltip_exp_refresh: .asciz "Refresh explorer"
 .Ltip_eq: .asciz "tip="
 .Lgit_tab: .asciz "Git"
+.Lfiles_tab: .asciz "Files"
 .Lln: .asciz "Ln "
 .Lcol: .asciz ", Col "
 .Lsel_open: .asciz "  ("

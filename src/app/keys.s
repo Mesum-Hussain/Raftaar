@@ -552,6 +552,8 @@ g_commands:
     COMMAND clear_terminal, "Clear Terminal", cmd_clear_terminal, ""
     COMMAND git_history, "Git: Show History", cmd_git_history, ""
     COMMAND toggle_git_history, "Toggle Git History", cmd_toggle_git, "ctrl+shift+g"
+    COMMAND file_manager, "File Manager", cmd_files, ""
+    COMMAND toggle_file_manager, "Toggle File Manager", cmd_toggle_files, "ctrl+shift+m"
     COMMAND git_changes, "Git: Open Changes", cmd_git_changes, ""
     COMMAND git_commit, "Git: Commit", cmd_git_commit, ""
     COMMAND git_generate_message, "Git: Generate Commit Message", cmd_git_generate_message, ""

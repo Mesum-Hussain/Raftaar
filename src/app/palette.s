@@ -797,7 +797,13 @@ FN prompt_open
 prompt_initial:
     PROLOGUE
     mov eax, [rip + pal_prompt]
-    cmp eax, PROMPT_SAVE_AS
+    cmp eax, PROMPT_FM_MOVE     # the file manager's
+    jb 0f
+    lea rdi, [rip + tmp]
+    mov esi, eax
+    call files_prompt_initial
+    EPILOGUE
+0:  cmp eax, PROMPT_SAVE_AS
     je 1f
     cmp eax, PROMPT_RENAME
     je 3f
@@ -2477,7 +2483,7 @@ prompt_done:
     call explorer_refresh
     jmp 9f
 3:  cmp r12d, PROMPT_RENAME
-    jne 9f
+    jne 4f
     lea rdi, [rip + g_explorer_target]
     mov rsi, rbx
     SYS SYS_rename
@@ -2488,6 +2494,12 @@ prompt_done:
     mov rsi, rbx
     call app_retarget_tabs
     call explorer_refresh
+    jmp 9f
+4:  cmp r12d, PROMPT_FM_MOVE    # the file manager's
+    jb 9f
+    mov rdi, rbx
+    mov esi, r12d
+    call files_prompt_done
     jmp 9f
 8:  lea rdi, [rip + .Lfailed]
     call app_toast
@@ -2922,6 +2934,9 @@ any_icon_draw:
     je 8f
     mov edi, IC_HOME
     cmp qword ptr [rax + TAB_kind], TAB_HOME
+    je 8f
+    mov edi, IC_FOLDER
+    cmp qword ptr [rax + TAB_kind], TAB_FILES
     je 8f
     mov edi, IC_SLIDERS
     jmp 8f
