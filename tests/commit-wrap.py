@@ -24,9 +24,8 @@ class CommitWrap(unittest.TestCase):
                         XDG_STATE_HOME=(self.home / 'state').as_posix())
         config = self.home / 'config/raftaar/config'
         config.parent.mkdir(parents=True)
-        # The main editor's wrap preference has no effect on commit messages. With the sidebar
-        # hidden, the Git tab keeps the panel beside its list, which narrows with the window.
-        config.write_text('[editor]\nword_wrap = false\n[ui]\nagents_panel = false\nsidebar = false\n'
+        # The main editor's wrap preference has no effect on commit messages.
+        config.write_text('[editor]\nword_wrap = false\n[ui]\nagents_panel = false\n'
                           '[updates]\ncheck = false\n', encoding='utf-8')
         self.git('init', '-q')
         self.git('config', 'user.name', 'Test')
@@ -65,7 +64,8 @@ class CommitWrap(unittest.TestCase):
 
     def test_resize_reflows_without_editing_the_message(self):
         wide = self.marker_position(['key ctrl+Home', 'key Down'])
-        narrow = self.marker_position(['resize 700 700', 'key ctrl+Home', 'key Down'])
+        # a window this narrow keeps the sidebar, and the panel in it, to half its width
+        narrow = self.marker_position(['resize 400 700', 'key ctrl+Home', 'key Down'])
         self.assertLess(narrow, wide)
         self.assertGreater(narrow, 0)
 

@@ -18,21 +18,21 @@ EXPLORER_NEW = (162, 60, (72, 82, 272, 112))
 EXPLORER_NEW_FOLDER = (190, 60, (100, 82, 300, 112))
 # the branch at the left end of the status bar (770 to 800): its tooltip is above it
 AWAY = (640, 400)
-# the Git tab's work tree panel with the explorer hidden: each button, and the commands it runs
+# the Git tab's work tree panel, in the sidebar: each button, and the commands it runs
 GIT_BUTTONS = (
-    (1223, 106, 'Writes the message from git diff --cached'),
-    (902, 224, 'git commit -q -F - < message'),
-    (1226, 60, 'git -c pull.rebase=false pull --no-edit'),
-    (1145, 224, 'git push'),
-    (1200, 60, 'git fetch'),
-    (1252, 60, 'git reset --hard -q && git clean -f -d -q'),
-    (1257, 272, 'git reset -q -- .'),
-    (1257, 300, 'git reset -q -- file.txt'),
-    (1257, 336, 'git add -A'),
-    (1257, 364, 'git add -A -- b.txt'),
-    (1230, 364, 'git checkout -q -- b.txt'),
-    (1257, 392, "git add -A -- 'it'\\''s new.txt'"),
-    (1230, 392, "git clean -f -d -q -- 'it'\\''s new.txt'"),
+    (203, 106, 'Writes the message from git diff --cached'),
+    (70, 224, 'git commit -q -F - < message'),
+    (206, 60, 'git -c pull.rebase=false pull --no-edit'),
+    (188, 224, 'git push'),
+    (180, 60, 'git fetch'),
+    (232, 60, 'git reset --hard -q && git clean -f -d -q'),
+    (237, 272, 'git reset -q -- .'),
+    (237, 300, 'git reset -q -- file.txt'),
+    (237, 336, 'git add -A'),
+    (237, 364, 'git add -A -- b.txt'),
+    (210, 364, 'git checkout -q -- b.txt'),
+    (237, 392, "git add -A -- 'it'\\''s new.txt'"),
+    (210, 392, "git clean -f -d -q -- 'it'\\''s new.txt'"),
 )
 
 
@@ -63,10 +63,8 @@ class Tooltips(unittest.TestCase):
 
     def start(self, tooltips=None, git=False, size='1280x800', ui=''):
         setting = ('' if tooltips is None else f'tooltips = {str(tooltips).lower()}\n') + ui
-        # git: the Git tab without the explorer, and the AI button (Ollama is not asked)
+        # git: the Git tab, its details in the sidebar, and the AI button (Ollama is not asked)
         git_setting = 'enabled = true\ncommit_ai = ollama\n' if git else 'enabled = false\n'
-        if git:
-            setting += 'sidebar = false\n'
         self.config.write_text('[files]\nrestore_session = false\nrestore_project = false\n'
                                '[updates]\ncheck = false\n[git]\n' + git_setting +
                                '[editor]\ncursor_blink = false\n'
@@ -201,13 +199,13 @@ class Tooltips(unittest.TestCase):
         self.command('wait-git')
         self.command('move %d %d' % AWAY)
         self.command('wait 60')
-        self.command('move 1226 60')
+        self.command('move 206 60')
         self.command('wait 650')
         self.assertEqual(self.command('print-tip'), 'tip=git pull --no-edit\n')
 
     def generate_tip(self, font, x, y):
-        """Generate's tooltip at x y, in the work tree's panel at its narrowest (260 of a window 600
-        wide), with the interface font at FONT"""
+        """Generate's tooltip at x y, in the work tree's panel in the sidebar of a window 600 wide (at
+        most half of it), with the interface font at FONT"""
         self.git('init', '-q', '-b', 'main')
         self.git('add', 'file.txt')
         self.start(git=True, size='600x500', ui=f'font_size = {font}\n')
@@ -221,11 +219,11 @@ class Tooltips(unittest.TestCase):
         self.assertEqual(self.command('print-tip'), 'tip=Writes the message from git diff --cached\n')
 
     def test_generate_beside_a_narrow_message(self):
-        self.generate_tip(13, 535, 106)
+        self.generate_tip(13, 195, 106)
 
     def test_generate_under_a_message_it_would_crowd(self):
         # with the largest interface font, beside the message it would leave it narrower than itself
-        self.generate_tip(24, 470, 247)
+        self.generate_tip(24, 140, 260)
 
     def test_no_frames_while_shown_and_idle(self):
         self.start()

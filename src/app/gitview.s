@@ -18,8 +18,6 @@ ENDSTRUCT CM_SIZE
 .equ ID_GV_ROW, 0x7000          # + row
 .equ ID_GV_SCROLL, 0x7e01
 .equ ID_GV_DSCROLL, 0x7e02
-.equ ID_GV_TOGGLE, 0x7e04       # the button on the work tree's row that folds the details away
-.equ ID_GV_SPLIT, 0x7e03        # the line between the list and the details
 .equ ID_GV_FILE, 0x7f00         # + file
 .equ MAX_ROWS, 0xe00
 .equ LANES, 64
@@ -52,13 +50,7 @@ list_scroll: .long 0
 list_h: .long 0
 det_scroll: .long 0
 det_h: .long 0                  # content height of the details
-det_wpt: .long 0                # the details' width in points, as dragged; 0: two fifths of the tab
-det_fold: .long 0               # dragged under their least width: a rail at the edge until pulled out
-det_grab: .long 0               # a drag of their divider: the pointer's distance from it at the press
-det_moved: .long 0              # and whether the pointer has moved since
-det_bits: .long 0               # UB_* of the divider, hit tested before the list and the details
 det_state: .long 0              # 0 none, 1 loading, 2 shown
-det_side: .long 0               # the details are in the sidebar this frame: the list has the whole tab
 det_running: .long 0
 ns_running: .long 0
 .p2align 3
@@ -887,108 +879,14 @@ FN gitview_draw
     call ui_text_center
     add rsp, 16
     jmp 9f
-2:  # with the keys, the details are in the sidebar, in place of the tree: the list has the tab
-    # (with the sidebar hidden they stay beside the list)
-    call gitview_side
-    and eax, [rip + g_side_shown]
-    mov [rip + det_side], eax
-    test eax, eax
-    jz 20f
-    mov dword ptr [rip + det_bits], 0
+2:  # the list has the whole tab: the details are in the sidebar, in place of the tree
     mov edi, [rsp]
     mov esi, [rsp + 4]
     mov edx, [rsp + 8]
     mov ecx, [rsp + 12]
     call draw_list
-    jmp 9f
-20: # else the list, the details on the right. The line between them drags: under their least width
-    # the details fold to a rail at the edge, which pulls out again; a narrow tab folds them by itself
-    mov eax, [rsp + 8]
-    imul eax, eax, 2
-    xor edx, edx
-    mov ecx, 5
-    div ecx
-    mov ebx, eax                # details width
-    mov edi, 260
-    call sc
-    cmp ebx, eax
-    cmovl ebx, eax
-    cmp dword ptr [rip + det_wpt], 0
-    je 21f
-    mov edi, [rip + det_wpt]
-    call sc
-    mov ebx, eax
-21: mov edi, 220                # the list keeps this much
-    call sc
-    mov ecx, [rsp + 8]
-    sub ecx, eax
-    cmp ebx, ecx
-    cmovg ebx, ecx
-    mov dword ptr [rsp + 16], 0 # the details are a rail
-    call det_least
-    cmp ebx, eax
-    jl 22f
-    cmp dword ptr [rip + det_fold], 0
-    je 23f
-22: mov dword ptr [rsp + 16], 1
-    M ebx, MI_16
-23: mov eax, [rsp + 8]
-    sub eax, ebx
-    dec eax
-    mov r12d, eax               # list width
-    # the divider takes its strip first (the whole rail, when there is one)
-    M eax, MI_3
-    mov edi, ID_GV_SPLIT
-    mov esi, [rsp]
-    add esi, r12d
-    sub esi, eax
-    mov edx, [rsp + 4]
-    lea ecx, [rax + rax + 1]
-    cmp dword ptr [rsp + 16], 0
-    je 24f
-    add ecx, ebx
-24: mov r8d, [rsp + 12]
-    call ui_btn
-    mov [rip + det_bits], eax
-    test eax, UB_PRESS
-    jz 25f
-    and dword ptr [rip + g_pressed], ~(1 << BTN_LEFT)   # the press is the drag's
-25: mov edi, [rsp]
-    mov esi, [rsp + 4]
-    mov edx, r12d
-    mov ecx, [rsp + 12]
-    call draw_list
-    mov edi, [rsp]
-    add edi, r12d
-    mov esi, [rsp + 4]
-    M edx, MI_1
-    mov ecx, [rsp + 12]
-    COLOR r8d, T_BORDER
-    call gfx_fill
-    mov edi, [rsp]
-    add edi, r12d
-    add edi, [rip + g_mt + 4*MI_1]
-    mov esi, [rsp + 4]
-    mov edx, ebx
-    mov ecx, [rsp + 12]
-    cmp dword ptr [rsp + 16], 0
-    jne 26f
-    call draw_details
-    jmp 27f
-26: COLOR r8d, T_PANEL
-    call gfx_fill
-27: mov edi, [rsp]
-    add edi, r12d
-    mov esi, [rsp + 4]
-    mov edx, [rsp + 12]
-    mov ecx, [rsp]
-    add ecx, [rsp + 8]
-    mov r8d, [rsp]
-    call det_divider
 9:  EPILOGUE
 
-# det_least() -> eax the details' least width: under it they fold (source control's buttons keep
-#   their labels inside them)
 # gitview_side() -> eax 1 when the sidebar shows the details in place of the tree: the history tab
 #   has the keys and its log is shown (asking for the explorer brings the tree back)
 FN gitview_side
@@ -1029,6 +927,8 @@ FN gitview_side_least
     pop rbx
     ret
 
+# det_least() -> eax the details' least width (source control's buttons keep their labels inside
+#   them)
 det_least:
     push rbx
     mov edi, 200
@@ -1039,107 +939,6 @@ det_least:
     cmovl eax, ebx
     pop rbx
     ret
-
-# det_divider(x, y, h, right, left): the line between the list and the details, hit tested into
-#   det_bits: its handle, the accent under the pointer, and its drag. The details are as wide as the
-#   drag leaves right of it; under their least width they fold, and the same drag (or a click on the
-#   rail) brings them back; a double-click puts them at their default width
-det_divider:
-    PROLOGUE 16
-    mov r12d, edi
-    mov r13d, esi
-    mov r14d, edx
-    mov [rsp], ecx
-    mov [rsp + 4], r8d
-    mov ebx, [rip + det_bits]
-    COLOR edi, T_BORDER
-    COLOR esi, T_FG
-    mov edx, 90
-    call color_mix
-    mov r15d, eax               # the handle's color
-    test ebx, UB_HOVER | UB_HELD
-    jz 1f
-    mov dword ptr [rip + g_cursor], CUR_EW
-    COLOR r15d, T_ACCENT
-    M edx, MI_2
-    mov edi, edx
-    sar edi, 1
-    neg edi
-    add edi, r12d
-    mov esi, r13d
-    mov ecx, r14d
-    xor r8d, r8d
-    mov r9d, r15d
-    call gfx_round_rect
-1:  M edx, MI_4
-    M ecx, MI_32
-    mov edi, edx
-    sar edi, 1
-    neg edi
-    add edi, r12d
-    mov esi, r14d
-    sub esi, ecx
-    sar esi, 1
-    add esi, r13d
-    M r8d, MI_2
-    mov r9d, r15d
-    call gfx_round_rect
-    test ebx, UB_DOUBLE
-    jz 2f
-    mov dword ptr [rip + det_wpt], 0
-    mov dword ptr [rip + det_fold], 0
-    mov dword ptr [rip + g_active], 0
-    jmp 8f
-2:  test ebx, UB_PRESS
-    jz 3f
-    mov eax, [rip + g_mx]
-    sub eax, r12d
-    mov [rip + det_grab], eax
-    mov dword ptr [rip + det_moved], 0
-    jmp 9f
-3:  test ebx, UB_HELD
-    jz 6f
-    mov eax, [rip + g_mx]
-    cmp dword ptr [rip + det_moved], 0
-    jne 4f
-    cmp eax, [rip + g_press_x]
-    je 9f
-    mov dword ptr [rip + det_moved], 1
-4:  sub eax, [rip + det_grab]
-    mov ebx, [rsp]
-    sub ebx, eax                # the width the pointer asks for
-    call det_least
-    cmp ebx, eax
-    jge 5f
-    mov dword ptr [rip + det_fold], 1
-    jmp 8f
-5:  mov dword ptr [rip + det_fold], 0
-    mov edi, 220
-    call sc
-    mov ecx, [rsp]
-    sub ecx, [rsp + 4]
-    sub ecx, eax
-    cmp ebx, ecx
-    cmovg ebx, ecx
-    cvtsi2ss xmm0, ebx
-    divss xmm0, [rip + g_s]
-    cvtss2si eax, xmm0
-    mov [rip + det_wpt], eax
-    jmp 8f
-6:  test ebx, UB_CLICK
-    jz 9f
-    cmp dword ptr [rip + det_fold], 0
-    je 9f
-    mov eax, [rip + g_mx]       # a click on the rail, though the hand moved a little
-    sub eax, [rip + g_press_x]
-    cdq
-    xor eax, edx
-    sub eax, edx
-    cmp eax, [rip + g_mt + 4*MI_8]
-    jg 9f
-    mov dword ptr [rip + det_fold], 0
-8:  mov dword ptr [rip + g_dirty], 1
-9:  EPILOGUE
 
 # draw_list(x, y, w, h)
 draw_list:
@@ -1410,31 +1209,7 @@ draw_list:
     COLOR r9d, T_MUTED
     call ui_text_c
 .Ldl_next:
-    test ebx, ebx
-    jnz 1f
-    cmp dword ptr [rsp + 40], 0 # once: on the row kept at the top, when the list is scrolled
-    jne 0f
-    cmp dword ptr [rip + list_scroll], 0
-    jne 1f
-0:  cmp dword ptr [rip + det_side], 0  # no panel beside the list to fold
-    jne 1f
-    # at the right end of the work tree's row: the button that folds the panel beside the list away
-    mov edi, ID_GV_TOGGLE
-    mov esi, [rsp]
-    add esi, [rsp + 8]
-    sub esi, [rip + g_mt + 4*MI_16]
-    sub esi, [rip + g_mt + 4*MI_24]
-    mov edx, r13d
-    add edx, [rip + g_mt + 4*MI_2]
-    M ecx, MI_24
-    mov r8d, ecx
-    mov r9d, IC_PANEL_R
-    call ui_icon_btn
-    test eax, UB_CLICK
-    jz 1f
-    xor dword ptr [rip + det_fold], 1
-    mov dword ptr [rip + g_dirty], 1
-1:  cmp dword ptr [rsp + 40], 0
+    cmp dword ptr [rsp + 40], 0
     jne .Ldl_done
     add r13d, r15d
     inc ebx

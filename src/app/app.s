@@ -2988,9 +2988,14 @@ FN app_render
     mov dword ptr [rip + side_narrow], 0
     cmp [rsp], ecx
     jge 15f
-    # until its toggle asks for it there: then it takes no more than half the window
+    # until its toggle asks for it there, or the history tab has the keys (the sidebar has its
+    # details): then it takes no more than half the window
     mov dword ptr [rip + side_narrow], 1
-    and eax, [rip + side_asked]
+    push rax
+    call gitview_side
+    or eax, [rip + side_asked]
+    pop rcx
+    and eax, ecx
     mov ecx, [rsp]
     sar ecx, 1
     cmp [rip + g_side_px], ecx

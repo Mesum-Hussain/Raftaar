@@ -52,7 +52,8 @@ class FieldBlink(unittest.TestCase):
         """the frames shown after actions, 300 ms apart, as (width, pixels)"""
         config = self.work / 'config/raftaar/config'
         config.parent.mkdir(parents=True, exist_ok=True)
-        config.write_text('[ui]\nsidebar = false\nagents_panel = false\ntooltips = false\n'
+        # the Git tab's details are in the sidebar
+        config.write_text(f'[ui]\nsidebar = {"true" if git else "false"}\nagents_panel = false\ntooltips = false\n'
                           f'[editor]\ncursor_blink = {"true" if blink else "false"}\n'
                           '[files]\nrestore_session = false\nrestore_project = false\n'
                           f'[git]\nenabled = {"true" if git else "false"}\ncommit_ai = off\n'
