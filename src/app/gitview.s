@@ -58,6 +58,7 @@ det_grab: .long 0               # a drag of their divider: the pointer's distanc
 det_moved: .long 0              # and whether the pointer has moved since
 det_bits: .long 0               # UB_* of the divider, hit tested before the list and the details
 det_state: .long 0              # 0 none, 1 loading, 2 shown
+det_side: .long 0               # the details are in the sidebar this frame: the list has the whole tab
 det_running: .long 0
 ns_running: .long 0
 .p2align 3
@@ -886,8 +887,22 @@ FN gitview_draw
     call ui_text_center
     add rsp, 16
     jmp 9f
-2:  # the list, the details on the right. The line between them drags: under their least width the
-    # details fold to a rail at the edge, which pulls out again; a narrow tab folds them by itself
+2:  # with the keys, the details are in the sidebar, in place of the tree: the list has the tab
+    # (with the sidebar hidden they stay beside the list)
+    call gitview_side
+    and eax, [rip + g_side_shown]
+    mov [rip + det_side], eax
+    test eax, eax
+    jz 20f
+    mov dword ptr [rip + det_bits], 0
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 12]
+    call draw_list
+    jmp 9f
+20: # else the list, the details on the right. The line between them drags: under their least width
+    # the details fold to a rail at the edge, which pulls out again; a narrow tab folds them by itself
     mov eax, [rsp + 8]
     imul eax, eax, 2
     xor edx, edx
@@ -974,6 +989,46 @@ FN gitview_draw
 
 # det_least() -> eax the details' least width: under it they fold (source control's buttons keep
 #   their labels inside them)
+# gitview_side() -> eax 1 when the sidebar shows the details in place of the tree: the history tab
+#   has the keys and its log is shown (asking for the explorer brings the tree back)
+FN gitview_side
+    push rbx
+    xor eax, eax
+    cmp dword ptr [rip + g_focus], FOCUS_EXPLORER
+    je 9f
+    cmp dword ptr [rip + cfg_git], 0
+    je 9f
+    cmp dword ptr [rip + g_git_on], 0
+    je 9f
+    cmp dword ptr [rip + log_state], 2
+    jne 9f
+    mov rdi, [rip + g_tab_cur]
+    test rdi, rdi
+    js 9f
+    call tab_at
+    cmp qword ptr [rax + TAB_kind], TAB_GIT
+    sete al
+    movzx eax, al
+9:  pop rbx
+    ret
+
+# gitview_side_draw(x, y, w, h): the details, in the sidebar
+FN gitview_side_draw
+    jmp draw_details
+
+# gitview_side_least() -> eax the sidebar's least width while it shows the details: as wide as they
+#   were beside the list at the least
+FN gitview_side_least
+    push rbx
+    mov edi, 260
+    call sc
+    mov ebx, eax
+    call det_least
+    cmp eax, ebx
+    cmovl eax, ebx
+    pop rbx
+    ret
+
 det_least:
     push rbx
     mov edi, 200
@@ -1361,7 +1416,8 @@ draw_list:
     jne 0f
     cmp dword ptr [rip + list_scroll], 0
     jne 1f
-0:
+0:  cmp dword ptr [rip + det_side], 0  # no panel beside the list to fold
+    jne 1f
     # at the right end of the work tree's row: the button that folds the panel beside the list away
     mov edi, ID_GV_TOGGLE
     mov esi, [rsp]

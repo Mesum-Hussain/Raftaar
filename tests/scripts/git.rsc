@@ -40,7 +40,7 @@ key Down
 key Down
 wait-git
 print-gitlog
-click 780 190
+click 100 190
 wait-git
 print-state
 print-doc

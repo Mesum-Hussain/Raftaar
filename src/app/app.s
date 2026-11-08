@@ -2954,7 +2954,15 @@ FN app_render
     mov edi, [rip + cfg_sidebar_w]
     call sc
     mov [rip + g_side_px], eax
-    M eax, MI_TITLE
+    # showing the history's details, the sidebar is as wide as they need
+    call gitview_side
+    test eax, eax
+    jz 0f
+    call gitview_side_least
+    cmp [rip + g_side_px], eax
+    jge 0f
+    mov [rip + g_side_px], eax
+0:  M eax, MI_TITLE
     M edx, MI_STATUS
     cmp dword ptr [rip + g_zen], 0
     je 16f
@@ -3959,10 +3967,26 @@ FN cmd_project_menu
     add esi, [rip + g_mt + 4*MI_28]
     jmp project_menu_open
 
-# sidebar_draw(x, y, w, h): the explorer. Source control is the history tab's, behind the title bar's
-#   button, which counts its changes
+# sidebar_draw(x, y, w, h): the explorer; while the history tab has the keys, its details instead
+#   (source control on the work tree's row, else the commit's message and files)
 sidebar_draw:
-    jmp explorer_draw
+    PROLOGUE 16
+    mov [rsp], edi
+    mov [rsp + 4], esi
+    mov [rsp + 8], edx
+    mov [rsp + 12], ecx
+    call gitview_side
+    mov ebx, eax
+    mov edi, [rsp]
+    mov esi, [rsp + 4]
+    mov edx, [rsp + 8]
+    mov ecx, [rsp + 12]
+    test ebx, ebx
+    jz 1f
+    call gitview_side_draw
+    EPILOGUE
+1:  call explorer_draw
+    EPILOGUE
 
 # tabs_draw(x, y, w, h) -> eax the x after the last one: the title bar's tabs, a rounded one for each
 #   group of views, named after the pane of it that had the keys

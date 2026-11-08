@@ -16,20 +16,20 @@ cmd git_pull
 wait-git
 print-scm
 # a file's box stages it, and unstages it (the error goes with the next command)
-click 997 372
+click 237 372
 wait-git
 print-scm
-click 997 300
+click 237 300
 wait-git
 print-scm
 # discarding a new file deletes it, after asking
-click 970 328
+click 210 328
 print-state
 key Return
 wait-git
 print-scm
 # the message: Enter breaks the line, Ctrl+Enter commits every change, as none is staged
-click 850 110
+click 90 110
 type Say uno
 key Return
 key Return
@@ -40,7 +40,7 @@ wait-git
 print-scm
 print-git
 # Sync Changes: the pull merges and stops at the conflict; the merge's message fills the box
-click 790 224
+click 70 224
 wait-git
 print-scm
 # resolved in the editor, staged, committed with that message
@@ -69,14 +69,14 @@ cmd git_commit
 wait-git
 print-gitlog
 # amending takes the message box's text
-click 850 110
+click 90 110
 type Merge the remote
 cmd git_commit_amend
 wait-git
 print-gitlog
 print-git
 # Push
-click 935 224
+click 188 224
 wait-git
 print-git
 print-scm
@@ -111,7 +111,7 @@ cmd toggle_terminal
 wait-git
 print-git
 print-scm
-click 790 224
+click 70 224
 wait-git
 print-git
 print-scm

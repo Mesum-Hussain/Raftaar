@@ -94,7 +94,7 @@ class GitReset(unittest.TestCase):
         status = self.git('status', '--porcelain')
         for cancel in ['click 910 425', 'key Escape']:
             output = self.run_ui(['wait-git', 'cmd git_history', 'wait-git',
-                                  'click 1372 60', 'print-state', cancel, 'print-state'])
+                                  'click 232 60', 'print-state', cancel, 'print-state'])
             self.assertIn('focus=5 ', output)
             self.assertIn('focus=0 ', output)
             self.assertEqual(self.git('status', '--porcelain'), status)
@@ -104,7 +104,7 @@ class GitReset(unittest.TestCase):
     def test_button_resets_staged_unstaged_and_created_paths(self):
         self.changes()
         output = self.run_ui(['wait-git', 'cmd git_history', 'wait-git',
-                              'click 1372 60', 'print-state', 'click 810 425',
+                              'click 232 60', 'print-state', 'click 810 425',
                               'wait-git', 'print-scm'])
         self.assertIn('focus=5 ', output)
         self.assert_reset()

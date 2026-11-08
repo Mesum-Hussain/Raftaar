@@ -12,12 +12,12 @@ wait-git
 print-scm
 # the history counts the files the panel lists
 print-gitlog
-click 800 328
+click 100 328
 wait-git
 print-state
 print-doc
 cmd git_history
-click 800 300
+click 100 300
 wait-git
 print-state
 print-doc
